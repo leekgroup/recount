@@ -70,7 +70,7 @@ scale_counts <- function(rse, by = 'auc', targetSize = 4e7L, L = 100L,
     factor_only = FALSE, round = TRUE) {
         
     ## For R CMD check
-    assay <- colData < 'assay<-' <- NULL
+    assay <- colData <- 'assay<-' <- NULL
     
     ## Load required packages
     .load_install('SummarizedExperiment')
