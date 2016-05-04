@@ -5,7 +5,7 @@
 \title{Download data for a given SRA study id from the recount project}
 \usage{
 download_study(project, type = "rse-gene", outdir = project,
-  download = TRUE, url_table = recount_url, ...)
+  download = TRUE, ...)
 }
 \arguments{
 \item{project}{A character vector with one SRA study id.}
@@ -36,8 +36,6 @@ download_study(project, type = "rse-gene", outdir = project,
 \item{outdir}{The destination directory for the downloaded file(s).}
 
 \item{download}{Whether to download the files or just get the download urls.}
-
-\item{url_table}{The table with URLs, by default \link{recount_url}.}
 
 \item{...}{Additional arguments passed to \link[utils]{download.file}.}
 }

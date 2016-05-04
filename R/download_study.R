@@ -31,7 +31,6 @@
 #' }
 #' @param outdir The destination directory for the downloaded file(s).
 #' @param download Whether to download the files or just get the download urls.
-#' @param url_table The table with URLs, by default \link{recount_url}.
 #' @param ... Additional arguments passed to \link[utils]{download.file}.
 #'
 #' @return Returns invisibly the URL(s) for the files that were downloaded.
@@ -62,13 +61,16 @@
 #' }
 
 download_study <- function(project, type = 'rse-gene', outdir = project,
-    download = TRUE, url_table = recount_url, ...) {
+    download = TRUE, ...) {
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(type %in% c('rse-gene', 'rse-exon', 'counts-gene', 'counts-exon', 
         'phenotype', 'files-info', 'samples', 'mean'))
     stopifnot(length(type) == 1)
     stopifnot(is.logical(download) & length(download) == 1)
+    
+    ## Use table from the package
+    url_table <- recount::recount_url
     
     ## Subset url data
     url_table <- url_table[url_table$project == project, ]
