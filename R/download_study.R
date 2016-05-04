@@ -31,12 +31,15 @@
 #' }
 #' @param outdir The destination directory for the downloaded file(s).
 #' @param download Whether to download the files or just get the download urls.
+#' @param url_table The table with URLs, by default \link{recount_url}.
 #' @param ... Additional arguments passed to \link[utils]{download.file}.
 #'
 #' @return Returns invisibly the URL(s) for the files that were downloaded.
 #'
 #' @author Leonardo Collado-Torres
 #' @export
+#'
+#' @importFrom utils download.file
 #'
 #' @examples
 #' ## Find the URL to download the RangedSummarizedExperiment for the
@@ -59,7 +62,7 @@
 #' }
 
 download_study <- function(project, type = 'rse-gene', outdir = project,
-    download = TRUE, ...) {
+    download = TRUE, url_table = recount_url, ...) {
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(type %in% c('rse-gene', 'rse-exon', 'counts-gene', 'counts-exon', 
@@ -68,7 +71,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
     stopifnot(is.logical(download) & length(download) == 1)
     
     ## Subset url data
-    url_table <- recount_url[recount_url$project == project, ]
+    url_table <- url_table[url_table$project == project, ]
     stopifnot(nrow(url_table) > 0)
     
     ## Create output directory if needed
@@ -100,8 +103,8 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
                 ...)
         }
     } else if(type == 'samples') {
-        url_table <- subset(url_table, file_name != paste0('mean_', project,
-            '.bw'))
+        url_table <- url_table[url_table$file_name != paste0('mean_', project,
+            '.bw'), ]
         sample_urls <- url_table[grep('[.]bw$', url_table$file_name), ]
         if(download) {
             xx <- sapply(seq_len(nrow(sample_urls)), function(i, ...) {

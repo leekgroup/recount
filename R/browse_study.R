@@ -11,6 +11,8 @@
 #' @export
 #' @seealso \link{abstract_search}
 #'
+#' @importFrom utils browseURL
+#'
 #' @examples
 #' ## Find the Geuvadis consortium project
 #' id <- abstract_search('Geuvadis consortium', id_only = TRUE)

@@ -385,28 +385,30 @@ library('GenomicRanges')
 load('../../runs/recount2/genes/ucsc-knowngene-hg38-exons.Rdata')
 recount_exons <- exons
 save(recount_exons, file = '../data/recount_exons.RData')
-load('../.../runs/recount2/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
+load('../../runs/recount2/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
 recount_genes <- genes
-save(recount_genes, file = '../data/recount_genes.RData')
+save(recount_genes, file = '../data/recount_genes.RData', compress = 'xz')
 
 ## URL table
 load('../../runs/recount2/fileinfo/upload_table.Rdata')
 recount_url <- upload_table
 ## Fake urls for now
 recount_url$url <- 'https://lcolladotor.shinyapps.io/recount/ucsc-knowngene-hg38-genes-bp-length.Rdata'
-save(recount_url, file = '../data/recount_url.RData')
+save(recount_url, file = '../data/recount_url.RData', compress = 'xz')
 
 ## Abstract info
 load('../../runs/recount2/metadata_web/meta_web_sra.Rdata')
 recount_abstract <- meta_web[, 2:4]
 recount_abstract$project <- gsub('.*">|</a>', '', meta_web$accession)
-save(recount_abstract, file = '../data/recount_abstract.RData')
+save(recount_abstract, file = '../data/recount_abstract.RData',
+    compress = 'bzip2')
 
 ## Example rse_gene file
 system('scp e:/dcl01/leek/data/gtex_work/runs/recount2/rse/rse_sra/SRP009615/rse_gene.Rdata .')
 load('rse_gene.Rdata')
 rse_gene_SRP009615 <- rse_gene
-save(rse_gene_SRP009615, file = '../data/rse_gene_SRP009615.RData')
+save(rse_gene_SRP009615, file = '../data/rse_gene_SRP009615.RData',
+    compress = 'xz')
 unlink('rse_gene.Rdata')
 ```
 

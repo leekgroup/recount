@@ -4,7 +4,8 @@
 \alias{abstract_search}
 \title{Search the abstracts from the SRA studies available via the recount project}
 \usage{
-abstract_search(query, id_only = FALSE, ...)
+abstract_search(query, id_only = FALSE, abstract_table = recount_abstract,
+  ...)
 }
 \arguments{
 \item{query}{A character vector with the text to search for via
@@ -12,6 +13,9 @@ abstract_search(query, id_only = FALSE, ...)
 
 \item{id_only}{Whether to only return the project id or to return summary
 information for the project(s) that match the query.}
+
+\item{abstract_table}{The table with the abstract information, by default
+\link{recount_abstract}.}
 
 \item{...}{Additional arguments passed to \link[base]{grep}.}
 }

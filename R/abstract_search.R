@@ -8,6 +8,8 @@
 #' \link[base]{grep} in the abstract info available at \link{recount_abstract}.
 #' @param id_only Whether to only return the project id or to return summary
 #' information for the project(s) that match the query.
+#' @param abstract_table The table with the abstract information, by default
+#' \link{recount_abstract}.
 #' @param ... Additional arguments passed to \link[base]{grep}.
 #'
 #' @return If \code{id_only = TRUE} it returns a character vector with the
@@ -31,20 +33,21 @@
 #' ## See some summary information for this project
 #' project_info
 
-abstract_search <- function(query, id_only = FALSE, ...) {
+abstract_search <- function(query, id_only = FALSE,
+    abstract_table = recount_abstract, ...) {
     ## Check input
     stopifnot(is.character(query))
     stopifnot(is.logical(id_only))
     stopifnot(length(id_only) == 1)
     
     ## Get abstracts
-    abstracts <- tolower(recount_abstract$abstract)
+    abstracts <- tolower(abstract_table$abstract)
     query <- tolower(query)
     i <- grep(query, abstracts, ...)
     
     if(id_only) {
-        return(recount_abstract$project[i])
+        return(abstract_table$project[i])
     } else {
-        return(recount_abstract[i, ])
+        return(abstract_table[i, ])
     }
 }

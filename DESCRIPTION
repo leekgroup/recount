@@ -1,5 +1,5 @@
 Package: recount
-Title: Explore and download data from the recount project.
+Title: Explore and download data from the recount project
 Version: 0.99.0
 Date: 2016-05-04
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"), email
@@ -8,6 +8,8 @@ Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"), email
     role = c("aut", "ths"), email = "jtleek@gmail.com"))
 Depends:
     R (>= 3.3.0)
+Imports:
+    methods
 Suggests:
     BiocStyle,
     derfinder,

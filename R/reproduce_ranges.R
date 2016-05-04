@@ -46,6 +46,9 @@ reproduce_ranges <- function(level = 'gene') {
     ## Check input
     stopifnot(level %in% c('gene', 'exon'))
     
+    ## For R CMD check
+    exonsBy <- reduce <- width <- NULL
+    
     ## Load required packages
     .load_install('GenomicFeatures')
     .load_install('GenomicRanges')
