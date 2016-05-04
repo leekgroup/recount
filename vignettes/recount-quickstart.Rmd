@@ -400,6 +400,8 @@ save(recount_url, file = '../data/recount_url.RData', compress = 'xz')
 load('../../runs/recount2/metadata_web/meta_web_sra.Rdata')
 recount_abstract <- meta_web[, 2:4]
 recount_abstract$project <- gsub('.*">|</a>', '', meta_web$accession)
+Encoding(recount_abstract$abstract) <- 'latin1'
+recount_abstract$abstract <- iconv(recount_abstract$abstract, 'latin1', 'UTF-8')
 save(recount_abstract, file = '../data/recount_abstract.RData',
     compress = 'bzip2')
 
