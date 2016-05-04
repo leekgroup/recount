@@ -4,8 +4,8 @@
 \name{recount_exons}
 \alias{recount_exons}
 \title{Exon annotation used in recount}
-\format{A \link[GenomicRanges]{GRangesList} with one element per gene. The
-names match the gene UCSC ids.}
+\format{A \link[GenomicRanges]{GRangesList-class} with one element per 
+gene. The names match the gene UCSC ids.}
 \description{
 Exon annotation extracted from TxDb.Hsapiens.UCSC.hg38.knownGene used in
 recount.

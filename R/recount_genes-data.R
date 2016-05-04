@@ -7,9 +7,9 @@
 #'
 #' @name recount_genes
 #' @docType data
-#' @format  A \link[GenomicRanges]{GRanges} with one range per gene. The names
-#' match their UCSC ids. The \link[GenomicRanges]{GRanges} has two metadata
-#' columns
+#' @format  A \link[GenomicRanges]{GRanges-class} with one range per gene. The 
+#' names match their UCSC ids. The \link[GenomicRanges]{GRanges-class} has two 
+#' metadata columns.
 #' \describe{
 #' \item{gene_id }{  the UCSC ids, identical to the names.}
 #' \item{bp_length }{ the sum of the width of the reduced exons for that given

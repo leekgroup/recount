@@ -8,23 +8,24 @@ reproduce_ranges(level = "gene")
 }
 \arguments{
 \item{level}{Either \code{genes} or \code{exon}. It specifies whether to
-return Gene or exon level information as a \link[GenomicRanges]{GRanges} or 
-\link[GenomicRanges]{GRangesList} object respectively. The gene level
+return Gene or exon level information as a 
+\link[GenomicRanges]{GRanges-class} or 
+\link[GenomicRanges]{GRangesList-class} object respectively. The gene level
 information contains the width of the reduced exons for that given gene
 which can be used to normalize the counts provided by recount.}
 }
 \value{
-Either a \link[GenomicRanges]{GRanges} object like 
-\link{recount_genes} or a \link[GenomicRanges]{GRangesList} object like 
-\link{recount_exons}.
+Either a \link[GenomicRanges]{GRanges-class} object like 
+\link{recount_genes} or a \link[GenomicRanges]{GRangesList-class} object 
+like \link{recount_exons}.
 }
 \description{
 This function reproduces the gene or exon level information used for creating
 the \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
 objects provided by recount. The annotation is based on
 \code{TxDb.Hsapiens.UCSC.hg38.knownGene} with the gene-level 
-information extracted with \link[GenomicFeatures]{genes} with default
-arguments.
+information extracted with \code{genes()} (see 
+\link[GenomicFeatures]{transcripts} with default arguments.
 }
 \details{
 Note that the information used in recount was originally calculated with

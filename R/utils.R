@@ -13,7 +13,7 @@
         biocLite <- NULL ## To satisfy R CMD check
         
         source('http://bioconductor.org/biocLite.R')
-        attemptInstall <- tryCatch(biocLite('pkg', suppressUpdates = quietly),
+        attemptInstall <- tryCatch(biocLite(pkg, suppressUpdates = quietly),
             warning = function(w) 'failed')
         if(attemptInstall == 'failed') stop(paste('Failed to install', pkg))
         attemptName <- requireNamespace(pkg, quietly = quietly)
