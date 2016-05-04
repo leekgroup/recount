@@ -9,7 +9,8 @@ Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"), email
 Depends:
     R (>= 3.3.0)
 Imports:
-    methods
+    methods,
+    utils
 Suggests:
     BiocStyle,
     derfinder,
@@ -41,5 +42,6 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/leekgroup/recount
 BugReports: https://github.com/leekgroup/recount/issues
-biocViews: DifferentialExpression, Sequencing, RNASeq, Software
+biocViews: Coverage, DifferentialExpression, GeneExpression, RNASeq, Sequencing,
+    Software
 RoxygenNote: 5.0.1
