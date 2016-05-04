@@ -38,7 +38,7 @@ The vignettes for this package can be viewed via [Bioconductor's website](http:/
 Below is the citation output from using `citation('recount')` in R. Please 
 run this yourself to check for any updates on how to cite __recount__.
 
-To cite package __recount__ in publications use:
+To cite the __recount__ package in publications use:
 
 Leonardo Collado-Torres, Abhinav Nellore and Jeffrey T. Leek (2016). recount: Explore and download data from the recount project. R package version 0.99.0. https://github.com/leekgroup/recount
 
