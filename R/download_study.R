@@ -1,20 +1,20 @@
 #' Download data for a given SRA study id from the recount project
 #'
 #' Download the gene or exon level 
-#' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects provided by 
-#' the recount project. Alternatively download the counts, metadata or file 
-#' information for a given SRA study id. You can also download the sample
-#' bigWig files or the mean coverage bigWig file.
+#' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects 
+#' provided by the recount project. Alternatively download the counts, metadata 
+#' or file information for a given SRA study id. You can also download the 
+#' sample bigWig files or the mean coverage bigWig file.
 #'
 #' @param project A character vector with one SRA study id.
 #' @param type Specifies which files to download. The options are:
 #' \describe{
 #'     \item{rse-gene}{ the gene-level 
-#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in a file
-#'     named rse_gene.Rdata.}
+#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+#'     a file named rse_gene.Rdata.}
 #'     \item{rse-exon}{ the exon-level 
-#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in a file
-#'     named rse_exon.Rdata.}
+#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+#'     a file named rse_exon.Rdata.}
 #'     \item{counts-gene}{ the gene-level counts in a tsv file named
 #'     counts_gene.tsv.gz.}
 #'     \item{counts-exon}{ the exon-level counts in a tsv file named

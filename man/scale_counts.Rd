@@ -8,8 +8,8 @@ scale_counts(rse, by = "auc", targetSize = 40000000L, L = 100L,
   factor_only = FALSE, round = TRUE)
 }
 \arguments{
-\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object
-as downloaded with \link{download_study}.}
+\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+object as downloaded with \link{download_study}.}
 
 \item{by}{Either \code{auc} or \code{mapped_reads}. If set to \code{auc} it 
 will scale the counts by the total coverage of the sample. That is, the area
@@ -23,9 +23,9 @@ paired-end or not, and the desired read length (\code{L}).}
 since it cancels out in the calculation when using \code{by = 'auc'}.}
 
 \item{factor_only}{Whether to only return the numeric scaling factor or
-to return a \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object
-with the counts scaled. If set to \code{TRUE}, you have to multiply the
-sample counts by this scaling factor.}
+to return a \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+object with the counts scaled. If set to \code{TRUE}, you have to multiply 
+the sample counts by this scaling factor.}
 
 \item{round}{Whether to round the counts to integers or not.}
 }

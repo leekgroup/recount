@@ -7,8 +7,8 @@
 #' sample (default option). You might want to do some further scaling to take
 #' into account the gene or exon lengths.
 #'
-#' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object
-#' as downloaded with \link{download_study}.
+#' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+#' object as downloaded with \link{download_study}.
 #' @param by Either \code{auc} or \code{mapped_reads}. If set to \code{auc} it 
 #' will scale the counts by the total coverage of the sample. That is, the area
 #' under the curve (AUC) of the coverage. If set to \code{mapped_reads} it will
@@ -18,9 +18,9 @@
 #' @param L The target read length. Only used when \code{by = 'mapped_reads'}
 #' since it cancels out in the calculation when using \code{by = 'auc'}.
 #' @param factor_only Whether to only return the numeric scaling factor or
-#' to return a \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object
-#' with the counts scaled. If set to \code{TRUE}, you have to multiply the
-#' sample counts by this scaling factor.
+#' to return a \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+#' object with the counts scaled. If set to \code{TRUE}, you have to multiply 
+#' the sample counts by this scaling factor.
 #' @param round Whether to round the counts to integers or not.
 #'
 #' @return If \code{factor_only = TRUE} it returns a numeric vector with the
