@@ -355,14 +355,14 @@ file.remove('quickstartRef.bib')
 
 Date the vignette was generated.
 
-```{r reproducibility1, echo=FALSE}
+```{r reproduce1, echo=FALSE}
 ## Date the vignette was generated
 Sys.time()
 ```
 
 Wallclock time spent generating the vignette.
 
-```{r reproducibility2, echo=FALSE}
+```{r reproduce2, echo=FALSE}
 ## Processing time in seconds
 totalTime <- diff(c(startTime, Sys.time()))
 round(totalTime, digits=3)
@@ -370,7 +370,7 @@ round(totalTime, digits=3)
 
 `R` session information.
 
-```{r reproducibility3, echo=FALSE}
+```{r reproduce3, echo=FALSE}
 ## Session info
 library('devtools')
 options(width = 120)
