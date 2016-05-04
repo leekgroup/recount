@@ -9,7 +9,7 @@ Bioc-release <a href="https://bioconductor.org/developers/how-to/unitTesting-gui
 recount
 =======
 
-Explore and download data from the recount project available at the [recount website](https://lcolladotor.shinyapps.io/recount/). Using the `recount` package you can download _RangedSummarizedExperiment_ objects at the gene or exon level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The _RangedSummarizedExperiment_ objects can be used by different packages for performing differential expression analysis. Using [derfinder](http://bioconductor.org/packages/derfinder) you can perform annotation-agnostic differential expression analysis. 
+Explore and download data from the recount project available at the [recount website](https://lcolladotor.shinyapps.io/recount/). Using the `recount` package you can download _RangedSummarizedExperiment_ objects at the gene or exon level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The _RangedSummarizedExperiment_ objects can be used by different packages for performing differential expression analysis. Using [derfinder](http://bioconductor.org/packages/derfinder) you can perform annotation-agnostic differential expression analyses with the data from the recount project. 
 
 For more information about `recount` check the vignettes [here](http://www.bioconductor.org/packages/recount).
 
@@ -40,13 +40,13 @@ run this yourself to check for any updates on how to cite __recount__.
 
 To cite package __recount__ in publications use:
 
-Leonardo Collado-Torres and Jeffrey T. Leek (2016). recount: Explore and download data from the recount project. R package version 0.99.0. https://github.com/leekgroup/recount
+Leonardo Collado-Torres, Abhinav Nellore and Jeffrey T. Leek (2016). recount: Explore and download data from the recount project. R package version 0.99.0. https://github.com/leekgroup/recount
 
 A BibTeX entry for LaTeX users is
 
 @Manual{,
     title = {recount: Explore and download data from the recount project},
-    author = {Leonardo Collado-Torres and Jeffrey T. Leek},
+    author = {Leonardo Collado-Torres and Abhinav Nellore and Jeffrey T. Leek},
     year = {2016},
     note = {R package version 0.99.0},
     url = {https://github.com/leekgroup/recount},
