@@ -8,7 +8,7 @@ scale_counts(rse, by = "auc", targetSize = 40000000L, L = 100L,
   factor_only = FALSE, round = TRUE)
 }
 \arguments{
-\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment} object
+\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object
 as downloaded with \link{download_study}.}
 
 \item{by}{Either \code{auc} or \code{mapped_reads}. If set to \code{auc} it 
@@ -23,7 +23,7 @@ paired-end or not, and the desired read length (\code{L}).}
 since it cancels out in the calculation when using \code{by = 'auc'}.}
 
 \item{factor_only}{Whether to only return the numeric scaling factor or
-to return a \link[SummarizedExperiment]{RangedSummarizedExperiment} object
+to return a \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object
 with the counts scaled. If set to \code{TRUE}, you have to multiply the
 sample counts by this scaling factor.}
 
@@ -32,7 +32,7 @@ sample counts by this scaling factor.}
 \value{
 If \code{factor_only = TRUE} it returns a numeric vector with the
 scaling factor for each sample. If \code{factor_only = FALSE} it returns a
-\link[SummarizedExperiment]{RangedSummarizedExperiment} object with
+\link[SummarizedExperiment]{RangedSummarizedExperiment-class} object with
 the counts already scaled.
 }
 \description{

@@ -13,10 +13,10 @@ download_study(project, type = "rse-gene", outdir = project,
 \item{type}{Specifies which files to download. The options are:
 \describe{
     \item{rse-gene}{ the gene-level 
-    \link[SummarizedExperiment]{RangedSummarizedExperiment} object in a file
+    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in a file
     named rse_gene.Rdata.}
     \item{rse-exon}{ the exon-level 
-    \link[SummarizedExperiment]{RangedSummarizedExperiment} object in a file
+    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in a file
     named rse_exon.Rdata.}
     \item{counts-gene}{ the gene-level counts in a tsv file named
     counts_gene.tsv.gz.}
@@ -46,7 +46,7 @@ Returns invisibly the URL(s) for the files that were downloaded.
 }
 \description{
 Download the gene or exon level 
-\link[SummarizedExperiment]{RangedSummarizedExperiment} objects provided by 
+\link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects provided by 
 the recount project. Alternatively download the counts, metadata or file 
 information for a given SRA study id. You can also download the sample
 bigWig files or the mean coverage bigWig file.

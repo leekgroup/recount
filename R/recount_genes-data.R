@@ -3,7 +3,7 @@
 #' Gene annotation extracted from TxDb.Hsapiens.UCSC.hg38.knownGene used in
 #' recount. It includes the sum of the width of the reduced exons which can be
 #' used for normalizing the counts provided in the 
-#' \link[SummarizedExperiment]{RangedSummarizedExperiment} objects.
+#' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects.
 #'
 #' @name recount_genes
 #' @docType data

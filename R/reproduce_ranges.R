@@ -1,7 +1,7 @@
 #' Reproduce the gene or exons used in the RangedSummarizedExperiment objects
 #'
 #' This function reproduces the gene or exon level information used for creating
-#' the \link[SummarizedExperiment]{RangedSummarizedExperiment}
+#' the \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
 #' objects provided by recount. The annotation is based on
 #' \code{TxDb.Hsapiens.UCSC.hg38.knownGene} with the gene-level 
 #' information extracted with \link[GenomicFeatures]{genes} with default

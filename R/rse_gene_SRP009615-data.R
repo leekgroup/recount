@@ -1,11 +1,11 @@
 #' RangedSummarizedExperiment at the gene level for study SRP009615
 #'
-#' \link[SummarizedExperiment]{RangedSummarizedExperiment} at the gene level
+#' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} at the gene level
 #' for study SRP009615. Used as an example in \link{scale_counts}.
 #'
 #' @name rse_gene_SRP009615
 #' @docType data
-#' @format A \link[SummarizedExperiment]{RangedSummarizedExperiment} as created
+#' @format A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} as created
 #' by the recount project for study with SRA id (accession number) SRP009615.
 #'
 #' @keywords datasets
