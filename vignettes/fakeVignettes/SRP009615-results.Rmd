@@ -1,0 +1,25 @@
+---
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+    theme: spacelab
+  pdf_document:
+      toc: true
+  knitrBootstrap::bootstrap_document:
+    theme.chooser: TRUE
+    highlight.chooser: TRUE
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Basic DESeq2 results exploration}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+Basic DESeq2 results exploration
+=================================
+
+```{r}
+library('recount')
+```

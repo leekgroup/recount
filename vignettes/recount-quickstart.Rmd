@@ -1,0 +1,425 @@
+---
+title: "recount quick start guide"
+author: "L Collado-Torres"
+date: "`r doc_date()`"
+package: "`r pkg_ver('recount')`"
+output: 
+  BiocStyle::html_document
+vignette: >
+  %\VignetteIndexEntry{recount quick start guide}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}  
+---
+
+Quick start to using to `r Biocpkg('recount')`
+================================================
+
+```{r vignetteSetup, echo=FALSE, message=FALSE, warning = FALSE}
+## Track time spent on making the vignette
+startTime <- Sys.time()
+
+## Bib setup
+library('knitcitations')
+
+## Load knitcitations with a clean bibliography
+cleanbib()
+cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
+# Note links won't show for now due to the following issue
+# https://github.com/cboettig/knitcitations/issues/63
+
+## Write bibliography information
+bibs <- c(
+    BiocStyle = citation('BiocStyle'),
+    derfinder = citation('derfinder')[1], 
+    DESeq2 = citation('DESeq2'),
+    devtools = citation('devtools'),
+    GenomicFeatures = citation('GenomicFeatures'),
+    GenomicRanges = citation('GenomicRanges'),
+    IRanges = citation('IRanges'),
+    knitcitations = citation('knitcitations'),
+    knitr = citation('knitr')[3],
+    R = citation(),
+    regionReport = citation('regionReport'),
+    rmarkdown = citation('rmarkdown'),
+    rtracklayer = citation('rtracklayer'),
+    SummarizedExperiment = citation('SummarizedExperiment'),
+    testthat = citation('testthat'),
+    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene')
+)
+
+write.bibtex(bibs,
+    file = 'quickstartRef.bib')
+bib <- read.bibtex('quickstartRef.bib')
+
+## Assign short names
+names(bib) <- names(bibs)
+
+## Working on Windows?
+windowsFlag <- .Platform$OS.type == 'windows'
+```
+
+Here is a very quick example of how to download a `RangedSummarizedExperiment` object with the gene counts for a 2 groups project (12 samples) with SRA study id [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615). The `RangedSummarizedExperiment` object is defined in the `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])` package and can be used for differential expression analysis with different packages. Here we show how to use `r Biocpkg('DESeq2')` `r citep(bib[['DESeq2']])` to perform the analysis.
+
+This quick analysis is explained in more detail later on in this document.
+ 
+```{r 'ultraQuick', eval = FALSE}
+## Load libraries
+library('recount')
+library('SummarizedExperiment')
+
+## Find a project of interest
+project_info <- abstract_search('GSE32465')
+
+## Browse the project at SRA
+browse_study(project_info$project)
+
+## Define groups based on the project information available at
+## http://www.ncbi.nlm.nih.gov/sra/?term=SRP009615 (found via the "Experiments"
+## link) from the SRA website.
+sample_info <- data.frame(
+    accession = c('SRX110461', 'SRX110462', 'SRX110463', 'SRX110464',
+        'SRX111299', 'SRX111300', 'SRX111301', 'SRX111302', 'SRX111303',
+        'SRX111304', 'SRX111305', 'SRX111306'),
+    group = rep(c('uninduced', 'induced'), 6),
+    gene_target = rep(c('SRF', 'EGR1', 'ATF3'), each = 4),
+    replicate = factor(rep(rep(c(1, 2), each = 2), 3))
+)
+
+## Download the gene-level RangedSummarizedExperiment data
+download_study(project_info$project)
+
+## Load the data
+load(file.path(project_info$project), 'rse_gene.Rdata')
+
+## Scale counts by taking into account the total coverage per sample
+rse <- scale_counts(rse_gene)
+
+## Add sample information for DE analysis
+i <- match(colData(rse)$experiment, sample_info$accession)
+colData(rse)$group <- sample_info$group[i]
+colData(rse)$gene_target <- sample_info$gene_target[i]
+colData(rse)$replicate <- sample_info$replicate[i]
+
+## Perform differential expression analysis with DESeq2
+library('DESeq2')
+
+## Specify design and switch to DESeq2 format
+dds <- DESeqDataSet(rse, ~ group + gene_target + replicate)
+
+## Perform DE analysis
+dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target + replicate,
+    fitType = 'local')
+res <- results(dds)
+
+## Explore results
+plotMA(res, main="DESeq2 results for SRP009615")
+
+## Make a report with the results
+library('regionReport')
+DESeq2Report(dds, res = res, project = 'SRP009615',
+    intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+    output = 'SRP009615-results')
+```
+
+
+# Introduction
+
+`r Biocpkg('recount')` is an R package that provides an interface to the [recount project website](https://lcolladotor.shinyapps.io/recount/). This package allows you to download the files from the recount project and has helper functions for getting you started with differential expression analyses. This vignette will walk you through an example.
+
+
+# Sample DE analysis
+
+This is a brief overview of what you can do with `r Biocpkg('recount')`. In this particular example we will download data from the [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615) study which sequenced 12 samples as described in the previous link.
+
+We first load the required packages.
+
+```{r 'start', message=FALSE}
+## Load libraries
+library('recount')
+library('SummarizedExperiment')
+```
+
+Lets say that we don't know the actual SRA accession number for this study but we do know a particular term which will help us identify it. If that's the case, we can use the `abstract_search()` function to identify the study of interest as shown below.
+
+```{r 'search_abstract'}
+## Find a project of interest
+project_info <- abstract_search('GSE32465')
+
+## Explore info
+project_info
+```
+
+Once we have identified the study of interest, we can use the `browse_study()` function to browse the study at the SRA website.
+
+```{r 'browse'}
+## Browse the project at SRA
+browse_study(project_info$project)
+```
+
+The SRA website includes an _Experiments_ link which further describes each of the samples. From the information available for [SRP009615 at NCBI](http://www.ncbi.nlm.nih.gov/sra/?term=SRP009615) we have some further sample information that we can save for use in our differential expression analysis.
+
+```{r 'sample_info'}
+## Define groups based on the project information available at
+## http://www.ncbi.nlm.nih.gov/sra/?term=SRP009615 (found via the "Experiments"
+## link) from the SRA website.
+sample_info <- data.frame(
+    accession = c('SRX110461', 'SRX110462', 'SRX110463', 'SRX110464',
+        'SRX111299', 'SRX111300', 'SRX111301', 'SRX111302', 'SRX111303',
+        'SRX111304', 'SRX111305', 'SRX111306'),
+    group = rep(c('uninduced', 'induced'), 6),
+    gene_target = rep(c('SRF', 'EGR1', 'ATF3'), each = 4),
+    replicate = factor(rep(rep(c(1, 2), each = 2), 3))
+)
+```
+
+Now that we have a study that we are interested in, we can download the _RangedSummarizedExperiment_ object (see `r Biocpkg('SummarizedExperiment')`) with the data summarized at the gene level. The function `download_study()` helps us do this. If you are interested on how the annotation was defined, check `reproduce_ranges()`.
+
+```{r 'download', eval = FALSE}
+## Download the gene-level RangedSummarizedExperiment data
+download_study(project_info$project)
+
+## Load the data
+load(file.path(project_info$project), 'rse_gene.Rdata')
+```
+
+```{r 'download-hidden', echo = FALSE}
+## Currently the data is not uploaded yet
+rse_gene <- rse_gene_SRP009615
+```
+
+We can explore a bit this _RangedSummarizedExperiment_ as shown below.
+
+```{r 'explore_rse'}
+rse_gene
+
+## This is the sample phenotype data provided by the recount project
+colData(rse_gene)
+
+## At the gene level, the row data includes the names of the genes and
+## the sum of the reduced exons widths, which can be used for taking into
+## account the gene length.
+rowData(rse_gene)
+```
+
+
+The recount project records the sum of the base level coverage for each gene (or exon). These raw counts have to be scaled and there are several ways in which you can choose to do so. The function `scale_counts()` helps you scale them in a way that is tailored to [Rail-RNA](http://rail.bio) output.
+
+```{r 'scale_counts'}
+## Scale counts by taking into account the total coverage per sample
+rse <- scale_counts(rse_gene)
+```
+
+We are almost ready to perform our differential expression analysis. Lets just add the information we recovered from the SRA website about these samples.
+
+
+```{r 'add_sample_info'}
+## Add sample information for DE analysis
+i <- match(colData(rse)$experiment, sample_info$accession)
+colData(rse)$group <- sample_info$group[i]
+colData(rse)$gene_target <- sample_info$gene_target[i]
+colData(rse)$replicate <- sample_info$replicate[i]
+```
+
+Now that the _RangedSummarizedExperiment_ is complete, we can use `r Biocpkg('DESeq2')` or another package to perform the differential expression test. Note that you can use `r Biocpkg('DEFormats')` for switching between formats if you want to use another package, like `r Biocpkg('edgeR')`.
+
+In this particular analysis, we'll test whether there is a group difference adjusting for the gene target and the replicate group.
+
+```{r 'de_analysis'}
+## Perform differential expression analysis with DESeq2
+library('DESeq2')
+
+## Specify design and switch to DESeq2 format
+dds <- DESeqDataSet(rse, ~ group + gene_target + replicate)
+
+## Perform DE analysis
+dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target + replicate,
+    fitType = 'local')
+res <- results(dds)
+```
+
+We can now use functions from `r Biocpkg('DESeq2')` to explore the results. For more details check the `r Biocpkg('DESeq2')` vignette. For example, we can make a MA plot as shown below.
+
+```{r 'ma_plot'}
+## Explore results
+plotMA(res, main="DESeq2 results for SRP009615")
+```
+
+
+We can also use the `r Biocpkg('regionReport')` package to generate interactive HTML reports exploring the `r Biocpkg('DESeq2')` results (or `r Biocpkg('edgeR')` results if you used that package).
+
+
+
+```{r 'make_report', eval = FALSE}
+## Make a report with the results
+library('regionReport')
+report <- DESeq2Report(dds, res = res, project = 'SRP009615',
+    intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+    output = 'SRP009615-results')
+```
+
+```{r 'make_report_real', echo = FALSE, results = 'hide'}
+library('regionReport')
+
+## Make it so that the report will be available as a vignette
+original <- readLines(system.file('DESeq2Exploration', 'DESeq2Exploration.Rmd',
+    package = 'regionReport'))
+vignetteInfo <- c(
+    'vignette: >',
+    '  %\\VignetteEngine{knitr::rmarkdown}',
+    '  %\\VignetteIndexEntry{Basic DESeq2 results exploration}',
+    '  %\\VignetteEncoding{UTF-8}'
+)
+new <- c(original[1:12], vignetteInfo, original[13:length(original)])
+writeLines(new, 'SRP009615-results-template.Rmd')
+
+## Now create the report
+report <- DESeq2Report(dds, res = res, project = 'SRP009615',
+    intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+    output = 'SRP009615-results', device = 'png', template = 'SRP009615-results-template.Rmd')
+    
+## Clean up
+file.remove('SRP009615-results-template.Rmd')
+```
+
+You can view the final report [here](SRP009615-results.html).
+
+# Basics
+
+## Install `r Biocpkg('recount')`
+
+`R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Biocpkg('recount')` is a `R` package available via the [Bioconductor](http://bioconductor/packages/derfinder) repository for packages. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Biocpkg('recount')` by using the following commands in your `R` session:
+
+```{r 'installDer', eval = FALSE}
+## try http:// if https:// URLs are not supported
+source("https://bioconductor.org/biocLite.R")
+biocLite("recount")
+```
+
+## Required knowledge
+
+`r Biocpkg('recount')` is based on many other packages and in particular in those that have implemented the infrastructure needed for dealing with RNA-seq data. That is, packages like `r Biocpkg('GenomicFeatures')` and `r Biocpkg('rtracklayer')` that allow you to import the data. A `r Biocpkg('recount')` user is not expected to deal with those packages directly but will need to be familiar with `r Biocpkg('SummarizedExperiment')` to understand the results `r Biocpkg('recount')` generates. It might also prove to be highly beneficial to check the
+
+* `r Biocpkg('DESeq2')` package for performing differential expression analysis with the _RangedSummarizedExperiment_ objects,
+* `r Biocpkg('DEFormats')` package for switching the objects to those used by other differential expression packages such as `r Biocpkg('edgeR')`,
+* `r Biocpkg('derfinder')` package for performing annotation-agnostic differential expression analysis.
+
+If you are asking yourself the question "Where do I start using Bioconductor?" you might be interested in [this blog post](http://lcolladotor.github.io/2014/10/16/startBioC/#.VkOKbq6rRuU).
+
+## Asking for help
+
+As package developers, we try to explain clearly how to use our packages and in which order to use the functions. But `R` and `Bioconductor` have a steep learning curve so it is critical to learn where to ask for help. The blog post quoted above mentions some but we would like to highlight the [Bioconductor support site](https://support.bioconductor.org/) as the main resource for getting help. Other alternatives are available such as creating GitHub issues and tweeting. However, please note that if you want to receive help you should adhere to the [posting guidlines](http://www.bioconductor.org/help/support/posting-guide/). It is particularly critical that you provide a small reproducible example and your session information so package developers can track down the source of the error.
+
+## Citing `r Biocpkg('recount')`
+
+We hope that `r Biocpkg('recount')` will be useful for your research. Please use the following information to cite the package and the overall approach. Thank you!
+
+```{r 'citation'}
+## Citation info
+citation('recount')
+```
+
+# Reproducibility
+
+This package was made possible thanks to:
+
+* R `r citep(bib[['R']])`
+* `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
+* `r Biocpkg('derfinder')` `r citep(bib[['derfinder']])`
+* `r CRANpkg('devtools')` `r citep(bib[['devtools']])`
+* `r Biocpkg('GenomicFeatures')` `r citep(bib[['GenomicFeatures']])`
+* `r Biocpkg('GenomicRanges')` `r citep(bib[['GenomicRanges']])`
+* `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`
+* `r CRANpkg('knitr')` `r citep(bib[['knitr']])`
+* `r Biocpkg('rtracklayer')` `r citep(bib[['rtracklayer']])`
+* `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])`
+* `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])`
+* `r CRANpkg('testthat')` `r citep(bib[['testthat']])`
+* `r Biocannopkg('TxDb.Hsapiens.UCSC.hg138.knownGene')` `r citep(bib[['TxDb.Hsapiens.UCSC.hg38.knownGene']])`
+
+Code for creating the vignette
+
+```{r createVignette, eval=FALSE}
+## Create the vignette
+library('rmarkdown')
+system.time(render('recount-quickstart.Rmd', 'BiocStyle::html_document'))
+
+## Extract the R code
+library('knitr')
+knit('recount-quickstart.Rmd', tangle = TRUE)
+```
+
+```{r createVignette2}
+## Clean up
+file.remove('quickstartRef.bib')
+```
+
+Date the vignette was generated.
+
+```{r reproducibility1, echo=FALSE}
+## Date the vignette was generated
+Sys.time()
+```
+
+Wallclock time spent generating the vignette.
+
+```{r reproducibility2, echo=FALSE}
+## Processing time in seconds
+totalTime <- diff(c(startTime, Sys.time()))
+round(totalTime, digits=3)
+```
+
+`R` session information.
+
+```{r reproducibility3, echo=FALSE}
+## Session info
+library('devtools')
+options(width = 120)
+session_info()
+```
+
+```{r 'datasetup', echo = FALSE, eval = FALSE}
+## Code for re-creating the data distributed in this package
+
+## Genes/exons
+library('GenomicRanges')
+load('../../runs/recount2/genes/ucsc-knowngene-hg38-exons.Rdata')
+recount_exons <- exons
+save(recount_exons, file = '../data/recount_exons.RData')
+load('../.../runs/recount2/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
+recount_genes <- genes
+save(recount_genes, file = '../data/recount_genes.RData')
+
+## URL table
+load('../../runs/recount2/fileinfo/upload_table.Rdata')
+recount_url <- upload_table
+## Fake urls for now
+recount_url$url <- 'https://lcolladotor.shinyapps.io/recount/ucsc-knowngene-hg38-genes-bp-length.Rdata'
+save(recount_url, file = '../data/recount_url.RData')
+
+## Abstract info
+load('../../runs/recount2/metadata_web/meta_web_sra.Rdata')
+recount_abstract <- meta_web[, 2:4]
+recount_abstract$project <- gsub('.*">|</a>', '', meta_web$accession)
+save(recount_abstract, file = '../data/recount_abstract.RData')
+
+## Example rse_gene file
+system('scp e:/dcl01/leek/data/gtex_work/runs/recount2/rse/rse_sra/SRP009615/rse_gene.Rdata .')
+load('rse_gene.Rdata')
+rse_gene_SRP009615 <- rse_gene
+save(rse_gene_SRP009615, file = '../data/rse_gene_SRP009615.RData')
+unlink('rse_gene.Rdata')
+```
+
+
+
+# Bibliography
+
+This vignette was generated using `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
+with `r CRANpkg('knitr')` `r citep(bib[['knitr']])` and `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])` running behind the scenes.
+
+Citations made with `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`.
+
+```{r vignetteBiblio, results = 'asis', echo = FALSE, warning = FALSE}
+## Print bibliography
+bibliography()
+```

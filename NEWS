@@ -1,0 +1,8 @@
+CHANGES IN VERSION 0.99.0
+-------------------------
+
+NEW FEATURES
+
+    o Created the package skeleton for recount
+    o Added the function reproduce_ranges() for re-creating the gene or exon
+        level information used in the recount project.
