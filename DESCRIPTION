@@ -19,6 +19,7 @@ Suggests:
     GenomicFeatures,
     GenomicRanges,
     IRanges,
+    knitcitations,
     knitr (>= 1.6),
     regionReport,
     rmarkdown (>= 0.9.5),
