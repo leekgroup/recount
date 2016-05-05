@@ -32,7 +32,9 @@ download_study(project, type = "rse-gene", outdir = project,
     total coverage sum (area under the coverage curve, AUC) for the given 
     sample.}
     \item{all}{ Downloads all the above types. Note that it might take some
-    time if the project has many samples.}
+    time if the project has many samples. When using \code{type = 'all'} a
+    small delay will be added before each download request to avoid
+    request issues.}
 }}
 
 \item{outdir}{The destination directory for the downloaded file(s).}

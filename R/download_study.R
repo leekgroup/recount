@@ -29,7 +29,9 @@
 #'     total coverage sum (area under the coverage curve, AUC) for the given 
 #'     sample.}
 #'     \item{all}{ Downloads all the above types. Note that it might take some
-#'     time if the project has many samples.}
+#'     time if the project has many samples. When using \code{type = 'all'} a
+#'     small delay will be added before each download request to avoid
+#'     request issues.}
 #' }
 #' @param outdir The destination directory for the downloaded file(s).
 #' @param download Whether to download the files or just get the download urls.
@@ -92,7 +94,8 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
     ## If all, download each type individually
     if(type == 'all') {
         urls <- sapply(c('rse-gene', 'rse-exon', 'counts-gene', 'counts-exon', 
-        'phenotype', 'files-info', 'samples', 'mean'), function(file_type) { 
+        'phenotype', 'files-info', 'samples', 'mean'), function(file_type) {
+            Sys.sleep(round(runif(1, 2, 5), 0))
             download_study(project = project, type = file_type,
                 outdir = outdir, download = download, ...)
         })
