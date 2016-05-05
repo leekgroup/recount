@@ -31,6 +31,8 @@ download_study(project, type = "rse-gene", outdir = project,
     with each sample normalized to a 40 million 100 bp library using the
     total coverage sum (area under the coverage curve, AUC) for the given 
     sample.}
+    \item{all}{ Downloads all the above types. Note that it might take some
+    time if the project has many samples.}
 }}
 
 \item{outdir}{The destination directory for the downloaded file(s).}

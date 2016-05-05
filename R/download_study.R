@@ -28,6 +28,8 @@
 #'     with each sample normalized to a 40 million 100 bp library using the
 #'     total coverage sum (area under the coverage curve, AUC) for the given 
 #'     sample.}
+#'     \item{all}{ Downloads all the above types. Note that it might take some
+#'     time if the project has many samples.}
 #' }
 #' @param outdir The destination directory for the downloaded file(s).
 #' @param download Whether to download the files or just get the download urls.
@@ -65,7 +67,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(type %in% c('rse-gene', 'rse-exon', 'counts-gene', 'counts-exon', 
-        'phenotype', 'files-info', 'samples', 'mean'))
+        'phenotype', 'files-info', 'samples', 'mean', 'all'))
     stopifnot(length(type) == 1)
     stopifnot(is.logical(download) & length(download) == 1)
     
@@ -76,6 +78,15 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
     url_table <- url_table[url_table$project == project, ]
     stopifnot(nrow(url_table) > 0)
     
+    ## If all, download each type individually
+    if(type == 'all') {
+        urls <- sapply(c('rse-gene', 'rse-exon', 'counts-gene', 'counts-exon', 
+        'phenotype', 'files-info', 'samples', 'mean'), function(file_type) { 
+            download_study(project = project, type = file_type,
+                outdir = outdir, download = download, ...)
+        })
+    }
+    
     ## Create output directory if needed
     if(download) {
         dir.create(outdir, showWarnings = FALSE)
@@ -84,7 +95,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
             outdir <- file.path(outdir, 'bw')
             dir.create(outdir, showWarnings = FALSE)
         }
-    }  
+    }
 
     ## Select files to download and download them
     if(type != 'samples') {
