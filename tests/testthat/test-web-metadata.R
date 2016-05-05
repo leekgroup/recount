@@ -6,7 +6,8 @@ test_that('Browse studies at SRA', {
 })
 
 test_that('Download studies', {
-    expect_equal(download_study('ERP001942', download = FALSE), 'https://lcolladotor.shinyapps.io/recount/ucsc-knowngene-hg38-genes-bp-length.Rdata')
+    expect_equal(download_study('ERP001942', download = FALSE), 'http://duffel.rail.bio/recount/ERP001942/rse_gene.Rdata')
+    expect_equal(download_study('ERP001942', type = 'mean', download = FALSE), 'http://duffel.rail.bio/recount/ERP001942/bw/mean_ERP001942.bw')
 })
 
 

@@ -393,7 +393,12 @@ save(recount_genes, file = '../data/recount_genes.RData', compress = 'xz')
 load('../../runs/recount2/fileinfo/upload_table.Rdata')
 recount_url <- upload_table
 ## Fake urls for now
-recount_url$url <- 'https://lcolladotor.shinyapps.io/recount/ucsc-knowngene-hg38-genes-bp-length.Rdata'
+is.bw <- grepl('[.]bw$', recount_url$file_name)
+recount_url$url <- NA
+recount_url$url[!is.bw] <- paste0('http://duffel.rail.bio/recount/',
+    recount_url$project[!is.bw], '/', recount_url$file_name[!is.bw])
+recount_url$url[is.bw] <- paste0('http://duffel.rail.bio/recount/',
+    recount_url$project[is.bw], '/bw/', recount_url$file_name[is.bw])
 save(recount_url, file = '../data/recount_url.RData', compress = 'xz')
 
 ## Abstract info

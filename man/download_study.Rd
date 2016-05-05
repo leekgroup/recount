@@ -57,7 +57,7 @@ url <- download_study('ERP001942', download = FALSE)
 ## See the actual URL
 url
 
-## Download the example data included in the package
+## Download the example data included in the package for study SRP009615
 \dontrun{
 url2 <- download_study('SRP009615')
 url2
