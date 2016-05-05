@@ -5,7 +5,7 @@
 \title{Download data for a given SRA study id from the recount project}
 \usage{
 download_study(project, type = "rse-gene", outdir = project,
-  download = TRUE, ...)
+  download = TRUE, method = "curl", extra = "-L", ...)
 }
 \arguments{
 \item{project}{A character vector with one SRA study id.}
@@ -39,6 +39,12 @@ download_study(project, type = "rse-gene", outdir = project,
 
 \item{download}{Whether to download the files or just get the download urls.}
 
+\item{method}{This argument is passed to \link[utils]{download.file}. Given
+how the URLs work, it's best to use \code{method = 'curl'}.}
+
+\item{extra}{This argument is passed to \link[utils]{download.file}. It's
+useful for following redirects in URLs. See details for more information.}
+
 \item{...}{Additional arguments passed to \link[utils]{download.file}.}
 }
 \value{
@@ -51,6 +57,12 @@ provided by the recount project. Alternatively download the counts, metadata
 or file information for a given SRA study id. You can also download the 
 sample bigWig files or the mean coverage bigWig file.
 }
+\details{
+Check \url{http://stackoverflow.com/a/34383991} if you need to find
+the effective URLs. For example,
+\url{http://duffel.rail.bio/recount/DRP000366/bw/mean_DRP000366.bw} points to
+a temporary link from Amazon Cloud Drive.
+}
 \examples{
 ## Find the URL to download the RangedSummarizedExperiment for the
 ## Geuvadis consortium study.
@@ -60,7 +72,7 @@ url <- download_study('ERP001942', download = FALSE)
 url
 
 ## Download the example data included in the package for study SRP009615
-\dontrun{
+
 url2 <- download_study('SRP009615')
 url2
 
@@ -68,8 +80,9 @@ url2
 load(file.path('SRP009615', 'rse_gene.Rdata'))
 
 ## Compare the data
-identical(rse_gene, rse_gene_SRP009615)
-}
+library('testthat')
+expect_equivalent(rse_gene, rse_gene_SRP009615)
+
 }
 \author{
 Leonardo Collado-Torres

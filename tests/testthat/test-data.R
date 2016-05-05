@@ -2,26 +2,24 @@ context('Download data and scale')
 
 library('SummarizedExperiment')
 
-if(FALSE) {
-    ## Test won't work until data is fully uploaded
-
 ## Download the example data included in the package
 url <- download_study('SRP009615', outdir = tempdir())
 
 ## Load the data
-load(file.path(tempdir(), 'SRP009615', 'rse_gene.Rdata'))
+load(file.path(tempdir(), 'rse_gene.Rdata'))
 
 ## Compare the data
 test_that('Example RSE', {
-    expect_equal(rse_gene, rse_gene_SRP009615)
+    expect_equivalent(rse_gene, rse_gene_SRP009615)
 })
-}
 
 ## Temporary test for downloading
-## Hm... somehow download.file('https://lcolladotor.shinyapps.io/recount/ucsc-knowngene-hg38-genes-bp-length.Rdata', destfile = 'x.Rdata') doesn't work
-test_that('Downloading', {
-    expect_error(download_study('DRP000366', type = 'mean', outdir = tempdir()))
-    expect_error(download_study('DRP000366', type = 'samples', outdir = tempdir()))
+test_that('Download URLs', {
+    expect_equal(download_study('DRP000366', type = 'mean', download = FALSE),
+        'http://duffel.rail.bio/recount/DRP000366/bw/mean_DRP000366.bw')
+    expect_equal(download_study('DRP000366', type = 'samples',
+        download = FALSE),
+        'http://duffel.rail.bio/recount/DRP000366/bw/DRR000897.bw')
 })
 
 scaleFac <- scale_counts(rse_gene_SRP009615, factor_only = TRUE)

@@ -33,9 +33,19 @@
 #' }
 #' @param outdir The destination directory for the downloaded file(s).
 #' @param download Whether to download the files or just get the download urls.
+#' @param method This argument is passed to \link[utils]{download.file}. Given
+#' how the URLs work, it's best to use \code{method = 'curl'}.
+#' @param extra This argument is passed to \link[utils]{download.file}. It's
+#' useful for following redirects in URLs. See details for more information.
 #' @param ... Additional arguments passed to \link[utils]{download.file}.
 #'
 #' @return Returns invisibly the URL(s) for the files that were downloaded.
+#'
+#' @details Check \url{http://stackoverflow.com/a/34383991} if you need to find
+#' the effective URLs. For example,
+#' \url{http://duffel.rail.bio/recount/DRP000366/bw/mean_DRP000366.bw} points to
+#' a temporary link from Amazon Cloud Drive.
+#'
 #'
 #' @author Leonardo Collado-Torres
 #' @export
@@ -51,7 +61,7 @@
 #' url
 #' 
 #' ## Download the example data included in the package for study SRP009615
-#' \dontrun{
+#'
 #' url2 <- download_study('SRP009615')
 #' url2
 #'
@@ -59,11 +69,12 @@
 #' load(file.path('SRP009615', 'rse_gene.Rdata'))
 #'
 #' ## Compare the data
-#' identical(rse_gene, rse_gene_SRP009615)
-#' }
+#' library('testthat')
+#' expect_equivalent(rse_gene, rse_gene_SRP009615)
+#'
 
 download_study <- function(project, type = 'rse-gene', outdir = project,
-    download = TRUE, ...) {
+    download = TRUE, method = 'curl', extra = '-L', ...) {
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(type %in% c('rse-gene', 'rse-exon', 'counts-gene', 'counts-exon', 
@@ -114,7 +125,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
             message(paste(Sys.time(), 'downloading file', filename, 'to', 
                 outdir))
             xx <- download.file(url, destfile = file.path(outdir, filename),
-                ...)
+                method = method, extra = extra, ...)
         }
     } else if(type == 'samples') {
         url_table <- url_table[url_table$file_name != paste0('mean_', project,
@@ -125,8 +136,9 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
             xx <- sapply(seq_len(nrow(sample_urls)), function(i, ...) {
                 message(paste(Sys.time(), 'downloading file',
                     sample_urls$file_name[i], 'to', outdir))
-                download.file(sample_urls$url[i], destfile = file.path(outdir,
-                    sample_urls$file_name[i], ...))
+                download.file(sample_urls$url[i], 
+                    destfile = file.path(outdir, sample_urls$file_name[i]),
+                    method = method, extra = extra, ...)
             }, ...)
         }
     }
