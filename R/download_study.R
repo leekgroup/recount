@@ -53,6 +53,7 @@
 #' @export
 #'
 #' @importFrom utils download.file
+#' @importFrom stats runif
 #'
 #' @examples
 #' ## Find the URL to download the RangedSummarizedExperiment for the
