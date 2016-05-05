@@ -5,7 +5,7 @@
 #'
 #' @name recount_abstract
 #' @docType data
-#' @format  A data.frame with 4 columns.
+#' @format A data.frame with 4 columns.
 #' \describe{
 #'     \item{number_samples }{ the number of samples in the study,}
 #'     \item{species }{ the species of the study,}
@@ -16,4 +16,4 @@
 #'
 #' @keywords datasets
 #' @seealso \link{download_study}
-NULL 
+NULL

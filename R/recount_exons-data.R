@@ -5,9 +5,9 @@
 #'
 #' @name recount_exons
 #' @docType data
-#' @format  A \link[GenomicRanges]{GRangesList-class} with one element per 
+#' @format A \link[GenomicRanges]{GRangesList-class} with one element per 
 #' gene. The names match the gene UCSC ids.
 #'
 #' @keywords datasets
 #' @seealso \link{reproduce_ranges}, \link{recount_genes}
-NULL 
+NULL

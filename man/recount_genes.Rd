@@ -8,9 +8,9 @@
 names match their UCSC ids. The \link[GenomicRanges]{GRanges-class} has two 
 metadata columns.
 \describe{
-\item{gene_id }{  the UCSC ids, identical to the names.}
-\item{bp_length }{ the sum of the width of the reduced exons for that given
-gene.}
+    \item{gene_id }{  the UCSC ids, identical to the names.}
+    \item{bp_length }{ the sum of the width of the reduced exons for that 
+    given gene.}
 }}
 \description{
 Gene annotation extracted from TxDb.Hsapiens.UCSC.hg38.knownGene used in

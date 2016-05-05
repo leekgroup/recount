@@ -11,4 +11,4 @@
 #'
 #' @keywords datasets
 #' @seealso \link{scale_counts}, \link{download_study}
-NULL 
+NULL
