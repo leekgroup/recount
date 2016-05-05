@@ -85,6 +85,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
             download_study(project = project, type = file_type,
                 outdir = outdir, download = download, ...)
         })
+        return(invisible(urls))
     }
     
     ## Create output directory if needed
