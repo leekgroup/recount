@@ -18,6 +18,9 @@ recount. It includes the sum of the width of the reduced exons which can be
 used for normalizing the counts provided in the 
 \link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects.
 }
+\references{
+\url{https://lcolladotor.shinyapps.io/recount/}
+}
 \seealso{
 \link{reproduce_ranges}, \link{recount_exons}
 }

@@ -16,6 +16,9 @@
 A data.frame with summary information at the project level for the studies
 analyzed in the recount project.
 }
+\references{
+\url{https://lcolladotor.shinyapps.io/recount/}
+}
 \seealso{
 \link{download_study}
 }

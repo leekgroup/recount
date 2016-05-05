@@ -11,6 +11,9 @@ SRP009615.}
 \link[SummarizedExperiment]{RangedSummarizedExperiment-class} at the gene 
 level for study SRP009615. Used as an example in \link{scale_counts}.
 }
+\references{
+\url{https://lcolladotor.shinyapps.io/recount/}
+}
 \seealso{
 \link{scale_counts}, \link{download_study}
 }

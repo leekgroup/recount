@@ -10,4 +10,5 @@
 #'
 #' @keywords datasets
 #' @seealso \link{reproduce_ranges}, \link{recount_genes}
+#' @references \url{https://lcolladotor.shinyapps.io/recount/}
 NULL

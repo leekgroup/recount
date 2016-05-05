@@ -108,6 +108,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
         url_table <- url_table[url_table$file_name != paste0('mean_', project,
             '.bw'), ]
         sample_urls <- url_table[grep('[.]bw$', url_table$file_name), ]
+        url <- sample_urls$url
         if(download) {
             xx <- sapply(seq_len(nrow(sample_urls)), function(i, ...) {
                 message(paste(Sys.time(), 'downloading file',
@@ -115,8 +116,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
                 download.file(sample_urls$url[i], destfile = file.path(outdir,
                     sample_urls$file_name[i], ...))
             }, ...)
-        }        
-        url <- sample_urls$url
+        }
     }
     
     ## Return the actual url(s)

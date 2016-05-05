@@ -15,6 +15,9 @@
 Files and URLs as provided by the recount project. This information is used
 internally in \link{download_study}.
 }
+\references{
+\url{https://lcolladotor.shinyapps.io/recount/}
+}
 \seealso{
 \link{download_study}
 }
