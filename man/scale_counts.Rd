@@ -4,7 +4,7 @@
 \alias{scale_counts}
 \title{Scale the raw counts provided by the recount project}
 \usage{
-scale_counts(rse, by = "auc", targetSize = 40000000L, L = 100L,
+scale_counts(rse, by = "auc", targetSize = 4e+07, L = 100,
   factor_only = FALSE, round = TRUE)
 }
 \arguments{

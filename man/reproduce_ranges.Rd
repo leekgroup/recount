@@ -38,9 +38,11 @@ with the versions as noted in
 ## Reproduce gene level information
 genes <- reproduce_ranges()
 
+\dontrun{
 ## Compare against recount_genes
 length(genes)
 length(recount_genes)
+}
 
 }
 \author{

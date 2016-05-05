@@ -26,9 +26,6 @@
 #' 
 #' @author Leonardo Collado-Torres
 #' @export
-# @importFrom GenomicFeatures genes exonsBy
-# @importMethodsFrom GenomicRanges reduce width "[" "$<-"
-# @importMethodsFrom IRanges Math
 #' @seealso \link{recount_genes}, \link{recount_exons},
 #'     \url{https://github.com/nellore},
 #'     \url{https://lcolladotor.shinyapps.io/recount/}
@@ -38,9 +35,11 @@
 #' ## Reproduce gene level information
 #' genes <- reproduce_ranges()
 #' 
+#' \dontrun{
 #' ## Compare against recount_genes
 #' length(genes)
 #' length(recount_genes)
+#' }
 #'
 
 reproduce_ranges <- function(level = 'gene') {

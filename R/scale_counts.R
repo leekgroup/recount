@@ -66,7 +66,7 @@
 #' }
 
 
-scale_counts <- function(rse, by = 'auc', targetSize = 4e7L, L = 100L,
+scale_counts <- function(rse, by = 'auc', targetSize = 4e7, L = 100,
     factor_only = FALSE, round = TRUE) {
         
     ## For R CMD check
