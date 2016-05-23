@@ -7,7 +7,7 @@ Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"), email
     email = "anellore@gmail.com"), person(c("Jeffrey", "T."), "Leek",
     role = c("aut", "ths"), email = "jtleek@gmail.com"))
 Depends:
-    R (>= 3.3.0)
+    R (>= 3.2.3)
 Imports:
     methods,
     stats,
