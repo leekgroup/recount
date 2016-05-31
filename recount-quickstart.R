@@ -13,6 +13,7 @@ cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
 
 ## Write bibliography information
 bibs <- c(
+    BiocParallel = citation('BiocParallel'),
     BiocStyle = citation('BiocStyle'),
     derfinder = citation('derfinder')[1], 
     DESeq2 = citation('DESeq2'),
@@ -23,6 +24,7 @@ bibs <- c(
     knitcitations = citation('knitcitations'),
     knitr = citation('knitr')[3],
     R = citation(),
+    RCurl = citation('RCurl'),
     regionReport = citation('regionReport'),
     rmarkdown = citation('rmarkdown'),
     rtracklayer = citation('rtracklayer'),
@@ -68,7 +70,7 @@ windowsFlag <- .Platform$OS.type == 'windows'
 #  download_study(project_info$project)
 #  
 #  ## Load the data
-#  load(file.path(project_info$project), 'rse_gene.Rdata')
+#  load(file.path(project_info$project, 'rse_gene.Rdata'))
 #  
 #  ## Scale counts by taking into account the total coverage per sample
 #  rse <- scale_counts(rse_gene)
@@ -99,6 +101,47 @@ windowsFlag <- .Platform$OS.type == 'windows'
 #      intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
 #      output = 'SRP009615-results')
 
+## ----'er_analysis', eval = FALSE-----------------------------------------
+#  ## Define expressed regions for study SRP009615, only for chromosome Y
+#  regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L,
+#      maxClusterGap = 3000L)
+#  
+#  ## Compute coverage matrix for study SRP009615, only for chromosome Y
+#  system.time( coverageMatrix <- coverage_matrix('SRP009615', 'chrY', regions) )
+#  
+#  ## Round the coverage matrix to integers
+#  covMat <- round(coverageMatrix, 0)
+#  
+#  ## Get phenotype data for study SRP009615
+#  pheno_url <- download_study(project = project_info$project, type = 'phenotype',
+#      download = FALSE)
+#  pheno <- read.table(pheno_url, header = TRUE, stringsAsFactors = FALSE)
+#  
+#  ## We can sort the table to make sure everything is in the correct order
+#  pheno <- pheno[match(colnames(coverageMatrix), pheno$run), ]
+#  
+#  ## Complete the phenotype table with the data we added manually in our first
+#  ## analysis
+#  m <- match(pheno$experiment, sample_info$accession)
+#  pheno <- cbind(pheno, sample_info[m, 2:4])
+#  
+#  ## Build a DESeqDataSet
+#  dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno, design =  ~ group + gene_target + replicate)
+#  
+#  ## Perform differential expression analysis with DESeq2 at the ER-level
+#  dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target + replicate,
+#      fitType = 'local')
+#  res_ers <- results(dds_ers)
+#  
+#  ## Explore results
+#  plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
+#  
+#  ## Create a more extensive exploratory report
+#  report2 <- DESeq2Report(dds_ers, res = res_ers,
+#      project = 'SRP009615 (ER-level, chrY)',
+#      intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+#      output = 'SRP009615-results-ER-level-chrY')
+
 ## ----'start', message=FALSE----------------------------------------------
 ## Load libraries
 library('recount')
@@ -128,16 +171,12 @@ sample_info <- data.frame(
     replicate = factor(rep(rep(c(1, 2), each = 2), 3))
 )
 
-## ----'download', eval = FALSE--------------------------------------------
-#  ## Download the gene-level RangedSummarizedExperiment data
-#  download_study(project_info$project)
-#  
-#  ## Load the data
-#  load(file.path(project_info$project), 'rse_gene.Rdata')
+## ----'download'----------------------------------------------------------
+## Download the gene-level RangedSummarizedExperiment data
+download_study(project_info$project)
 
-## ----'download-hidden', echo = FALSE-------------------------------------
-## Currently the data is not uploaded yet
-rse_gene <- rse_gene_SRP009615
+## Load the data
+load(file.path(project_info$project, 'rse_gene.Rdata'))
 
 ## ----'explore_rse'-------------------------------------------------------
 rse_gene
@@ -207,6 +246,64 @@ report <- DESeq2Report(dds, res = res, project = 'SRP009615',
 ## Clean up
 file.remove('SRP009615-results-template.Rmd')
 
+## ----'define_ers'--------------------------------------------------------
+## Define expressed regions for study SRP009615, only for chromosome Y
+regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
+    maxClusterGap = 3000L)
+
+## Briefly explore the resulting regions
+regions
+
+## ----'compute_covMat'----------------------------------------------------
+## Compute coverage matrix for study SRP009615, only for chromosome Y
+system.time( coverageMatrix <- coverage_matrix('SRP009615', 'chrY', regions) )
+
+## Explore the matrix a bit
+dim(coverageMatrix)
+head(coverageMatrix)
+
+## ----'to_integer'--------------------------------------------------------
+## Round the coverage matrix to integers
+covMat <- round(coverageMatrix, 0)
+
+## ----'phenoData'---------------------------------------------------------
+## Get phenotype data for study SRP009615
+pheno_url <- download_study(project = project_info$project, type = 'phenotype',
+    download = FALSE)
+pheno <- read.table(pheno_url, header = TRUE, stringsAsFactors = FALSE)
+
+## We can sort the table to make sure everything is in the correct order
+pheno <- pheno[match(colnames(coverageMatrix), pheno$run), ]
+
+## Complete the phenotype table with the data we added manually in our first
+## analysis
+m <- match(pheno$experiment, sample_info$accession)
+pheno <- cbind(pheno, sample_info[m, 2:4])
+
+## Explore the phenotype data a little bit
+head(pheno)
+
+## ----'ers_dds'-----------------------------------------------------------
+## Build a DESeqDataSet
+dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno, design =  ~ group + gene_target + replicate)
+
+## ----'de_analysis_ers'---------------------------------------------------
+## Perform differential expression analysis with DESeq2 at the ER-level
+dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target + replicate,
+    fitType = 'local')
+res_ers <- results(dds_ers)
+
+## ----'ma_plot_ers'-------------------------------------------------------
+## Explore results
+plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
+
+## ----'report2', eval = FALSE---------------------------------------------
+#  ## Create the report
+#  report2 <- DESeq2Report(dds_ers, res = res_ers,
+#      project = 'SRP009615 (ER-level, chrY)',
+#      intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+#      output = 'SRP009615-results-ER-level-chrY')
+
 ## ----'installDer', eval = FALSE------------------------------------------
 #  ## try http:// if https:// URLs are not supported
 #  source("https://bioconductor.org/biocLite.R")
@@ -252,28 +349,37 @@ session_info()
 #  load('../../runs/recount2/genes/ucsc-knowngene-hg38-exons.Rdata')
 #  recount_exons <- exons
 #  save(recount_exons, file = '../data/recount_exons.RData')
-#  load('../.../runs/recount2/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
+#  load('../../runs/recount2/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
 #  recount_genes <- genes
-#  save(recount_genes, file = '../data/recount_genes.RData')
+#  save(recount_genes, file = '../data/recount_genes.RData', compress = 'xz')
 #  
 #  ## URL table
-#  load('../../runs/recount2/fileinfo/upload_table.Rdata')
+#  load('../../recount-website/fileinfo/upload_table.Rdata')
 #  recount_url <- upload_table
 #  ## Fake urls for now
-#  recount_url$url <- 'https://lcolladotor.shinyapps.io/recount/ucsc-knowngene-hg38-genes-bp-length.Rdata'
-#  save(recount_url, file = '../data/recount_url.RData')
+#  is.bw <- grepl('[.]bw$', recount_url$file_name)
+#  recount_url$url <- NA
+#  recount_url$url[!is.bw] <- paste0('http://duffel.rail.bio/recount/',
+#      recount_url$project[!is.bw], '/', recount_url$file_name[!is.bw])
+#  recount_url$url[is.bw] <- paste0('http://duffel.rail.bio/recount/',
+#      recount_url$project[is.bw], '/bw/', recount_url$file_name[is.bw])
+#  save(recount_url, file = '../data/recount_url.RData', compress = 'xz')
 #  
 #  ## Abstract info
-#  load('../../runs/recount2/metadata_web/meta_web_sra.Rdata')
+#  load('../../recount-website/website/meta_web.Rdata')
 #  recount_abstract <- meta_web[, 2:4]
 #  recount_abstract$project <- gsub('.*">|</a>', '', meta_web$accession)
-#  save(recount_abstract, file = '../data/recount_abstract.RData')
+#  Encoding(recount_abstract$abstract) <- 'latin1'
+#  recount_abstract$abstract <- iconv(recount_abstract$abstract, 'latin1', 'UTF-8')
+#  save(recount_abstract, file = '../data/recount_abstract.RData',
+#      compress = 'bzip2')
 #  
 #  ## Example rse_gene file
 #  system('scp e:/dcl01/leek/data/gtex_work/runs/recount2/rse/rse_sra/SRP009615/rse_gene.Rdata .')
 #  load('rse_gene.Rdata')
 #  rse_gene_SRP009615 <- rse_gene
-#  save(rse_gene_SRP009615, file = '../data/rse_gene_SRP009615.RData')
+#  save(rse_gene_SRP009615, file = '../data/rse_gene_SRP009615.RData',
+#      compress = 'xz')
 #  unlink('rse_gene.Rdata')
 
 ## ----vignetteBiblio, results = 'asis', echo = FALSE, warning = FALSE--------------------------------------------------
