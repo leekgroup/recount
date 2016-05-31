@@ -390,7 +390,7 @@ recount_genes <- genes
 save(recount_genes, file = '../data/recount_genes.RData', compress = 'xz')
 
 ## URL table
-load('../../runs/recount2/fileinfo/upload_table.Rdata')
+load('../../recount-website/fileinfo/upload_table.Rdata')
 recount_url <- upload_table
 ## Fake urls for now
 is.bw <- grepl('[.]bw$', recount_url$file_name)
@@ -402,7 +402,7 @@ recount_url$url[is.bw] <- paste0('http://duffel.rail.bio/recount/',
 save(recount_url, file = '../data/recount_url.RData', compress = 'xz')
 
 ## Abstract info
-load('../../runs/recount2/metadata_web/meta_web_sra.Rdata')
+load('../../recount-website/website/meta_web.Rdata')
 recount_abstract <- meta_web[, 2:4]
 recount_abstract$project <- gsub('.*">|</a>', '', meta_web$accession)
 Encoding(recount_abstract$abstract) <- 'latin1'
