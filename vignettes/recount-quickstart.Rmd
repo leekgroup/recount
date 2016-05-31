@@ -14,6 +14,10 @@ vignette: >
 Quick start to using to `r Biocpkg('recount')`
 ================================================
 
+
+<a href="https://jhubiostatistics.shinyapps.io/recount/"><img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/website/recount.png" align="center"></a>
+
+
 ```{r vignetteSetup, echo=FALSE, message=FALSE, warning = FALSE}
 ## Track time spent on making the vignette
 startTime <- Sys.time()
@@ -125,7 +129,9 @@ DESeq2Report(dds, res = res, project = 'SRP009615',
 
 # Introduction
 
-`r Biocpkg('recount')` is an R package that provides an interface to the [recount project website](https://lcolladotor.shinyapps.io/recount/). This package allows you to download the files from the recount project and has helper functions for getting you started with differential expression analyses. This vignette will walk you through an example.
+
+
+`r Biocpkg('recount')` is an R package that provides an interface to the [recount project website](https://jhubiostatistics.shinyapps.io/recount/). This package allows you to download the files from the recount project and has helper functions for getting you started with differential expression analyses. This vignette will walk you through an example.
 
 
 # Sample DE analysis
