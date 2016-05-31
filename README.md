@@ -20,7 +20,7 @@ Get R 3.3.0 from [CRAN](http://cran.r-project.org/).
 ```R
 ## From Bioconductor
 source('http://bioconductor.org/biocLite.R')
-#biocLite('recount') ## This currently doesn't work, use this instead:
+biocLite('recount') ## This currently doesn't work, use this instead:
 # install.packages('devtools') ## if needed
 devtools::install_github('leekgroup/recount')
 
