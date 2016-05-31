@@ -29,6 +29,7 @@ cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
 
 ## Write bibliography information
 bibs <- c(
+    BiocParallel = citation('BiocParallel'),
     BiocStyle = citation('BiocStyle'),
     derfinder = citation('derfinder')[1], 
     DESeq2 = citation('DESeq2'),
@@ -174,17 +175,12 @@ sample_info <- data.frame(
 
 Now that we have a study that we are interested in, we can download the _RangedSummarizedExperiment_ object (see `r Biocpkg('SummarizedExperiment')`) with the data summarized at the gene level. The function `download_study()` helps us do this. If you are interested on how the annotation was defined, check `reproduce_ranges()`.
 
-```{r 'download', eval = FALSE}
+```{r 'download'}
 ## Download the gene-level RangedSummarizedExperiment data
 download_study(project_info$project)
 
 ## Load the data
 load(file.path(project_info$project), 'rse_gene.Rdata')
-```
-
-```{r 'download-hidden', echo = FALSE}
-## Currently the data is not uploaded yet
-rse_gene <- rse_gene_SRP009615
 ```
 
 We can explore a bit this _RangedSummarizedExperiment_ as shown below.
@@ -323,6 +319,7 @@ citation('recount')
 This package was made possible thanks to:
 
 * R `r citep(bib[['R']])`
+* `r Biocpkg('BiocParallel')` `r citep(bib[['BiocParallel']])`
 * `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
 * `r Biocpkg('derfinder')` `r citep(bib[['derfinder']])`
 * `r CRANpkg('devtools')` `r citep(bib[['devtools']])`
