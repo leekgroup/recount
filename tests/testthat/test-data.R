@@ -1,4 +1,4 @@
-context('Download data and scale')
+context('Download data, scale, ER-level')
 
 library('SummarizedExperiment')
 
@@ -23,8 +23,8 @@ test_that('Download URLs', {
 })
 
 ## Test downloading a small project entirely
-urls <- download_study('SRP002001', type = 'all', outdir = file.path(tempdir(),
-    'SRP002001'))
+tmpdir <- file.path(tempdir(), 'SRP002001')
+urls <- download_study('SRP002001', type = 'all', outdir = tmpdir)
 expected_urls <- paste0('http://duffel.rail.bio/recount/SRP002001/',
     c('rse_gene.Rdata', 'rse_exon.Rdata', 'counts_gene.tsv.gz',
         'counts_exon.tsv.gz', 'SRP002001.tsv', 'files_info.tsv',
@@ -32,8 +32,23 @@ expected_urls <- paste0('http://duffel.rail.bio/recount/SRP002001/',
 names(expected_urls) <- c('rse-gene', 'rse-exon', 'counts-gene', 'counts-exon',
     'phenotype', 'files-info', 'samples', 'mean')
 
+## Compute md5sum locally
+localfiles <- c(list.files(tmpdir, '[.]', full.names = TRUE),
+    dir(file.path(tmpdir, 'bw'), full.names = TRUE))
+names(localfiles) <- c(list.files(tmpdir, '[.]'), dir(file.path(tmpdir, 'bw')))
+
+library('tools')
+md5 <- sapply(localfiles, md5sum)
+names(md5) <- names(localfiles)
+md5 <- md5[-which(names(md5) == 'files_info.tsv')]
+
+## Get original md5sum
+fileinfo <- read.table(file.path(tmpdir, 'files_info.tsv'), header = TRUE,
+    stringsAsFactors = FALSE)
+
 test_that('Project SRP002001', {
     expect_equal(urls, expected_urls)
+    expect_equivalent(fileinfo$md5sum[match(names(md5), fileinfo$file)], md5)
 })
 
 
@@ -52,4 +67,30 @@ test_that('Scaling', {
     expect_gt(scaleFac_mapped[3], scaleFac[3])
     expect_equal(assay(rse, 1) / matrix(rep(scaleFac, each = 23779),
         ncol = 12), assay(rse_gene_SRP009615, 1))
+})
+
+regions <- expressed_regions('SRP002001', 'chrY', cutoff = 5)
+## Artificially remove the mean coverage file so that the file will have to get
+## downloaded on the first test, then it'll be present for the second test
+unlink(localfiles['mean_SRP002001.bw'])
+
+test_that('Expressed regions', {
+    expect_equal(regions,
+        expressed_regions('SRP002001', 'chrY', cutoff = 5, outdir = tmpdir))
+    expect_equal(regions,
+        expressed_regions('SRP002001', 'chrY', cutoff = 5, outdir = tmpdir))
+})
+
+
+coverageMatrix <- coverage_matrix('SRP002001', 'chrY', regions)
+## Same for the phenotype data and the sample bigwig file
+unlink(localfiles['SRP002001.tsv'])
+unlink(localfiles['SRR036661.bw'])
+
+test_that('Coverage matrix', {
+    expect_equal(coverageMatrix,
+        coverage_matrix('SRP002001', 'chrY', regions, outdir = tmpdir))
+    expect_equal(coverageMatrix,
+        coverage_matrix('SRP002001', 'chrY', regions, outdir = tmpdir,
+        chunksize = 500))
 })
