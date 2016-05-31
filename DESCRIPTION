@@ -13,6 +13,7 @@ Imports:
     stats,
     utils
 Suggests:
+    BiocParallel,
     BiocStyle,
     derfinder,
     DESeq2,

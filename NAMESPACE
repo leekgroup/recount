@@ -2,7 +2,9 @@
 
 export(abstract_search)
 export(browse_study)
+export(coverage_matrix)
 export(download_study)
+export(expressed_regions)
 export(reproduce_ranges)
 export(scale_counts)
 importFrom(methods,is)

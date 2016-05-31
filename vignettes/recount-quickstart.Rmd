@@ -94,7 +94,7 @@ sample_info <- data.frame(
 download_study(project_info$project)
 
 ## Load the data
-load(file.path(project_info$project), 'rse_gene.Rdata')
+load(file.path(project_info$project, 'rse_gene.Rdata'))
 
 ## Scale counts by taking into account the total coverage per sample
 rse <- scale_counts(rse_gene)
@@ -186,7 +186,7 @@ Now that we have a study that we are interested in, we can download the _RangedS
 download_study(project_info$project)
 
 ## Load the data
-load(file.path(project_info$project), 'rse_gene.Rdata')
+load(file.path(project_info$project, 'rse_gene.Rdata'))
 ```
 
 We can explore a bit this _RangedSummarizedExperiment_ as shown below.
