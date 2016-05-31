@@ -44,6 +44,7 @@ bibs <- c(
     knitcitations = citation('knitcitations'),
     knitr = citation('knitr')[3],
     R = citation(),
+    RCurl = citation('RCurl'),
     regionReport = citation('regionReport'),
     rmarkdown = citation('rmarkdown'),
     rtracklayer = citation('rtracklayer'),
@@ -126,6 +127,51 @@ DESeq2Report(dds, res = res, project = 'SRP009615',
     output = 'SRP009615-results')
 ```
 
+The [recount project](https://jhubiostatistics.shinyapps.io/recount/) also hosts the necessary data to perform annotation-agnostic differential expression analyses with `r Biocpkg('derfinder')` `r citep(bib[['derfinder']])`. An example analysis would like this:
+
+```{r 'er_analysis', eval = FALSE}
+## Define expressed regions for study SRP009615, only for chromosome Y
+regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
+    maxClusterGap = 3000L)
+
+## Compute coverage matrix for study SRP009615, only for chromosome Y
+system.time( coverageMatrix <- coverage_matrix('SRP009615', 'chrY', regions) )
+
+## Round the coverage matrix to integers
+covMat <- round(coverageMatrix, 0)
+
+## Get phenotype data for study SRP009615
+pheno_url <- download_study(project = project_info$project, type = 'phenotype',
+    download = FALSE)
+pheno <- read.table(pheno_url, header = TRUE, stringsAsFactors = FALSE)
+
+## We can sort the table to make sure everything is in the correct order
+pheno <- pheno[match(colnames(coverageMatrix), pheno$run), ]
+
+## Complete the phenotype table with the data we added manually in our first
+## analysis
+m <- match(pheno$experiment, sample_info$accession)
+pheno <- cbind(pheno, sample_info[m, 2:4])
+
+## Build a DESeqDataSet
+dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno, design =  ~ group + gene_target + replicate)
+
+## Perform differential expression analysis with DESeq2 at the ER-level
+dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target + replicate,
+    fitType = 'local')
+res_ers <- results(dds_ers)
+
+## Explore results
+plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
+
+## Create a more extensive exploratory report
+report2 <- DESeq2Report(dds_ers, res = res_ers,
+    project = 'SRP009615 (ER-level, chrY)',
+    intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+    output = 'SRP009615-results-ER-level-chrY')
+```
+
+
 
 # Introduction
 
@@ -204,7 +250,7 @@ rowData(rse_gene)
 ```
 
 
-The recount project records the sum of the base level coverage for each gene (or exon). These raw counts have to be scaled and there are several ways in which you can choose to do so. The function `scale_counts()` helps you scale them in a way that is tailored to [Rail-RNA](http://rail.bio) output.
+The [recount project](https://jhubiostatistics.shinyapps.io/recount/) records the sum of the base level coverage for each gene (or exon). These raw counts have to be scaled and there are several ways in which you can choose to do so. The function `scale_counts()` helps you scale them in a way that is tailored to [Rail-RNA](http://rail.bio) output.
 
 ```{r 'scale_counts'}
 ## Scale counts by taking into account the total coverage per sample
@@ -285,6 +331,105 @@ file.remove('SRP009615-results-template.Rmd')
 
 You can view the final report [here](SRP009615-results.html).
 
+# Sample `r Biocpkg('derfinder')` analysis
+
+The [recount project](https://jhubiostatistics.shinyapps.io/recount/) also hosts for each project sample coverage [bigWig files](https://genome.ucsc.edu/goldenpath/help/bigWig.html) created by [Rail-RNA](http://rail.bio) and a mean coverage bigWig file. For the mean coverage bigWig file, all samples were normalized to libraries of 40 million reads, each a 100 base-pairs long. `r Biocpkg('recount')` can be used along with `r Biocpkg('derfinder')` `r citep(bib[['derfinder']])` to identify expressed regions from the data. This type of analysis is annotation-agnostic which can be advantageous. The following subsections illustrate this type of analysis.
+
+## Define expressed regions
+
+For an annotation-agnostic differential expression analysis, we first need to define the regions of interest. With `r Biocpkg('recount')` we can do so using the `expressed_regions()` function as shown below for the same study we studied earlier.
+
+```{r 'define_ers'}
+## Define expressed regions for study SRP009615, only for chromosome Y
+regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
+    maxClusterGap = 3000L)
+
+## Briefly explore the resulting regions
+regions
+```
+
+Once the regions have been defined, you can export them into a BED file using `r Biocpkg('rtracklayer')` or other file formats.
+
+## Compute coverage matrix
+
+Having defined the expressed regions, we can now compute a coverage matrix for these regions. We can do so using the function `coverage_matrix()` from `r Biocpkg('recount')` as shown below.
+
+```{r 'compute_covMat'}
+## Compute coverage matrix for study SRP009615, only for chromosome Y
+system.time( coverageMatrix <- coverage_matrix('SRP009615', 'chrY', regions) )
+
+## Explore the matrix a bit
+dim(coverageMatrix)
+head(coverageMatrix)
+```
+
+The resulting count matrix has one row per region and one column per sample. The counts correspond to the number (or fraction) of reads overlapping the regions. For some differential expression methods, you might have to round this matrix into integers. We'll use `r Biocpkg('DESeq2')` to identify which expressed regions are differentially expressed.
+
+```{r 'to_integer'}
+## Round the coverage matrix to integers
+covMat <- round(coverageMatrix, 0)
+```
+
+
+## Construct a `DESeqDataSet` object
+
+We first need to get some phenotype information for these samples similar to the first analysis we did. We can get this data using `download_study()`.
+
+```{r 'phenoData'}
+## Get phenotype data for study SRP009615
+pheno_url <- download_study(project = project_info$project, type = 'phenotype',
+    download = FALSE)
+pheno <- read.table(pheno_url, header = TRUE, stringsAsFactors = FALSE)
+
+## We can sort the table to make sure everything is in the correct order
+pheno <- pheno[match(colnames(coverageMatrix), pheno$run), ]
+
+## Complete the phenotype table with the data we added manually in our first
+## analysis
+m <- match(pheno$experiment, sample_info$accession)
+pheno <- cbind(pheno, sample_info[m, 2:4])
+
+## Explore the phenotype data a little bit
+head(pheno)
+```
+
+Now that we have the necessary data, we can construct a `DESeqDataSet` object using the function `DESeqDataSetFromMatrix()` from `r Biocpkg('DESeq2')`.
+
+```{r 'ers_dds'}
+## Build a DESeqDataSet
+dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno, design =  ~ group + gene_target + replicate)
+```
+
+
+## `r Biocpkg('DESeq2')` 
+
+With the `DESeqDataSet` object in place, we can then use the function `DESeq()` from `r Biocpkg('DESeq2')` to perform the differential expression analysis (between groups) as shown below.
+
+```{r 'de_analysis_ers'}
+## Perform differential expression analysis with DESeq2 at the ER-level
+dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target + replicate,
+    fitType = 'local')
+res_ers <- results(dds_ers)
+```
+
+We can then visually explore the results, like we did before.
+
+```{r 'ma_plot_ers'}
+## Explore results
+plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
+```
+
+We can also use `r Biocpkg('regionReport')` to create a more extensive exploratory report.
+
+```{r 'report2', eval = FALSE}
+## Create the report
+report2 <- DESeq2Report(dds_ers, res = res_ers,
+    project = 'SRP009615 (ER-level, chrY)',
+    intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+    output = 'SRP009615-results-ER-level-chrY')
+```
+
+
 # Basics
 
 ## Install `r Biocpkg('recount')`
@@ -333,6 +478,7 @@ This package was made possible thanks to:
 * `r Biocpkg('GenomicRanges')` `r citep(bib[['GenomicRanges']])`
 * `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`
 * `r CRANpkg('knitr')` `r citep(bib[['knitr']])`
+* `r CRANpkg('RCurl')` `r citep(bib[['RCurl']])`
 * `r Biocpkg('rtracklayer')` `r citep(bib[['rtracklayer']])`
 * `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])`
 * `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])`
