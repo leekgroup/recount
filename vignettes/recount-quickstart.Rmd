@@ -154,7 +154,8 @@ m <- match(pheno$experiment, sample_info$accession)
 pheno <- cbind(pheno, sample_info[m, 2:4])
 
 ## Build a DESeqDataSet
-dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno, design =  ~ group + gene_target + replicate)
+dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
+    design =  ~ group + gene_target + replicate)
 
 ## Perform differential expression analysis with DESeq2 at the ER-level
 dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target + replicate,
@@ -165,7 +166,7 @@ res_ers <- results(dds_ers)
 plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
 
 ## Create a more extensive exploratory report
-report2 <- DESeq2Report(dds_ers, res = res_ers,
+DESeq2Report(dds_ers, res = res_ers,
     project = 'SRP009615 (ER-level, chrY)',
     intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
     output = 'SRP009615-results-ER-level-chrY')
@@ -397,7 +398,8 @@ Now that we have the necessary data, we can construct a `DESeqDataSet` object us
 
 ```{r 'ers_dds'}
 ## Build a DESeqDataSet
-dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno, design =  ~ group + gene_target + replicate)
+dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
+    design =  ~ group + gene_target + replicate)
 ```
 
 
