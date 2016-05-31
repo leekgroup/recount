@@ -47,6 +47,9 @@
 
 expressed_regions <- function(project, chr, cutoff, outdir = NULL,
     maxClusterGap = 300L, chrlen = NULL, verbose = TRUE, ...) {
+        
+    ## For R cmd check
+    loadCoverage <- findRegions <- Rle <- GRanges <- 'seqlengths<-' <- NULL
     
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
@@ -78,16 +81,14 @@ expressed_regions <- function(project, chr, cutoff, outdir = NULL,
                 download = TRUE, ...)
         }
     } else {
-        .load_install('RCurl')
-        meanFile <- rtracklayer:::expandURL(
-            download_study(project = project, type = 'mean',
+        meanFile <- download_study(project = project, type = 'mean',
             download = FALSE)
-            )
     }
     
     ## Load required packages
     .load_install('derfinder')
     .load_install('GenomicRanges')
+    .load_install('RCurl')
     
     ## Load coverage
     meanCov <- loadCoverage(files = meanFile, chr = chr, chrlen = chrlen)

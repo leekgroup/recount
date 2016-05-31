@@ -23,6 +23,7 @@ Suggests:
     IRanges,
     knitcitations,
     knitr (>= 1.6),
+    RCurl,
     regionReport,
     rmarkdown (>= 0.9.5),
     rtracklayer (>= 1.33.2),

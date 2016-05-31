@@ -17,6 +17,11 @@ coverage_matrix(project, chr, regions, chunksize = 1000, bpparam = NULL,
 \item{regions}{A \link[GenomicRanges]{GRanges-class} object with regions
 for \code{chr} for which to calculate the coverage matrix.}
 
+\item{chunksize}{A single integer vector defining the chunksize to use for
+computing the coverage matrix. Regions will be split into different chunks
+which can be useful when using a parallel instance as defined by 
+\code{bpparam}.}
+
 \item{bpparam}{A \link[BiocParallel]{BiocParallelParam-class} instance which
 will be used to calculate the coverage matrix in parallel. By default, 
 \link[BiocParallel]{SerialParam-class} will be used.}
@@ -56,6 +61,9 @@ regions <- expressed_regions('DRP002835', 'chrY', cutoff = 5L,
 
 ## Now calculate the coverage matrix for this study
 coverageMatrix <- coverage_matrix('DRP002835', 'chrY', regions)
+
+## One row per region
+identical(length(regions), nrow(coverageMatrix))
 
 }
 \author{

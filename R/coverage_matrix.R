@@ -8,6 +8,10 @@
 #' @inheritParams expressed_regions
 #' @param regions A \link[GenomicRanges]{GRanges-class} object with regions
 #' for \code{chr} for which to calculate the coverage matrix.
+#' @param chunksize A single integer vector defining the chunksize to use for
+#' computing the coverage matrix. Regions will be split into different chunks
+#' which can be useful when using a parallel instance as defined by 
+#' \code{bpparam}.
 #' @param bpparam A \link[BiocParallel]{BiocParallelParam-class} instance which
 #' will be used to calculate the coverage matrix in parallel. By default, 
 #' \link[BiocParallel]{SerialParam-class} will be used.
@@ -21,6 +25,8 @@
 #'
 #' @author Leonardo Collado-Torres
 #' @export
+#'
+#' @importFrom utils read.table
 #'
 #' @seealso \link{download_study}, \link[derfinder]{findRegions},
 #' \link[derfinder]{railMatrix}
@@ -39,9 +45,13 @@
 
 coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = NULL, outdir = NULL, chrlen = NULL, verbose = TRUE, verboseLoad = verbose, ...) {
     
+    ## For R cmd check
+    SerialParam <- NULL
+    
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(is.character(chr) & length(chr) == 1)
+    stopifnot((is.numeric(chunksize) | is.integer(chunksize)) & length(chunksize) == 1)
     
     ## Use table from the package
     url_table <- recount::recount_url
@@ -79,11 +89,8 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
                 outdir = outdir, download = TRUE, ...)
         }
     } else {
-        .load_install('RCurl')
-        sampleFiles <- sapply(
-            download_study(project = project, type = 'samples',
+        sampleFiles <- download_study(project = project, type = 'samples',
             download = FALSE)
-            , rtracklayer:::expandURL)
         phenoFile <- download_study(project = project, type = 'phenotype',
             download = FALSE)
     }
@@ -103,6 +110,7 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     ## Load required packages
     .load_install('derfinder')
     .load_install('GenomicRanges')
+    .load_install('RCurl')
     .load_install('BiocParallel')
     
     ## Split regions into chunks

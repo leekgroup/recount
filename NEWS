@@ -6,3 +6,16 @@ NEW FEATURES
     o Created the package skeleton for recount
     o Added the function reproduce_ranges() for re-creating the gene or exon
         level information used in the recount project.
+    o Added the function abstract_search() for identifying SRA projects of
+        interest by searching the abstracts.
+    o Added the function browse_study() for opening a browser tab for further
+        exploring a project.
+    o Added the function download_study() for downloading the data from the
+        recount project.
+    o Added the function scale_counts() for properly scaling the counts before
+        performing a differential expression analysis with the
+        RangedSummarizedExperiment objects hosted in the recount project.
+    o Added the function expressed_regions() for defining the expressed regions
+        in a chromosome for a given SRA study.
+    o Added the function coverage_matrix() for computing the coverage matrix
+        based on the regions of interest for a given SRA study.
