@@ -1,7 +1,7 @@
 Package: recount
 Title: Explore and download data from the recount project
 Version: 0.99.0
-Date: 2016-05-04
+Date: 2016-05-31
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"), email
     = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "aut",
     email = "anellore@gmail.com"), person(c("Jeffrey", "T."), "Leek",
@@ -24,7 +24,7 @@ Suggests:
     knitr (>= 1.6),
     regionReport,
     rmarkdown (>= 0.9.5),
-    rtracklayer (>= 1.31.12),
+    rtracklayer (>= 1.33.2),
     SummarizedExperiment,
     testthat,
     TxDb.Hsapiens.UCSC.hg38.knownGene
