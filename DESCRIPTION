@@ -27,7 +27,7 @@ Suggests:
     RCurl,
     regionReport,
     rmarkdown (>= 0.9.5),
-    rtracklayer (>= 1.33.2),
+    rtracklayer (>= 1.33.3),
     SummarizedExperiment,
     testthat,
     TxDb.Hsapiens.UCSC.hg38.knownGene

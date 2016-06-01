@@ -75,7 +75,7 @@ expressed_regions <- function(project, chr, cutoff, outdir = NULL,
     if(!is.null(outdir)) {
         ## Check mean file
         meanFile <- file.path(outdir, 'bw', url_table$file_name[grep('mean',
-            url_table$file_name)])        
+            url_table$file_name)])
         if(!file.exists(meanFile)) {
             download_study(project = project, type = 'mean', outdir = outdir,
                 download = TRUE, ...)
