@@ -14,8 +14,8 @@ a given sample.}
 be shown. Otherwise they are suppressed.}
 }
 \value{
-Returns a list with the information from GEO available for the given
-sample.
+Returns a \link[S4Vectors]{DataFrame-class} with the information 
+from GEO available for the given sample.
 }
 \description{
 This function uses GEOquery to extract information for a given sample. The
