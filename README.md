@@ -30,7 +30,7 @@ biocLite(c('derfinder', 'DESeq2'))
 
 # Vignettes
 
-The vignettes for this package can be viewed via [Bioconductor's website](http://www.bioconductor.org/packages/recount).
+The vignettes for this package can be viewed via [Bioconductor's website](http://www.bioconductor.org/packages/recount) (currently only [here](http://leekgroup.github.io/recount/)).
 
 
 # Citation
