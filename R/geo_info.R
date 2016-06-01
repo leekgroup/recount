@@ -20,6 +20,9 @@
 
 geo_info <- function(geoid, verbose = FALSE) {
     
+    ## For R CMD check
+    CharacterList <- getGEO <- NULL
+    
     ## Check inputs
     stopifnot(is.character(geoid) & length(geoid) == 1)
     
