@@ -54,8 +54,11 @@ geo_info <- function(geoid, verbose = FALSE) {
     
     ## Clean up the header information
     df <- data.frame(
-        pattern = c('characteristics_ch1', 'data_processing', 'contact_', 'extract_', 'library_', 'relation_', 'series_'),
-        varname = c('characteristics', 'data_processing', 'contact', 'extract', 'library', 'relation', 'series'), stringsAsFactors = FALSE
+        pattern = c('characteristics_ch1', 'data_processing', 'contact_',
+            'extract_', 'library_', 'relation_', 'series_'),
+        varname = c('characteristics', 'data_processing', 'contact', 'extract',
+            'library', 'relation', 'series'),
+        stringsAsFactors = FALSE
     )        
     for(i in seq_len(nrow(df))) result <- clean_geo(df$pattern[i],
         df$varname[i], result)
