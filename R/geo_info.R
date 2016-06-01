@@ -39,13 +39,13 @@ geo_info <- function(geoid, verbose = FALSE) {
 	
     
     ## Extract the header information
-	result <- geo@header    
+	result <- geo@header
     
     ## Function for cleaning
     clean_geo <- function(pattern, varname, res) {
     	charIndex <- grep(pattern, names(res))
     	if(length(charIndex) > 0) {
-    		res <- c(res, CharacterList(unname(result[charIndex])))
+    		res <- c(res, CharacterList(unlist(unname(result[charIndex]))))
             names(res)[length(res)] <- varname
     		res <- res[-charIndex]
     	}
