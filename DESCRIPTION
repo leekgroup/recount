@@ -28,6 +28,7 @@ Suggests:
     regionReport,
     rmarkdown (>= 0.9.5),
     rtracklayer (>= 1.33.3),
+    S4Vectors,
     SummarizedExperiment,
     testthat,
     TxDb.Hsapiens.UCSC.hg38.knownGene

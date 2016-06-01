@@ -3,8 +3,8 @@
 #' This function uses GEOquery to extract information for a given sample. The
 #' GEO accession ids for the sample can be found in the study phenotype table.
 #'
-#' @return Returns a list with the information from GEO available for the given
-#' sample.
+#' @return Returns a \link[S4Vectors]{DataFrame-class} with the information 
+#' from GEO available for the given sample.
 #'
 #' @param geoid A character vector of length 1 with the GEO accession id for
 #' a given sample.
@@ -21,7 +21,7 @@
 geo_info <- function(geoid, verbose = FALSE) {
     
     ## For R CMD check
-    CharacterList <- getGEO <- NULL
+    CharacterList <- getGEO <- elementNROWS <- NULL
     
     ## Check inputs
     stopifnot(is.character(geoid) & length(geoid) == 1)
@@ -55,14 +55,19 @@ geo_info <- function(geoid, verbose = FALSE) {
     ## Clean up the header information
     df <- data.frame(
         pattern = c('characteristics_ch1', 'data_processing', 'contact_',
-            'extract_', 'library_', 'relation_', 'series_'),
+            'extract_', 'library_', 'relation', 'series_', 'supplementary_file_'),
         varname = c('characteristics', 'data_processing', 'contact', 'extract',
-            'library', 'relation', 'series'),
+            'library', 'relation', 'series', 'supplementary_file'),
         stringsAsFactors = FALSE
     )        
     for(i in seq_len(nrow(df))) result <- clean_geo(df$pattern[i],
         df$varname[i], result)
     
+    ## Make sure they are all length 1
+    if(any(elementNROWS(result) > 1)) {
+        for(i in which(elementNROWS(result) > 1)) result[i] <- CharacterList(unlist(unname(result[i])))
+    }
+    
     ## Finish
-	return(result)
+	return(DataFrame(result))
 }
