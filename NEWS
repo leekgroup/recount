@@ -19,3 +19,4 @@ NEW FEATURES
         in a chromosome for a given SRA study.
     o Added the function coverage_matrix() for computing the coverage matrix
         based on the regions of interest for a given SRA study.
+    o Added the function geo_info() for obtaining sample information from GEO.
