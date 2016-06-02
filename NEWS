@@ -23,3 +23,5 @@ NEW FEATURES
     o Added the function find_geo() for finding the GEO accession id given a
         SRA run accession (id). This function will be useful for SRA projects
         that did not have GEO entries at the time recount's data was created.
+    o Added the function geo_characteristics() for building a data.frame from
+        geo_info()'s results for the characteristics.
