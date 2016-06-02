@@ -20,9 +20,6 @@
 
 geo_info <- function(geoid, verbose = FALSE) {
     
-    ## For R CMD check
-    CharacterList <- getGEO <- elementNROWS <- DataFrame <- NULL
-    
     ## Check inputs
     stopifnot(is.character(geoid) & length(geoid) == 1)
     
@@ -32,9 +29,9 @@ geo_info <- function(geoid, verbose = FALSE) {
     
     ## Get data from GEO
     if(verbose) {
-        geo <- getGEO(geoid, getGPL = FALSE)
+        geo <- GEOquery::getGEO(geoid, getGPL = FALSE)
     } else {
-        geo <- suppressMessages(getGEO(geoid, getGPL = FALSE))
+        geo <- suppressMessages(GEOquery::getGEO(geoid, getGPL = FALSE))
     }
 	
     
@@ -45,7 +42,8 @@ geo_info <- function(geoid, verbose = FALSE) {
     clean_geo <- function(pattern, varname, res) {
     	charIndex <- grep(pattern, names(res))
     	if(length(charIndex) > 0) {
-    		res <- c(res, CharacterList(unlist(unname(result[charIndex]))))
+    		res <- c(res,
+                IRanges::CharacterList(unlist(unname(result[charIndex]))))
             names(res)[length(res)] <- varname
     		res <- res[-charIndex]
     	}
@@ -64,10 +62,10 @@ geo_info <- function(geoid, verbose = FALSE) {
         df$varname[i], result)
     
     ## Make sure they are all length 1
-    if(any(elementNROWS(result) > 1)) {
-        for(i in which(elementNROWS(result) > 1)) result[i] <- CharacterList(unlist(unname(result[i])))
+    if(any(S4Vectors::elementNROWS(result) > 1)) {
+        for(i in which(S4Vectors::elementNROWS(result) > 1)) result[i] <- IRanges::CharacterList(unlist(unname(result[i])))
     }
     
     ## Finish
-	return(DataFrame(result))
+	return(S4Vectors::DataFrame(result))
 }
