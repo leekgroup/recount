@@ -47,9 +47,6 @@
 
 expressed_regions <- function(project, chr, cutoff, outdir = NULL,
     maxClusterGap = 300L, chrlen = NULL, verbose = TRUE, ...) {
-        
-    ## For R cmd check
-    loadCoverage <- findRegions <- Rle <- GRanges <- 'seqlengths<-' <- NULL
     
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
@@ -91,21 +88,23 @@ expressed_regions <- function(project, chr, cutoff, outdir = NULL,
     .load_install('RCurl')
     
     ## Load coverage
-    meanCov <- loadCoverage(files = meanFile, chr = chr, chrlen = chrlen)
+    meanCov <- derfinder::loadCoverage(files = meanFile, chr = chr,
+        chrlen = chrlen)
     
     ## Find regions
-    regs <- findRegions(position = Rle(TRUE, length(meanCov$coverage[[1]])),
+    regs <- derfinder::findRegions(
+        position = S4Vectors::Rle(TRUE, length(meanCov$coverage[[1]])),
         fstats = meanCov$coverage[[1]], chr = chr,
         maxClusterGap = maxClusterGap, cutoff = cutoff, verbose = verbose)
     
     ## If there are no regions, return NULL
-    if(is.null(regs)) regs <- GRanges()
+    if(is.null(regs)) regs <- GenomicRanges::GRanges()
     
     ## Format appropriately
     names(regs) <- seq_len(length(regs))
     
     ## Set the length
-    seqlengths(regs) <- length(meanCov$coverage[[1]])
+    GenomeInfoDb::seqlengths(regs) <- length(meanCov$coverage[[1]])
     
     ## Finish
     return(regs)

@@ -39,6 +39,7 @@ bibs <- c(
     DESeq2 = citation('DESeq2'),
     devtools = citation('devtools'),
     GEOquery = citation('GEOquery'),
+    GenomeInfoDb = citation('GenomeInfoDb'),
     GenomicFeatures = citation('GenomicFeatures'),
     GenomicRanges = citation('GenomicRanges'),
     IRanges = citation('IRanges'),
@@ -480,6 +481,7 @@ This package was made possible thanks to:
 * `r Biocpkg('derfinder')` `r citep(bib[['derfinder']])`
 * `r CRANpkg('devtools')` `r citep(bib[['devtools']])`
 * `r Biocpkg('GEOquery')` `r citep(bib[['GEOquery']])`
+* `r Biocpkg('GenomeInfoDb')` `r citep(bib[['GenomeInfoDb']])`
 * `r Biocpkg('GenomicFeatures')` `r citep(bib[['GenomicFeatures']])`
 * `r Biocpkg('GenomicRanges')` `r citep(bib[['GenomicRanges']])`
 * `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`

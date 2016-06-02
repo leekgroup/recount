@@ -19,6 +19,7 @@ Suggests:
     DESeq2,
     devtools (>= 1.6),
     GEOquery,
+    GenomeInfoDb,
     GenomicFeatures,
     GenomicRanges,
     IRanges,
