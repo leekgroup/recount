@@ -46,31 +46,31 @@ reproduce_ranges <- function(level = 'gene') {
     ## Check input
     stopifnot(level %in% c('gene', 'exon'))
     
-    ## For R CMD check
-    exonsBy <- reduce <- width <- NULL
-    
     ## Load required packages
     .load_install('GenomicFeatures')
     .load_install('GenomicRanges')
     .load_install('TxDb.Hsapiens.UCSC.hg38.knownGene')
 
     ## Get genes with default option single.strand.genes.only = TRUE
-    genes <- genes(TxDb.Hsapiens.UCSC.hg38.knownGene::TxDb.Hsapiens.UCSC.hg38.knownGene)
+    genes <- GenomicFeatures::genes(
+        TxDb.Hsapiens.UCSC.hg38.knownGene::TxDb.Hsapiens.UCSC.hg38.knownGene)
 
     ## Get Exons
-    exons <- exonsBy(TxDb.Hsapiens.UCSC.hg38.knownGene::TxDb.Hsapiens.UCSC.hg38.knownGene, by = 'gene')
+    exons <- GenomicFeatures::exonsBy(
+        TxDb.Hsapiens.UCSC.hg38.knownGene::TxDb.Hsapiens.UCSC.hg38.knownGene,
+        by = 'gene')
 
     ## Keep only exons for gene ids that we selected previously
     exons <- exons[names(exons) %in% names(genes)]
     
     ## Reduce exons by gene so the exons won't be overlapping each other inside a gene
-    exons <- reduce(exons)
+    exons <- GenomicRanges::reduce(exons)
     
     if(level == 'exon') {
         return(exons)
     } else if(level == 'gene') {
         ## Add length of reduced exons by gene
-        genes$bp_length <- sum(width(exons))
+        genes$bp_length <- sum(GenomicRaneges::width(exons))
         
         return(genes)
     }

@@ -47,7 +47,6 @@
 
 expressed_regions <- function(project, chr, cutoff, outdir = NULL,
     maxClusterGap = 300L, chrlen = NULL, verbose = TRUE, ...) {
-    
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(is.character(chr) & length(chr) == 1)

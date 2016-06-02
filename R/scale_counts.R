@@ -67,13 +67,12 @@
 
 
 scale_counts <- function(rse, by = 'auc', targetSize = 4e7, L = 100,
-    factor_only = FALSE, round = TRUE) {
-    
+    factor_only = FALSE, round = TRUE) {    
     ## Load required packages
     .load_install('SummarizedExperiment')
     .load_install('GenomicRanges')
     
-    ## Check input
+    ## Check inputs
     stopifnot(is(rse, 'RangedSummarizedExperiment'))
     stopifnot(length(targetSize) == 1)
     stopifnot(is.numeric(targetSize) | is.integer(targetSize))

@@ -7,6 +7,9 @@
 #' @param quietly Whether to run requireNamespace and biocLite quietly or not.
 #'
 #' @details Taken from the regionReport package
+#'
+#' @author Leonardo Collado-Torres
+#'
 .load_install <- function(pkg, quietly = TRUE) {
     attemptName <- requireNamespace(pkg, quietly = quietly)
     if(!attemptName) {
@@ -20,7 +23,8 @@
     }
     if(attemptName) {
         if(quietly) {
-            suppressPackageStartupMessages(library(package = pkg, character.only = TRUE))
+            suppressPackageStartupMessages(library(package = pkg,
+                character.only = TRUE))
         } else {
             library(package = pkg, character.only = TRUE)
         }
