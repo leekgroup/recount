@@ -8,6 +8,9 @@
 #' @param pheno A \link[S4Vectors]{DataFrame-class} as created by
 #' \link{geo_info}.
 #' 
+#' @author Leonardo Collado-Torres
+#' @export
+#'
 #' @examples
 #' ## Load required library
 #' library('SummarizedExperiment')

@@ -34,4 +34,7 @@ geodata <- cbind(geodata, geo_characteristics(geodata))
 geodata[, c('characteristics', 'cells', 'shrna.expression', 'treatment')]
 
 }
+\author{
+Leonardo Collado-Torres
+}
 
