@@ -68,9 +68,6 @@
 
 scale_counts <- function(rse, by = 'auc', targetSize = 4e7, L = 100,
     factor_only = FALSE, round = TRUE) {
-        
-    ## For R CMD check
-    assay <- colData <- 'assay<-' <- NULL
     
     ## Load required packages
     .load_install('SummarizedExperiment')
@@ -90,13 +87,13 @@ scale_counts <- function(rse, by = 'auc', targetSize = 4e7, L = 100,
     stopifnot(length(round) == 1)
     
     ## Check RSE details
-    counts <- assay(rse, 1)
-    stopifnot(ncol(counts) == nrow(colData(rse)))
+    counts <- SummarizedExperiment::assay(rse, 1)
+    stopifnot(ncol(counts) == nrow(SummarizedExperiment::colData(rse)))
     if(by == 'auc'){
-        stopifnot('auc' %in% colnames(colData(rse)))
+        stopifnot('auc' %in% colnames(SummarizedExperiment::colData(rse)))
     } else if (by == 'mapped_reads') {
         stopifnot(all(c('avg_read_length', 'mapped_read_count',
-            'paired_end') %in% colnames(colData(rse))))
+            'paired_end') %in% colnames(SummarizedExperiment::colData(rse))))
     }
     
     ## Scale counts
@@ -105,20 +102,23 @@ scale_counts <- function(rse, by = 'auc', targetSize = 4e7, L = 100,
         # have to multiply by L to get the desired library size,
         # but then divide by L to take into account the read length since the
         # raw counts are the sum of base-level coverage.
-        scaleFactor <- targetSize / colData(rse)$auc
+        scaleFactor <- targetSize / SummarizedExperiment::colData(rse)$auc
     } else if (by == 'mapped_reads') {
-        scaleFactor <- targetSize * L * ifelse(colData(rse)$paired_end, 2, 1)^2 / (colData(rse)$mapped_read_count * colData(rse)$avg_read_length^2)
+        scaleFactor <- targetSize * L *
+            ifelse(SummarizedExperiment::colData(rse)$paired_end, 2, 1)^2 /
+            (SummarizedExperiment::colData(rse)$mapped_read_count *
+            SummarizedExperiment::colData(rse)$avg_read_length^2)
     }
     
     if(factor_only) {
-        names(scaleFactor) <- rownames(colData(rse))
+        names(scaleFactor) <- rownames(SummarizedExperiment::colData(rse))
         return(scaleFactor)
     } else {
         scaleMat <- matrix(rep(scaleFactor, each = nrow(counts)),
             ncol = ncol(counts))
         scaledCounts <- counts * scaleMat
         if(round) scaledCounts <- round(scaledCounts, 0)
-        assay(rse, 1) <- scaledCounts
+        SummarizedExperiment::assay(rse, 1) <- scaledCounts
         return(rse)
     }
 }
