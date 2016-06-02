@@ -22,27 +22,23 @@
 #'
 
 find_geo <- function(run) {
-    
-    ## For R CMD check
-    htmlTreeParse <- xpathSApply <- NULL
-    ## Can't do the same to xmlValue
-    
     ## Check inputs
     stopifnot(is.character(run) & length(run) == 1)
     
     .load_install('XML')
-    html <- htmlTreeParse(paste0(
+    html <- XML::htmlTreeParse(paste0(
     'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term=',
         run), useInternalNodes = TRUE)
-    id <- xpathSApply(html, '/html/body/esearchresult/idlist/id', XML::xmlValue)
+    id <- XML::xpathSApply(html, '/html/body/esearchresult/idlist/id',
+        XML::xmlValue)
     
     if(length(id) == 0) return(NA)
     
-    html2 <- htmlTreeParse(paste0(
+    html2 <- XML::htmlTreeParse(paste0(
         'http://www.ncbi.nlm.nih.gov/gds?LinkName=sra_gds&from_uid=', id),
         useInternalNodes = TRUE)
     
-    res <- xpathSApply(html2, "//div[@class='resc']//dd", XML::xmlValue)
+    res <- XML::xpathSApply(html2, "//div[@class='resc']//dd", XML::xmlValue)
     gsm <- res[grep('GSM', res)]
     if(length(gsm) == 0) return(NA)
     return(gsm)
