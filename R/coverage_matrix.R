@@ -43,11 +43,7 @@
 #' identical(length(regions), nrow(coverageMatrix))
 #'
 
-coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = NULL, outdir = NULL, chrlen = NULL, verbose = TRUE, verboseLoad = verbose, ...) {
-    
-    ## For R cmd check
-    SerialParam <- NULL
-    
+coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = NULL, outdir = NULL, chrlen = NULL, verbose = TRUE, verboseLoad = verbose, ...) {    
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(is.character(chr) & length(chr) == 1)
@@ -126,10 +122,13 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     }
     
     ## Define bpparam
-    if(is.null(bpparam)) bpparam <- SerialParam()
+    if(is.null(bpparam)) bpparam <- BiocParallel::SerialParam()
     
     ## Load coverage data
-    resChunks <- lapply(regs_split, derfinder:::.railMatChrRegion, sampleFiles = sampleFiles, chr = chr, mappedPerXM = mappedPerXM, L = 1, verbose = verbose, BPPARAM.railChr = bpparam, verboseLoad = verboseLoad, chrlen = chrlen)
+    resChunks <- lapply(regs_split, derfinder:::.railMatChrRegion,
+        sampleFiles = sampleFiles, chr = chr, mappedPerXM = mappedPerXM,
+        L = 1, verbose = verbose, BPPARAM.railChr = bpparam,
+        verboseLoad = verboseLoad, chrlen = chrlen)
     
     ## Group results from chunks
     coverageMatrix <- do.call(rbind, lapply(resChunks, '[[', 'coverageMatrix'))
