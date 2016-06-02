@@ -21,7 +21,7 @@
 geo_info <- function(geoid, verbose = FALSE) {
     
     ## For R CMD check
-    CharacterList <- getGEO <- elementNROWS <- NULL
+    CharacterList <- getGEO <- elementNROWS <- DataFrame <- NULL
     
     ## Check inputs
     stopifnot(is.character(geoid) & length(geoid) == 1)
