@@ -34,7 +34,7 @@ find_geo <- function(run) {
     html <- htmlTreeParse(paste0(
     'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term=',
         run), useInternalNodes = TRUE)
-    id <- xpathSApply(html, '/html/body/esearchresult/idlist/id', xmlValue)
+    id <- xpathSApply(html, '/html/body/esearchresult/idlist/id', XML::xmlValue)
     
     if(length(id) == 0) return(NA)
     
@@ -42,7 +42,7 @@ find_geo <- function(run) {
         'http://www.ncbi.nlm.nih.gov/gds?LinkName=sra_gds&from_uid=', id),
         useInternalNodes = TRUE)
     
-    res <- xpathSApply(html2, "//div[@class='resc']//dd", xmlValue)
+    res <- xpathSApply(html2, "//div[@class='resc']//dd", XML::xmlValue)
     gsm <- res[grep('GSM', res)]
     if(length(gsm) == 0) return(NA)
     return(gsm)
