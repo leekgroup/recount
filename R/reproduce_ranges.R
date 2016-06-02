@@ -70,7 +70,7 @@ reproduce_ranges <- function(level = 'gene') {
         return(exons)
     } else if(level == 'gene') {
         ## Add length of reduced exons by gene
-        genes$bp_length <- sum(GenomicRaneges::width(exons))
+        genes$bp_length <- sum(GenomicRanges::width(exons))
         
         return(genes)
     }
