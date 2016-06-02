@@ -38,7 +38,9 @@ find_geo <- function(run) {
     
     if(length(id) == 0) return(NA)
     
-    html2 <- htmlTreeParse(paste0('http://www.ncbi.nlm.nih.gov/gds?LinkName=sra_gds&from_uid=', id), useInternalNodes = TRUE)
+    html2 <- htmlTreeParse(paste0(
+        'http://www.ncbi.nlm.nih.gov/gds?LinkName=sra_gds&from_uid=', id),
+        useInternalNodes = TRUE)
     
     res <- xpathSApply(html2, "//div[@class='resc']//dd", xmlValue)
     gsm <- res[grep('GSM', res)]
