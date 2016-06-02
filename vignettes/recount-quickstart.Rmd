@@ -52,7 +52,8 @@ bibs <- c(
     S4Vectors = citation('S4Vectors'),
     SummarizedExperiment = citation('SummarizedExperiment'),
     testthat = citation('testthat'),
-    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene')
+    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene'),
+    XML = citation('XML')
 )
 
 write.bibtex(bibs,
@@ -490,6 +491,7 @@ This package was made possible thanks to:
 * `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])`
 * `r CRANpkg('testthat')` `r citep(bib[['testthat']])`
 * `r Biocannopkg('TxDb.Hsapiens.UCSC.hg138.knownGene')` `r citep(bib[['TxDb.Hsapiens.UCSC.hg38.knownGene']])`
+* `r CRANpkg('XML')` `r citep(bib[['XML']])`
 
 Code for creating the vignette
 

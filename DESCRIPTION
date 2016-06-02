@@ -31,7 +31,8 @@ Suggests:
     S4Vectors,
     SummarizedExperiment,
     testthat,
-    TxDb.Hsapiens.UCSC.hg38.knownGene
+    TxDb.Hsapiens.UCSC.hg38.knownGene,
+    XML
 VignetteBuilder: knitr
 Description: Explore and download data from the recount project available at
     https://lcolladotor.shinyapps.io/recount/. Using the recount package you can

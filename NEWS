@@ -20,3 +20,6 @@ NEW FEATURES
     o Added the function coverage_matrix() for computing the coverage matrix
         based on the regions of interest for a given SRA study.
     o Added the function geo_info() for obtaining sample information from GEO.
+    o Added the function find_geo() for finding the GEO accession id given a
+        SRA run accession (id). This function will be useful for SRA projects
+        that did not have GEO entries at the time recount's data was created.
