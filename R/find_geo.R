@@ -4,6 +4,8 @@
 #' (starting with GSM) if it's available. Otherwise it will return \code{NA}.
 #'
 #' @param run A character vector of length 1 with the SRA run accession id.
+#' @param verbose Whether to print a message for the run. Useful when looping
+#' over a larger number of SRA run ids.
 #'
 #' @return The GEO accession id for the corresponding sample.
 #'
@@ -21,14 +23,17 @@
 #' find_geo('SRX110461')
 #'
 
-find_geo <- function(run) {
+find_geo <- function(run, verbose = FALSE) {
     ## Check inputs
     stopifnot(is.character(run) & length(run) == 1)
+    
+    if(verbose) message(paste(Sys.time(), 'finding GEO accession id for SRA run', run))
     
     .load_install('XML')
     html <- XML::htmlTreeParse(paste0(
     'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term=',
         run), useInternalNodes = TRUE)
+    if(is.null(html)) return(NA)
     id <- XML::xpathSApply(html, '/html/body/esearchresult/idlist/id',
         XML::xmlValue)
     
@@ -37,6 +42,7 @@ find_geo <- function(run) {
     html2 <- XML::htmlTreeParse(paste0(
         'http://www.ncbi.nlm.nih.gov/gds?LinkName=sra_gds&from_uid=', id),
         useInternalNodes = TRUE)
+    if(is.null(html2)) return(NA)
     
     res <- XML::xpathSApply(html2, "//div[@class='resc']//dd", XML::xmlValue)
     gsm <- res[grep('GSM', res)]

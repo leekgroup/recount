@@ -4,10 +4,13 @@
 \alias{find_geo}
 \title{Find the GEO accession id for a given SRA run}
 \usage{
-find_geo(run)
+find_geo(run, verbose = FALSE)
 }
 \arguments{
 \item{run}{A character vector of length 1 with the SRA run accession id.}
+
+\item{verbose}{Whether to print a message for the run. Useful when looping
+over a larger number of SRA run ids.}
 }
 \value{
 The GEO accession id for the corresponding sample.
