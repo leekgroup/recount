@@ -18,6 +18,8 @@ bibs <- c(
     derfinder = citation('derfinder')[1], 
     DESeq2 = citation('DESeq2'),
     devtools = citation('devtools'),
+    GEOquery = citation('GEOquery'),
+    GenomeInfoDb = citation('GenomeInfoDb'),
     GenomicFeatures = citation('GenomicFeatures'),
     GenomicRanges = citation('GenomicRanges'),
     IRanges = citation('IRanges'),
@@ -28,9 +30,11 @@ bibs <- c(
     regionReport = citation('regionReport'),
     rmarkdown = citation('rmarkdown'),
     rtracklayer = citation('rtracklayer'),
+    S4Vectors = citation('S4Vectors'),
     SummarizedExperiment = citation('SummarizedExperiment'),
     testthat = citation('testthat'),
-    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene')
+    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene'),
+    XML = citation('XML')
 )
 
 write.bibtex(bibs,
@@ -51,45 +55,59 @@ windowsFlag <- .Platform$OS.type == 'windows'
 #  ## Find a project of interest
 #  project_info <- abstract_search('GSE32465')
 #  
-#  ## Browse the project at SRA
-#  browse_study(project_info$project)
-#  
-#  ## Define groups based on the project information available at
-#  ## http://www.ncbi.nlm.nih.gov/sra/?term=SRP009615 (found via the "Experiments"
-#  ## link) from the SRA website.
-#  sample_info <- data.frame(
-#      accession = c('SRX110461', 'SRX110462', 'SRX110463', 'SRX110464',
-#          'SRX111299', 'SRX111300', 'SRX111301', 'SRX111302', 'SRX111303',
-#          'SRX111304', 'SRX111305', 'SRX111306'),
-#      group = rep(c('uninduced', 'induced'), 6),
-#      gene_target = rep(c('SRF', 'EGR1', 'ATF3'), each = 4),
-#      replicate = factor(rep(rep(c(1, 2), each = 2), 3))
-#  )
-#  
 #  ## Download the gene-level RangedSummarizedExperiment data
 #  download_study(project_info$project)
 #  
 #  ## Load the data
 #  load(file.path(project_info$project, 'rse_gene.Rdata'))
 #  
+#  ## Browse the project at SRA
+#  browse_study(project_info$project)
+#  
+#  ## Find the GEO accession ids
+#  geoids <- sapply(colData(rse_gene)$run, find_geo)
+#  
+#  ## Get the sammple information from GEO
+#  geoinfo <- lapply(geoids, geo_info)
+#  
+#  ## Extract the sample characteristics
+#  geochar <- lapply(geoinfo, geo_characteristics)
+#  
+#  ## Note that the information for this study is a little inconsistent, so we
+#  ## have to fix it.
+#  geochar <- do.call(rbind, lapply(geochar, function(x) {
+#      if('cells' %in% colnames(x)) {
+#          colnames(x)[colnames(x) == 'cells'] <- 'cell.line'
+#          return(x)
+#      } else {
+#          return(x)
+#      }
+#  }))
+#  
+#  ## We can now define some sample information to use
+#  sample_info <- data.frame(
+#      run = colData(rse_gene)$run,
+#      group = sapply(geoinfo, function(x) { ifelse(grepl('uninduced', x$title),
+#          'uninduced', 'induced') }),
+#      gene_target = sapply(geoinfo, function(x) { strsplit(strsplit(x$title,
+#          'targeting ')[[1]][2], ' gene')[[1]][1] })
+#  )
+#  
 #  ## Scale counts by taking into account the total coverage per sample
 #  rse <- scale_counts(rse_gene)
 #  
 #  ## Add sample information for DE analysis
-#  i <- match(colData(rse)$experiment, sample_info$accession)
-#  colData(rse)$group <- sample_info$group[i]
-#  colData(rse)$gene_target <- sample_info$gene_target[i]
-#  colData(rse)$replicate <- sample_info$replicate[i]
+#  colData(rse)$group <- sample_info$group
+#  colData(rse)$gene_target <- sample_info$gene_target
 #  
 #  ## Perform differential expression analysis with DESeq2
 #  library('DESeq2')
 #  
 #  ## Specify design and switch to DESeq2 format
-#  dds <- DESeqDataSet(rse, ~ group + gene_target + replicate)
+#  dds <- DESeqDataSet(rse, ~ group + gene_target)
 #  
 #  ## Perform DE analysis
-#  dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target + replicate,
-#      fitType = 'local')
+#  dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target, fitType = 'local')
 #  res <- results(dds)
 #  
 #  ## Explore results
@@ -98,7 +116,7 @@ windowsFlag <- .Platform$OS.type == 'windows'
 #  ## Make a report with the results
 #  library('regionReport')
 #  DESeq2Report(dds, res = res, project = 'SRP009615',
-#      intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+#      intgroup = c('group', 'gene_target'), outdir = '.',
 #      output = 'SRP009615-results')
 
 ## ----'er_analysis', eval = FALSE-----------------------------------------
@@ -120,16 +138,16 @@ windowsFlag <- .Platform$OS.type == 'windows'
 #  ## We can sort the table to make sure everything is in the correct order
 #  pheno <- pheno[match(colnames(coverageMatrix), pheno$run), ]
 #  
-#  ## Complete the phenotype table with the data we added manually in our first
-#  ## analysis
-#  m <- match(pheno$experiment, sample_info$accession)
-#  pheno <- cbind(pheno, sample_info[m, 2:4])
+#  ## Complete the phenotype table with the data we got from GEO
+#  m <- match(pheno$run, sample_info$run)
+#  pheno <- cbind(pheno, sample_info[m, 2:3])
 #  
 #  ## Build a DESeqDataSet
-#  dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno, design =  ~ group + gene_target + replicate)
+#  dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
+#      design =  ~ group + gene_target)
 #  
 #  ## Perform differential expression analysis with DESeq2 at the ER-level
-#  dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target + replicate,
+#  dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target,
 #      fitType = 'local')
 #  res_ers <- results(dds_ers)
 #  
@@ -137,9 +155,9 @@ windowsFlag <- .Platform$OS.type == 'windows'
 #  plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
 #  
 #  ## Create a more extensive exploratory report
-#  report2 <- DESeq2Report(dds_ers, res = res_ers,
+#  DESeq2Report(dds_ers, res = res_ers,
 #      project = 'SRP009615 (ER-level, chrY)',
-#      intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+#      intgroup = c('group', 'gene_target'), outdir = '.',
 #      output = 'SRP009615-results-ER-level-chrY')
 
 ## ----'start', message=FALSE----------------------------------------------
@@ -153,23 +171,6 @@ project_info <- abstract_search('GSE32465')
 
 ## Explore info
 project_info
-
-## ----'browse'------------------------------------------------------------
-## Browse the project at SRA
-browse_study(project_info$project)
-
-## ----'sample_info'-------------------------------------------------------
-## Define groups based on the project information available at
-## http://www.ncbi.nlm.nih.gov/sra/?term=SRP009615 (found via the "Experiments"
-## link) from the SRA website.
-sample_info <- data.frame(
-    accession = c('SRX110461', 'SRX110462', 'SRX110463', 'SRX110464',
-        'SRX111299', 'SRX111300', 'SRX111301', 'SRX111302', 'SRX111303',
-        'SRX111304', 'SRX111305', 'SRX111306'),
-    group = rep(c('uninduced', 'induced'), 6),
-    gene_target = rep(c('SRF', 'EGR1', 'ATF3'), each = 4),
-    replicate = factor(rep(rep(c(1, 2), each = 2), 3))
-)
 
 ## ----'download'----------------------------------------------------------
 ## Download the gene-level RangedSummarizedExperiment data
@@ -189,27 +190,58 @@ colData(rse_gene)
 ## account the gene length.
 rowData(rse_gene)
 
+## ----'browse'------------------------------------------------------------
+## Browse the project at SRA
+browse_study(project_info$project)
+
+## ----'sample_info', warning = FALSE--------------------------------------
+## Find the GEO accession ids
+geoids <- sapply(colData(rse_gene)$run, find_geo)
+
+## Get the sammple information from GEO
+geoinfo <- lapply(geoids, geo_info)
+
+## Extract the sample characteristics
+geochar <- lapply(geoinfo, geo_characteristics)
+
+## Note that the information for this study is a little inconsistent, so we
+## have to fix it.
+geochar <- do.call(rbind, lapply(geochar, function(x) {
+    if('cells' %in% colnames(x)) {
+        colnames(x)[colnames(x) == 'cells'] <- 'cell.line'
+        return(x)
+    } else {
+        return(x)
+    }
+}))
+
+## We can now define some sample information to use
+sample_info <- data.frame(
+    run = colData(rse_gene)$run,
+    group = sapply(geoinfo, function(x) { ifelse(grepl('uninduced', x$title),
+        'uninduced', 'induced') }),
+    gene_target = sapply(geoinfo, function(x) { strsplit(strsplit(x$title,
+        'targeting ')[[1]][2], ' gene')[[1]][1] })
+)
+
 ## ----'scale_counts'------------------------------------------------------
 ## Scale counts by taking into account the total coverage per sample
 rse <- scale_counts(rse_gene)
 
 ## ----'add_sample_info'---------------------------------------------------
 ## Add sample information for DE analysis
-i <- match(colData(rse)$experiment, sample_info$accession)
-colData(rse)$group <- sample_info$group[i]
-colData(rse)$gene_target <- sample_info$gene_target[i]
-colData(rse)$replicate <- sample_info$replicate[i]
+colData(rse)$group <- sample_info$group
+colData(rse)$gene_target <- sample_info$gene_target
 
 ## ----'de_analysis'-------------------------------------------------------
 ## Perform differential expression analysis with DESeq2
 library('DESeq2')
 
 ## Specify design and switch to DESeq2 format
-dds <- DESeqDataSet(rse, ~ group + gene_target + replicate)
+dds <- DESeqDataSet(rse, ~ group + gene_target)
 
 ## Perform DE analysis
-dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target + replicate,
-    fitType = 'local')
+dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target, fitType = 'local')
 res <- results(dds)
 
 ## ----'ma_plot'-----------------------------------------------------------
@@ -220,7 +252,7 @@ plotMA(res, main="DESeq2 results for SRP009615")
 #  ## Make a report with the results
 #  library('regionReport')
 #  report <- DESeq2Report(dds, res = res, project = 'SRP009615',
-#      intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+#      intgroup = c('group', 'gene_target'), outdir = '.',
 #      output = 'SRP009615-results')
 
 ## ----'make_report_real', echo = FALSE, results = 'hide'------------------
@@ -240,7 +272,7 @@ writeLines(new, 'SRP009615-results-template.Rmd')
 
 ## Now create the report
 report <- DESeq2Report(dds, res = res, project = 'SRP009615',
-    intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+    intgroup = c('group', 'gene_target'), outdir = '.',
     output = 'SRP009615-results', device = 'png', template = 'SRP009615-results-template.Rmd')
     
 ## Clean up
@@ -275,21 +307,21 @@ pheno <- read.table(pheno_url, header = TRUE, stringsAsFactors = FALSE)
 ## We can sort the table to make sure everything is in the correct order
 pheno <- pheno[match(colnames(coverageMatrix), pheno$run), ]
 
-## Complete the phenotype table with the data we added manually in our first
-## analysis
-m <- match(pheno$experiment, sample_info$accession)
-pheno <- cbind(pheno, sample_info[m, 2:4])
+## Complete the phenotype table with the data we got from GEO
+m <- match(pheno$run, sample_info$run)
+pheno <- cbind(pheno, sample_info[m, 2:3])
 
 ## Explore the phenotype data a little bit
 head(pheno)
 
 ## ----'ers_dds'-----------------------------------------------------------
 ## Build a DESeqDataSet
-dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno, design =  ~ group + gene_target + replicate)
+dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
+    design =  ~ group + gene_target)
 
 ## ----'de_analysis_ers'---------------------------------------------------
 ## Perform differential expression analysis with DESeq2 at the ER-level
-dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target + replicate,
+dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target,
     fitType = 'local')
 res_ers <- results(dds_ers)
 
@@ -301,7 +333,7 @@ plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
 #  ## Create the report
 #  report2 <- DESeq2Report(dds_ers, res = res_ers,
 #      project = 'SRP009615 (ER-level, chrY)',
-#      intgroup = c('group', 'gene_target', 'replicate'), outdir = '.',
+#      intgroup = c('group', 'gene_target'), outdir = '.',
 #      output = 'SRP009615-results-ER-level-chrY')
 
 ## ----'installDer', eval = FALSE------------------------------------------
