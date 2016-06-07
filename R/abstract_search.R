@@ -17,7 +17,7 @@
 #' @details Both the query and the abstracts are searched in lower case.
 #'
 #' For a more powerful search use the recount project website at
-#' \url{https://lcolladotor.shinyapps.io/recount/}.
+#' \url{https://jhubiostatistics.shinyapps.io/recount/}.
 #'
 #' @seealso \link{browse_study}, \link{recount_abstract}
 #'

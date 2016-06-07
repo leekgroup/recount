@@ -12,7 +12,7 @@ SRP009615.}
 level for study SRP009615. Used as an example in \link{scale_counts}.
 }
 \references{
-\url{https://lcolladotor.shinyapps.io/recount/}
+\url{https://jhubiostatistics.shinyapps.io/recount/}
 }
 \seealso{
 \link{scale_counts}, \link{download_study}

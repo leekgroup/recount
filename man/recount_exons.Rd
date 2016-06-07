@@ -11,7 +11,7 @@ Exon annotation extracted from TxDb.Hsapiens.UCSC.hg38.knownGene used in
 recount.
 }
 \references{
-\url{https://lcolladotor.shinyapps.io/recount/}
+\url{https://jhubiostatistics.shinyapps.io/recount/}
 }
 \seealso{
 \link{reproduce_ranges}, \link{recount_genes}

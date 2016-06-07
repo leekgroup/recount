@@ -17,5 +17,5 @@
 #' }
 #' @keywords datasets
 #' @seealso \link{reproduce_ranges}, \link{recount_exons}
-#' @references \url{https://lcolladotor.shinyapps.io/recount/}
+#' @references \url{https://jhubiostatistics.shinyapps.io/recount/}
 NULL

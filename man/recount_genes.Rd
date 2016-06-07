@@ -19,7 +19,7 @@ used for normalizing the counts provided in the
 \link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects.
 }
 \references{
-\url{https://lcolladotor.shinyapps.io/recount/}
+\url{https://jhubiostatistics.shinyapps.io/recount/}
 }
 \seealso{
 \link{reproduce_ranges}, \link{recount_exons}

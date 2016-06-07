@@ -6,7 +6,7 @@
 \title{Explore and download data from the recount project.}
 \description{
 Explore and download data from the recount project available at
-\url{https://lcolladotor.shinyapps.io/recount/}. Using the recount package 
+\url{https://jhubiostatistics.shinyapps.io/recount/}. Using the recount package 
 you can download 
 \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
 objects at the gene or exon level, the raw counts, the phenotype metadata 

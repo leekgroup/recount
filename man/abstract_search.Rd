@@ -29,7 +29,7 @@ package.
 Both the query and the abstracts are searched in lower case.
 
 For a more powerful search use the recount project website at
-\url{https://lcolladotor.shinyapps.io/recount/}.
+\url{https://jhubiostatistics.shinyapps.io/recount/}.
 }
 \examples{
 ## Find the Geuvadis consortium project

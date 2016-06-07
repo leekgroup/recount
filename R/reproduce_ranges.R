@@ -30,7 +30,7 @@
 #' @export
 #' @seealso \link{recount_genes}, \link{recount_exons},
 #'     \url{https://github.com/nellore},
-#'     \url{https://lcolladotor.shinyapps.io/recount/}
+#'     \url{https://jhubiostatistics.shinyapps.io/recount/}
 #' 
 #' @examples
 #'

@@ -11,5 +11,5 @@
 #'
 #' @keywords datasets
 #' @seealso \link{scale_counts}, \link{download_study}
-#' @references \url{https://lcolladotor.shinyapps.io/recount/}
+#' @references \url{https://jhubiostatistics.shinyapps.io/recount/}
 NULL

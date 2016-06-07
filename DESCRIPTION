@@ -43,7 +43,7 @@ Suggests:
     XML
 VignetteBuilder: knitr
 Description: Explore and download data from the recount project available at
-    https://lcolladotor.shinyapps.io/recount/. Using the recount package you can
+    https://jhubiostatistics.shinyapps.io/recount/. Using the recount package you can
     download RangedSummarizedExperiment objects at the gene or exon level,
     the raw counts, the phenotype metadata used, the urls to the sample coverage
     bigWig files or the mean coverage bigWig file for a particular study. The
