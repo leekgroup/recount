@@ -21,6 +21,7 @@
 
 all_metadata <- function(subset = 'sra', verbose = TRUE) {
     ## check inputs
+    subset <- tolower(subset)
     stopifnot(subset %in% c('sra', 'gtex'))
     stopifnot(length(subset) == 1)
     
