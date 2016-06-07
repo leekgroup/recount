@@ -18,7 +18,9 @@
 #' geo_info('GSM836270')
 #'
 
-geo_info <- function(geoid, verbose = FALSE) {    
+geo_info <- function(geoid, verbose = FALSE) {
+    if(is.na(geoid)) return(NULL)
+    
     ## Check inputs
     stopifnot(is.character(geoid) & length(geoid) == 1)
     
