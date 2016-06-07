@@ -167,7 +167,7 @@ pheno <- read.table(pheno_url, header = TRUE, stringsAsFactors = FALSE)
 pheno <- pheno[match(colnames(coverageMatrix), pheno$run), ]
 
 ## Complete the phenotype table with the data we got from GEO
-m <- match(pheno$run, sample_info$accession)
+m <- match(pheno$run, sample_info$run)
 pheno <- cbind(pheno, sample_info[m, 2:3])
 
 ## Build a DESeqDataSet
@@ -253,7 +253,7 @@ browse_study(project_info$project)
 
 The SRA website includes an _Experiments_ link which further describes each of the samples. From the information available for [SRP009615 at NCBI](http://www.ncbi.nlm.nih.gov/sra/?term=SRP009615) we have some further sample information that we can save for use in our differential expression analysis. We can get some of this information from [GEO](http://www.ncbi.nlm.nih.gov/geo/). The function `find_geo()` finds the [GEO](http://www.ncbi.nlm.nih.gov/geo/) accession id for a given SRA run accession id, which we can then use with `geo_info()` and `geo_characteristics()` to parse this information.
 
-```{r 'sample_info'}
+```{r 'sample_info', warning = FALSE}
 ## Find the GEO accession ids
 geoids <- sapply(colData(rse_gene)$run, find_geo)
 
@@ -416,7 +416,7 @@ pheno <- read.table(pheno_url, header = TRUE, stringsAsFactors = FALSE)
 pheno <- pheno[match(colnames(coverageMatrix), pheno$run), ]
 
 ## Complete the phenotype table with the data we got from GEO
-m <- match(pheno$run, sample_info$accession)
+m <- match(pheno$run, sample_info$run)
 pheno <- cbind(pheno, sample_info[m, 2:3])
 
 ## Explore the phenotype data a little bit
