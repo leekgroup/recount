@@ -23,6 +23,8 @@
 #' \url{https://github.com/leekgroup/recount-website/blob/master/genes/create_bed.R}
 #' with the versions as noted in
 #' \url{https://github.com/leekgroup/recount-website/blob/master/genes/logs/genes-hg38-ucsc.o1192789}.
+#' The actual package tarball for TxDb.Hsapiens.UCSC.hg38.knownGene we used is 
+#' available at \url{https://jhubiostatistics.shinyapps.io/recount/TxDb.Hsapiens.UCSC.hg38.knownGene_3.1.3.tar.gz}.
 #' 
 #' @author Leonardo Collado-Torres
 #' @export
