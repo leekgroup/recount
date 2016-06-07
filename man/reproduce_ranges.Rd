@@ -29,9 +29,9 @@ information extracted with \code{genes()} (see
 }
 \details{
 Note that the information used in recount was originally calculated with
-\url{https://github.com/nellore/runs/blob/master/recount2/genes/create_bed.R}
+\url{https://github.com/leekgroup/recount-website/blob/master/genes/create_bed.R}
 with the versions as noted in
-\url{https://github.com/nellore/runs/blob/master/recount2/genes/logs/genes-hg38-ucsc.o1192789}.
+\url{https://github.com/leekgroup/recount-website/blob/master/genes/logs/genes-hg38-ucsc.o1192789}.
 }
 \examples{
 
