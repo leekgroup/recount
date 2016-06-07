@@ -32,15 +32,18 @@
 #' \link[derfinder]{railMatrix}
 #'
 #' @examples
-#' ## Define expressed regions for study DRP002835, chrY
-#' regions <- expressed_regions('DRP002835', 'chrY', cutoff = 5L, 
-#'     maxClusterGap = 3000L)
 #'
-#' ## Now calculate the coverage matrix for this study
-#' coverageMatrix <- coverage_matrix('DRP002835', 'chrY', regions)
+#' if(!.Platform$OS.type == 'windows') {
+#'     ## Define expressed regions for study DRP002835, chrY
+#'     regions <- expressed_regions('DRP002835', 'chrY', cutoff = 5L, 
+#'         maxClusterGap = 3000L)
 #'
-#' ## One row per region
-#' identical(length(regions), nrow(coverageMatrix))
+#'     ## Now calculate the coverage matrix for this study
+#'     coverageMatrix <- coverage_matrix('DRP002835', 'chrY', regions)
+#'
+#'     ## One row per region
+#'     identical(length(regions), nrow(coverageMatrix))
+#' }
 #'
 
 coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = NULL, outdir = NULL, chrlen = NULL, verbose = TRUE, verboseLoad = verbose, ...) {    

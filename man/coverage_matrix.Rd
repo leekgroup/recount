@@ -55,15 +55,18 @@ function computes the coverage matrix for a library size of 40 million 100 bp
 reads for a given SRA study.
 }
 \examples{
-## Define expressed regions for study DRP002835, chrY
-regions <- expressed_regions('DRP002835', 'chrY', cutoff = 5L, 
-    maxClusterGap = 3000L)
 
-## Now calculate the coverage matrix for this study
-coverageMatrix <- coverage_matrix('DRP002835', 'chrY', regions)
+if(!.Platform$OS.type == 'windows') {
+    ## Define expressed regions for study DRP002835, chrY
+    regions <- expressed_regions('DRP002835', 'chrY', cutoff = 5L, 
+        maxClusterGap = 3000L)
 
-## One row per region
-identical(length(regions), nrow(coverageMatrix))
+    ## Now calculate the coverage matrix for this study
+    coverageMatrix <- coverage_matrix('DRP002835', 'chrY', regions)
+
+    ## One row per region
+    identical(length(regions), nrow(coverageMatrix))
+}
 
 }
 \author{

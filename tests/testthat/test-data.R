@@ -69,33 +69,36 @@ test_that('Scaling', {
         ncol = 12), assay(rse_gene_SRP009615, 1))
 })
 
-regions <- expressed_regions('SRP002001', 'chrY', cutoff = 5)
-## Artificially remove the mean coverage file so that the file will have to get
-## downloaded on the first test, then it'll be present for the second test
-unlink(localfiles['mean_SRP002001.bw'])
+if(!.Platform$OS.type == 'windows') {
+    regions <- expressed_regions('SRP002001', 'chrY', cutoff = 5)
+    ## Artificially remove the mean coverage file so that the file will have to
+    ## get downloaded on the first test, then it'll be present for the second
+    ## test
+    unlink(localfiles['mean_SRP002001.bw'])
 
-test_that('Expressed regions', {
-    expect_equal(regions,
-        expressed_regions('SRP002001', 'chrY', cutoff = 5, outdir = tmpdir))
-    expect_equal(regions,
-        expressed_regions('SRP002001', 'chrY', cutoff = 5, outdir = tmpdir))
-})
+    test_that('Expressed regions', {
+        expect_equal(regions,
+            expressed_regions('SRP002001', 'chrY', cutoff = 5, outdir = tmpdir))
+        expect_equal(regions,
+            expressed_regions('SRP002001', 'chrY', cutoff = 5, outdir = tmpdir))
+    })
 
 
-coverageMatrix <- coverage_matrix('SRP002001', 'chrY', regions)
-## Same for the phenotype data and the sample bigwig file
-unlink(localfiles['SRP002001.tsv'])
-unlink(localfiles['SRR036661.bw'])
+    coverageMatrix <- coverage_matrix('SRP002001', 'chrY', regions)
+    ## Same for the phenotype data and the sample bigwig file
+    unlink(localfiles['SRP002001.tsv'])
+    unlink(localfiles['SRR036661.bw'])
 
-test_that('Coverage matrix', {
-    expect_equal(coverageMatrix,
-        coverage_matrix('SRP002001', 'chrY', regions, outdir = tmpdir))
-    expect_equal(coverageMatrix,
-        coverage_matrix('SRP002001', 'chrY', regions, outdir = tmpdir,
-        chunksize = 500))
-})
+    test_that('Coverage matrix', {
+        expect_equal(coverageMatrix,
+            coverage_matrix('SRP002001', 'chrY', regions, outdir = tmpdir))
+        expect_equal(coverageMatrix,
+            coverage_matrix('SRP002001', 'chrY', regions, outdir = tmpdir,
+            chunksize = 500))
+    })
 
-metadata <- all_metadata()
-test_that('All metadata', {
-    expect_equal(nrow(metadata), 50099)
-})
+    metadata <- all_metadata()
+    test_that('All metadata', {
+        expect_equal(nrow(metadata), 50099)
+    })
+}

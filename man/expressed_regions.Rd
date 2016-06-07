@@ -43,8 +43,10 @@ defined by \link[derfinder]{findRegions}.
 }
 \examples{
 ## Define expressed regions for study SRP009615, chrY
-regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
-    maxClusterGap = 3000L)
+if(!.Platform$OS.type == 'windows') {
+    regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
+        maxClusterGap = 3000L)
+}
 
 \dontrun{
 ## Define the regions for multiple chrs
