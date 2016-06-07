@@ -35,6 +35,15 @@ geo_characteristics <- function(pheno) {
     
     .load_install('S4Vectors')
     
+    ## Check if there are colons
+    if(!grepl(':', x$characteristics)) {
+        data.frame(
+            'characteristics' = paste(unlist(pheno$characteristics), 
+                collapse = ', '),
+            stringsAsFactors = FALSE
+        )
+    }
+    
     ## Separate information
     result <- lapply(pheno$characteristics, function(sampleinfo) {
         info <- strsplit(sampleinfo, ': ')

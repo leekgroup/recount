@@ -15,4 +15,5 @@ test_that('Geo info', {
     expect_equal(find_geo(''), NA)
     expect_equal(geo_characteristics(info), chars)
     expect_equal(geo_info(NA), NULL)
+    expect_equal(colnames(geo_characteristics(geo_info('GSM836270'))), 'characteristics')
 })
