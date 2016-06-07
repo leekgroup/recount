@@ -2,10 +2,17 @@ Package: recount
 Title: Explore and download data from the recount project
 Version: 0.99.0
 Date: 2016-05-31
-Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"), email
-    = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "aut",
-    email = "anellore@gmail.com"), person(c("Jeffrey", "T."), "Leek",
-    role = c("aut", "ths"), email = "jtleek@gmail.com"))
+Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
+    email = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "ctb",
+    email = "anellore@gmail.com"), person(c("Andrew", "E."), "Jaffe",
+    role = "ctb", email = "andrew.jaffe@libd.org"), person(c("Margaret", "A."),
+    "Taub", role = "ctb", email = "mtaub@jhsph.edu"), person("Kai", "Kammers",
+    role = "ctb", email = "kai.kammers@gmail.com"), person(c("Shannon", "E."),
+    "Ellis", role = "ctb", email = "sellis18@jhmi.edu"), person(c("Kasper",
+    "Daniel"), "Hansen", role = c("ctb"),
+    email = "kasperdanielhansen@gmail.com"), person("Ben", "Langmead",
+    role = "ctb", email = 'langmea@cs.jhu.edu'), person(c("Jeffrey", "T."),
+    "Leek", role = c("aut", "ths"), email = "jtleek@gmail.com"))
 Depends:
     R (>= 3.3.0)
 Imports:
