@@ -8,8 +8,8 @@
 #'
 #' @param geoid A character vector of length 1 with the GEO accession id for
 #' a given sample.
-#' @param verbose If \code{TRUE}, messages from \link[GEOquery]{getGEO} will
-#' be shown. Otherwise they are suppressed.
+#' @param verbose If \code{TRUE}, messages from \link[GEOquery]{getGEO} and the
+#' \code{geoid} will be shown. Otherwise they are suppressed.
 #'
 #' @author Leonardo Collado-Torres, Andrew Jaffe
 #' @export
@@ -25,6 +25,8 @@ geo_info <- function(geoid, verbose = FALSE) {
     ## Load GEOquery
     .load_install('GEOquery')
     .load_install('IRanges')
+    
+    if(verbose) message(paste(Sys.time(), 'finding GEO information for GEO accession id', geoid))
     
     ## Get data from GEO
     if(verbose) {

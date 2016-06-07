@@ -10,8 +10,8 @@ geo_info(geoid, verbose = FALSE)
 \item{geoid}{A character vector of length 1 with the GEO accession id for
 a given sample.}
 
-\item{verbose}{If \code{TRUE}, messages from \link[GEOquery]{getGEO} will
-be shown. Otherwise they are suppressed.}
+\item{verbose}{If \code{TRUE}, messages from \link[GEOquery]{getGEO} and the
+\code{geoid} will be shown. Otherwise they are suppressed.}
 }
 \value{
 Returns a \link[S4Vectors]{DataFrame-class} with the information 
