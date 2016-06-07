@@ -94,3 +94,8 @@ test_that('Coverage matrix', {
         coverage_matrix('SRP002001', 'chrY', regions, outdir = tmpdir,
         chunksize = 500))
 })
+
+metadata <- all_metadata()
+test_that('All metadata', {
+    expect_equal(nrow(metadata), 50099)
+})
