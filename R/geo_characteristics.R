@@ -36,7 +36,7 @@ geo_characteristics <- function(pheno) {
     .load_install('S4Vectors')
     
     ## Check if there are colons
-    if(!grepl(':', x$characteristics)) {
+    if(!grepl(':', pheno$characteristics)) {
         data.frame(
             'characteristics' = paste(unlist(pheno$characteristics), 
                 collapse = ', '),
