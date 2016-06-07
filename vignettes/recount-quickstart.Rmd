@@ -417,7 +417,7 @@ pheno <- pheno[match(colnames(coverageMatrix), pheno$run), ]
 
 ## Complete the phenotype table with the data we got from GEO
 m <- match(pheno$run, sample_info$accession)
-pheno <- cbind(pheno, sample_info[m, 2:4])
+pheno <- cbind(pheno, sample_info[m, 2:3])
 
 ## Explore the phenotype data a little bit
 head(pheno)
