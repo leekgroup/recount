@@ -10,6 +10,10 @@
 #' a given sample.
 #' @param verbose If \code{TRUE}, messages from \link[GEOquery]{getGEO} and the
 #' \code{geoid} will be shown. Otherwise they are suppressed.
+#' @param getGPL This argument is passed to \link[GEOquery]{getGEO} and is set
+#' to \code{FALSE} by default to speed up the process.
+#' @param ... Additional arguments passed to \link[GEOquery]{geoGEO}. For
+#' example, you might want to specify the \code{destdir} argument.
 #'
 #' @author Leonardo Collado-Torres, Andrew Jaffe
 #' @export
@@ -18,7 +22,7 @@
 #' geo_info('GSM836270')
 #'
 
-geo_info <- function(geoid, verbose = FALSE) {
+geo_info <- function(geoid, verbose = FALSE, getPGL = FALSE, ...) {
     if(is.na(geoid)) return(NULL)
     
     ## Check inputs
@@ -32,9 +36,9 @@ geo_info <- function(geoid, verbose = FALSE) {
     
     ## Get data from GEO
     if(verbose) {
-        geo <- GEOquery::getGEO(geoid, getGPL = FALSE)
+        geo <- GEOquery::getGEO(geoid, getGPL = getGPL, ...)
     } else {
-        geo <- suppressMessages(GEOquery::getGEO(geoid, getGPL = FALSE))
+        geo <- suppressMessages(GEOquery::getGEO(geoid, getGPL = getGPL, ...))
     }
 	
     

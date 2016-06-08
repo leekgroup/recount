@@ -4,7 +4,7 @@
 \alias{geo_info}
 \title{Extract information from GEO for a given sample}
 \usage{
-geo_info(geoid, verbose = FALSE)
+geo_info(geoid, verbose = FALSE, getPGL = FALSE, ...)
 }
 \arguments{
 \item{geoid}{A character vector of length 1 with the GEO accession id for
@@ -12,6 +12,12 @@ a given sample.}
 
 \item{verbose}{If \code{TRUE}, messages from \link[GEOquery]{getGEO} and the
 \code{geoid} will be shown. Otherwise they are suppressed.}
+
+\item{...}{Additional arguments passed to \link[GEOquery]{geoGEO}. For
+example, you might want to specify the \code{destdir} argument.}
+
+\item{getGPL}{This argument is passed to \link[GEOquery]{getGEO} and is set
+to \code{FALSE} by default to speed up the process.}
 }
 \value{
 Returns a \link[S4Vectors]{DataFrame-class} with the information 
