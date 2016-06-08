@@ -20,6 +20,9 @@
 #'
 
 all_metadata <- function(subset = 'sra', verbose = TRUE) {
+    ## For R CMD check
+    metadata_clean <- NULL
+    
     ## check inputs
     subset <- tolower(subset)
     stopifnot(subset %in% c('sra', 'gtex'))

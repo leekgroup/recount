@@ -22,7 +22,7 @@
 #' geo_info('GSM836270')
 #'
 
-geo_info <- function(geoid, verbose = FALSE, getPGL = FALSE, ...) {
+geo_info <- function(geoid, verbose = FALSE, getGPL = FALSE, ...) {
     if(is.na(geoid)) return(NULL)
     
     ## Check inputs
