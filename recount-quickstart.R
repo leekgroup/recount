@@ -13,6 +13,7 @@ cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
 
 ## Write bibliography information
 bibs <- c(
+    AnnotationDbi = citation('AnnotationDbi'),
     BiocParallel = citation('BiocParallel'),
     BiocStyle = citation('BiocStyle'),
     derfinder = citation('derfinder')[1], 
@@ -25,6 +26,7 @@ bibs <- c(
     IRanges = citation('IRanges'),
     knitcitations = citation('knitcitations'),
     knitr = citation('knitr')[3],
+    org.Hs.eg.db = citation('org.Hs.eg.db'),
     R = citation(),
     RCurl = citation('RCurl'),
     regionReport = citation('regionReport'),
@@ -185,10 +187,13 @@ rse_gene
 ## This is the sample phenotype data provided by the recount project
 colData(rse_gene)
 
-## At the gene level, the row data includes the names of the genes and
-## the sum of the reduced exons widths, which can be used for taking into
-## account the gene length.
+## At the gene level, the row data includes the gene ENTREZ ids, the gene
+## symbols and the sum of the reduced exons widths, which can be used for 
+## taking into account the gene length.
 rowData(rse_gene)
+
+## At the exon level, you can get the gene ENTREZ ids from the names of:
+# rowRanges(rse_exon)
 
 ## ----'browse'------------------------------------------------------------
 ## Browse the project at SRA
@@ -221,7 +226,8 @@ sample_info <- data.frame(
     group = sapply(geoinfo, function(x) { ifelse(grepl('uninduced', x$title),
         'uninduced', 'induced') }),
     gene_target = sapply(geoinfo, function(x) { strsplit(strsplit(x$title,
-        'targeting ')[[1]][2], ' gene')[[1]][1] })
+        'targeting ')[[1]][2], ' gene')[[1]][1] }),
+    cell.line = geochar$cell.line
 )
 
 ## ----'scale_counts'------------------------------------------------------
@@ -253,7 +259,7 @@ plotMA(res, main="DESeq2 results for SRP009615")
 #  library('regionReport')
 #  report <- DESeq2Report(dds, res = res, project = 'SRP009615',
 #      intgroup = c('group', 'gene_target'), outdir = '.',
-#      output = 'SRP009615-results')
+#      output = 'SRP009615-results', nBest = 10, nBestFeatures = 2)
 
 ## ----'make_report_real', echo = FALSE, results = 'hide'------------------
 library('regionReport')
@@ -273,12 +279,27 @@ writeLines(new, 'SRP009615-results-template.Rmd')
 ## Now create the report
 report <- DESeq2Report(dds, res = res, project = 'SRP009615',
     intgroup = c('group', 'gene_target'), outdir = '.',
-    output = 'SRP009615-results', device = 'png', template = 'SRP009615-results-template.Rmd')
+    output = 'SRP009615-results', device = 'png', template = 'SRP009615-results-template.Rmd', nBest = 10, nBestFeatures = 2)
     
 ## Clean up
 file.remove('SRP009615-results-template.Rmd')
 
-## ----'define_ers'--------------------------------------------------------
+## ----'geneSymbols'-------------------------------------------------------
+## Load required library
+library('org.Hs.eg.db')
+
+## Extract ENTREZ gene ids
+entrez <- names(recount_genes)
+
+## Find the gene information we are interested in
+gene_info <- select(org.Hs.eg.db, entrez, c('ENTREZID', 'GENENAME', 'SYMBOL'),
+    'ENTREZID')
+
+## Explore part of the results
+dim(gene_info)
+head(gene_info)
+
+## ----'define_ers', eval = !windowsFlag-----------------------------------
 ## Define expressed regions for study SRP009615, only for chromosome Y
 regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
     maxClusterGap = 3000L)
@@ -286,7 +307,7 @@ regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L,
 ## Briefly explore the resulting regions
 regions
 
-## ----'compute_covMat'----------------------------------------------------
+## ----'compute_covMat', eval = !windowsFlag-------------------------------
 ## Compute coverage matrix for study SRP009615, only for chromosome Y
 system.time( coverageMatrix <- coverage_matrix('SRP009615', 'chrY', regions) )
 
@@ -294,11 +315,11 @@ system.time( coverageMatrix <- coverage_matrix('SRP009615', 'chrY', regions) )
 dim(coverageMatrix)
 head(coverageMatrix)
 
-## ----'to_integer'--------------------------------------------------------
+## ----'to_integer', eval = !windowsFlag-----------------------------------
 ## Round the coverage matrix to integers
 covMat <- round(coverageMatrix, 0)
 
-## ----'phenoData'---------------------------------------------------------
+## ----'phenoData', eval = !windowsFlag------------------------------------
 ## Get phenotype data for study SRP009615
 pheno_url <- download_study(project = project_info$project, type = 'phenotype',
     download = FALSE)
@@ -314,18 +335,18 @@ pheno <- cbind(pheno, sample_info[m, 2:3])
 ## Explore the phenotype data a little bit
 head(pheno)
 
-## ----'ers_dds'-----------------------------------------------------------
+## ----'ers_dds', eval = !windowsFlag--------------------------------------
 ## Build a DESeqDataSet
 dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
     design =  ~ group + gene_target)
 
-## ----'de_analysis_ers'---------------------------------------------------
+## ----'de_analysis_ers', eval = !windowsFlag------------------------------
 ## Perform differential expression analysis with DESeq2 at the ER-level
 dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target,
     fitType = 'local')
 res_ers <- results(dds_ers)
 
-## ----'ma_plot_ers'-------------------------------------------------------
+## ----'ma_plot_ers', eval = !windowsFlag----------------------------------
 ## Explore results
 plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
 
@@ -378,10 +399,10 @@ session_info()
 #  
 #  ## Genes/exons
 #  library('GenomicRanges')
-#  load('../../runs/recount2/genes/ucsc-knowngene-hg38-exons.Rdata')
+#  load('../../recount-website/genes/ucsc-knowngene-hg38-exons.Rdata')
 #  recount_exons <- exons
 #  save(recount_exons, file = '../data/recount_exons.RData')
-#  load('../../runs/recount2/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
+#  load('../../recount-website/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
 #  recount_genes <- genes
 #  save(recount_genes, file = '../data/recount_genes.RData', compress = 'xz')
 #  
@@ -413,6 +434,11 @@ session_info()
 #  save(rse_gene_SRP009615, file = '../data/rse_gene_SRP009615.RData',
 #      compress = 'xz')
 #  unlink('rse_gene.Rdata')
+
+## ----'cleanup', echo = FALSE------------------------------------------------------------------------------------------
+## Clean up
+unlink('SRP009615', recursive = TRUE)
+unlink('')
 
 ## ----vignetteBiblio, results = 'asis', echo = FALSE, warning = FALSE--------------------------------------------------
 ## Print bibliography

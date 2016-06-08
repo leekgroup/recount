@@ -33,6 +33,7 @@ cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
 
 ## Write bibliography information
 bibs <- c(
+    AnnotationDbi = citation('AnnotationDbi'),
     BiocParallel = citation('BiocParallel'),
     BiocStyle = citation('BiocStyle'),
     derfinder = citation('derfinder')[1], 
@@ -45,6 +46,7 @@ bibs <- c(
     IRanges = citation('IRanges'),
     knitcitations = citation('knitcitations'),
     knitr = citation('knitr')[3],
+    org.Hs.eg.db = citation('org.Hs.eg.db'),
     R = citation(),
     RCurl = citation('RCurl'),
     regionReport = citation('regionReport'),
@@ -220,6 +222,8 @@ project_info <- abstract_search('GSE32465')
 project_info
 ```
 
+## Download data
+
 Now that we have a study that we are interested in, we can download the _RangedSummarizedExperiment_ object (see `r Biocpkg('SummarizedExperiment')`) with the data summarized at the gene level. The function `download_study()` helps us do this. If you are interested on how the annotation was defined, check `reproduce_ranges()`.
 
 ```{r 'download'}
@@ -238,11 +242,16 @@ rse_gene
 ## This is the sample phenotype data provided by the recount project
 colData(rse_gene)
 
-## At the gene level, the row data includes the names of the genes and
-## the sum of the reduced exons widths, which can be used for taking into
-## account the gene length.
+## At the gene level, the row data includes the gene ENTREZ ids, the gene
+## symbols and the sum of the reduced exons widths, which can be used for 
+## taking into account the gene length.
 rowData(rse_gene)
+
+## At the exon level, you can get the gene ENTREZ ids from the names of:
+# rowRanges(rse_exon)
 ```
+
+## Finding phenotype information
 
 Once we have identified the study of interest, we can use the `browse_study()` function to browse the study at the SRA website.
 
@@ -250,6 +259,8 @@ Once we have identified the study of interest, we can use the `browse_study()` f
 ## Browse the project at SRA
 browse_study(project_info$project)
 ```
+
+
 
 The SRA website includes an _Experiments_ link which further describes each of the samples. From the information available for [SRP009615 at NCBI](http://www.ncbi.nlm.nih.gov/sra/?term=SRP009615) we have some further sample information that we can save for use in our differential expression analysis. We can get some of this information from [GEO](http://www.ncbi.nlm.nih.gov/geo/). The function `find_geo()` finds the [GEO](http://www.ncbi.nlm.nih.gov/geo/) accession id for a given SRA run accession id, which we can then use with `geo_info()` and `geo_characteristics()` to parse this information.
 
@@ -280,9 +291,12 @@ sample_info <- data.frame(
     group = sapply(geoinfo, function(x) { ifelse(grepl('uninduced', x$title),
         'uninduced', 'induced') }),
     gene_target = sapply(geoinfo, function(x) { strsplit(strsplit(x$title,
-        'targeting ')[[1]][2], ' gene')[[1]][1] })
+        'targeting ')[[1]][2], ' gene')[[1]][1] }),
+    cell.line = geochar$cell.line
 )
 ```
+
+## DE analysis
 
 The [recount project](https://jhubiostatistics.shinyapps.io/recount/) records the sum of the base level coverage for each gene (or exon). These raw counts have to be scaled and there are several ways in which you can choose to do so. The function `scale_counts()` helps you scale them in a way that is tailored to [Rail-RNA](http://rail.bio) output.
 
@@ -323,6 +337,7 @@ We can now use functions from `r Biocpkg('DESeq2')` to explore the results. For 
 plotMA(res, main="DESeq2 results for SRP009615")
 ```
 
+## Report results
 
 We can also use the `r Biocpkg('regionReport')` package to generate interactive HTML reports exploring the `r Biocpkg('DESeq2')` results (or `r Biocpkg('edgeR')` results if you used that package).
 
@@ -333,7 +348,7 @@ We can also use the `r Biocpkg('regionReport')` package to generate interactive 
 library('regionReport')
 report <- DESeq2Report(dds, res = res, project = 'SRP009615',
     intgroup = c('group', 'gene_target'), outdir = '.',
-    output = 'SRP009615-results')
+    output = 'SRP009615-results', nBest = 10, nBestFeatures = 2)
 ```
 
 ```{r 'make_report_real', echo = FALSE, results = 'hide'}
@@ -354,13 +369,35 @@ writeLines(new, 'SRP009615-results-template.Rmd')
 ## Now create the report
 report <- DESeq2Report(dds, res = res, project = 'SRP009615',
     intgroup = c('group', 'gene_target'), outdir = '.',
-    output = 'SRP009615-results', device = 'png', template = 'SRP009615-results-template.Rmd')
+    output = 'SRP009615-results', device = 'png', template = 'SRP009615-results-template.Rmd', nBest = 10, nBestFeatures = 2)
     
 ## Clean up
 file.remove('SRP009615-results-template.Rmd')
 ```
 
 You can view the final report [here](SRP009615-results.html).
+
+
+## Finding gene names
+
+The gene ENTREZ ids are included in several objects in `recount`. With these ids you can find the gene symbols, gene names and other information. The `r Biocpkg('org.Hs.eg.db')` is useful for finding this information and the following code shows how to get the gene names and symbols.
+
+```{r 'geneSymbols'}
+## Load required library
+library('org.Hs.eg.db')
+
+## Extract ENTREZ gene ids
+entrez <- names(recount_genes)
+
+## Find the gene information we are interested in
+gene_info <- select(org.Hs.eg.db, entrez, c('ENTREZID', 'GENENAME', 'SYMBOL'),
+    'ENTREZID')
+
+## Explore part of the results
+dim(gene_info)
+head(gene_info)
+```
+
 
 # Sample `r Biocpkg('derfinder')` analysis
 
@@ -370,7 +407,7 @@ The [recount project](https://jhubiostatistics.shinyapps.io/recount/) also hosts
 
 For an annotation-agnostic differential expression analysis, we first need to define the regions of interest. With `r Biocpkg('recount')` we can do so using the `expressed_regions()` function as shown below for the same study we studied earlier.
 
-```{r 'define_ers'}
+```{r 'define_ers', eval = !windowsFlag}
 ## Define expressed regions for study SRP009615, only for chromosome Y
 regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
     maxClusterGap = 3000L)
@@ -385,7 +422,7 @@ Once the regions have been defined, you can export them into a BED file using `r
 
 Having defined the expressed regions, we can now compute a coverage matrix for these regions. We can do so using the function `coverage_matrix()` from `r Biocpkg('recount')` as shown below.
 
-```{r 'compute_covMat'}
+```{r 'compute_covMat', eval = !windowsFlag}
 ## Compute coverage matrix for study SRP009615, only for chromosome Y
 system.time( coverageMatrix <- coverage_matrix('SRP009615', 'chrY', regions) )
 
@@ -396,7 +433,7 @@ head(coverageMatrix)
 
 The resulting count matrix has one row per region and one column per sample. The counts correspond to the number (or fraction) of reads overlapping the regions. For some differential expression methods, you might have to round this matrix into integers. We'll use `r Biocpkg('DESeq2')` to identify which expressed regions are differentially expressed.
 
-```{r 'to_integer'}
+```{r 'to_integer', eval = !windowsFlag}
 ## Round the coverage matrix to integers
 covMat <- round(coverageMatrix, 0)
 ```
@@ -406,7 +443,7 @@ covMat <- round(coverageMatrix, 0)
 
 We first need to get some phenotype information for these samples similar to the first analysis we did. We can get this data using `download_study()`.
 
-```{r 'phenoData'}
+```{r 'phenoData', eval = !windowsFlag}
 ## Get phenotype data for study SRP009615
 pheno_url <- download_study(project = project_info$project, type = 'phenotype',
     download = FALSE)
@@ -425,18 +462,18 @@ head(pheno)
 
 Now that we have the necessary data, we can construct a `DESeqDataSet` object using the function `DESeqDataSetFromMatrix()` from `r Biocpkg('DESeq2')`.
 
-```{r 'ers_dds'}
+```{r 'ers_dds', eval = !windowsFlag}
 ## Build a DESeqDataSet
 dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
     design =  ~ group + gene_target)
 ```
 
 
-## `r Biocpkg('DESeq2')` 
+## `r Biocpkg('DESeq2')` analysis
 
 With the `DESeqDataSet` object in place, we can then use the function `DESeq()` from `r Biocpkg('DESeq2')` to perform the differential expression analysis (between groups) as shown below.
 
-```{r 'de_analysis_ers'}
+```{r 'de_analysis_ers', eval = !windowsFlag}
 ## Perform differential expression analysis with DESeq2 at the ER-level
 dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target,
     fitType = 'local')
@@ -445,7 +482,7 @@ res_ers <- results(dds_ers)
 
 We can then visually explore the results, like we did before.
 
-```{r 'ma_plot_ers'}
+```{r 'ma_plot_ers', eval = !windowsFlag}
 ## Explore results
 plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
 ```
@@ -501,6 +538,7 @@ citation('recount')
 This package was made possible thanks to:
 
 * R `r citep(bib[['R']])`
+* `r Biocpkg('AnnotationDbi')` `r citep(bib[['AnnotationDbi']])`
 * `r Biocpkg('BiocParallel')` `r citep(bib[['BiocParallel']])`
 * `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
 * `r Biocpkg('derfinder')` `r citep(bib[['derfinder']])`
@@ -511,6 +549,7 @@ This package was made possible thanks to:
 * `r Biocpkg('GenomicRanges')` `r citep(bib[['GenomicRanges']])`
 * `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`
 * `r CRANpkg('knitr')` `r citep(bib[['knitr']])`
+* `r Biocpkg('org.Hs.eg.db')` `r citep(bib[['org.Hs.eg.db']])`
 * `r CRANpkg('RCurl')` `r citep(bib[['RCurl']])`
 * `r Biocpkg('rtracklayer')` `r citep(bib[['rtracklayer']])`
 * `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])`
@@ -566,10 +605,10 @@ session_info()
 
 ## Genes/exons
 library('GenomicRanges')
-load('../../runs/recount2/genes/ucsc-knowngene-hg38-exons.Rdata')
+load('../../recount-website/genes/ucsc-knowngene-hg38-exons.Rdata')
 recount_exons <- exons
 save(recount_exons, file = '../data/recount_exons.RData')
-load('../../runs/recount2/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
+load('../../recount-website/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
 recount_genes <- genes
 save(recount_genes, file = '../data/recount_genes.RData', compress = 'xz')
 
@@ -602,6 +641,13 @@ save(rse_gene_SRP009615, file = '../data/rse_gene_SRP009615.RData',
     compress = 'xz')
 unlink('rse_gene.Rdata')
 ```
+
+```{r 'cleanup', echo = FALSE}
+## Clean up
+unlink('SRP009615', recursive = TRUE)
+unlink('')
+```
+
 
 
 
