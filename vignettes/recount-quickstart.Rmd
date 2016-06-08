@@ -220,6 +220,8 @@ project_info <- abstract_search('GSE32465')
 project_info
 ```
 
+## Download data
+
 Now that we have a study that we are interested in, we can download the _RangedSummarizedExperiment_ object (see `r Biocpkg('SummarizedExperiment')`) with the data summarized at the gene level. The function `download_study()` helps us do this. If you are interested on how the annotation was defined, check `reproduce_ranges()`.
 
 ```{r 'download'}
@@ -247,12 +249,16 @@ rowData(rse_gene)
 # rowRanges(rse_exon)
 ```
 
+## Finding phenotype information
+
 Once we have identified the study of interest, we can use the `browse_study()` function to browse the study at the SRA website.
 
 ```{r 'browse'}
 ## Browse the project at SRA
 browse_study(project_info$project)
 ```
+
+
 
 The SRA website includes an _Experiments_ link which further describes each of the samples. From the information available for [SRP009615 at NCBI](http://www.ncbi.nlm.nih.gov/sra/?term=SRP009615) we have some further sample information that we can save for use in our differential expression analysis. We can get some of this information from [GEO](http://www.ncbi.nlm.nih.gov/geo/). The function `find_geo()` finds the [GEO](http://www.ncbi.nlm.nih.gov/geo/) accession id for a given SRA run accession id, which we can then use with `geo_info()` and `geo_characteristics()` to parse this information.
 
@@ -283,9 +289,12 @@ sample_info <- data.frame(
     group = sapply(geoinfo, function(x) { ifelse(grepl('uninduced', x$title),
         'uninduced', 'induced') }),
     gene_target = sapply(geoinfo, function(x) { strsplit(strsplit(x$title,
-        'targeting ')[[1]][2], ' gene')[[1]][1] })
+        'targeting ')[[1]][2], ' gene')[[1]][1] }),
+    cell.line = geochar$cell.line
 )
 ```
+
+## DE analysis
 
 The [recount project](https://jhubiostatistics.shinyapps.io/recount/) records the sum of the base level coverage for each gene (or exon). These raw counts have to be scaled and there are several ways in which you can choose to do so. The function `scale_counts()` helps you scale them in a way that is tailored to [Rail-RNA](http://rail.bio) output.
 
@@ -326,6 +335,7 @@ We can now use functions from `r Biocpkg('DESeq2')` to explore the results. For 
 plotMA(res, main="DESeq2 results for SRP009615")
 ```
 
+## Report results
 
 We can also use the `r Biocpkg('regionReport')` package to generate interactive HTML reports exploring the `r Biocpkg('DESeq2')` results (or `r Biocpkg('edgeR')` results if you used that package).
 
@@ -364,6 +374,28 @@ file.remove('SRP009615-results-template.Rmd')
 ```
 
 You can view the final report [here](SRP009615-results.html).
+
+
+## Finding gene names
+
+The gene ENTREZ ids are included in several objects in `recount`. With these ids you can find the gene symbols, gene names and other information. The `r Biocpkg('org.Hs.eg.db')` is useful for finding this information and the following code shows how to get the gene names and symbols.
+
+```{r 'geneSymbols'}
+## Load required library
+library('org.Hs.eg.db')
+
+## Extract ENTREZ gene ids
+entrez <- names(recount_genes)
+
+## Find the gene information we are interested in
+gene_info <- select(org.Hs.eg.db, entrez, c('ENTREZID', 'GENENAME', 'SYMBOL'),
+    'ENTREZID')
+
+## Explore part of the results
+dim(gene_info)
+head(gene_info)
+```
+
 
 # Sample `r Biocpkg('derfinder')` analysis
 
