@@ -348,7 +348,7 @@ We can also use the `r Biocpkg('regionReport')` package to generate interactive 
 library('regionReport')
 report <- DESeq2Report(dds, res = res, project = 'SRP009615',
     intgroup = c('group', 'gene_target'), outdir = '.',
-    output = 'SRP009615-results')
+    output = 'SRP009615-results', nBest = 10, nBestFeatures = 2)
 ```
 
 ```{r 'make_report_real', echo = FALSE, results = 'hide'}
@@ -369,7 +369,7 @@ writeLines(new, 'SRP009615-results-template.Rmd')
 ## Now create the report
 report <- DESeq2Report(dds, res = res, project = 'SRP009615',
     intgroup = c('group', 'gene_target'), outdir = '.',
-    output = 'SRP009615-results', device = 'png', template = 'SRP009615-results-template.Rmd')
+    output = 'SRP009615-results', device = 'png', template = 'SRP009615-results-template.Rmd', nBest = 10, nBestFeatures = 2)
     
 ## Clean up
 file.remove('SRP009615-results-template.Rmd')
@@ -641,6 +641,13 @@ save(rse_gene_SRP009615, file = '../data/rse_gene_SRP009615.RData',
     compress = 'xz')
 unlink('rse_gene.Rdata')
 ```
+
+```{r 'cleanup', echo = FALSE}
+## Clean up
+unlink('SRP009615', recursive = TRUE)
+unlink('')
+```
+
 
 
 
