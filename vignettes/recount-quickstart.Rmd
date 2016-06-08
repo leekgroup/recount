@@ -240,12 +240,12 @@ rse_gene
 ## This is the sample phenotype data provided by the recount project
 colData(rse_gene)
 
-## At the gene level, the row data includes the names of the genes and
-## the sum of the reduced exons widths, which can be used for taking into
-## account the gene length.
+## At the gene level, the row data includes the gene ENTREZ ids, the gene
+## symbols and the sum of the reduced exons widths, which can be used for 
+## taking into account the gene length.
 rowData(rse_gene)
 
-## At the exon level, you can get the gene ids from the names of:
+## At the exon level, you can get the gene ENTREZ ids from the names of:
 # rowRanges(rse_exon)
 ```
 
@@ -601,10 +601,10 @@ session_info()
 
 ## Genes/exons
 library('GenomicRanges')
-load('../../runs/recount2/genes/ucsc-knowngene-hg38-exons.Rdata')
+load('../../recount-website/genes/ucsc-knowngene-hg38-exons.Rdata')
 recount_exons <- exons
 save(recount_exons, file = '../data/recount_exons.RData')
-load('../../runs/recount2/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
+load('../../recount-website/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
 recount_genes <- genes
 save(recount_genes, file = '../data/recount_genes.RData', compress = 'xz')
 

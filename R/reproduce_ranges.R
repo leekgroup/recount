@@ -52,6 +52,7 @@ reproduce_ranges <- function(level = 'gene') {
     .load_install('GenomicFeatures')
     .load_install('GenomicRanges')
     .load_install('TxDb.Hsapiens.UCSC.hg38.knownGene')
+    
 
     ## Get genes with default option single.strand.genes.only = TRUE
     genes <- GenomicFeatures::genes(
@@ -74,6 +75,14 @@ reproduce_ranges <- function(level = 'gene') {
         ## Add length of reduced exons by gene
         genes$bp_length <- sum(GenomicRanges::width(exons))
         
+        ## Add gene symbol
+        .load_install('org.Hs.eg.db')
+        entrez <- names(genes)
+        gene_info <- select(org.Hs.eg.db, entrez, c('ENTREZID', 'SYMBOL'),
+            'ENTREZID')
+        genes$symbol <- gene_info$SYMBOL
+        
+        ## Done
         return(genes)
     }
 }
