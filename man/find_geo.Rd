@@ -4,13 +4,18 @@
 \alias{find_geo}
 \title{Find the GEO accession id for a given SRA run}
 \usage{
-find_geo(run, verbose = FALSE)
+find_geo(run, verbose = FALSE, sleep = 1/2)
 }
 \arguments{
 \item{run}{A character vector of length 1 with the SRA run accession id.}
 
 \item{verbose}{Whether to print a message for the run. Useful when looping
 over a larger number of SRA run ids.}
+
+\item{sleep}{The number of seconds (or fraction) to wait before downloading
+data using \link[GEOquery]{getGEO}. This is important if you are looking over
+\code{geo_info()} given the constraints published at
+http://www.ncbi.nlm.nih.gov/books/NBK25497/.}
 }
 \value{
 The GEO accession id for the corresponding sample.

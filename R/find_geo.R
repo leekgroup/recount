@@ -6,6 +6,10 @@
 #' @param run A character vector of length 1 with the SRA run accession id.
 #' @param verbose Whether to print a message for the run. Useful when looping
 #' over a larger number of SRA run ids.
+#' @param sleep The number of seconds (or fraction) to wait before downloading
+#' data using \link[GEOquery]{getGEO}. This is important if you are looking over
+#' \code{geo_info()} given the constraints published at
+#' http://www.ncbi.nlm.nih.gov/books/NBK25497/.
 #'
 #' @return The GEO accession id for the corresponding sample.
 #'
@@ -23,11 +27,12 @@
 #' find_geo('SRX110461')
 #'
 
-find_geo <- function(run, verbose = FALSE) {
+find_geo <- function(run, verbose = FALSE, sleep = 1/2) {
     ## Check inputs
     stopifnot(is.character(run) & length(run) == 1)
     
     if(verbose) message(paste(Sys.time(), 'finding GEO accession id for SRA run', run))
+    Sys.sleep(sleep)
     
     .load_install('XML')
     html <- XML::htmlTreeParse(paste0(
@@ -38,6 +43,7 @@ find_geo <- function(run, verbose = FALSE) {
         XML::xmlValue)
     
     if(length(id) == 0) return(NA)
+    Sys.sleep(sleep)
     
     html2 <- XML::htmlTreeParse(paste0(
         'http://www.ncbi.nlm.nih.gov/gds?LinkName=sra_gds&from_uid=', id),
