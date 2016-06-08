@@ -78,8 +78,8 @@ reproduce_ranges <- function(level = 'gene') {
         ## Add gene symbol
         .load_install('org.Hs.eg.db')
         entrez <- names(genes)
-        gene_info <- select(org.Hs.eg.db, entrez, c('ENTREZID', 'SYMBOL'),
-            'ENTREZID')
+        gene_info <- AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db, entrez,
+            c('ENTREZID', 'SYMBOL'), 'ENTREZID')
         genes$symbol <- gene_info$SYMBOL
         
         ## Done

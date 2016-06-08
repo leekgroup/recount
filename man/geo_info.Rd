@@ -21,7 +21,7 @@ http://www.ncbi.nlm.nih.gov/books/NBK25497/.}
 \item{getGPL}{This argument is passed to \link[GEOquery]{getGEO} and is set
 to \code{FALSE} by default to speed up the process.}
 
-\item{...}{Additional arguments passed to \link[GEOquery]{geoGEO}. For
+\item{...}{Additional arguments passed to \link[GEOquery]{getGEO}. For
 example, you might want to specify the \code{destdir} argument.}
 }
 \value{
