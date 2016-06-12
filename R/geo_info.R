@@ -36,7 +36,8 @@ geo_info <- function(geoid, verbose = FALSE, sleep = 1/2, getGPL = FALSE, ...) {
     .load_install('GEOquery')
     .load_install('IRanges')
     
-    if(verbose) message(paste(Sys.time(), 'finding GEO information for GEO accession id', geoid))
+    if(verbose) message(paste(Sys.time(),
+        'finding GEO information for GEO accession id', geoid))
     
     Sys.sleep(sleep)
     
@@ -66,7 +67,8 @@ geo_info <- function(geoid, verbose = FALSE, sleep = 1/2, getGPL = FALSE, ...) {
     ## Clean up the header information
     df <- data.frame(
         pattern = c('characteristics_ch1', 'data_processing', 'contact_',
-            'extract_', 'library_', 'relation', 'series_', 'supplementary_file_'),
+            'extract_', 'library_', 'relation', 'series_',
+            'supplementary_file_'),
         varname = c('characteristics', 'data_processing', 'contact', 'extract',
             'library', 'relation', 'series', 'supplementary_file'),
         stringsAsFactors = FALSE
