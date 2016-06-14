@@ -102,7 +102,8 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     }
         
     ## Read pheno data
-    pheno <- read.table(phenoFile, header = TRUE, stringsAsFactors = FALSE)
+    pheno <- read.table(phenoFile, header = TRUE, stringsAsFactors = FALSE,
+        sep = '\t')
     
     ## Get sample names
     m <- match(url_table$file_name[samples_i], paste0(pheno$run, '.bw'))
@@ -122,6 +123,7 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     ## Split regions into chunks
     nChunks <- length(regions) %/% chunksize
     if(length(regions) %% chunksize > 0) nChunks <- nChunks + 1
+    names(regions) <- seq_len(length(regions))
     
     ## Split regions into chunks
     if(nChunks == 1) {

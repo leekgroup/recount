@@ -102,3 +102,11 @@ if(!.Platform$OS.type == 'windows') {
         expect_equal(nrow(metadata), 50099)
     })
 }
+
+phenoFile <- download_study(project = 'SRP012289', type = 'phenotype',
+    download = FALSE)
+pheno <- read.table(phenoFile, header = TRUE, stringsAsFactors = FALSE,
+    sep = '\t')
+test_that('Correct phenotype information', {
+    expect_equal(pheno$auc, 159080954)
+})
