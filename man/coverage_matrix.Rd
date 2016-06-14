@@ -54,6 +54,14 @@ Given a set of genomic regions as created by \link{expressed_regions}, this
 function computes the coverage matrix for a library size of 40 million 100 bp
 reads for a given SRA study.
 }
+\details{
+When using \code{outdir = NULL} the information will be accessed
+from the web on the fly. If you encounter internet access problems, it might
+be best to first download the BigWig files using \link{download_study}. This
+might be the best option if you are accessing all chromosomes for a given
+project and/or are thinking of using different sets of \code{regions} (for
+example, from different cutoffs applied to \link{expressed_regions}).
+}
 \examples{
 
 if(!.Platform$OS.type == 'windows') {

@@ -23,6 +23,13 @@
 #' numbers in the cells are the counts (number of reads, or fraction in some
 #' cases) overlapping the region.
 #'
+#' @details When using \code{outdir = NULL} the information will be accessed
+#' from the web on the fly. If you encounter internet access problems, it might
+#' be best to first download the BigWig files using \link{download_study}. This
+#' might be the best option if you are accessing all chromosomes for a given
+#' project and/or are thinking of using different sets of \code{regions} (for
+#' example, from different cutoffs applied to \link{expressed_regions}).
+#'
 #' @author Leonardo Collado-Torres
 #' @export
 #'
