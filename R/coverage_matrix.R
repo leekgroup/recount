@@ -119,6 +119,7 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     ## Split regions into chunks
     if(nChunks == 1) {
         regs_split <- list(regions)
+        names(regs_split) <- '1'
     } else {
         regs_split <- split(regions, cut(seq_len(length(regions)),
             breaks = nChunks, labels = FALSE))
