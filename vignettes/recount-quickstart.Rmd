@@ -50,13 +50,13 @@ bibs <- c(
     R = citation(),
     RCurl = citation('RCurl'),
     regionReport = citation('regionReport'),
+    rentrez = citation('rentrez'),
     rmarkdown = citation('rmarkdown'),
     rtracklayer = citation('rtracklayer'),
     S4Vectors = citation('S4Vectors'),
     SummarizedExperiment = citation('SummarizedExperiment'),
     testthat = citation('testthat'),
-    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene'),
-    XML = citation('XML')
+    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene')
 )
 
 write.bibtex(bibs,
@@ -563,13 +563,14 @@ This package was made possible thanks to:
 * `r CRANpkg('knitr')` `r citep(bib[['knitr']])`
 * `r Biocpkg('org.Hs.eg.db')` `r citep(bib[['org.Hs.eg.db']])`
 * `r CRANpkg('RCurl')` `r citep(bib[['RCurl']])`
+* `r CRANpkg('rentrez')` `r citep(bib[['rentrez']])`
 * `r Biocpkg('rtracklayer')` `r citep(bib[['rtracklayer']])`
 * `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])`
 * `r Biocpkg('S4Vectors')` `r citep(bib[['S4Vectors']])`
 * `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])`
 * `r CRANpkg('testthat')` `r citep(bib[['testthat']])`
 * `r Biocannopkg('TxDb.Hsapiens.UCSC.hg138.knownGene')` `r citep(bib[['TxDb.Hsapiens.UCSC.hg38.knownGene']])`
-* `r CRANpkg('XML')` `r citep(bib[['XML']])`
+
 
 Code for creating the vignette
 

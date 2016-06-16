@@ -34,24 +34,30 @@ find_geo <- function(run, verbose = FALSE, sleep = 1/2) {
     if(verbose) message(paste(Sys.time(), 'finding GEO accession id for SRA run', run))
     Sys.sleep(sleep)
     
-    .load_install('XML')
-    html <- XML::htmlTreeParse(paste0(
-    'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&term=',
-        run), useInternalNodes = TRUE)
-    if(is.null(html)) return(NA)
-    id <- XML::xpathSApply(html, '/html/body/esearchresult/idlist/id',
-        XML::xmlValue)
+    .load_install('rentrez')
     
-    if(length(id) == 0) return(NA)
-    Sys.sleep(sleep)
+    ## Find uid first
+    uid <- rentrez::entrez_search('sra', term = run)
+    if(length(uid$ids) == 0) return(NA)
     
-    html2 <- XML::htmlTreeParse(paste0(
-        'http://www.ncbi.nlm.nih.gov/gds?LinkName=sra_gds&from_uid=', id),
-        useInternalNodes = TRUE)
-    if(is.null(html2)) return(NA)
+    ## Find linking ids
+    linking <- rentrez::entrez_link('sra', id = uid$ids, db = 'gds')
+    if(length(linking$links$sra_gds) == 0) return(NA)
+        
+    ## Find GSM
+    foundGSM <- FALSE
+    for(i in linking$links$sra_gds) {
+        gsm <- rentrez::entrez_summary(db = 'gds', i)$accession
+        if(grepl('GSM', gsm)) {
+            foundGSM <- TRUE
+            break
+        }
+    }
     
-    res <- XML::xpathSApply(html2, "//div[@class='resc']//dd", XML::xmlValue)
-    gsm <- res[grep('GSM', res)]
-    if(length(gsm) == 0) return(NA)
-    return(gsm)
+    ## Finish
+    if(foundGSM) {
+        return(gsm)
+    } else {
+        return(NA)
+    }
 }
