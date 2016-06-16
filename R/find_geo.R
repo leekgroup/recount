@@ -30,6 +30,7 @@
 find_geo <- function(run, verbose = FALSE, sleep = 1/2) {
     ## Check inputs
     stopifnot(is.character(run) & length(run) == 1)
+    if(run == '') return(NA)
     
     if(verbose) message(paste(Sys.time(), 'finding GEO accession id for SRA run', run))
     Sys.sleep(sleep)
