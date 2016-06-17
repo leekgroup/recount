@@ -8,16 +8,15 @@
 #'
 #' @param geoid A character vector of length 1 with the GEO accession id for
 #' a given sample.
-#' @param verbose If \code{TRUE}, messages from \link[GEOquery]{getGEO} and the
-#' \code{geoid} will be shown. Otherwise they are suppressed.
+#' @param verbose If \code{TRUE} the \code{geoid} will be shown. 
 #' @param sleep The number of seconds (or fraction) to wait before downloading
 #' data using \link[GEOquery]{getGEO}. This is important if you are looking over
 #' \code{geo_info()} given the constraints published at
 #' http://www.ncbi.nlm.nih.gov/books/NBK25497/.
 #' @param getGPL This argument is passed to \link[GEOquery]{getGEO} and is set
 #' to \code{FALSE} by default to speed up the process.
-#' @param ... Additional arguments passed to \link[GEOquery]{getGEO}. For
-#' example, you might want to specify the \code{destdir} argument.
+#' @param destidir This argument is passed to \link[GEOquery]{getGEO}.
+#' @param ... Additional arguments passed to \link[GEOquery]{getGEO}.
 #'
 #' @author Leonardo Collado-Torres, Andrew Jaffe
 #' @export
@@ -26,7 +25,8 @@
 #' geo_info('GSM836270')
 #'
 
-geo_info <- function(geoid, verbose = FALSE, sleep = 1/2, getGPL = FALSE, ...) {
+geo_info <- function(geoid, verbose = FALSE, sleep = 1/2, getGPL = FALSE,
+    destdir = tempdir(), ...) {
     if(is.na(geoid)) return(NULL)
     
     ## Check inputs
@@ -42,12 +42,25 @@ geo_info <- function(geoid, verbose = FALSE, sleep = 1/2, getGPL = FALSE, ...) {
     Sys.sleep(sleep)
     
     ## Get data from GEO
-    if(verbose) {
-        geo <- GEOquery::getGEO(geoid, getGPL = getGPL, ...)
-    } else {
-        geo <- suppressMessages(GEOquery::getGEO(geoid, getGPL = getGPL, ...))
-    }
+    geo <- tryCatch(
+        GEOquery::getGEO(geoid, getGPL = getGPL, destdir = destdir, ...), 
+        error = function(e) {
+            soft <- paste0(geoid, '.soft')
+            soft_file <- file.path(destdir, soft)
+            if(any(grepl('private', readLines(soft_file)))) {
+                message(paste(geoid, 'is currently private'))
+                return(NA)
+            } else if (any(grepl('blocked', readLines(soft_file)))) {
+                warning(paste('It seems like your IP access is blocked. Please check the file', soft_file, 'for more details.'))
+                return(NA)
+            } else {
+                stop(e)
+            }
+        }
+    )
 	
+    ## Return and empty DataFrame if there was an issue with getGEO()
+    if(!is(geo, 'GSM')) return(S4Vectors::DataFrame())
     
     ## Extract the header information
 	result <- geo@header

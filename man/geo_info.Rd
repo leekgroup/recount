@@ -4,14 +4,14 @@
 \alias{geo_info}
 \title{Extract information from GEO for a given sample}
 \usage{
-geo_info(geoid, verbose = FALSE, sleep = 1/2, getGPL = FALSE, ...)
+geo_info(geoid, verbose = FALSE, sleep = 1/2, getGPL = FALSE,
+  destdir = tempdir(), ...)
 }
 \arguments{
 \item{geoid}{A character vector of length 1 with the GEO accession id for
 a given sample.}
 
-\item{verbose}{If \code{TRUE}, messages from \link[GEOquery]{getGEO} and the
-\code{geoid} will be shown. Otherwise they are suppressed.}
+\item{verbose}{If \code{TRUE} the \code{geoid} will be shown.}
 
 \item{sleep}{The number of seconds (or fraction) to wait before downloading
 data using \link[GEOquery]{getGEO}. This is important if you are looking over
@@ -21,8 +21,9 @@ http://www.ncbi.nlm.nih.gov/books/NBK25497/.}
 \item{getGPL}{This argument is passed to \link[GEOquery]{getGEO} and is set
 to \code{FALSE} by default to speed up the process.}
 
-\item{...}{Additional arguments passed to \link[GEOquery]{getGEO}. For
-example, you might want to specify the \code{destdir} argument.}
+\item{...}{Additional arguments passed to \link[GEOquery]{getGEO}.}
+
+\item{destidir}{This argument is passed to \link[GEOquery]{getGEO}.}
 }
 \value{
 Returns a \link[S4Vectors]{DataFrame-class} with the information 
