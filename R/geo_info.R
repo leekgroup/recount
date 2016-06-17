@@ -39,7 +39,9 @@ geo_info <- function(geoid, verbose = FALSE, sleep = 1/2, getGPL = FALSE,
     if(verbose) message(paste(Sys.time(),
         'finding GEO information for GEO accession id', geoid))
     
-    Sys.sleep(sleep)
+    if(!file.exists(file.path(destdir, paste0(geoid, '.soft')))) {
+        Sys.sleep(sleep)
+    }
     
     ## Get data from GEO
     geo <- tryCatch(
