@@ -39,6 +39,7 @@ bibs <- c(
     derfinder = citation('derfinder')[1], 
     DESeq2 = citation('DESeq2'),
     devtools = citation('devtools'),
+    downloader = citation('downloader'),
     GEOquery = citation('GEOquery'),
     GenomeInfoDb = citation('GenomeInfoDb'),
     GenomicFeatures = citation('GenomicFeatures'),
@@ -552,6 +553,7 @@ This package was made possible thanks to:
 * `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
 * `r Biocpkg('derfinder')` `r citep(bib[['derfinder']])`
 * `r CRANpkg('devtools')` `r citep(bib[['devtools']])`
+* `r CRANpkg('downloader')` `r citep(bib[['downloader']])`
 * `r Biocpkg('GEOquery')` `r citep(bib[['GEOquery']])`
 * `r Biocpkg('GenomeInfoDb')` `r citep(bib[['GenomeInfoDb']])`
 * `r Biocpkg('GenomicFeatures')` `r citep(bib[['GenomicFeatures']])`

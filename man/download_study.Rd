@@ -5,7 +5,7 @@
 \title{Download data for a given SRA study id from the recount project}
 \usage{
 download_study(project, type = "rse-gene", outdir = project,
-  download = TRUE, method = "curl", extra = "-L", ...)
+  download = TRUE, ...)
 }
 \arguments{
 \item{project}{A character vector with one SRA study id.}
@@ -41,13 +41,7 @@ download_study(project, type = "rse-gene", outdir = project,
 
 \item{download}{Whether to download the files or just get the download urls.}
 
-\item{method}{This argument is passed to \link[utils]{download.file}. Given
-how the URLs work, it's best to use \code{method = 'curl'}.}
-
-\item{extra}{This argument is passed to \link[utils]{download.file}. It's
-useful for following redirects in URLs. See details for more information.}
-
-\item{...}{Additional arguments passed to \link[utils]{download.file}.}
+\item{...}{Additional arguments passed to \link[downloader]{download}.}
 }
 \value{
 Returns invisibly the URL(s) for the files that were downloaded.

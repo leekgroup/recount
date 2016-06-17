@@ -28,11 +28,13 @@ all_metadata <- function(subset = 'sra', verbose = TRUE) {
     stopifnot(subset %in% c('sra', 'gtex'))
     stopifnot(length(subset) == 1)
     
+    .load_install('downloader')
+    
     ## Download file
     metafile <- paste0('metadata_clean_', subset, '.Rdata')
     destfile <- file.path(tempdir(), metafile)
     if(verbose) message(paste(Sys.time(), 'downloading the metadata to', destfile))
-    download.file(paste0(
+    downloader::download(paste0(
         'https://github.com/leekgroup/recount-website/blob/master/metadata/',
         metafile, '?raw=true'), destfile = destfile) 
     load(destfile)
