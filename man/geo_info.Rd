@@ -21,9 +21,9 @@ http://www.ncbi.nlm.nih.gov/books/NBK25497/.}
 \item{getGPL}{This argument is passed to \link[GEOquery]{getGEO} and is set
 to \code{FALSE} by default to speed up the process.}
 
-\item{...}{Additional arguments passed to \link[GEOquery]{getGEO}.}
+\item{destdir}{This argument is passed to \link[GEOquery]{getGEO}.}
 
-\item{destidir}{This argument is passed to \link[GEOquery]{getGEO}.}
+\item{...}{Additional arguments passed to \link[GEOquery]{getGEO}.}
 }
 \value{
 Returns a \link[S4Vectors]{DataFrame-class} with the information 

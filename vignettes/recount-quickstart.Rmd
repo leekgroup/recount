@@ -65,9 +65,6 @@ bib <- read.bibtex('quickstartRef.bib')
 
 ## Assign short names
 names(bib) <- names(bibs)
-
-## Working on Windows?
-windowsFlag <- .Platform$OS.type == 'windows'
 ```
 
 Here is a very quick example of how to download a `RangedSummarizedExperiment` object with the gene counts for a 2 groups project (12 samples) with SRA study id [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615). The `RangedSummarizedExperiment` object is defined in the `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])` package and can be used for differential expression analysis with different packages. Here we show how to use `r Biocpkg('DESeq2')` `r citep(bib[['DESeq2']])` to perform the analysis.
@@ -419,7 +416,7 @@ The [recount project](https://jhubiostatistics.shinyapps.io/recount/) also hosts
 
 For an annotation-agnostic differential expression analysis, we first need to define the regions of interest. With `r Biocpkg('recount')` we can do so using the `expressed_regions()` function as shown below for the same study we studied earlier.
 
-```{r 'define_ers', eval = !windowsFlag}
+```{r 'define_ers', eval = .Platform$OS.type != 'windows'}
 ## Define expressed regions for study SRP009615, only for chromosome Y
 regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
     maxClusterGap = 3000L)
@@ -434,7 +431,7 @@ Once the regions have been defined, you can export them into a BED file using `r
 
 Having defined the expressed regions, we can now compute a coverage matrix for these regions. We can do so using the function `coverage_matrix()` from `r Biocpkg('recount')` as shown below.
 
-```{r 'compute_covMat', eval = !windowsFlag}
+```{r 'compute_covMat', eval = .Platform$OS.type != 'windows'}
 ## Compute coverage matrix for study SRP009615, only for chromosome Y
 system.time( coverageMatrix <- coverage_matrix('SRP009615', 'chrY', regions) )
 
@@ -445,7 +442,7 @@ head(coverageMatrix)
 
 The resulting count matrix has one row per region and one column per sample. The counts correspond to the number (or fraction) of reads overlapping the regions. For some differential expression methods, you might have to round this matrix into integers. We'll use `r Biocpkg('DESeq2')` to identify which expressed regions are differentially expressed.
 
-```{r 'to_integer', eval = !windowsFlag}
+```{r 'to_integer', eval = .Platform$OS.type != 'windows'}
 ## Round the coverage matrix to integers
 covMat <- round(coverageMatrix, 0)
 ```
@@ -455,7 +452,7 @@ covMat <- round(coverageMatrix, 0)
 
 We first need to get some phenotype information for these samples similar to the first analysis we did. We can get this data using `download_study()`.
 
-```{r 'phenoData', eval = !windowsFlag}
+```{r 'phenoData', eval = .Platform$OS.type != 'windows'}
 ## Get phenotype data for study SRP009615
 pheno_url <- download_study(project = project_info$project, type = 'phenotype',
     download = FALSE)
@@ -474,7 +471,7 @@ head(pheno)
 
 Now that we have the necessary data, we can construct a `DESeqDataSet` object using the function `DESeqDataSetFromMatrix()` from `r Biocpkg('DESeq2')`.
 
-```{r 'ers_dds', eval = !windowsFlag}
+```{r 'ers_dds', eval = .Platform$OS.type != 'windows'}
 ## Build a DESeqDataSet
 dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
     design =  ~ group + gene_target)
@@ -485,7 +482,7 @@ dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
 
 With the `DESeqDataSet` object in place, we can then use the function `DESeq()` from `r Biocpkg('DESeq2')` to perform the differential expression analysis (between groups) as shown below.
 
-```{r 'de_analysis_ers', eval = !windowsFlag}
+```{r 'de_analysis_ers', eval = .Platform$OS.type != 'windows'}
 ## Perform differential expression analysis with DESeq2 at the ER-level
 dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target,
     fitType = 'local')
@@ -494,7 +491,7 @@ res_ers <- results(dds_ers)
 
 We can then visually explore the results, like we did before.
 
-```{r 'ma_plot_ers', eval = !windowsFlag}
+```{r 'ma_plot_ers', eval = .Platform$OS.type != 'windows'}
 ## Explore results
 plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
 ```

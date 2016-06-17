@@ -15,7 +15,7 @@
 #' http://www.ncbi.nlm.nih.gov/books/NBK25497/.
 #' @param getGPL This argument is passed to \link[GEOquery]{getGEO} and is set
 #' to \code{FALSE} by default to speed up the process.
-#' @param destidir This argument is passed to \link[GEOquery]{getGEO}.
+#' @param destdir This argument is passed to \link[GEOquery]{getGEO}.
 #' @param ... Additional arguments passed to \link[GEOquery]{getGEO}.
 #'
 #' @author Leonardo Collado-Torres, Andrew Jaffe
