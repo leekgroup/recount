@@ -69,7 +69,7 @@ test_that('Scaling', {
         ncol = 12), assay(rse_gene_SRP009615, 1))
 })
 
-if(!.Platform$OS.type == 'windows') {
+if(.Platform$OS.type != 'windows') {
     regions <- expressed_regions('SRP002001', 'chrY', cutoff = 5)
     ## Artificially remove the mean coverage file so that the file will have to
     ## get downloaded on the first test, then it'll be present for the second

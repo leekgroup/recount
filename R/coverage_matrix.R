@@ -40,7 +40,7 @@
 #'
 #' @examples
 #'
-#' if(!.Platform$OS.type == 'windows') {
+#' if(.Platform$OS.type != 'windows') {
 #'     ## Define expressed regions for study DRP002835, chrY
 #'     regions <- expressed_regions('DRP002835', 'chrY', cutoff = 5L, 
 #'         maxClusterGap = 3000L)
@@ -58,6 +58,11 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(is.character(chr) & length(chr) == 1)
     stopifnot((is.numeric(chunksize) | is.integer(chunksize)) & length(chunksize) == 1)
+    
+    ## Windows-specific info
+    if(.Platform$OS.type == 'windows') {
+        warning('rtracklayer does not support importing BigWig files on Windows, so this function might not work')
+    }
     
     ## Use table from the package
     url_table <- recount::recount_url

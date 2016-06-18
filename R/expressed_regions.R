@@ -32,7 +32,7 @@
 #'
 #' @examples
 #' ## Define expressed regions for study SRP009615, chrY
-#' if(!.Platform$OS.type == 'windows') {
+#' if(.Platform$OS.type != 'windows') {
 #'     regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
 #'         maxClusterGap = 3000L)
 #' }
@@ -52,6 +52,11 @@ expressed_regions <- function(project, chr, cutoff, outdir = NULL,
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(is.character(chr) & length(chr) == 1)
+    
+    ## Windows-specific info
+    if(.Platform$OS.type == 'windows') {
+        warning('rtracklayer does not support importing BigWig files on Windows, so this function might not work')
+    }
     
     ## Use table from the package
     url_table <- recount::recount_url
