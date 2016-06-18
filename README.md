@@ -40,7 +40,7 @@ run this yourself to check for any updates on how to cite __recount__.
 
 To cite the __recount__ package in publications use:
 
-Leonardo Collado-Torres and Jeffrey T. Leek (2016). recount: Explore and download data from the recount project. R package version 0.99.20. https://github.com/leekgroup/recount
+Leonardo Collado-Torres and Jeffrey T. Leek (2016). recount: Explore and download data from the recount project. R package version 0.99.21. https://github.com/leekgroup/recount
 
 A BibTeX entry for LaTeX users is
 
@@ -48,7 +48,7 @@ A BibTeX entry for LaTeX users is
     title = {recount: Explore and download data from the recount project},
     author = {Leonardo Collado-Torres and Jeffrey T. Leek},
     year = {2016},
-    note = {R package version 0.99.20},
+    note = {R package version 0.99.21},
     url = {https://github.com/leekgroup/recount},
 }
 
