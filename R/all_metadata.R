@@ -16,9 +16,7 @@
 #'
 #' @examples
 #' 
-#' if(.Platform$OS.type != 'windows') {
-#'     metadata <- all_metadata()
-#' }
+#' metadata <- all_metadata()
 #'
 
 all_metadata <- function(subset = 'sra', verbose = TRUE) {
@@ -39,13 +37,8 @@ all_metadata <- function(subset = 'sra', verbose = TRUE) {
         metafile, '?raw=true')
     destfile <- file.path(tempdir(), metafile)
     
-    ## Windows-specific info
-    if(.Platform$OS.type == 'windows') {
-        message(paste(Sys.time(), 'There is an issue with downloading the metadata file from Windows. You might have to download manually the file from', url, 'You can find further details at https://github.com/wch/downloader/issues/9'))
-    }
-    
     if(verbose) message(paste(Sys.time(), 'downloading the metadata to', destfile))
-    downloader::download(url, destfile = destfile) 
+    downloader::download(url, destfile = destfile, mode = 'wb') 
     load(destfile)
     return(metadata_clean)
 }

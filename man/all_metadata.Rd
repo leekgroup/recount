@@ -22,8 +22,8 @@ Download the metadata from all the projects. This can be useful for finding
 samples of interests across all projects.
 }
 \examples{
-metadata <- all_metadata()
 
+metadata <- all_metadata()
 
 }
 \author{

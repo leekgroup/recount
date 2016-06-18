@@ -64,7 +64,7 @@ example, from different cutoffs applied to \link{expressed_regions}).
 }
 \examples{
 
-if(!.Platform$OS.type == 'windows') {
+if(.Platform$OS.type != 'windows') {
     ## Define expressed regions for study DRP002835, chrY
     regions <- expressed_regions('DRP002835', 'chrY', cutoff = 5L, 
         maxClusterGap = 3000L)

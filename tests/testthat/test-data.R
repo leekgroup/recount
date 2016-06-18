@@ -96,12 +96,12 @@ if(.Platform$OS.type != 'windows') {
             coverage_matrix('SRP002001', 'chrY', regions, outdir = tmpdir,
             chunksize = 500))
     })
-
-    metadata <- all_metadata()
-    test_that('All metadata', {
-        expect_equal(nrow(metadata), 50099)
-    })
 }
+
+metadata <- all_metadata()
+test_that('All metadata', {
+    expect_equal(nrow(metadata), 50099)
+})
 
 phenoFile <- download_study(project = 'SRP012289', type = 'phenotype',
     download = FALSE)

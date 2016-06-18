@@ -126,7 +126,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
             message(paste(Sys.time(), 'downloading file', filename, 'to', 
                 outdir))
             xx <- downloader::download(url, destfile = file.path(outdir,
-                filename), ...)
+                filename), mode = 'wb', ...)
         }
     } else if(type == 'samples') {
         url_table <- url_table[url_table$file_name != paste0('mean_', project,
@@ -138,7 +138,8 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
                 message(paste(Sys.time(), 'downloading file',
                     sample_urls$file_name[i], 'to', outdir))
                 downloader::download(sample_urls$url[i], 
-                    destfile = file.path(outdir, sample_urls$file_name[i]), ...)
+                    destfile = file.path(outdir, sample_urls$file_name[i]),
+                    mode = 'wb', ...)
             }, ...)
         }
     }
