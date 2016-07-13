@@ -657,7 +657,6 @@ unlink('rse_gene.Rdata')
 ```{r 'cleanup', echo = FALSE}
 ## Clean up
 unlink('SRP009615', recursive = TRUE)
-unlink('')
 ```
 
 
