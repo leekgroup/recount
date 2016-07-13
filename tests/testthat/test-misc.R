@@ -18,3 +18,18 @@ test_that('Geo info', {
     expect_equal(colnames(geo_characteristics(geo_info('GSM359183'))), 'characteristics')
     expect_equal(geo_info('GSM1062236'), S4Vectors::DataFrame())
 })
+
+if(interactive()) {
+    ## Open shiny app when running test in interactive mode.
+    ## This will force the app to be available, which will then run the test
+    ## successfully.
+    ## If there is a better way to test this, please let me know!
+    browseURL('https://jhubiostatistics.shinyapps.io/recount/')
+    test_that('Shiny app is up', {
+        expect_equal(
+            RCurl::url.exists('https://jhubiostatistics.shinyapps.io/recount/'),
+            TRUE
+        )
+    })
+}
+
