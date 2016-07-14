@@ -24,6 +24,7 @@ if(interactive()) {
     ## This will force the app to be available, which will then run the test
     ## successfully.
     ## If there is a better way to test this, please let me know!
+    ## See thread at https://groups.google.com/forum/#!topic/shinyapps-users/ElMO_v1eurQ
     browseURL('https://jhubiostatistics.shinyapps.io/recount/')
     test_that('Shiny app is up', {
         expect_equal(
