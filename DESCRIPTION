@@ -1,7 +1,7 @@
 Package: recount
 Title: Explore and download data from the recount project
-Version: 0.99.21
-Date: 2016-06-18
+Version: 0.99.22
+Date: 2016-07-13
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "ctb",
     email = "anellore@gmail.com"), person(c("Andrew", "E."), "Jaffe",
@@ -14,34 +14,34 @@ Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     role = "ctb", email = 'langmea@cs.jhu.edu'), person(c("Jeffrey", "T."),
     "Leek", role = c("aut", "ths"), email = "jtleek@gmail.com"))
 Depends:
-    R (>= 3.3.0)
+    R (>= 3.3.0),
+    SummarizedExperiment
 Imports:
+    BiocParallel,
+    derfinder,
+    downloader,
+    GEOquery,
+    GenomeInfoDb,
+    GenomicRanges,
+    IRanges,
     methods,
+    RCurl,
+    rentrez,
+    S4Vectors,
     stats,
     utils
 Suggests:
     AnnotationDbi,
-    BiocParallel,
     BiocStyle,
-    derfinder,
     DESeq2,
     devtools (>= 1.6),
-    downloader,
-    GEOquery,
-    GenomeInfoDb,
     GenomicFeatures,
-    GenomicRanges,
-    IRanges,
     knitcitations,
     knitr (>= 1.6),
     org.Hs.eg.db,
-    RCurl,
     regionReport,
-    rentrez,
     rmarkdown (>= 0.9.5),
-    rtracklayer (>= 1.33.3),
-    S4Vectors,
-    SummarizedExperiment,
+    rtracklayer (>= 1.33.10),
     testthat,
     TxDb.Hsapiens.UCSC.hg38.knownGene
 VignetteBuilder: knitr

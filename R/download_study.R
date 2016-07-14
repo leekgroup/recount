@@ -49,6 +49,7 @@
 #' @export
 #'
 #' @importFrom stats runif
+#' @import downloader
 #'
 #' @examples
 #' ## Find the URL to download the RangedSummarizedExperiment for the
@@ -79,8 +80,6 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
         'phenotype', 'files-info', 'samples', 'mean', 'all'))
     stopifnot(length(type) == 1)
     stopifnot(is.logical(download) & length(download) == 1)
-    
-    .load_install('downloader')
     
     ## Use table from the package
     url_table <- recount::recount_url

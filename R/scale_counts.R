@@ -41,6 +41,7 @@
 #'
 #' @author Leonardo Collado-Torres
 #' @export
+#' @import GenomicRanges SummarizedExperiment
 #'
 #' @examples
 #' ## Load an example rse_gene object
@@ -68,10 +69,7 @@
 
 scale_counts <- function(rse, by = 'auc', targetSize = 4e7, L = 100,
     factor_only = FALSE, round = TRUE) {    
-    ## Load required packages
-    .load_install('SummarizedExperiment')
-    .load_install('GenomicRanges')
-    
+
     ## Check inputs
     stopifnot(is(rse, 'RangedSummarizedExperiment'))
     stopifnot(length(targetSize) == 1)

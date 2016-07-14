@@ -21,6 +21,8 @@
 #' @author Leonardo Collado-Torres, Andrew Jaffe
 #' @export
 #'
+#' @import GEOquery IRanges S4Vectors
+#'
 #' @examples
 #' geo_info('GSM836270')
 #'
@@ -31,11 +33,7 @@ geo_info <- function(geoid, verbose = FALSE, sleep = 1/2, getGPL = FALSE,
     
     ## Check inputs
     stopifnot(is.character(geoid) & length(geoid) == 1)
-    
-    ## Load GEOquery
-    .load_install('GEOquery')
-    .load_install('IRanges')
-    
+
     if(verbose) message(paste(Sys.time(),
         'finding GEO information for GEO accession id', geoid))
     

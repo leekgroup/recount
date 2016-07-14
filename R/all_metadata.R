@@ -14,6 +14,8 @@
 #' @author Leonardo Collado-Torres
 #' @export
 #'
+#' @import downloader
+#'
 #' @examples
 #' 
 #' metadata <- all_metadata()
@@ -27,8 +29,6 @@ all_metadata <- function(subset = 'sra', verbose = TRUE) {
     subset <- tolower(subset)
     stopifnot(subset %in% c('sra', 'gtex'))
     stopifnot(length(subset) == 1)
-    
-    .load_install('downloader')
     
     ## Download file
     metafile <- paste0('metadata_clean_', subset, '.Rdata')

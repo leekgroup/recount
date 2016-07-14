@@ -16,6 +16,8 @@
 #' @author Leonardo Collado-Torres
 #' @export
 #'
+#' @import S4Vectors
+#'
 #' @examples
 #' ## Load required library
 #' library('SummarizedExperiment')
@@ -37,8 +39,6 @@
 geo_characteristics <- function(pheno) {
     ## Check inputs
     stopifnot('characteristics' %in% colnames(pheno))
-    
-    .load_install('S4Vectors')
     
     ## Separate information
     result <- lapply(pheno$characteristics, function(sampleinfo) {

@@ -34,6 +34,7 @@
 #' @export
 #'
 #' @importFrom utils read.table
+#' @import derfinder GenomicRanges RCurl BiocParallel
 #'
 #' @seealso \link{download_study}, \link[derfinder]{findRegions},
 #' \link[derfinder]{railMatrix}
@@ -41,6 +42,7 @@
 #' @examples
 #'
 #' if(.Platform$OS.type != 'windows') {
+#' ## Reading BigWig files is not supported by rtracklayer on Windows
 #'     ## Define expressed regions for study DRP002835, chrY
 #'     regions <- expressed_regions('DRP002835', 'chrY', cutoff = 5L, 
 #'         maxClusterGap = 3000L)
@@ -118,12 +120,6 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     targetSize <- 40e6 * 100
     totalMapped <- pheno$auc[m]
     mappedPerXM <- totalMapped / targetSize
-    
-    ## Load required packages
-    .load_install('derfinder')
-    .load_install('GenomicRanges')
-    .load_install('RCurl')
-    .load_install('BiocParallel')
     
     ## Split regions into chunks
     nChunks <- length(regions) %/% chunksize

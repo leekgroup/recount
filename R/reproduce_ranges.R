@@ -28,6 +28,9 @@
 #' 
 #' @author Leonardo Collado-Torres
 #' @export
+#'
+#' @import GenomicRanges
+#'
 #' @seealso \link{recount_genes}, \link{recount_exons},
 #'     \url{https://github.com/nellore},
 #'     \url{https://jhubiostatistics.shinyapps.io/recount/}
@@ -50,7 +53,6 @@ reproduce_ranges <- function(level = 'gene') {
     
     ## Load required packages
     .load_install('GenomicFeatures')
-    .load_install('GenomicRanges')
     .load_install('TxDb.Hsapiens.UCSC.hg38.knownGene')
     
 

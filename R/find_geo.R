@@ -16,6 +16,8 @@
 #' @author Leonardo Collado-Torres
 #' @export
 #'
+#' @import rentrez
+#'
 #' @details Although the phenotype information already includes the GEO
 #' accession ids, not all projects had GEO entries at the time these tables
 #' were created. This function will then be useful to check if there is a GEO
@@ -34,8 +36,6 @@ find_geo <- function(run, verbose = FALSE, sleep = 1/2) {
     
     if(verbose) message(paste(Sys.time(), 'finding GEO accession id for SRA run', run))
     Sys.sleep(sleep)
-    
-    .load_install('rentrez')
     
     ## Find uid first
     uid <- rentrez::entrez_search('sra', term = run)

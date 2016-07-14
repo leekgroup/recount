@@ -27,12 +27,16 @@
 #' @author Leonardo Collado-Torres
 #' @export
 #'
+#' @import derfinder GenomicRanges RCurl S4Vectors GenomeInfoDb
+#' @importFrom RCurl url.exists
+#'
 #' @seealso \link{download_study}, \link[derfinder]{findRegions},
 #' \link[derfinder]{railMatrix}
 #'
 #' @examples
 #' ## Define expressed regions for study SRP009615, chrY
 #' if(.Platform$OS.type != 'windows') {
+#' ## Reading BigWig files is not supported by rtracklayer on Windows
 #'     regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
 #'         maxClusterGap = 3000L)
 #' }
@@ -87,11 +91,6 @@ expressed_regions <- function(project, chr, cutoff, outdir = NULL,
         meanFile <- download_study(project = project, type = 'mean',
             download = FALSE)
     }
-    
-    ## Load required packages
-    .load_install('derfinder')
-    .load_install('GenomicRanges')
-    .load_install('RCurl')
     
     ## Load coverage
     meanCov <- derfinder::loadCoverage(files = meanFile, chr = chr,
