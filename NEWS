@@ -1,0 +1,30 @@
+CHANGES IN VERSION 0.99.0
+-------------------------
+
+NEW FEATURES
+
+    o Created the package skeleton for recount
+    o Added the function reproduce_ranges() for re-creating the gene or exon
+        level information used in the recount project.
+    o Added the function abstract_search() for identifying SRA projects of
+        interest by searching the abstracts.
+    o Added the function browse_study() for opening a browser tab for further
+        exploring a project.
+    o Added the function download_study() for downloading the data from the
+        recount project.
+    o Added the function scale_counts() for properly scaling the counts before
+        performing a differential expression analysis with the
+        RangedSummarizedExperiment objects hosted in the recount project.
+    o Added the function expressed_regions() for defining the expressed regions
+        in a chromosome for a given SRA study.
+    o Added the function coverage_matrix() for computing the coverage matrix
+        based on the regions of interest for a given SRA study.
+    o Added the function geo_info() for obtaining sample information from GEO.
+    o Added the function find_geo() for finding the GEO accession id given a
+        SRA run accession (id). This function will be useful for SRA projects
+        that did not have GEO entries at the time recount's data was created.
+    o Added the function geo_characteristics() for building a data.frame from
+        geo_info()'s results for the characteristics.
+    o Added the function all_metadata() which downloads all the phenotype data
+        for all projects. This function can be useful for identifying projects
+        and/or samples of interests.
