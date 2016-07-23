@@ -2,40 +2,59 @@ Package: recount
 Title: Explore and download data from the recount project
 Version: 0.99.22
 Date: 2016-07-13
-Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut",
-        "cre"), email = "lcollado@jhu.edu"), person("Abhinav",
-        "Nellore", role = "ctb", email = "anellore@gmail.com"),
-        person(c("Andrew", "E."), "Jaffe", role = "ctb", email =
-        "andrew.jaffe@libd.org"), person(c("Margaret", "A."), "Taub",
-        role = "ctb", email = "mtaub@jhsph.edu"), person("Kai",
-        "Kammers", role = "ctb", email = "kai.kammers@gmail.com"),
-        person(c("Shannon", "E."), "Ellis", role = "ctb", email =
-        "sellis18@jhmi.edu"), person(c("Kasper", "Daniel"), "Hansen",
-        role = c("ctb"), email = "kasperdanielhansen@gmail.com"),
-        person("Ben", "Langmead", role = "ctb", email =
-        'langmea@cs.jhu.edu'), person(c("Jeffrey", "T."), "Leek", role
-        = c("aut", "ths"), email = "jtleek@gmail.com"))
-Depends: R (>= 3.3.0), SummarizedExperiment
-Imports: BiocParallel, derfinder, downloader, GEOquery, GenomeInfoDb,
-        GenomicRanges, IRanges, methods, RCurl, rentrez, S4Vectors,
-        stats, utils
-Suggests: AnnotationDbi, BiocStyle, DESeq2, devtools (>= 1.6),
-        GenomicFeatures, knitcitations, knitr (>= 1.6), org.Hs.eg.db,
-        regionReport, rmarkdown (>= 0.9.5), rtracklayer (>= 1.33.10),
-        testthat, TxDb.Hsapiens.UCSC.hg38.knownGene
+Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
+    email = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "ctb",
+    email = "anellore@gmail.com"), person(c("Andrew", "E."), "Jaffe",
+    role = "ctb", email = "andrew.jaffe@libd.org"), person(c("Margaret", "A."),
+    "Taub", role = "ctb", email = "mtaub@jhsph.edu"), person("Kai", "Kammers",
+    role = "ctb", email = "kai.kammers@gmail.com"), person(c("Shannon", "E."),
+    "Ellis", role = "ctb", email = "sellis18@jhmi.edu"), person(c("Kasper",
+    "Daniel"), "Hansen", role = c("ctb"),
+    email = "kasperdanielhansen@gmail.com"), person("Ben", "Langmead",
+    role = "ctb", email = 'langmea@cs.jhu.edu'), person(c("Jeffrey", "T."),
+    "Leek", role = c("aut", "ths"), email = "jtleek@gmail.com"))
+Depends:
+    R (>= 3.3.0),
+    SummarizedExperiment
+Imports:
+    BiocParallel,
+    derfinder,
+    downloader,
+    GEOquery,
+    GenomeInfoDb,
+    GenomicRanges,
+    IRanges,
+    methods,
+    RCurl,
+    rentrez,
+    S4Vectors,
+    stats,
+    utils
+Suggests:
+    AnnotationDbi,
+    BiocStyle,
+    DESeq2,
+    devtools (>= 1.6),
+    GenomicFeatures,
+    knitcitations,
+    knitr (>= 1.6),
+    org.Hs.eg.db,
+    regionReport,
+    rmarkdown (>= 0.9.5),
+    rtracklayer (>= 1.33.10),
+    testthat,
+    TxDb.Hsapiens.UCSC.hg38.knownGene
 VignetteBuilder: knitr
-Description: Explore and download data from the recount project
-        available at https://jhubiostatistics.shinyapps.io/recount/.
-        Using the recount package you can download
-        RangedSummarizedExperiment objects at the gene or exon level,
-        the raw counts, the phenotype metadata used, the urls to the
-        sample coverage bigWig files or the mean coverage bigWig file
-        for a particular study. The RangedSummarizedExperiment objects
-        can be used by different packages for performing differential
-        expression analysis. Using
-        http://bioconductor.org/packages/derfinder you can perform
-        annotation-agnostic differential expression analyses with the
-        data from the recount project.
+Description: Explore and download data from the recount project available at
+    https://jhubiostatistics.shinyapps.io/recount/. Using the recount package you can
+    download RangedSummarizedExperiment objects at the gene or exon level,
+    the raw counts, the phenotype metadata used, the urls to the sample coverage
+    bigWig files or the mean coverage bigWig file for a particular study. The
+    RangedSummarizedExperiment objects can be used by different packages for
+    performing differential expression analysis. Using
+    http://bioconductor.org/packages/derfinder you can perform
+    annotation-agnostic differential expression analyses with the data from the
+    recount project.
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
