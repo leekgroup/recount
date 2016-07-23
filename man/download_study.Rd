@@ -18,10 +18,15 @@ download_study(project, type = "rse-gene", outdir = project,
     \item{rse-exon}{ the exon-level 
     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
     a file named rse_exon.Rdata.}
+    \item{rse-jx}{ the exon-exon junction level 
+    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+    a file named rse_jx.Rdata.}
     \item{counts-gene}{ the gene-level counts in a tsv file named
     counts_gene.tsv.gz.}
     \item{counts-exon}{ the exon-level counts in a tsv file named
     counts_exon.tsv.gz.}
+    \item{counts-jx}{ the exon-exon junction level counts in a tsv file named
+    counts_jx.tsv.gz.}
     \item{phenotype}{ the phenotype data for the study in a tsv file named
     \code{project}.tsv.}
     \item{files-info}{ the files information for the given study (including
