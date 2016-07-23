@@ -15,10 +15,15 @@
 #'     \item{rse-exon}{ the exon-level 
 #'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
 #'     a file named rse_exon.Rdata.}
+#'     \item{rse-jx}{ the exon-exon junction level 
+#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+#'     a file named rse_jx.Rdata.}
 #'     \item{counts-gene}{ the gene-level counts in a tsv file named
 #'     counts_gene.tsv.gz.}
 #'     \item{counts-exon}{ the exon-level counts in a tsv file named
 #'     counts_exon.tsv.gz.}
+#'     \item{counts-jx}{ the exon-exon junction level counts in a tsv file named
+#'     counts_jx.tsv.gz.}
 #'     \item{phenotype}{ the phenotype data for the study in a tsv file named
 #'     \code{project}.tsv.}
 #'     \item{files-info}{ the files information for the given study (including
@@ -76,7 +81,9 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
     download = TRUE, ...) {
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
-    stopifnot(type %in% c('rse-gene', 'rse-exon', 'counts-gene', 'counts-exon', 
+    stopifnot(type %in% c(
+        'rse-gene', 'rse-exon', 'rse-jx',
+        'counts-gene', 'counts-exon', 'counts-jx',
         'phenotype', 'files-info', 'samples', 'mean', 'all'))
     stopifnot(length(type) == 1)
     stopifnot(is.logical(download) & length(download) == 1)
@@ -90,8 +97,10 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
     
     ## If all, download each type individually
     if(type == 'all') {
-        urls <- sapply(c('rse-gene', 'rse-exon', 'counts-gene', 'counts-exon', 
-        'phenotype', 'files-info', 'samples', 'mean'), function(file_type) {
+        urls <- sapply(c(
+            'rse-gene', 'rse-exon', 'rse-jx', 
+            'counts-gene', 'counts-exon', 'counts-jx',
+            'phenotype', 'files-info', 'samples', 'mean'), function(file_type) {
             Sys.sleep(round(runif(1, 2, 5), 0))
             download_study(project = project, type = file_type,
                 outdir = outdir, download = download, ...)
@@ -114,13 +123,16 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
         filename <- switch(type,
             'rse-gene' = 'rse_gene.Rdata',
             'rse-exon' = 'rse_exon.Rdata',
+            'rse-jx' = 'rse_jx.Rdata',
             'counts-gene' = 'counts_gene.tsv.gz',
             'counts-exon' = 'counts_exon.tsv.gz',
+            'counts-jx' = 'counts_jx.tsv.gz',
             phenotype = paste0(project, '.tsv'),
             'files-info' = 'files_info.tsv',
             mean = paste0('mean_', project, '.bw')
         )
         url <- url_table$url[url_table$file_name == filename]
+        if(length(url) == 0) return(NULL)
         if(download) {
             message(paste(Sys.time(), 'downloading file', filename, 'to', 
                 outdir))
