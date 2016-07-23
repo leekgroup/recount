@@ -39,6 +39,7 @@ bibs <- c(
     derfinder = citation('derfinder')[1], 
     DESeq2 = citation('DESeq2'),
     devtools = citation('devtools'),
+    downloader = citation('downloader'),
     GEOquery = citation('GEOquery'),
     GenomeInfoDb = citation('GenomeInfoDb'),
     GenomicFeatures = citation('GenomicFeatures'),
@@ -50,13 +51,13 @@ bibs <- c(
     R = citation(),
     RCurl = citation('RCurl'),
     regionReport = citation('regionReport'),
+    rentrez = citation('rentrez'),
     rmarkdown = citation('rmarkdown'),
     rtracklayer = citation('rtracklayer'),
     S4Vectors = citation('S4Vectors'),
     SummarizedExperiment = citation('SummarizedExperiment'),
     testthat = citation('testthat'),
-    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene'),
-    XML = citation('XML')
+    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene')
 )
 
 write.bibtex(bibs,
@@ -65,9 +66,6 @@ bib <- read.bibtex('quickstartRef.bib')
 
 ## Assign short names
 names(bib) <- names(bibs)
-
-## Working on Windows?
-windowsFlag <- .Platform$OS.type == 'windows'
 ```
 
 Here is a very quick example of how to download a `RangedSummarizedExperiment` object with the gene counts for a 2 groups project (12 samples) with SRA study id [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615). The `RangedSummarizedExperiment` object is defined in the `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])` package and can be used for differential expression analysis with different packages. Here we show how to use `r Biocpkg('DESeq2')` `r citep(bib[['DESeq2']])` to perform the analysis.
@@ -75,9 +73,8 @@ Here is a very quick example of how to download a `RangedSummarizedExperiment` o
 This quick analysis is explained in more detail later on in this document.
  
 ```{r 'ultraQuick', eval = FALSE}
-## Load libraries
+## Load library
 library('recount')
-library('SummarizedExperiment')
 
 ## Find a project of interest
 project_info <- abstract_search('GSE32465')
@@ -207,9 +204,8 @@ This is a brief overview of what you can do with `r Biocpkg('recount')`. In this
 We first load the required packages.
 
 ```{r 'start', message=FALSE}
-## Load libraries
+## Load library
 library('recount')
-library('SummarizedExperiment')
 ```
 
 Lets say that we don't know the actual SRA accession number for this study but we do know a particular term which will help us identify it. If that's the case, we can use the `abstract_search()` function to identify the study of interest as shown below.
@@ -264,10 +260,22 @@ browse_study(project_info$project)
 
 The SRA website includes an _Experiments_ link which further describes each of the samples. From the information available for [SRP009615 at NCBI](http://www.ncbi.nlm.nih.gov/sra/?term=SRP009615) we have some further sample information that we can save for use in our differential expression analysis. We can get some of this information from [GEO](http://www.ncbi.nlm.nih.gov/geo/). The function `find_geo()` finds the [GEO](http://www.ncbi.nlm.nih.gov/geo/) accession id for a given SRA run accession id, which we can then use with `geo_info()` and `geo_characteristics()` to parse this information.
 
-```{r 'sample_info', warning = FALSE}
+```{r 'geoids', eval = FALSE}
 ## Find the GEO accession ids
 geoids <- sapply(colData(rse_gene)$run, find_geo)
+```
 
+```{r 'geoids-real', echo = FALSE}
+## Remove dependency on web scrapping for vignette
+geoids <- c('GSM836270', 'GSM836271', 'GSM836272', 'GSM836273', 'GSM847561',
+    'GSM847562', 'GSM847563', 'GSM847564', 'GSM847565', 'GSM847566',
+    'GSM847567', 'GSM847568')
+names(geoids) <- c('SRR387777', 'SRR387778', 'SRR387779', 'SRR387780',
+    'SRR389077', 'SRR389078', 'SRR389079', 'SRR389080', 'SRR389081',
+    'SRR389082', 'SRR389083', 'SRR389084')
+```
+
+```{r 'sample_info', warning = FALSE}
 ## Get the sammple information from GEO
 geoinfo <- lapply(geoids, geo_info)
 
@@ -407,7 +415,7 @@ The [recount project](https://jhubiostatistics.shinyapps.io/recount/) also hosts
 
 For an annotation-agnostic differential expression analysis, we first need to define the regions of interest. With `r Biocpkg('recount')` we can do so using the `expressed_regions()` function as shown below for the same study we studied earlier.
 
-```{r 'define_ers', eval = !windowsFlag}
+```{r 'define_ers', eval = .Platform$OS.type != 'windows'}
 ## Define expressed regions for study SRP009615, only for chromosome Y
 regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
     maxClusterGap = 3000L)
@@ -422,7 +430,7 @@ Once the regions have been defined, you can export them into a BED file using `r
 
 Having defined the expressed regions, we can now compute a coverage matrix for these regions. We can do so using the function `coverage_matrix()` from `r Biocpkg('recount')` as shown below.
 
-```{r 'compute_covMat', eval = !windowsFlag}
+```{r 'compute_covMat', eval = .Platform$OS.type != 'windows'}
 ## Compute coverage matrix for study SRP009615, only for chromosome Y
 system.time( coverageMatrix <- coverage_matrix('SRP009615', 'chrY', regions) )
 
@@ -433,7 +441,7 @@ head(coverageMatrix)
 
 The resulting count matrix has one row per region and one column per sample. The counts correspond to the number (or fraction) of reads overlapping the regions. For some differential expression methods, you might have to round this matrix into integers. We'll use `r Biocpkg('DESeq2')` to identify which expressed regions are differentially expressed.
 
-```{r 'to_integer', eval = !windowsFlag}
+```{r 'to_integer', eval = .Platform$OS.type != 'windows'}
 ## Round the coverage matrix to integers
 covMat <- round(coverageMatrix, 0)
 ```
@@ -443,7 +451,7 @@ covMat <- round(coverageMatrix, 0)
 
 We first need to get some phenotype information for these samples similar to the first analysis we did. We can get this data using `download_study()`.
 
-```{r 'phenoData', eval = !windowsFlag}
+```{r 'phenoData', eval = .Platform$OS.type != 'windows'}
 ## Get phenotype data for study SRP009615
 pheno_url <- download_study(project = project_info$project, type = 'phenotype',
     download = FALSE)
@@ -462,7 +470,7 @@ head(pheno)
 
 Now that we have the necessary data, we can construct a `DESeqDataSet` object using the function `DESeqDataSetFromMatrix()` from `r Biocpkg('DESeq2')`.
 
-```{r 'ers_dds', eval = !windowsFlag}
+```{r 'ers_dds', eval = .Platform$OS.type != 'windows'}
 ## Build a DESeqDataSet
 dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
     design =  ~ group + gene_target)
@@ -473,7 +481,7 @@ dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
 
 With the `DESeqDataSet` object in place, we can then use the function `DESeq()` from `r Biocpkg('DESeq2')` to perform the differential expression analysis (between groups) as shown below.
 
-```{r 'de_analysis_ers', eval = !windowsFlag}
+```{r 'de_analysis_ers', eval = .Platform$OS.type != 'windows'}
 ## Perform differential expression analysis with DESeq2 at the ER-level
 dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target,
     fitType = 'local')
@@ -482,7 +490,7 @@ res_ers <- results(dds_ers)
 
 We can then visually explore the results, like we did before.
 
-```{r 'ma_plot_ers', eval = !windowsFlag}
+```{r 'ma_plot_ers', eval = .Platform$OS.type != 'windows'}
 ## Explore results
 plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
 ```
@@ -543,6 +551,7 @@ This package was made possible thanks to:
 * `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
 * `r Biocpkg('derfinder')` `r citep(bib[['derfinder']])`
 * `r CRANpkg('devtools')` `r citep(bib[['devtools']])`
+* `r CRANpkg('downloader')` `r citep(bib[['downloader']])`
 * `r Biocpkg('GEOquery')` `r citep(bib[['GEOquery']])`
 * `r Biocpkg('GenomeInfoDb')` `r citep(bib[['GenomeInfoDb']])`
 * `r Biocpkg('GenomicFeatures')` `r citep(bib[['GenomicFeatures']])`
@@ -551,13 +560,14 @@ This package was made possible thanks to:
 * `r CRANpkg('knitr')` `r citep(bib[['knitr']])`
 * `r Biocpkg('org.Hs.eg.db')` `r citep(bib[['org.Hs.eg.db']])`
 * `r CRANpkg('RCurl')` `r citep(bib[['RCurl']])`
+* `r CRANpkg('rentrez')` `r citep(bib[['rentrez']])`
 * `r Biocpkg('rtracklayer')` `r citep(bib[['rtracklayer']])`
 * `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])`
 * `r Biocpkg('S4Vectors')` `r citep(bib[['S4Vectors']])`
 * `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])`
 * `r CRANpkg('testthat')` `r citep(bib[['testthat']])`
 * `r Biocannopkg('TxDb.Hsapiens.UCSC.hg138.knownGene')` `r citep(bib[['TxDb.Hsapiens.UCSC.hg38.knownGene']])`
-* `r CRANpkg('XML')` `r citep(bib[['XML']])`
+
 
 Code for creating the vignette
 
@@ -645,7 +655,6 @@ unlink('rse_gene.Rdata')
 ```{r 'cleanup', echo = FALSE}
 ## Clean up
 unlink('SRP009615', recursive = TRUE)
-unlink('')
 ```
 
 

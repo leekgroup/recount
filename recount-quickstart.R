@@ -19,6 +19,7 @@ bibs <- c(
     derfinder = citation('derfinder')[1], 
     DESeq2 = citation('DESeq2'),
     devtools = citation('devtools'),
+    downloader = citation('downloader'),
     GEOquery = citation('GEOquery'),
     GenomeInfoDb = citation('GenomeInfoDb'),
     GenomicFeatures = citation('GenomicFeatures'),
@@ -30,13 +31,13 @@ bibs <- c(
     R = citation(),
     RCurl = citation('RCurl'),
     regionReport = citation('regionReport'),
+    rentrez = citation('rentrez'),
     rmarkdown = citation('rmarkdown'),
     rtracklayer = citation('rtracklayer'),
     S4Vectors = citation('S4Vectors'),
     SummarizedExperiment = citation('SummarizedExperiment'),
     testthat = citation('testthat'),
-    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene'),
-    XML = citation('XML')
+    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene')
 )
 
 write.bibtex(bibs,
@@ -46,13 +47,9 @@ bib <- read.bibtex('quickstartRef.bib')
 ## Assign short names
 names(bib) <- names(bibs)
 
-## Working on Windows?
-windowsFlag <- .Platform$OS.type == 'windows'
-
 ## ----'ultraQuick', eval = FALSE------------------------------------------
-#  ## Load libraries
+#  ## Load library
 #  library('recount')
-#  library('SummarizedExperiment')
 #  
 #  ## Find a project of interest
 #  project_info <- abstract_search('GSE32465')
@@ -163,9 +160,8 @@ windowsFlag <- .Platform$OS.type == 'windows'
 #      output = 'SRP009615-results-ER-level-chrY')
 
 ## ----'start', message=FALSE----------------------------------------------
-## Load libraries
+## Load library
 library('recount')
-library('SummarizedExperiment')
 
 ## ----'search_abstract'---------------------------------------------------
 ## Find a project of interest
@@ -199,10 +195,20 @@ rowData(rse_gene)
 ## Browse the project at SRA
 browse_study(project_info$project)
 
-## ----'sample_info', warning = FALSE--------------------------------------
-## Find the GEO accession ids
-geoids <- sapply(colData(rse_gene)$run, find_geo)
+## ----'geoids', eval = FALSE----------------------------------------------
+#  ## Find the GEO accession ids
+#  geoids <- sapply(colData(rse_gene)$run, find_geo)
 
+## ----'geoids-real', echo = FALSE-----------------------------------------
+## Remove dependency on web scrapping for vignette
+geoids <- c('GSM836270', 'GSM836271', 'GSM836272', 'GSM836273', 'GSM847561',
+    'GSM847562', 'GSM847563', 'GSM847564', 'GSM847565', 'GSM847566',
+    'GSM847567', 'GSM847568')
+names(geoids) <- c('SRR387777', 'SRR387778', 'SRR387779', 'SRR387780',
+    'SRR389077', 'SRR389078', 'SRR389079', 'SRR389080', 'SRR389081',
+    'SRR389082', 'SRR389083', 'SRR389084')
+
+## ----'sample_info', warning = FALSE--------------------------------------
 ## Get the sammple information from GEO
 geoinfo <- lapply(geoids, geo_info)
 
@@ -299,7 +305,7 @@ gene_info <- select(org.Hs.eg.db, entrez, c('ENTREZID', 'GENENAME', 'SYMBOL'),
 dim(gene_info)
 head(gene_info)
 
-## ----'define_ers', eval = !windowsFlag-----------------------------------
+## ----'define_ers', eval = .Platform$OS.type != 'windows'-----------------
 ## Define expressed regions for study SRP009615, only for chromosome Y
 regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
     maxClusterGap = 3000L)
@@ -307,7 +313,7 @@ regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L,
 ## Briefly explore the resulting regions
 regions
 
-## ----'compute_covMat', eval = !windowsFlag-------------------------------
+## ----'compute_covMat', eval = .Platform$OS.type != 'windows'-------------
 ## Compute coverage matrix for study SRP009615, only for chromosome Y
 system.time( coverageMatrix <- coverage_matrix('SRP009615', 'chrY', regions) )
 
@@ -315,11 +321,11 @@ system.time( coverageMatrix <- coverage_matrix('SRP009615', 'chrY', regions) )
 dim(coverageMatrix)
 head(coverageMatrix)
 
-## ----'to_integer', eval = !windowsFlag-----------------------------------
+## ----'to_integer', eval = .Platform$OS.type != 'windows'-----------------
 ## Round the coverage matrix to integers
 covMat <- round(coverageMatrix, 0)
 
-## ----'phenoData', eval = !windowsFlag------------------------------------
+## ----'phenoData', eval = .Platform$OS.type != 'windows'------------------
 ## Get phenotype data for study SRP009615
 pheno_url <- download_study(project = project_info$project, type = 'phenotype',
     download = FALSE)
@@ -335,18 +341,18 @@ pheno <- cbind(pheno, sample_info[m, 2:3])
 ## Explore the phenotype data a little bit
 head(pheno)
 
-## ----'ers_dds', eval = !windowsFlag--------------------------------------
+## ----'ers_dds', eval = .Platform$OS.type != 'windows'--------------------
 ## Build a DESeqDataSet
 dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
     design =  ~ group + gene_target)
 
-## ----'de_analysis_ers', eval = !windowsFlag------------------------------
+## ----'de_analysis_ers', eval = .Platform$OS.type != 'windows'------------
 ## Perform differential expression analysis with DESeq2 at the ER-level
 dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target,
     fitType = 'local')
 res_ers <- results(dds_ers)
 
-## ----'ma_plot_ers', eval = !windowsFlag----------------------------------
+## ----'ma_plot_ers', eval = .Platform$OS.type != 'windows'----------------
 ## Explore results
 plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
 
@@ -438,7 +444,6 @@ session_info()
 ## ----'cleanup', echo = FALSE------------------------------------------------------------------------------------------
 ## Clean up
 unlink('SRP009615', recursive = TRUE)
-unlink('')
 
 ## ----vignetteBiblio, results = 'asis', echo = FALSE, warning = FALSE--------------------------------------------------
 ## Print bibliography
