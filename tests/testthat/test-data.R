@@ -23,38 +23,35 @@ test_that('Download URLs', {
 })
 
 ## Test downloading a small project entirely
-if(FALSE) {
-    ## Disable test until jx data is uploaded
-    tmpdir <- file.path(tempdir(), 'SRP002001')
-    urls <- download_study('SRP002001', type = 'all', outdir = tmpdir)
-    expected_urls <- paste0('http://duffel.rail.bio/recount/SRP002001/',
-        c('rse_gene.Rdata', 'rse_exon.Rdata', 'rse_jx.Rdata', 'counts_gene.tsv.gz',
-            'counts_exon.tsv.gz', 'counts_jx.tsv.gz', 
-            'SRP002001.tsv', 'files_info.tsv',
-            'bw/SRR036661.bw', 'bw/mean_SRP002001.bw'))
-    names(expected_urls) <- c('rse-gene', 'rse-exon', 'rse-jx', 
-        'counts-gene', 'counts-exon', 'counts-jx',
-        'phenotype', 'files-info', 'samples', 'mean')
+tmpdir <- file.path(tempdir(), 'SRP002001')
+urls <- download_study('SRP002001', type = 'all', outdir = tmpdir)
+expected_urls <- paste0('http://duffel.rail.bio/recount/SRP002001/',
+    c('rse_gene.Rdata', 'rse_exon.Rdata', 'rse_jx.Rdata', 'counts_gene.tsv.gz',
+        'counts_exon.tsv.gz', 'counts_jx.tsv.gz', 
+        'SRP002001.tsv', 'files_info.tsv',
+        'bw/SRR036661.bw', 'bw/mean_SRP002001.bw'))
+names(expected_urls) <- c('rse-gene', 'rse-exon', 'rse-jx', 
+    'counts-gene', 'counts-exon', 'counts-jx',
+    'phenotype', 'files-info', 'samples', 'mean')
 
-    ## Compute md5sum locally
-    localfiles <- c(list.files(tmpdir, '[.]', full.names = TRUE),
-        dir(file.path(tmpdir, 'bw'), full.names = TRUE))
-    names(localfiles) <- c(list.files(tmpdir, '[.]'), dir(file.path(tmpdir, 'bw')))
+## Compute md5sum locally
+localfiles <- c(list.files(tmpdir, '[.]', full.names = TRUE),
+    dir(file.path(tmpdir, 'bw'), full.names = TRUE))
+names(localfiles) <- c(list.files(tmpdir, '[.]'), dir(file.path(tmpdir, 'bw')))
 
-    library('tools')
-    md5 <- sapply(localfiles, md5sum)
-    names(md5) <- names(localfiles)
-    md5 <- md5[-which(names(md5) == 'files_info.tsv')]
+library('tools')
+md5 <- sapply(localfiles, md5sum)
+names(md5) <- names(localfiles)
+md5 <- md5[-which(names(md5) == 'files_info.tsv')]
 
-    ## Get original md5sum
-    fileinfo <- read.table(file.path(tmpdir, 'files_info.tsv'), header = TRUE,
-        stringsAsFactors = FALSE)
+## Get original md5sum
+fileinfo <- read.table(file.path(tmpdir, 'files_info.tsv'), header = TRUE,
+    stringsAsFactors = FALSE)
 
-    test_that('Project SRP002001', {
-        expect_equal(urls, expected_urls)
-        expect_equivalent(fileinfo$md5sum[match(names(md5), fileinfo$file)], md5)
-    })
-}
+test_that('Project SRP002001', {
+    expect_equal(urls, expected_urls)
+    expect_equivalent(fileinfo$md5sum[match(names(md5), fileinfo$file)], md5)
+})
 
 
 
