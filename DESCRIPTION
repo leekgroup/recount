@@ -27,7 +27,7 @@ Imports:
     methods,
     RCurl,
     rentrez,
-	rtracklayer (>= 1.33.11),
+    rtracklayer (>= 1.33.11),
     S4Vectors,
     stats,
     utils
