@@ -28,6 +28,7 @@
 #' @export
 #'
 #' @import derfinder GenomicRanges RCurl S4Vectors GenomeInfoDb
+#' @importMethodsFrom rtracklayer import import.bw
 #' @importFrom RCurl url.exists
 #'
 #' @seealso \link{download_study}, \link[derfinder]{findRegions},
