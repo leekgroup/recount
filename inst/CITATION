@@ -1,0 +1,18 @@
+bibentry(bibtype="article",
+        title = "recount: A large-scale resource of analysis-ready RNA-seq expression data",
+        author = personList(
+            as.person("Leonardo Collado-Torres"),
+            as.person("Abhinav Nellore"),
+            as.person("Kai Kammers"),
+            as.person("Shannon E. Ellis"),
+            as.person("Margaret A. Taub"),
+            as.person("Kasper D. Hansen"),
+            as.person("Andrew E. Jaffe"),
+			as.person("Ben Langmead"),
+            as.person("Jeffrey T. Leek")
+        ),
+        year = 2016,
+        journal = "bioRxiv",
+        doi = "10.1101/068478",
+        url = "http://biorxiv.org/content/early/2016/08/08/068478"
+    )
