@@ -9,7 +9,7 @@ Bioc-release <a href="https://bioconductor.org/developers/how-to/unitTesting-gui
 recount
 =======
 
-Explore and download data from the recount project available at the [recount website](https://jhubiostatistics.shinyapps.io/recount/). Using the `recount` package you can download _RangedSummarizedExperiment_ objects at the gene or exon level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The _RangedSummarizedExperiment_ objects can be used by different packages for performing differential expression analysis. Using [derfinder](http://bioconductor.org/packages/derfinder) you can perform annotation-agnostic differential expression analyses with the data from the recount project. 
+Explore and download data from the recount project available at the [recount website](https://jhubiostatistics.shinyapps.io/recount/). Using the `recount` package you can download _RangedSummarizedExperiment_ objects at the gene, exon or exon-exon junctions level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The _RangedSummarizedExperiment_ objects can be used by different packages for performing differential expression analysis. Using [derfinder](http://bioconductor.org/packages/derfinder) you can perform annotation-agnostic differential expression analyses with the data from the recount project. 
 
 For more information about `recount` check the vignettes [here](http://leekgroup.github.io/recount/).
 
@@ -40,16 +40,18 @@ run this yourself to check for any updates on how to cite __recount__.
 
 To cite the __recount__ package in publications use:
 
-Leonardo Collado-Torres and Jeffrey T. Leek (2016). recount: Explore and download data from the recount project. R package version 0.99.21. https://github.com/leekgroup/recount
+Collado-Torres L, Nellore A, Kammers K, Ellis SE, Taub MA, Hansen KD, Jaffe AE, Langmead B and Leek JT (2016). “recount: A large-scale resource of analysis-ready RNA-seq expression data.” _bioRxiv_. doi: 10.1101/068478 (URL: http://doi.org/10.1101/068478), <URL:
+http://biorxiv.org/content/early/2016/08/08/068478>.
 
 A BibTeX entry for LaTeX users is
 
-@Manual{,
-    title = {recount: Explore and download data from the recount project},
-    author = {Leonardo Collado-Torres and Jeffrey T. Leek},
+@Article{,
+    title = {recount: A large-scale resource of analysis-ready RNA-seq expression data},
+    author = {Leonardo Collado-Torres and Abhinav Nellore and Kai Kammers and Shannon E. Ellis and Margaret A. Taub and Kasper D. Hansen and  and Andrew E. Jaffe and Ben Langmead and Jeffrey T. Leek},
     year = {2016},
-    note = {R package version 0.99.21},
-    url = {https://github.com/leekgroup/recount},
+    journal = {bioRxiv},
+	doi = {10.1101/068478}
+    url = {http://biorxiv.org/content/early/2016/08/08/068478},
 }
 
 # Testing

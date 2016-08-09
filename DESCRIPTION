@@ -1,7 +1,7 @@
 Package: recount
 Title: Explore and download data from the recount project
-Version: 0.99.25
-Date: 2016-07-25
+Version: 0.99.26
+Date: 2016-08-08
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "ctb",
     email = "anellore@gmail.com"), person(c("Andrew", "E."), "Jaffe",
@@ -47,7 +47,7 @@ Suggests:
 VignetteBuilder: knitr
 Description: Explore and download data from the recount project available at
     https://jhubiostatistics.shinyapps.io/recount/. Using the recount package you can
-    download RangedSummarizedExperiment objects at the gene or exon level,
+    download RangedSummarizedExperiment objects at the gene, exon or exon-exon junctions level,
     the raw counts, the phenotype metadata used, the urls to the sample coverage
     bigWig files or the mean coverage bigWig file for a particular study. The
     RangedSummarizedExperiment objects can be used by different packages for
