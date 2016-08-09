@@ -8,8 +8,8 @@ r_packages:
   - covr
   - DT
   - pheatmap
-  
- bioc_packages:
+ 
+bioc_packages:
   - BiocInstaller
 
 r_build_args: "--no-manual --no-resave-data"
