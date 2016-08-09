@@ -5,6 +5,7 @@ warnings_are_errors: false
 sudo: false
 bioc_required: true
 bioc_use_devel: true
+cache: packages
 
 r_packages:
   - covr
