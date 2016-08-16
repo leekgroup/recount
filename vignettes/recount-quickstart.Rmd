@@ -50,6 +50,7 @@ bibs <- c(
     org.Hs.eg.db = citation('org.Hs.eg.db'),
     R = citation(),
     RCurl = citation('RCurl'),
+	recount = citation('recount'),
     regionReport = citation('regionReport'),
     rentrez = citation('rentrez'),
     rmarkdown = citation('rmarkdown'),
@@ -68,9 +69,9 @@ bib <- read.bibtex('quickstartRef.bib')
 names(bib) <- names(bibs)
 ```
 
-Here is a very quick example of how to download a `RangedSummarizedExperiment` object with the gene counts for a 2 groups project (12 samples) with SRA study id [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615). The `RangedSummarizedExperiment` object is defined in the `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])` package and can be used for differential expression analysis with different packages. Here we show how to use `r Biocpkg('DESeq2')` `r citep(bib[['DESeq2']])` to perform the analysis.
+Here is a very quick example of how to download a `RangedSummarizedExperiment` object with the gene counts for a 2 groups project (12 samples) with SRA study id [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615) using the `r Biocpkg('recount')` package `r citep(bib[['recount']])`. The `RangedSummarizedExperiment` object is defined in the `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])` package and can be used for differential expression analysis with different packages. Here we show how to use `r Biocpkg('DESeq2')` `r citep(bib[['DESeq2']])` to perform the differential expresion analysis.
 
-This quick analysis is explained in more detail later on in this document.
+This quick analysis is explained in more detail later on in this document. Further information about the recount project can be found in the publication [pre-print](http://biorxiv.org/content/early/2016/08/08/068478).
  
 ```{r 'ultraQuick', eval = FALSE}
 ## Load library
@@ -198,10 +199,18 @@ DESeq2Report(dds_ers, res = res_ers,
 
 This is a brief overview of what you can do with `r Biocpkg('recount')`. In this particular example we will download data from the [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615) study which sequenced 12 samples as described in the previous link.
 
-We first load the required packages.
+If you don't have `r Biocpkg('recount')` installed, please do so with:
+
+```{r 'install', eval = FALSE}
+## try http:// if https:// URLs are not supported
+source("https://bioconductor.org/biocLite.R")
+biocLite("recount")
+```
+
+Next we load the required packages. Loading `r Biocpkg('recount')` will load the required dependencies.
 
 ```{r 'start', message=FALSE}
-## Load library
+## Load recount R package
 library('recount')
 ```
 
@@ -524,7 +533,7 @@ citation('recount')
 
 # Reproducibility
 
-This package was made possible thanks to:
+The `r Biocpkg('recount')` package `r citep(bib[['recount']])` was made possible thanks to:
 
 * R `r citep(bib[['R']])`
 * `r Biocpkg('AnnotationDbi')` `r citep(bib[['AnnotationDbi']])`
