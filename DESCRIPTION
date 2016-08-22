@@ -54,7 +54,7 @@ Description: Explore and download data from the recount project available at
     performing differential expression analysis. Using
     http://bioconductor.org/packages/derfinder you can perform
     annotation-agnostic differential expression analyses with the data from the
-    recount project as described at http://biorxiv.org/content/early/2016/08/08/068478
+    recount project as described at http://biorxiv.org/content/early/2016/08/08/068478.
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
