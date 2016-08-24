@@ -30,6 +30,7 @@ bibs <- c(
     org.Hs.eg.db = citation('org.Hs.eg.db'),
     R = citation(),
     RCurl = citation('RCurl'),
+	recount = citation('recount'),
     regionReport = citation('regionReport'),
     rentrez = citation('rentrez'),
     rmarkdown = citation('rmarkdown'),
@@ -63,14 +64,11 @@ names(bib) <- names(bibs)
 #  ## Browse the project at SRA
 #  browse_study(project_info$project)
 #  
-#  ## Find the GEO accession ids
-#  geoids <- sapply(colData(rse_gene)$run, find_geo)
-#  
-#  ## Get the sammple information from GEO
-#  geoinfo <- lapply(geoids, geo_info)
+#  ## View GEO ids
+#  colData(rse_gene)$geo_accession
 #  
 #  ## Extract the sample characteristics
-#  geochar <- lapply(geoinfo, geo_characteristics)
+#  geochar <- lapply(split(colData(rse_gene), seq_len(nrow(colData(rse_gene)))), geo_characteristics)
 #  
 #  ## Note that the information for this study is a little inconsistent, so we
 #  ## have to fix it.
@@ -86,10 +84,10 @@ names(bib) <- names(bibs)
 #  ## We can now define some sample information to use
 #  sample_info <- data.frame(
 #      run = colData(rse_gene)$run,
-#      group = sapply(geoinfo, function(x) { ifelse(grepl('uninduced', x$title),
-#          'uninduced', 'induced') }),
-#      gene_target = sapply(geoinfo, function(x) { strsplit(strsplit(x$title,
-#          'targeting ')[[1]][2], ' gene')[[1]][1] })
+#      group = ifelse(grepl('uninduced', colData(rse_gene)$title), 'uninduced', 'induced'),
+#      gene_target = sapply(colData(rse_gene)$title, function(x) { strsplit(strsplit(x,
+#          'targeting ')[[1]][2], ' gene')[[1]][1] }),
+#      cell.line = geochar$cell.line
 #  )
 #  
 #  ## Scale counts by taking into account the total coverage per sample
@@ -103,7 +101,7 @@ names(bib) <- names(bibs)
 #  library('DESeq2')
 #  
 #  ## Specify design and switch to DESeq2 format
-#  dds <- DESeqDataSet(rse, ~ group + gene_target)
+#  dds <- DESeqDataSet(rse, ~ gene_target + group)
 #  
 #  ## Perform DE analysis
 #  dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target, fitType = 'local')
@@ -143,7 +141,7 @@ names(bib) <- names(bibs)
 #  
 #  ## Build a DESeqDataSet
 #  dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
-#      design =  ~ group + gene_target)
+#      design =  ~ gene_target + group)
 #  
 #  ## Perform differential expression analysis with DESeq2 at the ER-level
 #  dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target,
@@ -159,8 +157,13 @@ names(bib) <- names(bibs)
 #      intgroup = c('group', 'gene_target'), outdir = '.',
 #      output = 'SRP009615-results-ER-level-chrY')
 
+## ----'install', eval = FALSE---------------------------------------------
+#  ## try http:// if https:// URLs are not supported
+#  source("https://bioconductor.org/biocLite.R")
+#  biocLite("recount")
+
 ## ----'start', message=FALSE----------------------------------------------
-## Load library
+## Load recount R package
 library('recount')
 
 ## ----'search_abstract'---------------------------------------------------
@@ -195,25 +198,12 @@ rowData(rse_gene)
 ## Browse the project at SRA
 browse_study(project_info$project)
 
-## ----'geoids', eval = FALSE----------------------------------------------
-#  ## Find the GEO accession ids
-#  geoids <- sapply(colData(rse_gene)$run, find_geo)
-
-## ----'geoids-real', echo = FALSE-----------------------------------------
-## Remove dependency on web scrapping for vignette
-geoids <- c('GSM836270', 'GSM836271', 'GSM836272', 'GSM836273', 'GSM847561',
-    'GSM847562', 'GSM847563', 'GSM847564', 'GSM847565', 'GSM847566',
-    'GSM847567', 'GSM847568')
-names(geoids) <- c('SRR387777', 'SRR387778', 'SRR387779', 'SRR387780',
-    'SRR389077', 'SRR389078', 'SRR389079', 'SRR389080', 'SRR389081',
-    'SRR389082', 'SRR389083', 'SRR389084')
-
 ## ----'sample_info', warning = FALSE--------------------------------------
-## Get the sammple information from GEO
-geoinfo <- lapply(geoids, geo_info)
+## View GEO ids
+colData(rse_gene)$geo_accession
 
 ## Extract the sample characteristics
-geochar <- lapply(geoinfo, geo_characteristics)
+geochar <- lapply(split(colData(rse_gene), seq_len(nrow(colData(rse_gene)))), geo_characteristics)
 
 ## Note that the information for this study is a little inconsistent, so we
 ## have to fix it.
@@ -229,9 +219,8 @@ geochar <- do.call(rbind, lapply(geochar, function(x) {
 ## We can now define some sample information to use
 sample_info <- data.frame(
     run = colData(rse_gene)$run,
-    group = sapply(geoinfo, function(x) { ifelse(grepl('uninduced', x$title),
-        'uninduced', 'induced') }),
-    gene_target = sapply(geoinfo, function(x) { strsplit(strsplit(x$title,
+    group = ifelse(grepl('uninduced', colData(rse_gene)$title), 'uninduced', 'induced'),
+    gene_target = sapply(colData(rse_gene)$title, function(x) { strsplit(strsplit(x,
         'targeting ')[[1]][2], ' gene')[[1]][1] }),
     cell.line = geochar$cell.line
 )
@@ -250,7 +239,7 @@ colData(rse)$gene_target <- sample_info$gene_target
 library('DESeq2')
 
 ## Specify design and switch to DESeq2 format
-dds <- DESeqDataSet(rse, ~ group + gene_target)
+dds <- DESeqDataSet(rse, ~ gene_target + group)
 
 ## Perform DE analysis
 dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target, fitType = 'local')
@@ -329,7 +318,7 @@ covMat <- round(coverageMatrix, 0)
 ## Get phenotype data for study SRP009615
 pheno_url <- download_study(project = project_info$project, type = 'phenotype',
     download = FALSE)
-pheno <- read.table(pheno_url, header = TRUE, stringsAsFactors = FALSE)
+pheno <- read.table(pheno_url, header = TRUE, stringsAsFactors = FALSE, sep = '\t')
 
 ## We can sort the table to make sure everything is in the correct order
 pheno <- pheno[match(colnames(coverageMatrix), pheno$run), ]
@@ -344,7 +333,7 @@ head(pheno)
 ## ----'ers_dds', eval = .Platform$OS.type != 'windows'--------------------
 ## Build a DESeqDataSet
 dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
-    design =  ~ group + gene_target)
+    design =  ~ gene_target + group)
 
 ## ----'de_analysis_ers', eval = .Platform$OS.type != 'windows'------------
 ## Perform differential expression analysis with DESeq2 at the ER-level

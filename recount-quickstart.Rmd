@@ -50,6 +50,7 @@ bibs <- c(
     org.Hs.eg.db = citation('org.Hs.eg.db'),
     R = citation(),
     RCurl = citation('RCurl'),
+	recount = citation('recount'),
     regionReport = citation('regionReport'),
     rentrez = citation('rentrez'),
     rmarkdown = citation('rmarkdown'),
@@ -68,9 +69,9 @@ bib <- read.bibtex('quickstartRef.bib')
 names(bib) <- names(bibs)
 ```
 
-Here is a very quick example of how to download a `RangedSummarizedExperiment` object with the gene counts for a 2 groups project (12 samples) with SRA study id [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615). The `RangedSummarizedExperiment` object is defined in the `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])` package and can be used for differential expression analysis with different packages. Here we show how to use `r Biocpkg('DESeq2')` `r citep(bib[['DESeq2']])` to perform the analysis.
+Here is a very quick example of how to download a `RangedSummarizedExperiment` object with the gene counts for a 2 groups project (12 samples) with SRA study id [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615) using the `r Biocpkg('recount')` package `r citep(bib[['recount']])`. The `RangedSummarizedExperiment` object is defined in the `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])` package and can be used for differential expression analysis with different packages. Here we show how to use `r Biocpkg('DESeq2')` `r citep(bib[['DESeq2']])` to perform the differential expresion analysis.
 
-This quick analysis is explained in more detail later on in this document.
+This quick analysis is explained in more detail later on in this document. Further information about the recount project can be found in the publication [pre-print](http://biorxiv.org/content/early/2016/08/08/068478).
  
 ```{r 'ultraQuick', eval = FALSE}
 ## Load library
@@ -88,14 +89,11 @@ load(file.path(project_info$project, 'rse_gene.Rdata'))
 ## Browse the project at SRA
 browse_study(project_info$project)
 
-## Find the GEO accession ids
-geoids <- sapply(colData(rse_gene)$run, find_geo)
-
-## Get the sammple information from GEO
-geoinfo <- lapply(geoids, geo_info)
+## View GEO ids
+colData(rse_gene)$geo_accession
 
 ## Extract the sample characteristics
-geochar <- lapply(geoinfo, geo_characteristics)
+geochar <- lapply(split(colData(rse_gene), seq_len(nrow(colData(rse_gene)))), geo_characteristics)
 
 ## Note that the information for this study is a little inconsistent, so we
 ## have to fix it.
@@ -111,10 +109,10 @@ geochar <- do.call(rbind, lapply(geochar, function(x) {
 ## We can now define some sample information to use
 sample_info <- data.frame(
     run = colData(rse_gene)$run,
-    group = sapply(geoinfo, function(x) { ifelse(grepl('uninduced', x$title),
-        'uninduced', 'induced') }),
-    gene_target = sapply(geoinfo, function(x) { strsplit(strsplit(x$title,
-        'targeting ')[[1]][2], ' gene')[[1]][1] })
+    group = ifelse(grepl('uninduced', colData(rse_gene)$title), 'uninduced', 'induced'),
+    gene_target = sapply(colData(rse_gene)$title, function(x) { strsplit(strsplit(x,
+        'targeting ')[[1]][2], ' gene')[[1]][1] }),
+    cell.line = geochar$cell.line
 )
 
 ## Scale counts by taking into account the total coverage per sample
@@ -128,7 +126,7 @@ colData(rse)$gene_target <- sample_info$gene_target
 library('DESeq2')
 
 ## Specify design and switch to DESeq2 format
-dds <- DESeqDataSet(rse, ~ group + gene_target)
+dds <- DESeqDataSet(rse, ~ gene_target + group)
 
 ## Perform DE analysis
 dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target, fitType = 'local')
@@ -171,7 +169,7 @@ pheno <- cbind(pheno, sample_info[m, 2:3])
 
 ## Build a DESeqDataSet
 dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
-    design =  ~ group + gene_target)
+    design =  ~ gene_target + group)
 
 ## Perform differential expression analysis with DESeq2 at the ER-level
 dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target,
@@ -201,10 +199,18 @@ DESeq2Report(dds_ers, res = res_ers,
 
 This is a brief overview of what you can do with `r Biocpkg('recount')`. In this particular example we will download data from the [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615) study which sequenced 12 samples as described in the previous link.
 
-We first load the required packages.
+If you don't have `r Biocpkg('recount')` installed, please do so with:
+
+```{r 'install', eval = FALSE}
+## try http:// if https:// URLs are not supported
+source("https://bioconductor.org/biocLite.R")
+biocLite("recount")
+```
+
+Next we load the required packages. Loading `r Biocpkg('recount')` will load the required dependencies.
 
 ```{r 'start', message=FALSE}
-## Load library
+## Load recount R package
 library('recount')
 ```
 
@@ -258,29 +264,14 @@ browse_study(project_info$project)
 
 
 
-The SRA website includes an _Experiments_ link which further describes each of the samples. From the information available for [SRP009615 at NCBI](http://www.ncbi.nlm.nih.gov/sra/?term=SRP009615) we have some further sample information that we can save for use in our differential expression analysis. We can get some of this information from [GEO](http://www.ncbi.nlm.nih.gov/geo/). The function `find_geo()` finds the [GEO](http://www.ncbi.nlm.nih.gov/geo/) accession id for a given SRA run accession id, which we can then use with `geo_info()` and `geo_characteristics()` to parse this information.
-
-```{r 'geoids', eval = FALSE}
-## Find the GEO accession ids
-geoids <- sapply(colData(rse_gene)$run, find_geo)
-```
-
-```{r 'geoids-real', echo = FALSE}
-## Remove dependency on web scrapping for vignette
-geoids <- c('GSM836270', 'GSM836271', 'GSM836272', 'GSM836273', 'GSM847561',
-    'GSM847562', 'GSM847563', 'GSM847564', 'GSM847565', 'GSM847566',
-    'GSM847567', 'GSM847568')
-names(geoids) <- c('SRR387777', 'SRR387778', 'SRR387779', 'SRR387780',
-    'SRR389077', 'SRR389078', 'SRR389079', 'SRR389080', 'SRR389081',
-    'SRR389082', 'SRR389083', 'SRR389084')
-```
+The SRA website includes an _Experiments_ link which further describes each of the samples. From the information available for [SRP009615 at NCBI](http://www.ncbi.nlm.nih.gov/sra/?term=SRP009615) we have some further sample information that we can save for use in our differential expression analysis. We can get some of this information from [GEO](http://www.ncbi.nlm.nih.gov/geo/). The function `find_geo()` finds the [GEO](http://www.ncbi.nlm.nih.gov/geo/) accession id for a given SRA run accession id, which we can then use with `geo_info()` and `geo_characteristics()` to parse this information. The `rse_gene` object already has some of this information.
 
 ```{r 'sample_info', warning = FALSE}
-## Get the sammple information from GEO
-geoinfo <- lapply(geoids, geo_info)
+## View GEO ids
+colData(rse_gene)$geo_accession
 
 ## Extract the sample characteristics
-geochar <- lapply(geoinfo, geo_characteristics)
+geochar <- lapply(split(colData(rse_gene), seq_len(nrow(colData(rse_gene)))), geo_characteristics)
 
 ## Note that the information for this study is a little inconsistent, so we
 ## have to fix it.
@@ -296,9 +287,8 @@ geochar <- do.call(rbind, lapply(geochar, function(x) {
 ## We can now define some sample information to use
 sample_info <- data.frame(
     run = colData(rse_gene)$run,
-    group = sapply(geoinfo, function(x) { ifelse(grepl('uninduced', x$title),
-        'uninduced', 'induced') }),
-    gene_target = sapply(geoinfo, function(x) { strsplit(strsplit(x$title,
+    group = ifelse(grepl('uninduced', colData(rse_gene)$title), 'uninduced', 'induced'),
+    gene_target = sapply(colData(rse_gene)$title, function(x) { strsplit(strsplit(x,
         'targeting ')[[1]][2], ' gene')[[1]][1] }),
     cell.line = geochar$cell.line
 )
@@ -331,7 +321,7 @@ In this particular analysis, we'll test whether there is a group difference adju
 library('DESeq2')
 
 ## Specify design and switch to DESeq2 format
-dds <- DESeqDataSet(rse, ~ group + gene_target)
+dds <- DESeqDataSet(rse, ~ gene_target + group)
 
 ## Perform DE analysis
 dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target, fitType = 'local')
@@ -455,7 +445,7 @@ We first need to get some phenotype information for these samples similar to the
 ## Get phenotype data for study SRP009615
 pheno_url <- download_study(project = project_info$project, type = 'phenotype',
     download = FALSE)
-pheno <- read.table(pheno_url, header = TRUE, stringsAsFactors = FALSE)
+pheno <- read.table(pheno_url, header = TRUE, stringsAsFactors = FALSE, sep = '\t')
 
 ## We can sort the table to make sure everything is in the correct order
 pheno <- pheno[match(colnames(coverageMatrix), pheno$run), ]
@@ -473,7 +463,7 @@ Now that we have the necessary data, we can construct a `DESeqDataSet` object us
 ```{r 'ers_dds', eval = .Platform$OS.type != 'windows'}
 ## Build a DESeqDataSet
 dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
-    design =  ~ group + gene_target)
+    design =  ~ gene_target + group)
 ```
 
 
@@ -543,7 +533,7 @@ citation('recount')
 
 # Reproducibility
 
-This package was made possible thanks to:
+The `r Biocpkg('recount')` package `r citep(bib[['recount']])` was made possible thanks to:
 
 * R `r citep(bib[['R']])`
 * `r Biocpkg('AnnotationDbi')` `r citep(bib[['AnnotationDbi']])`
