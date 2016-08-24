@@ -126,7 +126,7 @@ colData(rse)$gene_target <- sample_info$gene_target
 library('DESeq2')
 
 ## Specify design and switch to DESeq2 format
-dds <- DESeqDataSet(rse, ~ group + gene_target)
+dds <- DESeqDataSet(rse, ~ gene_target + group)
 
 ## Perform DE analysis
 dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target, fitType = 'local')
@@ -169,7 +169,7 @@ pheno <- cbind(pheno, sample_info[m, 2:3])
 
 ## Build a DESeqDataSet
 dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
-    design =  ~ group + gene_target)
+    design =  ~ gene_target + group)
 
 ## Perform differential expression analysis with DESeq2 at the ER-level
 dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target,
@@ -321,7 +321,7 @@ In this particular analysis, we'll test whether there is a group difference adju
 library('DESeq2')
 
 ## Specify design and switch to DESeq2 format
-dds <- DESeqDataSet(rse, ~ group + gene_target)
+dds <- DESeqDataSet(rse, ~ gene_target + group)
 
 ## Perform DE analysis
 dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target, fitType = 'local')
@@ -463,7 +463,7 @@ Now that we have the necessary data, we can construct a `DESeqDataSet` object us
 ```{r 'ers_dds', eval = .Platform$OS.type != 'windows'}
 ## Build a DESeqDataSet
 dds_ers <- DESeqDataSetFromMatrix(countData = covMat, colData = pheno,
-    design =  ~ group + gene_target)
+    design =  ~ gene_target + group)
 ```
 
 
