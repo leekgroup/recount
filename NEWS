@@ -1,3 +1,11 @@
+CHANGES IN VERSION 0.99.29
+--------------------------
+
+BUF FIXES
+
+    o Fixed an bug in the vignette. Thanks to Michael Love for noticing it!
+
+
 CHANGES IN VERSION 0.99.0
 -------------------------
 
