@@ -1,3 +1,12 @@
+CHANGES IN VERSION 0.99.30
+--------------------------
+
+NEW FEATURES
+
+    o Added the function snaptron_query() which queries Intropolis via Snaptron
+        to find if an exon-exon junction is present in the data.
+
+
 CHANGES IN VERSION 0.99.29
 --------------------------
 
