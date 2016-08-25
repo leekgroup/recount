@@ -352,6 +352,14 @@ plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
 #      intgroup = c('group', 'gene_target'), outdir = '.',
 #      output = 'SRP009615-results-ER-level-chrY')
 
+## ----snaptron------------------------------------------------------------
+library('GenomicRanges')
+junctions <- GRanges(seqnames = 'chr2', IRanges(
+    start = c(28971711, 29555082, 29754983),
+    end = c(29462418, 29923339, 29917715)))
+
+snaptron_query(junctions)
+
 ## ----'installDer', eval = FALSE------------------------------------------
 #  ## try http:// if https:// URLs are not supported
 #  source("https://bioconductor.org/biocLite.R")

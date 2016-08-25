@@ -10,7 +10,7 @@
 
 <meta name="author" content="L Collado-Torres" />
 
-<meta name="date" content="2016-08-24" />
+<meta name="date" content="2016-08-25" />
 
 <title>recount quick start guide</title>
 
@@ -51,9 +51,9 @@ document.addEventListener("DOMContentLoaded", function() {
 <div id="header">
 <h1 class="title">recount quick start guide</h1>
 <h4 class="author"><em>L Collado-Torres</em></h4>
-<h4 class="date"><em>24 August 2016</em></h4>
+<h4 class="date"><em>25 August 2016</em></h4>
 </div>
-<h4 class="package">Package version: <span style="font-weight: normal">recount 0.99.29</span></h4>
+<h4 class="package">Package version: <span style="font-weight: normal">recount 0.99.30</span></h4>
 
 <h1>Contents</h1>
 <div id="TOC">
@@ -73,14 +73,15 @@ document.addEventListener("DOMContentLoaded", function() {
 <li><a href="#construct-a-deseqdataset-object"><span class="toc-section-number">4.3</span> Construct a <code>DESeqDataSet</code> object</a></li>
 <li><a href="#deseq2-analysis"><span class="toc-section-number">4.4</span> <em><a href="http://bioconductor.org/packages/DESeq2">DESeq2</a></em> analysis</a></li>
 </ul></li>
-<li><a href="#basics"><span class="toc-section-number">5</span> Basics</a><ul>
-<li><a href="#install-recount"><span class="toc-section-number">5.1</span> Install <em><a href="http://bioconductor.org/packages/recount">recount</a></em></a></li>
-<li><a href="#required-knowledge"><span class="toc-section-number">5.2</span> Required knowledge</a></li>
-<li><a href="#asking-for-help"><span class="toc-section-number">5.3</span> Asking for help</a></li>
-<li><a href="#citing-recount"><span class="toc-section-number">5.4</span> Citing <em><a href="http://bioconductor.org/packages/recount">recount</a></em></a></li>
+<li><a href="#snaptron"><span class="toc-section-number">5</span> Snaptron</a></li>
+<li><a href="#basics"><span class="toc-section-number">6</span> Basics</a><ul>
+<li><a href="#install-recount"><span class="toc-section-number">6.1</span> Install <em><a href="http://bioconductor.org/packages/recount">recount</a></em></a></li>
+<li><a href="#required-knowledge"><span class="toc-section-number">6.2</span> Required knowledge</a></li>
+<li><a href="#asking-for-help"><span class="toc-section-number">6.3</span> Asking for help</a></li>
+<li><a href="#citing-recount"><span class="toc-section-number">6.4</span> Citing <em><a href="http://bioconductor.org/packages/recount">recount</a></em></a></li>
 </ul></li>
-<li><a href="#reproducibility"><span class="toc-section-number">6</span> Reproducibility</a></li>
-<li><a href="#bibliography"><span class="toc-section-number">7</span> Bibliography</a></li>
+<li><a href="#reproducibility"><span class="toc-section-number">7</span> Reproducibility</a></li>
+<li><a href="#bibliography"><span class="toc-section-number">8</span> Bibliography</a></li>
 </ul>
 </div>
 
@@ -227,7 +228,7 @@ project_info</code></pre>
 <p>Now that we have a study that we are interested in, we can download the <em>RangedSummarizedExperiment</em> object (see <em><a href="http://bioconductor.org/packages/SummarizedExperiment">SummarizedExperiment</a></em>) with the data summarized at the gene level. The function <code>download_study()</code> helps us do this. If you are interested on how the annotation was defined, check <code>reproduce_ranges()</code>.</p>
 <pre class="r"><code>## Download the gene-level RangedSummarizedExperiment data
 download_study(project_info$project)</code></pre>
-<pre><code>## 2016-08-24 15:48:52 downloading file rse_gene.Rdata to SRP009615</code></pre>
+<pre><code>## 2016-08-25 15:52:58 downloading file rse_gene.Rdata to SRP009615</code></pre>
 <pre class="r"><code>## Load the data
 load(file.path(project_info$project, 'rse_gene.Rdata'))</code></pre>
 <p>We can explore a bit this <em>RangedSummarizedExperiment</em> as shown below.</p>
@@ -502,14 +503,14 @@ dim(gene_info)</code></pre>
 <pre class="r"><code>## Define expressed regions for study SRP009615, only for chromosome Y
 regions &lt;- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
     maxClusterGap = 3000L)</code></pre>
-<pre><code>## 2016-08-24 15:49:56 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:00 loadCoverage: applying the cutoff to the merged data</code></pre>
-<pre><code>## 2016-08-24 15:50:00 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</code></pre>
-<pre><code>## 2016-08-24 15:50:00 findRegions: identifying potential segments</code></pre>
-<pre><code>## 2016-08-24 15:50:00 findRegions: segmenting information</code></pre>
-<pre><code>## 2016-08-24 15:50:00 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
-<pre><code>## 2016-08-24 15:50:00 findRegions: identifying candidate regions</code></pre>
-<pre><code>## 2016-08-24 15:50:01 findRegions: identifying region clusters</code></pre>
+<pre><code>## 2016-08-25 15:54:16 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:17 loadCoverage: applying the cutoff to the merged data</code></pre>
+<pre><code>## 2016-08-25 15:54:17 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</code></pre>
+<pre><code>## 2016-08-25 15:54:17 findRegions: identifying potential segments</code></pre>
+<pre><code>## 2016-08-25 15:54:17 findRegions: segmenting information</code></pre>
+<pre><code>## 2016-08-25 15:54:17 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
+<pre><code>## 2016-08-25 15:54:17 findRegions: identifying candidate regions</code></pre>
+<pre><code>## 2016-08-25 15:54:18 findRegions: identifying region clusters</code></pre>
 <pre class="r"><code>## Briefly explore the resulting regions
 regions</code></pre>
 <pre><code>## GRanges object with 808 ranges and 6 metadata columns:
@@ -548,21 +549,21 @@ regions</code></pre>
 <p>Having defined the expressed regions, we can now compute a coverage matrix for these regions. We can do so using the function <code>coverage_matrix()</code> from <em><a href="http://bioconductor.org/packages/recount">recount</a></em> as shown below.</p>
 <pre class="r"><code>## Compute coverage matrix for study SRP009615, only for chromosome Y
 system.time( coverageMatrix &lt;- coverage_matrix('SRP009615', 'chrY', regions) )</code></pre>
-<pre><code>## 2016-08-24 15:50:02 railMatrix: processing regions 1 to 808</code></pre>
-<pre><code>## 2016-08-24 15:50:02 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:04 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:06 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:07 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:08 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:09 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:10 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:11 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:12 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:13 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:14 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
-<pre><code>## 2016-08-24 15:50:15 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:19 railMatrix: processing regions 1 to 808</code></pre>
+<pre><code>## 2016-08-25 15:54:19 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:20 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:22 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:23 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:25 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:26 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:28 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:30 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:31 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:33 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:34 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
+<pre><code>## 2016-08-25 15:54:36 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
 <pre><code>##    user  system elapsed 
-##   4.735   0.979  14.047</code></pre>
+##   5.264   0.525  18.521</code></pre>
 <pre class="r"><code>## Explore the matrix a bit
 dim(coverageMatrix)</code></pre>
 <pre><code>## [1] 808  12</code></pre>
@@ -696,17 +697,54 @@ report2 &lt;- DESeq2Report(dds_ers, res = res_ers,
     output = 'SRP009615-results-ER-level-chrY')</code></pre>
 </div>
 </div>
+<div id="snaptron" class="section level1">
+<h1><span class="header-section-number">5</span> Snaptron</h1>
+<p>Our collaborators built <em>SnaptronUI</em> to query the <a href="https://github.com/nellore/intropolis">Intropolis</a> database of the exon-exon junctions found in SRA. <em>SnaptronUI</em> allows you to do several types of queries manually and perform analyses. <em><a href="http://bioconductor.org/packages/recount">recount</a></em> has the function <code>snaptron_query()</code> which uses <a href="https://github.com/ChristopherWilks/snaptron">Snaptron</a> to check if particular exon-exon junctions are present in <em>Intropolis</em>. For example, here we use <code>snaptron_query()</code> to get in <code>R</code>-friendly format the information for 3 exon-exon junctions using <em>Intropolis</em> version 1 which uses hg19 coordinates.</p>
+<pre class="r"><code>library('GenomicRanges')
+junctions &lt;- GRanges(seqnames = 'chr2', IRanges(
+    start = c(28971711, 29555082, 29754983),
+    end = c(29462418, 29923339, 29917715)))
+
+snaptron_query(junctions)</code></pre>
+<pre><code>## 2016-08-25 15:54:42 querying Snaptron</code></pre>
+<pre><code>## 2016-08-25 15:54:44 processing results</code></pre>
+<pre><code>## 2016-08-25 15:54:44 extracting information</code></pre>
+<pre><code>## GRanges object with 3 ranges and 14 metadata columns:
+##       seqnames               ranges strand |     type snaptron_id
+##          &lt;Rle&gt;            &lt;IRanges&gt;  &lt;Rle&gt; | &lt;factor&gt;   &lt;integer&gt;
+##   [1]     chr2 [28971711, 29462418]      - |    SRA:I    22314441
+##   [2]     chr2 [29555082, 29923339]      + |    SRA:I    22328842
+##   [3]     chr2 [29754983, 29917715]      - |    SRA:I    22329293
+##       annotated  left_motif right_motif  left_annotated right_annotated
+##       &lt;logical&gt; &lt;character&gt; &lt;character&gt; &lt;CharacterList&gt; &lt;CharacterList&gt;
+##   [1]     FALSE          AT          AC              NA              NA
+##   [2]     FALSE          GC          AG              NA              NA
+##   [3]      TRUE          GT          AG      ES,UC,RG:1      ES,UC,RG:1
+##                  samples read_coverage_by_sample samples_count
+##            &lt;IntegerList&gt;           &lt;IntegerList&gt;     &lt;integer&gt;
+##   [1]               3481                       1             1
+##   [2] 2643,4867,4945,...               1,1,1,...            13
+##   [3]         3,5,13,...               1,1,1,...          1625
+##       coverage_sum coverage_avg coverage_median source_dataset_id
+##          &lt;integer&gt;    &lt;numeric&gt;       &lt;numeric&gt;         &lt;integer&gt;
+##   [1]            1        1.000               1                 1
+##   [2]           13        1.000               1                 1
+##   [3]         5380        3.311               1                 1
+##   -------
+##   seqinfo: 1 sequence from an unspecified genome; no seqlengths</code></pre>
+<p>If you use <code>snaptron_query()</code> please cite <a href="http://stingray.cs.jhu.edu:8090/snaptron/docs/">stingray.cs.jhu.edu:8090/snaptron/docs/</a>. <em>Snaptron</em> is separate from <em><a href="http://bioconductor.org/packages/recount">recount</a></em>. Thank you!</p>
+</div>
 <div id="basics" class="section level1">
-<h1><span class="header-section-number">5</span> Basics</h1>
+<h1><span class="header-section-number">6</span> Basics</h1>
 <div id="install-recount" class="section level2">
-<h2><span class="header-section-number">5.1</span> Install <em><a href="http://bioconductor.org/packages/recount">recount</a></em></h2>
+<h2><span class="header-section-number">6.1</span> Install <em><a href="http://bioconductor.org/packages/recount">recount</a></em></h2>
 <p><code>R</code> is an open-source statistical environment which can be easily modified to enhance its functionality via packages. <em><a href="http://bioconductor.org/packages/recount">recount</a></em> is a <code>R</code> package available via the <a href="http://bioconductor/packages/derfinder">Bioconductor</a> repository for packages. <code>R</code> can be installed on any operating system from <a href="https://cran.r-project.org/">CRAN</a> after which you can install <em><a href="http://bioconductor.org/packages/recount">recount</a></em> by using the following commands in your <code>R</code> session:</p>
 <pre class="r"><code>## try http:// if https:// URLs are not supported
 source(&quot;https://bioconductor.org/biocLite.R&quot;)
 biocLite(&quot;recount&quot;)</code></pre>
 </div>
 <div id="required-knowledge" class="section level2">
-<h2><span class="header-section-number">5.2</span> Required knowledge</h2>
+<h2><span class="header-section-number">6.2</span> Required knowledge</h2>
 <p><em><a href="http://bioconductor.org/packages/recount">recount</a></em> is based on many other packages and in particular in those that have implemented the infrastructure needed for dealing with RNA-seq data. That is, packages like <em><a href="http://bioconductor.org/packages/GenomicFeatures">GenomicFeatures</a></em> and <em><a href="http://bioconductor.org/packages/rtracklayer">rtracklayer</a></em> that allow you to import the data. A <em><a href="http://bioconductor.org/packages/recount">recount</a></em> user is not expected to deal with those packages directly but will need to be familiar with <em><a href="http://bioconductor.org/packages/SummarizedExperiment">SummarizedExperiment</a></em> to understand the results <em><a href="http://bioconductor.org/packages/recount">recount</a></em> generates. It might also prove to be highly beneficial to check the</p>
 <ul>
 <li><em><a href="http://bioconductor.org/packages/DESeq2">DESeq2</a></em> package for performing differential expression analysis with the <em>RangedSummarizedExperiment</em> objects,</li>
@@ -716,11 +754,11 @@ biocLite(&quot;recount&quot;)</code></pre>
 <p>If you are asking yourself the question “Where do I start using Bioconductor?” you might be interested in <a href="http://lcolladotor.github.io/2014/10/16/startBioC/#.VkOKbq6rRuU">this blog post</a>.</p>
 </div>
 <div id="asking-for-help" class="section level2">
-<h2><span class="header-section-number">5.3</span> Asking for help</h2>
+<h2><span class="header-section-number">6.3</span> Asking for help</h2>
 <p>As package developers, we try to explain clearly how to use our packages and in which order to use the functions. But <code>R</code> and <code>Bioconductor</code> have a steep learning curve so it is critical to learn where to ask for help. The blog post quoted above mentions some but we would like to highlight the <a href="https://support.bioconductor.org/">Bioconductor support site</a> as the main resource for getting help. Other alternatives are available such as creating GitHub issues and tweeting. However, please note that if you want to receive help you should adhere to the <a href="http://www.bioconductor.org/help/support/posting-guide/">posting guidlines</a>. It is particularly critical that you provide a small reproducible example and your session information so package developers can track down the source of the error.</p>
 </div>
 <div id="citing-recount" class="section level2">
-<h2><span class="header-section-number">5.4</span> Citing <em><a href="http://bioconductor.org/packages/recount">recount</a></em></h2>
+<h2><span class="header-section-number">6.4</span> Citing <em><a href="http://bioconductor.org/packages/recount">recount</a></em></h2>
 <p>We hope that <em><a href="http://bioconductor.org/packages/recount">recount</a></em> will be useful for your research. Please use the following information to cite the package and the overall approach. Thank you!</p>
 <pre class="r"><code>## Citation info
 citation('recount')</code></pre>
@@ -745,7 +783,7 @@ citation('recount')</code></pre>
 </div>
 </div>
 <div id="reproducibility" class="section level1">
-<h1><span class="header-section-number">6</span> Reproducibility</h1>
+<h1><span class="header-section-number">7</span> Reproducibility</h1>
 <p>The <em><a href="http://bioconductor.org/packages/recount">recount</a></em> package (<a href="http://biorxiv.org/content/early/2016/08/08/068478">Collado-Torres, Nellore, Kammers, Ellis, et al., 2016</a>) was made possible thanks to:</p>
 <ul>
 <li>R <a id="cite-R"></a>(<a href="https://www.R-project.org/">R Core Team, 2016</a>)</li>
@@ -783,9 +821,9 @@ knit('recount-quickstart.Rmd', tangle = TRUE)</code></pre>
 file.remove('quickstartRef.bib')</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <p>Date the vignette was generated.</p>
-<pre><code>## [1] &quot;2016-08-24 15:50:20 EDT&quot;</code></pre>
+<pre><code>## [1] &quot;2016-08-25 15:54:44 EDT&quot;</code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code>## Time difference of 1.692 mins</code></pre>
+<pre><code>## Time difference of 1.996 mins</code></pre>
 <p><code>R</code> session information.</p>
 <pre><code>## Session info -----------------------------------------------------------------------------------------------------------</code></pre>
 <pre><code>##  setting  value                       
@@ -795,7 +833,7 @@ file.remove('quickstartRef.bib')</code></pre>
 ##  language (EN)                        
 ##  collate  C                           
 ##  tz       America/New_York            
-##  date     2016-08-24</code></pre>
+##  date     2016-08-25</code></pre>
 <pre><code>## Packages ---------------------------------------------------------------------------------------------------------------</code></pre>
 <pre><code>##  package              * version  date       source                                   
 ##  AnnotationDbi        * 1.35.4   2016-07-08 Bioconductor                             
@@ -887,7 +925,7 @@ file.remove('quickstartRef.bib')</code></pre>
 ##  pkgmaker               0.22     2014-05-14 CRAN (R 3.3.0)                           
 ##  plyr                   1.8.4    2016-06-08 CRAN (R 3.3.0)                           
 ##  qvalue                 2.5.2    2016-05-27 Bioconductor                             
-##  recount              * 0.99.29  2016-08-24 Bioconductor                             
+##  recount              * 0.99.30  2016-08-25 Bioconductor                             
 ##  regionReport         * 1.7.7    2016-07-17 Bioconductor                             
 ##  registry               0.3      2015-07-08 CRAN (R 3.3.0)                           
 ##  rentrez                1.0.2    2016-04-21 CRAN (R 3.3.0)                           
@@ -907,7 +945,7 @@ file.remove('quickstartRef.bib')</code></pre>
 ##  zlibbioc               1.19.0   2016-05-05 Bioconductor</code></pre>
 </div>
 <div id="bibliography" class="section level1">
-<h1><span class="header-section-number">7</span> Bibliography</h1>
+<h1><span class="header-section-number">8</span> Bibliography</h1>
 <p>This vignette was generated using <em><a href="http://bioconductor.org/packages/BiocStyle">BiocStyle</a></em> (<a href="https://github.com/Bioconductor/BiocStyle">Oleś, Morgan, and Huber, 2016</a>) with <em><a href="http://cran.fhcrc.org/web/packages/knitr/index.html">knitr</a></em> (<a href="http://www.crcpress.com/product/isbn/9781466561595">Xie, 2014</a>) and <em><a href="http://cran.fhcrc.org/web/packages/rmarkdown/index.html">rmarkdown</a></em> (<a href="https://CRAN.R-project.org/package=rmarkdown">Allaire, Cheng, Xie, McPherson, et al., 2016</a>) running behind the scenes.</p>
 <p>Citations made with <em><a href="http://cran.fhcrc.org/web/packages/knitcitations/index.html">knitcitations</a></em> (<a href="https://CRAN.R-project.org/package=knitcitations">Boettiger, 2015</a>).</p>
 <p>
