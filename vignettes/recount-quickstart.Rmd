@@ -497,7 +497,7 @@ report2 <- DESeq2Report(dds_ers, res = res_ers,
 
 # Snaptron
 
-Our collaborators built [SnaptronUI](http://stingray.cs.jhu.edu:8100/) to query the [Intropolis](https://github.com/nellore/intropolis) database of the exon-exon junctions found in SRA. _SnaptronUI_ allows you to do several types of queries manually and perform analyses. `r Biocpkg('recount')` has the function `snaptron_query()` which uses [Snaptron](https://github.com/ChristopherWilks/snaptron) to check if particular exon-exon junctions are present in _Intropolis_. For example, here we use `snaptron_query()` to get in `R`-friendly format the information for 3 exon-exon junctions using _Intropolis_ version 1 which uses hg19 coordinates.
+Our collaborators built _SnaptronUI_ to query the [Intropolis](https://github.com/nellore/intropolis) database of the exon-exon junctions found in SRA. _SnaptronUI_ allows you to do several types of queries manually and perform analyses. `r Biocpkg('recount')` has the function `snaptron_query()` which uses [Snaptron](https://github.com/ChristopherWilks/snaptron) to check if particular exon-exon junctions are present in _Intropolis_. For example, here we use `snaptron_query()` to get in `R`-friendly format the information for 3 exon-exon junctions using _Intropolis_ version 1 which uses hg19 coordinates.
 
 ```{r snaptron}
 library('GenomicRanges')
