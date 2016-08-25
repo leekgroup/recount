@@ -24,8 +24,7 @@ the Snaptron query. For information on the different columns please see
 }
 \description{
 This function uses the Snaptron API to query specific exon-exon junctions
-that are available via Intropolis. You can use SnaptronUI interactively at
-\url{http://stingray.cs.jhu.edu:8100/}.
+that are available via Intropolis as described in the vignette.
 }
 \examples{
 

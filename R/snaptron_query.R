@@ -1,8 +1,7 @@
 #' Query Snaptron to get data from exon-exon junctions present in Intropolis
 #'
 #' This function uses the Snaptron API to query specific exon-exon junctions
-#' that are available via Intropolis. You can use SnaptronUI interactively at
-#' \url{http://stingray.cs.jhu.edu:8100/}. 
+#' that are available via Intropolis as described in the vignette.
 #'
 #' @param junctions A \link[GenomicRanges]{GRanges-class} object with the
 #' exon-exon junctions of interest. The chromosome names should be in UCSC
@@ -66,7 +65,7 @@ snaptron_query <- function(junctions, version = 1, verbose = TRUE) {
     valid <- which(elementNROWS(query_split) > 0)
     if(length(valid) == 0) {
         message(paste(Sys.time(),
-            'found no junctions with Snaptron. Instead of exact matches you might want to use the the SnaptronUI directly at http://stingray.cs.jhu.edu:8100/.'))
+            'found no exon-exon junctions in Intropolis matching your query'))
         return(NULL)
     }
     

@@ -125,6 +125,6 @@ snap <- snaptron_query(junctions)
 test_that('Snaptron', {
     expect_equal(length(snap), 3)
     expect_equal(ncol(mcols(snap)), 14)
-    expect_equal(snap$left_annotated[[1]], NA)
+    expect_equal(snap$left_annotated[[1]], as.character(NA))
     expect_equal(snaptron_query(junctions[1], verbose = FALSE), NULL)
 })
