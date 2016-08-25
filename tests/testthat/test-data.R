@@ -113,3 +113,18 @@ pheno <- read.table(phenoFile, header = TRUE, stringsAsFactors = FALSE,
 test_that('Correct phenotype information', {
     expect_equal(pheno$auc, 159080954)
 })
+
+
+## Test Snaptron
+library('GenomicRanges')
+junctions <- GRanges(seqnames = 'chr2', IRanges(
+    start = c(28971710:28971712, 29555081:29555083, 29754982:29754984),
+    end = c(29462417:29462419, 29923338:29923340, 29917714:29917716)))
+
+snap <- snaptron_query(junctions)
+test_that('Snaptron', {
+    expect_equal(length(snap), 3)
+    expect_equal(ncol(mcols(snap)), 14)
+    expect_equal(snap$left_annotated[[1]], NA)
+    expect_equal(snaptron_query(junctions[1], verbose = FALSE), NULL)
+})
