@@ -21,6 +21,13 @@ metadata.
 Download the metadata from all the projects. This can be useful for finding
 samples of interests across all projects.
 }
+\details{
+Note that for \code{subset = 'gtex'}, there are more variables than
+the ones we have for 'sra'. This information corresponds to file
+GTEx_Data_V6_Annotations_SampleAttributesDS.txt available at
+\url{http://www.gtexportal.org/home/datasets}. There you can find the
+information describing these variables.
+}
 \examples{
 
 metadata <- all_metadata()
