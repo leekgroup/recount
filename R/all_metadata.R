@@ -20,6 +20,12 @@
 #' 
 #' metadata <- all_metadata()
 #'
+#' @details Note that for \code{subset = 'gtex'}, there are more variables than
+#' the ones we have for 'sra'. This information corresponds to file
+#' GTEx_Data_V6_Annotations_SampleAttributesDS.txt available at
+#' \url{http://www.gtexportal.org/home/datasets}. There you can find the
+#' information describing these variables.
+#'
 
 all_metadata <- function(subset = 'sra', verbose = TRUE) {
     ## For R CMD check
