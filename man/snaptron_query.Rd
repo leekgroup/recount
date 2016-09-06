@@ -29,11 +29,19 @@ that are available via Intropolis as described in the vignette.
 \examples{
 
 library('GenomicRanges')
+## Define some exon-exon junctions (hg19 coordinates)
 junctions <- GRanges(seqnames = 'chr2', IRanges(
     start = c(28971710:28971712, 29555081:29555083, 29754982:29754984),
     end = c(29462417:29462419, 29923338:29923340, 29917714:29917716)))
 
+## Check against Snaptron version 1 (hg19 coordinates)
 snaptron_query(junctions)
+
+## Check another set of junctions against version 2 (more data, hg38 
+   coordinates)
+junctions_v2 <- GRanges(seqnames = 'chr2', IRanges(
+    start = 29532116:29532118, end = 29694848:29694850))
+snaptron_query(junctions_v2, version = 2) 
 
 }
 \author{
