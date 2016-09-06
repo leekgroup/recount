@@ -38,7 +38,7 @@ junctions <- GRanges(seqnames = 'chr2', IRanges(
 snaptron_query(junctions)
 
 ## Check another set of junctions against version 2 (more data, hg38 
-   coordinates)
+## coordinates)
 junctions_v2 <- GRanges(seqnames = 'chr2', IRanges(
     start = 29532116:29532118, end = 29694848:29694850))
 snaptron_query(junctions_v2, version = 2) 
