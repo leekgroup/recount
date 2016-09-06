@@ -120,11 +120,18 @@ library('GenomicRanges')
 junctions <- GRanges(seqnames = 'chr2', IRanges(
     start = c(28971710:28971712, 29555081:29555083, 29754982:29754984),
     end = c(29462417:29462419, 29923338:29923340, 29917714:29917716)))
+    
+junctions_v2 <- GRanges(seqnames = 'chr2', IRanges(
+    start = 29532116:29532118, end = 29694848:29694850)) 
 
 snap <- snaptron_query(junctions)
+snap_v2 <- snaptron_query(junctions_v2, version = 2)
+
 test_that('Snaptron', {
     expect_equal(length(snap), 3)
     expect_equal(ncol(mcols(snap)), 14)
     expect_equal(snap$left_annotated[[1]], as.character(NA))
     expect_equal(snaptron_query(junctions[1], verbose = FALSE), NULL)
+    expect_equal(is(snap_v2$annotated, 'CompressedCharacterList'), TRUE)
+    expect_equal(snaptron_query(junctions_v2, verbose = FALSE), NULL)
 })

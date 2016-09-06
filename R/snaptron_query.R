@@ -28,11 +28,19 @@
 #' @examples
 #' 
 #' library('GenomicRanges')
+#' ## Define some exon-exon junctions (hg19 coordinates)
 #' junctions <- GRanges(seqnames = 'chr2', IRanges(
 #'     start = c(28971710:28971712, 29555081:29555083, 29754982:29754984),
 #'     end = c(29462417:29462419, 29923338:29923340, 29917714:29917716)))
 #'
+#' ## Check against Snaptron version 1 (hg19 coordinates)
 #' snaptron_query(junctions)
+#'
+#' ## Check another set of junctions against version 2 (more data, hg38 
+#'    coordinates)
+#' junctions_v2 <- GRanges(seqnames = 'chr2', IRanges(
+#'     start = 29532116:29532118, end = 29694848:29694850))
+#' snaptron_query(junctions_v2, version = 2) 
 #'
 
 snaptron_query <- function(junctions, version = 1, verbose = TRUE) {
@@ -40,10 +48,6 @@ snaptron_query <- function(junctions, version = 1, verbose = TRUE) {
     stopifnot(is(junctions, 'GRanges'))
     stopifnot(all(grepl('chr', seqlevels(junctions))))
     stopifnot(version %in% c(1, 2))
-    
-    if(version == 2) {
-        stop('Version 2 is currently not supported, but will be soon!')
-    }
     ver <- ifelse(version == 1, 'srav1', 'srav2')
     
     
@@ -65,7 +69,9 @@ snaptron_query <- function(junctions, version = 1, verbose = TRUE) {
     valid <- which(elementNROWS(query_split) > 0)
     if(length(valid) == 0) {
         message(paste(Sys.time(),
-            'found no exon-exon junctions in Intropolis matching your query'))
+            'found no exon-exon junctions in Intropolis version', version,
+            'matching your query: this version uses',
+            ifelse(version == 1, 'hg19', 'hg38'), 'coordinates.'))
         return(NULL)
     }
     
@@ -99,7 +105,7 @@ snaptron_query <- function(junctions, version = 1, verbose = TRUE) {
     ## Add other variables
     result$type <- as.factor(res[, 'type'])
     result$snaptron_id <- as.integer(res[, 'snaptron_id'])
-    result$annotated <- as.logical(as.integer(res[, 'annotated']))
+    result$annotated <- to_chr_list(res[, 'annotated'])
     result$left_motif <- res[, 'left_motif']
     result$right_motif <- res[, 'right_motif']
     result$left_annotated <- to_chr_list(res[, 'left_annotated'])
