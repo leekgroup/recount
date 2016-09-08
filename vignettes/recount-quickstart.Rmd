@@ -536,7 +536,7 @@ The exons in a `rse_exon` object are those that have a Entrez `gene_id` and that
 
 You can reproduce the gene and exon information using the function `reproduce_ranges()`.
 
-```{r, 'clean up', echo = FALSE, results = hide}
+```{r, 'clean up', echo = FALSE, results = 'hide'}
 unlink('SRP009615', recursive = TRUE)
 ```
 
