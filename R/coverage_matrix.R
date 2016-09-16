@@ -121,6 +121,9 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     totalMapped <- pheno$auc[m]
     mappedPerXM <- totalMapped / targetSize
     
+    ## Keep only regions from the chr in question
+    regions <- regions[seqnames(regions) == chr]
+    
     ## Split regions into chunks
     nChunks <- length(regions) %/% chunksize
     if(length(regions) %% chunksize > 0) nChunks <- nChunks + 1
