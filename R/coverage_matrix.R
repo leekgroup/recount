@@ -110,7 +110,7 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
         
     ## Read pheno data
     pheno <- read.table(phenoFile, header = TRUE, stringsAsFactors = FALSE,
-        sep = '\t')
+        sep = '\t', comment.char = '')
     
     ## Get sample names
     m <- match(url_table$file_name[samples_i], paste0(pheno$run, '.bw'))
