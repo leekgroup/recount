@@ -109,8 +109,7 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     }
         
     ## Read pheno data
-    pheno <- read.table(phenoFile, header = TRUE, stringsAsFactors = FALSE,
-        sep = '\t', comment.char = '')
+    pheno <- .read_pheno(phenoFile, project)
     
     ## Get sample names
     m <- match(url_table$file_name[samples_i], paste0(pheno$run, '.bw'))
@@ -152,4 +151,12 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     
     ## Finish
     return(coverageMatrix)
+}
+
+
+## Helper function for reading the phenotype files
+.read_pheno <- function(phenoFile, project) {
+    info <- readLines(phenoFile)
+    read.table(text = info[grepl(paste0('^project|^', project), info)],
+        header = TRUE, stringsAsFactors = FALSE, sep = '\t', comment.char = '')
 }

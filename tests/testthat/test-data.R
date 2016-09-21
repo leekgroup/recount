@@ -136,11 +136,12 @@ test_that('Snaptron', {
     expect_equal(snaptron_query(junctions_v2, verbose = FALSE), NULL)
 })
 
-## Weird pheno file
-download_study('SRP036843', 'phenotype')
-phenoFile <- file.path('SRP036843', 'SRP036843.tsv')
-pheno <- read.table(phenoFile, header = TRUE, stringsAsFactors = FALSE,
-    sep = '\t', comment.char = '')
-test_that('Weird pheno file', {
-    expect_equal(nrow(pheno), 3)
+## Weird pheno files
+projects <- c('SRP036843', 'SRP029334')
+sapply(projects, download_study, type = 'phenotype')
+phenoFiles <- sapply(projects, function(x) { file.path(x, paste0(x, '.tsv')) })
+pheno <- mapply(recount:::.read_pheno, phenoFiles, projects, SIMPLIFY = FALSE)
+test_that('Weird pheno files', {
+    expect_equal(nrow(pheno[[1]]), 3)
+    expect_equal(nrow(pheno[[2]]), 5)
 })
