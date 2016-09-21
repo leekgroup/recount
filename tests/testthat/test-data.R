@@ -135,3 +135,12 @@ test_that('Snaptron', {
     expect_equal(is(snap_v2$annotated, 'CompressedCharacterList'), TRUE)
     expect_equal(snaptron_query(junctions_v2, verbose = FALSE), NULL)
 })
+
+## Weird pheno file
+download_study('SRP036843', 'phenotype')
+phenoFile <- file.path('SRP036843', 'SRP036843.tsv')
+pheno <- read.table(phenoFile, header = TRUE, stringsAsFactors = FALSE,
+    sep = '\t', comment.char = '')
+test_that('Weird pheno file', {
+    expect_equal(nrow(pheno), 3)
+})
