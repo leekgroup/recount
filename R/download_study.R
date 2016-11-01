@@ -39,6 +39,8 @@
 #'     request issues.}
 #' }
 #' @param outdir The destination directory for the downloaded file(s).
+#' Alternatively check the \code{SciServer} section on the vignette to see
+#' how to access all the recount data via a R Jupyter Notebook.
 #' @param download Whether to download the files or just get the download urls.
 #' @param ... Additional arguments passed to \link[downloader]{download}.
 #'

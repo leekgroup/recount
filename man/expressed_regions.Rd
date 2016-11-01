@@ -23,7 +23,9 @@ We only recommend downloading the full data if you will use it several times.}
 \item{maxClusterGap}{This determines the maximum gap between candidate ERs.}
 
 \item{chrlen}{The chromosome length in base pairs. If it's \code{NULL}, the 
-chromosome length is extracted from the Rail-RNA runs GitHub repository.}
+chromosome length is extracted from the Rail-RNA runs GitHub repository.
+Alternatively check the \code{SciServer} section on the vignette to see
+how to access all the recount data via a R Jupyter Notebook.}
 
 \item{verbose}{If \code{TRUE} basic status updates will be printed along the 
 way.}

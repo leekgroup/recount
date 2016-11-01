@@ -536,11 +536,34 @@ The exons in a `rse_exon` object are those that have a Entrez `gene_id` and that
 
 You can reproduce the gene and exon information using the function `reproduce_ranges()`.
 
+# Candidate gene fusions
+
+If you are interested in finding possible gene fusion events in a particular study, you can download the _RangedSummarizedExperiment_ object at the exon-exon junctions level for that study. The objects we provide classify exon-exon junction events as shown below.
+
+```{r 'gene_fusions'}
+library('recount')
+
+## Download and load RSE object for SRP009615 study
+download_study('SRP009615', type = 'rse-jx')
+load(file.path('SRP009615', 'rse_jx.Rdata'))
+
+## Exon-exon junctions by class
+table(rowRanges(rse_jx)$class)
+
+## Potential gene fusions by chromosome
+fusions <- rowRanges(rse_jx)[rowRanges(rse_jx)$class == 'fusion']
+fusions_by_chr <- sort(table(seqnames(fusions)), decreasing = TRUE)
+fusions_by_chr[fusions_by_chr > 0]
+
+## Genes with the most fusions
+head(sort(table(unlist(fusions$symbol_proposed)), decreasing = TRUE))
+```
+
+If you are interested in checking the frequency of a particular exon-exon junction then check the `snaptron_query()` function described in the following section.
+
 ```{r, 'clean up', echo = FALSE, results = 'hide'}
 unlink('SRP009615', recursive = TRUE)
 ```
-
-
 
 
 # Snaptron
@@ -558,6 +581,81 @@ snaptron_query(junctions)
 
 If you use `snaptron_query()` please cite [stingray.cs.jhu.edu:8090/snaptron/docs/](http://stingray.cs.jhu.edu:8090/snaptron/docs/). _Snaptron_ is separate from `r Biocpkg('recount')`. Thank you!
 
+
+# Download all the data
+
+If you are interested in downloading all the data you can do so using the `recount_url` data.frame included in the package. That is:
+
+```{r 'downloadAll'}
+## Get data.frame with all the URLs
+library('recount')
+dim(recount_url)
+
+## Explore URLs
+head(recount_url$url)
+```
+
+You can then download all the data using the `download_study()` function or however you prefer to do so with `recount_url`.
+
+```{r 'actuallyDownload', eval = FALSE}
+## Download all files (will take a while! It's over 6 TB of data)
+sapply(unique(recount_url$project), download_study, type = 'all')
+```
+
+You can find the code for the website at [leekgroup/recount-website](https://github.com/leekgroup/recount-website/tree/master/website) if you want to deploy your own local mirror. Please let us know if you choose to do deploy a mirror.
+
+
+# Accessing `r Biocpkg('recount')` via _SciServer_
+
+Not everyone has over 6 terabytes of disk space available to download all the data from the `recount` project. However, thanks to [SciServer](http://www.sciserver.org/) you can access it locally via a Jupyter Notebook. If you do so and want to share your work, please let [SciServer](http://www.sciserver.org/) people know via Twitter at [IDIESJHU](https://twitter.com/IDIESJHU).
+
+
+## Step by step
+
+
+To use _SciServer_, you first have to go to http://www.sciserver.org/ then click on "Login to SciServer". If you are a first time user, click on "Register New Account" and enter the information they request as shown on the next image.
+
+<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/register.png" align="center"></a>
+
+Once you've registered, open the [SciServer compute tool](http://compute.sciserver.org/dashboard/).
+
+<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/sciserver-compute.png" align="center"></a>
+
+Then click on "Create container", choose a name of your preference and make sure that you choose to load R 3.3.x and the `recount` public volume. This will enable you to access all of the `recount` data as if it was on your computer. Click "Create" once you are ready.
+
+<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/new-container.png" align="center"></a>
+
+Once you have a container, create a new R _Notebook_ as shown in the image below.
+
+<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/new-R.png" align="center"></a>
+
+In this R _Notebook_ you can insert new code _cells_ where you can type R code. For example, you can install `r Biocpkg('recount')` and `r Biocpkg('DESeq2')` to run the code example from this vignette. You first have to install the packages as shown below.
+
+<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/demo1.png" align="center"></a>
+
+Then, the main part when using _SciServer_ is to use to remember that all the `recount` data is available locally. So instead of using `download_study()`, you can simply use `load()` with the correct path as shown below.
+
+<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/demo2.png" align="center"></a>
+
+Several functions in the `r Biocpkg('recount')` package have the `outdir` argument, which you can specify to use the data locally. Try using `expressed_regions()` in _SciServer_ to get started with the following code:
+
+```{r 'ER-sciserver', eval = FALSE}
+## Expressed-regions SciServer example
+regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L,
+    maxClusterGap = 3000L, outdir = file.path(scipath, 'SRP009615'))
+regions
+```
+
+
+You can find the R code for a full _SciServer_ demo [here](https://github.com/leekgroup/recount-website/blob/master/sciserver_demo/sciserver_demo.R). You can copy and paste it into a cell and run it all to see how _SciServer compute_ works.
+
+## SciServer help
+
+If you encounter problems when using SciServer please check their [support page](http://www.sciserver.org/support/help/) and the [SciServer compute help section](http://compute.sciserver.org/dashboard/Home/Help).
+
+## Citing _SciServer_
+
+If you use [SciServer](http://www.sciserver.org/) for your published work, please cite it accordingly. _SciServer_ is administered by the [Institute for Data Intensive Engineering and Science](http://idies.jhu.edu/) at [Johns Hopkins University](http://www.jhu.edu/) and is funded by National Science Foundation award ACI-1261715.
 
 # Basics
 

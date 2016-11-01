@@ -42,7 +42,9 @@ download_study(project, type = "rse-gene", outdir = project,
     request issues.}
 }}
 
-\item{outdir}{The destination directory for the downloaded file(s).}
+\item{outdir}{The destination directory for the downloaded file(s).
+Alternatively check the \code{SciServer} section on the vignette to see
+how to access all the recount data via a R Jupyter Notebook.}
 
 \item{download}{Whether to download the files or just get the download urls.}
 

@@ -29,6 +29,8 @@
 #' might be the best option if you are accessing all chromosomes for a given
 #' project and/or are thinking of using different sets of \code{regions} (for
 #' example, from different cutoffs applied to \link{expressed_regions}).
+#' Alternatively check the \code{SciServer} section on the vignette to see
+#' how to access all the recount data via a R Jupyter Notebook.
 #'
 #' @author Leonardo Collado-Torres
 #' @export

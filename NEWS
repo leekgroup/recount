@@ -1,3 +1,13 @@
+CHANGES IN VERSION 1.1.1
+------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o The vignette now describes how to download all the data, how to check
+        exon-exon junctions by class, and how to use SciServer compute
+        to access all the recount data (over 6 TB) via http://www.sciserver.org/
+
+
 CHANGES IN VERSION 0.99.30
 --------------------------
 
