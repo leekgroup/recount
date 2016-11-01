@@ -40,6 +40,7 @@ bibs <- c(
     DESeq2 = citation('DESeq2'),
     devtools = citation('devtools'),
     downloader = citation('downloader'),
+    EnsDb.Hsapiens.v79 = citation('EnsDb.Hsapiens.v79'),
     GEOquery = citation('GEOquery'),
     GenomeInfoDb = citation('GenomeInfoDb'),
     GenomicFeatures = citation('GenomicFeatures'),
@@ -536,6 +537,38 @@ The exons in a `rse_exon` object are those that have a Entrez `gene_id` and that
 
 You can reproduce the gene and exon information using the function `reproduce_ranges()`.
 
+## Using another/newer annotation
+
+If you are interested in using another annotation based on hg38 coordinates you can do so using the function `coverage_matrix()` or by running [bwtool](https://github.com/CRG-Barcelona/bwtool/wiki) thanks to the BigWig files in `recount`.
+
+If you are re-processing a small set of samples, it simply might be easier to use `coverage_matrix()` as shown below using the annotation information provided by the `r Biocpkg('EnsDb.Hsapiens.v79')` package.
+
+```{r}
+## Get the reduced exons based on EnsDb.Hsapiens.v79 which matches hg38
+exons <- reproduce_ranges('exon', db = 'EnsDb.Hsapiens.v79')
+
+## Change the chromosome names to match those used in the BigWig files
+library('GenomeInfoDb')
+seqlevelsStyle(exons) <- 'UCSC'
+
+## Get the count matrix at the exon level for chrY
+exons_chrY <- keepSeqlevels(exons, 'chrY')
+exonMatrix <- coverage_matrix('SRP009615', 'chrY', unlist(exons_chrY),
+    chunksize = 3000)
+dim(exonMatrix)
+head(exonMatrix)
+
+## Summary the information at the gene level for chrY
+exon_gene <- rep(names(exons_chrY), elementNROWS(exons_chrY))
+geneMatrix <- do.call(rbind, lapply(split(as.data.frame(exonMatrix),
+    exon_gene), colSums))
+dim(geneMatrix)
+head(geneMatrix)
+```
+
+The above solution works well for a small set of samples. However, `bwtool` is faster for processing large sets. You can see how we used `bwtool` with the annotation from `r Biocpkg('TxDb.Hsapiens.UCSC.hg38.knownGene')` package version 3.1.3 at [leekgroup/recount-website](https://github.com/leekgroup/recount-website). It's much faster than R and less memory intensive but requires several steps such as preparing an appropriate [exons BED file](https://github.com/leekgroup/recount-website/blob/master/genes/create_bed.R), [running bwtool](https://github.com/leekgroup/recount-website/blob/master/bwtool/run_bwtool.sh), [loading the exon counts](https://github.com/leekgroup/recount-website/blob/bc849a34e29d82dadc5d8f10508eaf573c26611d/rse/create_rse.R#L540-L546) and [summarizing them at the gene level](https://github.com/leekgroup/recount-website/blob/bc849a34e29d82dadc5d8f10508eaf573c26611d/rse/create_rse.R#L566-L568). Note that you will need to download the BigWig files first.
+
+
 # Candidate gene fusions
 
 If you are interested in finding possible gene fusion events in a particular study, you can download the _RangedSummarizedExperiment_ object at the exon-exon junctions level for that study. The objects we provide classify exon-exon junction events as shown below.
@@ -703,6 +736,7 @@ The `r Biocpkg('recount')` package `r citep(bib[['recount']])` was made possible
 * `r Biocpkg('derfinder')` `r citep(bib[['derfinder']])`
 * `r CRANpkg('devtools')` `r citep(bib[['devtools']])`
 * `r CRANpkg('downloader')` `r citep(bib[['downloader']])`
+* `r Biocpkg('EnsDb.Hsapiens.v79')` `r citep(bib[['EnsDb.Hsapiens.v79']])`
 * `r Biocpkg('GEOquery')` `r citep(bib[['GEOquery']])`
 * `r Biocpkg('GenomeInfoDb')` `r citep(bib[['GenomeInfoDb']])`
 * `r Biocpkg('GenomicFeatures')` `r citep(bib[['GenomicFeatures']])`

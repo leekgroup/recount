@@ -1,3 +1,16 @@
+CHANGES IN VERSION 1.1.2
+------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o The function reproduce_ranges() now has the 'db' argument. By default
+        it's set to TxDb.Hsapiens.UCSC.hg38.knownGene to reproduce the actual
+        information used in recount. But it can also be used with
+        EnsDb.Hsapiens.v79 to use the ENSEMBL annotation. Then with
+        coverage_matrix() you can get the counts for either an updated
+        TxDb.Hsapiens.UCSC.hg38.knownGene or for EnsDb.Hsapiens.v79 at the
+        exon and/or gene levels as shown in the vignette.
+
 CHANGES IN VERSION 1.1.1
 ------------------------
 
