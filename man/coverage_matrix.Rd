@@ -33,7 +33,9 @@ but \code{outdir} is specified, they will get downloaded first. By default
 We only recommend downloading the full data if you will use it several times.}
 
 \item{chrlen}{The chromosome length in base pairs. If it's \code{NULL}, the 
-chromosome length is extracted from the Rail-RNA runs GitHub repository.}
+chromosome length is extracted from the Rail-RNA runs GitHub repository.
+Alternatively check the \code{SciServer} section on the vignette to see
+how to access all the recount data via a R Jupyter Notebook.}
 
 \item{verbose}{If \code{TRUE} basic status updates will be printed along the 
 way.}
@@ -61,6 +63,8 @@ be best to first download the BigWig files using \link{download_study}. This
 might be the best option if you are accessing all chromosomes for a given
 project and/or are thinking of using different sets of \code{regions} (for
 example, from different cutoffs applied to \link{expressed_regions}).
+Alternatively check the \code{SciServer} section on the vignette to see
+how to access all the recount data via a R Jupyter Notebook.
 }
 \examples{
 

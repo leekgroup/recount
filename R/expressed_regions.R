@@ -16,6 +16,8 @@
 #' @param maxClusterGap This determines the maximum gap between candidate ERs.
 #' @param chrlen The chromosome length in base pairs. If it's \code{NULL}, the 
 #' chromosome length is extracted from the Rail-RNA runs GitHub repository.
+#' Alternatively check the \code{SciServer} section on the vignette to see
+#' how to access all the recount data via a R Jupyter Notebook.
 #' @param verbose If \code{TRUE} basic status updates will be printed along the 
 #' way.
 #' @param ... Additional arguments passed to \link{download_study} when
