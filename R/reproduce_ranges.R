@@ -5,7 +5,9 @@
 #' objects provided by recount. The annotation is based on
 #' \code{TxDb.Hsapiens.UCSC.hg38.knownGene} with the gene-level 
 #' information extracted with \code{genes()} (see 
-#' \link[GenomicFeatures]{transcripts} with default arguments.
+#' \link[GenomicFeatures]{transcripts} with default arguments. It can also be
+#' used to generate similar results with newer annotation or with alternative
+#' annotations for the human hg38 assembly.
 #' 
 #' @param level Either \code{genes} or \code{exon}. It specifies whether to
 #' return Gene or exon level information as a 
@@ -13,6 +15,11 @@
 #' \link[GenomicRanges]{GRangesList-class} object respectively. The gene level
 #' information contains the width of the reduced exons for that given gene
 #' which can be used to normalize the counts provided by recount.
+#' @param db Either \code{TxDb.Hsapiens.UCSC.hg38.knownGene} (default) or
+#' \code{EnsDb.Hsapiens.v79}. The default option reproduces the annotation
+#' used when creating recount (when using TxDb.Hsapiens.UCSC.hg38.knownGene
+#' version 3.1.3) or updates it. EnsDb.Hsapiens.v79 can be used
+#' for an alternative annotation as showcased in the recount vignette.
 #'
 #' @return Either a \link[GenomicRanges]{GRanges-class} object like 
 #' \link{recount_genes} or a \link[GenomicRanges]{GRangesList-class} object 
@@ -47,23 +54,31 @@
 #' }
 #'
 
-reproduce_ranges <- function(level = 'gene') {
+reproduce_ranges <- function(level = 'gene',
+    db = 'TxDb.Hsapiens.UCSC.hg38.knownGene') {
     ## Check input
     stopifnot(level %in% c('gene', 'exon'))
+    stopifnot(db %in% c('TxDb.Hsapiens.UCSC.hg38.knownGene',
+        'EnsDb.Hsapiens.v79'))
+    
+    
     
     ## Load required packages
     .load_install('GenomicFeatures')
-    .load_install('TxDb.Hsapiens.UCSC.hg38.knownGene')
+    if(db == 'TxDb.Hsapiens.UCSC.hg38.knownGene') {
+        .load_install('TxDb.Hsapiens.UCSC.hg38.knownGene')
+        txdb <- TxDb.Hsapiens.UCSC.hg38.knownGene::TxDb.Hsapiens.UCSC.hg38.knownGene
+    } else {
+        .load_install('EnsDb.Hsapiens.v79')
+        txdb <- EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79
+    } 
     
 
     ## Get genes with default option single.strand.genes.only = TRUE
-    genes <- GenomicFeatures::genes(
-        TxDb.Hsapiens.UCSC.hg38.knownGene::TxDb.Hsapiens.UCSC.hg38.knownGene)
+    genes <- GenomicFeatures::genes(txdb)
 
     ## Get Exons
-    exons <- GenomicFeatures::exonsBy(
-        TxDb.Hsapiens.UCSC.hg38.knownGene::TxDb.Hsapiens.UCSC.hg38.knownGene,
-        by = 'gene')
+    exons <- GenomicFeatures::exonsBy(txdb, by = 'gene')
 
     ## Keep only exons for gene ids that we selected previously
     exons <- exons[names(exons) %in% names(genes)]
@@ -79,10 +94,14 @@ reproduce_ranges <- function(level = 'gene') {
         
         ## Add gene symbol
         .load_install('org.Hs.eg.db')
-        entrez <- names(genes)
-        gene_info <- AnnotationDbi::select(org.Hs.eg.db::org.Hs.eg.db, entrez,
-            c('ENTREZID', 'SYMBOL'), 'ENTREZID')
-        genes$symbol <- gene_info$SYMBOL
+        if(db == 'TxDb.Hsapiens.UCSC.hg38.knownGene') {
+            gene_info <- AnnotationDbi::mapIds(org.Hs.eg.db::org.Hs.eg.db,
+                names(genes), 'SYMBOL', 'ENTREZID')
+        } else {
+            gene_info <- AnnotationDbi::mapIds(org.Hs.eg.db::org.Hs.eg.db,
+                names(genes), 'SYMBOL', 'ENSEMBL', multiVals = 'CharacterList')
+        }
+        genes$symbol <- gene_info
         
         ## Done
         return(genes)

@@ -4,7 +4,7 @@
 \alias{reproduce_ranges}
 \title{Reproduce the gene or exons used in the RangedSummarizedExperiment objects}
 \usage{
-reproduce_ranges(level = "gene")
+reproduce_ranges(level = "gene", db = "TxDb.Hsapiens.UCSC.hg38.knownGene")
 }
 \arguments{
 \item{level}{Either \code{genes} or \code{exon}. It specifies whether to
@@ -13,6 +13,12 @@ return Gene or exon level information as a
 \link[GenomicRanges]{GRangesList-class} object respectively. The gene level
 information contains the width of the reduced exons for that given gene
 which can be used to normalize the counts provided by recount.}
+
+\item{db}{Either \code{TxDb.Hsapiens.UCSC.hg38.knownGene} (default) or
+\code{EnsDb.Hsapiens.v79}. The default option reproduces the annotation
+used when creating recount (when using TxDb.Hsapiens.UCSC.hg38.knownGene
+version 3.1.3) or updates it. EnsDb.Hsapiens.v79 can be used
+for an alternative annotation as showcased in the recount vignette.}
 }
 \value{
 Either a \link[GenomicRanges]{GRanges-class} object like 
@@ -25,7 +31,9 @@ the \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
 objects provided by recount. The annotation is based on
 \code{TxDb.Hsapiens.UCSC.hg38.knownGene} with the gene-level 
 information extracted with \code{genes()} (see 
-\link[GenomicFeatures]{transcripts} with default arguments.
+\link[GenomicFeatures]{transcripts} with default arguments. It can also be
+used to generate similar results with newer annotation or with alternative
+annotations for the human hg38 assembly.
 }
 \details{
 Note that the information used in recount was originally calculated with
