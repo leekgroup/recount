@@ -365,7 +365,7 @@ vignetteInfo <- c(
     '  %\\VignetteIndexEntry{Basic DESeq2 results exploration}',
     '  %\\VignetteEncoding{UTF-8}'
 )
-new <- c(original[1:12], vignetteInfo, original[13:length(original)])
+new <- c(original[1:16], vignetteInfo, original[17:length(original)])
 writeLines(new, 'SRP009615-results-template.Rmd')
 
 ## Now create the report
