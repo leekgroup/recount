@@ -125,7 +125,9 @@ junctions_v2 <- GRanges(seqnames = 'chr2', IRanges(
     start = 29532116:29532118, end = 29694848:29694850)) 
 
 snap <- snaptron_query(junctions)
-snap_v2 <- snaptron_query(junctions_v2, version = 2)
+snap_v2 <- snaptron_query(junctions_v2, version = 'srav2')
+snap_gtex <- snaptron_query(junctions_v2, version = 'gtex')
+snap_tcga <- snaptron_query(junctions_v2, version = 'tcga')
 
 test_that('Snaptron', {
     expect_equal(length(snap), 3)
@@ -134,6 +136,8 @@ test_that('Snaptron', {
     expect_equal(snaptron_query(junctions[1], verbose = FALSE), NULL)
     expect_equal(is(snap_v2$annotated, 'CompressedCharacterList'), TRUE)
     expect_equal(snaptron_query(junctions_v2, verbose = FALSE), NULL)
+    expect_equal(snap_gtex$type == 'GTEx:I', TRUE)
+    expect_equal(snap_tcga$type == 'TCGA:I', TRUE)
 })
 
 ## Weird pheno files
