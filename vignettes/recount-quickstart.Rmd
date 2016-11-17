@@ -594,10 +594,6 @@ head(sort(table(unlist(fusions$symbol_proposed)), decreasing = TRUE))
 
 If you are interested in checking the frequency of a particular exon-exon junction then check the `snaptron_query()` function described in the following section.
 
-```{r, 'clean up', echo = FALSE, results = 'hide'}
-unlink('SRP009615', recursive = TRUE)
-```
-
 
 # Snaptron
 
@@ -612,7 +608,7 @@ junctions <- GRanges(seqnames = 'chr2', IRanges(
 snaptron_query(junctions)
 ```
 
-If you use `snaptron_query()` please cite [stingray.cs.jhu.edu:8090/snaptron/docs/](http://stingray.cs.jhu.edu:8090/snaptron/docs/). _Snaptron_ is separate from `r Biocpkg('recount')`. Thank you!
+If you use `snaptron_query()` please cite [snaptron.cs.jhu.edu/snaptron/docs/](http://snaptron.cs.jhu.edu/snaptron/docs/). _Snaptron_ is separate from `r Biocpkg('recount')`. Thank you!
 
 
 # Download all the data
@@ -837,7 +833,7 @@ save(rse_gene_SRP009615, file = '../data/rse_gene_SRP009615.RData',
 unlink('rse_gene.Rdata')
 ```
 
-```{r 'cleanup', echo = FALSE}
+```{r 'cleanup', echo = FALSE, results = 'hide'}
 ## Clean up
 unlink('SRP009615', recursive = TRUE)
 ```
