@@ -4,16 +4,21 @@
 \alias{snaptron_query}
 \title{Query Snaptron to get data from exon-exon junctions present in Intropolis}
 \usage{
-snaptron_query(junctions, version = 1, verbose = TRUE)
+snaptron_query(junctions, version = "srav1", verbose = TRUE)
 }
 \arguments{
 \item{junctions}{A \link[GenomicRanges]{GRanges-class} object with the
 exon-exon junctions of interest. The chromosome names should be in UCSC
 format, such as 'chr1'. The strand information is ignored in the query.}
 
-\item{version}{Either \code{1} or \code{2}. Version 1 of Intropolis has the
+\item{version}{Either \code{srav1}, \code{srav2}, \code{gtex} or 
+\code{tcga}. SRA Version 1 of Intropolis has the
 exon-exon junctions from about 20 thousand RNA-seq samples in hg19 
-coordinates. Version 2 has the data from about 50 thousand RNA-seq samples #' aligned to hg38.}
+coordinates. SRA Version 2 has the data from about 50 thousand RNA-seq 
+samples aligned to hg38. GTEx has about 30 million junctions from about 10
+thousand samples from the GTEx consortium on hg38 coordinates. Finally,
+TCGA has about 36 million junctions from about 11 thousand samples
+from the TCGA consortium on hg38 coordinates.}
 
 \item{verbose}{If \code{TRUE} status updates will be printed.}
 }
@@ -34,15 +39,18 @@ junctions <- GRanges(seqnames = 'chr2', IRanges(
     start = c(28971710:28971712, 29555081:29555083, 29754982:29754984),
     end = c(29462417:29462419, 29923338:29923340, 29917714:29917716)))
 
-## Check against Snaptron version 1 (hg19 coordinates)
+## Check against Snaptron SRA version 1 (hg19 coordinates)
 snaptron_query(junctions)
 
-## Check another set of junctions against version 2 (more data, hg38 
+## Check another set of junctions against SRA version 2 (more data, hg38 
 ## coordinates)
 junctions_v2 <- GRanges(seqnames = 'chr2', IRanges(
     start = 29532116:29532118, end = 29694848:29694850))
-snaptron_query(junctions_v2, version = 2) 
+snaptron_query(junctions_v2, version = 'srav2') 
 
+## Check these junctions in GTEx and TCGA data
+snaptron_query(junctions_v2, version = 'gtex')
+snaptron_query(junctions_v2, version = 'tcga')
 }
 \author{
 Leonardo Collado-Torres
