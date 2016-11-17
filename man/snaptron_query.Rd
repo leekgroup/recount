@@ -20,7 +20,7 @@ coordinates. Version 2 has the data from about 50 thousand RNA-seq samples #' al
 \value{
 A \link[GenomicRanges]{GRanges-class} object with the results from
 the Snaptron query. For information on the different columns please see
-\url{http://stingray.cs.jhu.edu:8090/snaptron/docs/}.
+\url{http://snaptron.cs.jhu.edu/snaptron/docs/}.
 }
 \description{
 This function uses the Snaptron API to query specific exon-exon junctions
@@ -48,7 +48,7 @@ snaptron_query(junctions_v2, version = 2)
 Leonardo Collado-Torres
 }
 \references{
-Please cite \url{http://stingray.cs.jhu.edu:8090/snaptron/docs/}
+Please cite \url{http://snaptron.cs.jhu.edu/snaptron/docs/}
 if you use this function as Snaptron is a separate project from recount.
 Thank you!
 }

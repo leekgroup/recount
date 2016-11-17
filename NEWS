@@ -1,3 +1,12 @@
+CHANGES IN VERSION 1.1.5
+------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Snaptron changed from stingray.cs.jhu.edu:8090 to snaptron.cs.jhu.edu so
+        snaptron_query() has been changed accordingly.
+
+
 CHANGES IN VERSION 1.1.2
 ------------------------
 
