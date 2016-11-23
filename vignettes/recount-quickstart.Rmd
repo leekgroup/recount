@@ -543,7 +543,7 @@ If you are interested in using another annotation based on hg38 coordinates you 
 
 If you are re-processing a small set of samples, it simply might be easier to use `coverage_matrix()` as shown below using the annotation information provided by the `r Biocpkg('EnsDb.Hsapiens.v79')` package.
 
-```{r}
+```{r, eval = .Platform$OS.type != 'windows'}
 ## Get the reduced exons based on EnsDb.Hsapiens.v79 which matches hg38
 exons <- reproduce_ranges('exon', db = 'EnsDb.Hsapiens.v79')
 
@@ -552,7 +552,7 @@ library('GenomeInfoDb')
 seqlevelsStyle(exons) <- 'UCSC'
 
 ## Get the count matrix at the exon level for chrY
-exons_chrY <- keepSeqlevels(exons, 'chrY')
+exons_chrY <- keepSeqlevels(exons, 'chrY', pruning.mode = 'coarse')
 exonMatrix <- coverage_matrix('SRP009615', 'chrY', unlist(exons_chrY),
     chunksize = 3000)
 dim(exonMatrix)
