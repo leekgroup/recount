@@ -627,7 +627,7 @@ head(recount_url$url)
 You can then download all the data using the `download_study()` function or however you prefer to do so with `recount_url`.
 
 ```{r 'actuallyDownload', eval = FALSE}
-## Download all files (will take a while! It's over 6 TB of data)
+## Download all files (will take a while! It's over 8 TB of data)
 sapply(unique(recount_url$project), download_study, type = 'all')
 ```
 
@@ -636,7 +636,7 @@ You can find the code for the website at [leekgroup/recount-website](https://git
 
 # Accessing `r Biocpkg('recount')` via _SciServer_
 
-Not everyone has over 6 terabytes of disk space available to download all the data from the `recount` project. However, thanks to [SciServer](http://www.sciserver.org/) you can access it locally via a Jupyter Notebook. If you do so and want to share your work, please let [SciServer](http://www.sciserver.org/) people know via Twitter at [IDIESJHU](https://twitter.com/IDIESJHU).
+Not everyone has over 8 terabytes of disk space available to download all the data from the `recount` project. However, thanks to [SciServer](http://www.sciserver.org/) you can access it locally via a Jupyter Notebook. If you do so and want to share your work, please let the [SciServer](http://www.sciserver.org/) maintainers know via Twitter at [IDIESJHU](https://twitter.com/IDIESJHU).
 
 
 ## Step by step

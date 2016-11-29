@@ -3,8 +3,8 @@
 #' Download the metadata from all the projects. This can be useful for finding
 #' samples of interests across all projects.
 #'
-#' @param subset Either \code{sra} or \code{gtex}. Specifies which metadata
-#' file to download.
+#' @param subset Either \code{sra},  \code{gtex} or \code{tcga}. Specifies
+#' which metadata file to download.
 #' @param verbose If \code{TRUE} it will print a message of where the file is
 #' being downloaded to.
 #'
@@ -26,6 +26,12 @@
 #' \url{http://www.gtexportal.org/home/datasets}. There you can find the
 #' information describing these variables.
 #'
+#' For TCGA we acquired metadata information from 3 different sources:
+#' - GDC: via a json query
+#' - CGC: via json queries and a custom script to merge the tables
+#' - TCGAbiolinks: we used to to parse GDC's XML files
+#' For more information, check \url{https://github.com/leekgroup/recount-website/tree/master/metadata/tcga_prep}.
+#'
 
 all_metadata <- function(subset = 'sra', verbose = TRUE) {
     ## For R CMD check
@@ -33,7 +39,7 @@ all_metadata <- function(subset = 'sra', verbose = TRUE) {
     
     ## check inputs
     subset <- tolower(subset)
-    stopifnot(subset %in% c('sra', 'gtex'))
+    stopifnot(subset %in% c('sra', 'gtex', 'tcga'))
     stopifnot(length(subset) == 1)
     
     ## Download file

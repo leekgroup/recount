@@ -114,8 +114,13 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     pheno <- .read_pheno(phenoFile, project)
     
     ## Get sample names
-    m <- match(url_table$file_name[samples_i], paste0(pheno$run, '.bw'))
-    names(sampleFiles) <- pheno$run[m]
+    m <- match(url_table$file_name[samples_i], pheno$bigwig_file)
+    if(project != 'TCGA') {
+        names(sampleFiles) <- pheno$run[m]
+    } else {
+        names(sampleFiles) <- pheno$gdc_file_id[m]
+    }
+    
     
     ## Define library size normalization factor
     targetSize <- 40e6 * 100
@@ -158,7 +163,14 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
 
 ## Helper function for reading the phenotype files
 .read_pheno <- function(phenoFile, project) {
-    info <- readLines(phenoFile)
-    read.table(text = info[grepl(paste0('^project|^', project), info)],
-        header = TRUE, stringsAsFactors = FALSE, sep = '\t', comment.char = '')
+    if(project %in% c('SRP012682', 'TCGA')) {
+        subsets <- c('SRP012682' = 'gtex', 'TCGA' = 'tcga')
+        res <- all_metadata(subsets[project], verbose = FALSE)
+    } else { 
+        info <- readLines(phenoFile)
+        res <- read.table(text = info[grepl(paste0('^project|^', project),
+            info)], header = TRUE, stringsAsFactors = FALSE, sep = '\t',
+            comment.char = '')
+    }
+    return(res)
 }
