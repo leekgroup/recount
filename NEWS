@@ -1,3 +1,11 @@
+CHANGES IN VERSION 1.1.8
+------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Updated the package so you can now access TCGA data. Now there's over
+        8 terabytes of data available in the recount project!
+
 CHANGES IN VERSION 1.1.6
 ------------------------
 
