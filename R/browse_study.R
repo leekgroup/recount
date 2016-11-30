@@ -30,7 +30,7 @@ browse_study <- function(project, browse = interactive()) {
     stopifnot(is.character(project))
     
     ## Construct url
-    url <- paste0('http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=', project)
+    url <- paste0('https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=', project)
     
     ## Finish
     if(browse) sapply(url, browseURL)
