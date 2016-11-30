@@ -16,7 +16,7 @@ a given sample.}
 \item{sleep}{The number of seconds (or fraction) to wait before downloading
 data using \link[GEOquery]{getGEO}. This is important if you are looking over
 \code{geo_info()} given the constraints published at
-http://www.ncbi.nlm.nih.gov/books/NBK25497/.}
+\url{https://www.ncbi.nlm.nih.gov/books/NBK25497/}.}
 
 \item{getGPL}{This argument is passed to \link[GEOquery]{getGEO} and is set
 to \code{FALSE} by default to speed up the process.}
