@@ -41,7 +41,7 @@ Suggests:
     knitcitations,
     knitr (>= 1.6),
     org.Hs.eg.db,
-    regionReport,
+    regionReport (>= 1.9.4),
     rmarkdown (>= 0.9.5),
     testthat,
     TxDb.Hsapiens.UCSC.hg38.knownGene
