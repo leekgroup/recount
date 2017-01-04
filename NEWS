@@ -1,3 +1,11 @@
+CHANGES IN VERSION 1.1.12
+-------------------------
+
+BUG FIXES
+
+    o Updated snaptron_query() to comply with recent changes in Snaptron.
+
+
 CHANGES IN VERSION 1.1.8
 ------------------------
 

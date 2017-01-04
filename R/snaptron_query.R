@@ -85,7 +85,7 @@ snaptron_query <- function(junctions, version = 'srav1', verbose = TRUE) {
     ## Extract information
     if(verbose) message(paste(Sys.time(), 'extracting information'))
     info <- lapply(query_split[valid], function(jxs) { 
-        matrix(strsplit(jxs, '\t')[[1]], ncol = 19)
+        matrix(strsplit(jxs, '\t')[[1]], ncol = 18)
     })
     
     ## Build result
@@ -93,8 +93,8 @@ snaptron_query <- function(junctions, version = 'srav1', verbose = TRUE) {
     colnames(res) <- c('type', 'snaptron_id', 'chromosome', 'start', 'end',
         'length', 'strand', 'annotated', 'left_motif', 'right_motif',
         'left_annotated', 'right_annotated', 'samples',
-        'read_coverage_by_sample', 'samples_count', 'coverage_sum',
-        'coverage_avg', 'coverage_median', 'source_dataset_id')
+        'samples_count', 'coverage_sum', 'coverage_avg', 'coverage_median',
+        'source_dataset_id')
     
     ## Helper function for some special variables
     to_chr_list <- function(x) {
@@ -117,9 +117,17 @@ snaptron_query <- function(junctions, version = 'srav1', verbose = TRUE) {
     result$right_motif <- res[, 'right_motif']
     result$left_annotated <- to_chr_list(res[, 'left_annotated'])
     result$right_annotated <- to_chr_list(res[, 'right_annotated'])
-    result$samples <- IntegerList(strsplit(res[, 'samples'], ','))
-    result$read_coverage_by_sample <- IntegerList(strsplit(res[,
-        'read_coverage_by_sample'], ','))
+    
+    ## Remove leading comma
+    res[, 'samples'] <- gsub('^,', '', res[, 'samples'])
+    ## Split sample ids from the read coverage by sample
+    sample_info <- IntegerList(strsplit(res[, 'samples'], ':|,'))
+    sample_idx <- LogicalList(lapply(elementNROWS(sample_info), function(y) {
+        rep(c(TRUE, FALSE), y / 2)}))
+    result$samples <- sample_info[sample_idx]
+    result$read_coverage_by_sample <- sample_info[!sample_idx]
+    
+    ## Continue with other variables
     result$samples_count <- as.integer(res[, 'samples_count'])
     result$coverage_sum <- as.integer(res[, 'coverage_sum'])
     result$coverage_avg <- as.numeric(res[, 'coverage_avg'])
