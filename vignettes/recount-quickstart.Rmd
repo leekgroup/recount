@@ -58,8 +58,7 @@ bibs <- c(
     rtracklayer = citation('rtracklayer'),
     S4Vectors = citation('S4Vectors'),
     SummarizedExperiment = citation('SummarizedExperiment'),
-    testthat = citation('testthat'),
-    TxDb.Hsapiens.UCSC.hg38.knownGene = citation('TxDb.Hsapiens.UCSC.hg38.knownGene')
+    testthat = citation('testthat')
 )
 
 write.bibtex(bibs,
@@ -245,12 +244,12 @@ rse_gene
 ## This is the sample phenotype data provided by the recount project
 colData(rse_gene)
 
-## At the gene level, the row data includes the gene ENTREZ ids, the gene
+## At the gene level, the row data includes the gene Gencode ids, the gene
 ## symbols and the sum of the reduced exons widths, which can be used for 
 ## taking into account the gene length.
 rowData(rse_gene)
 
-## At the exon level, you can get the gene ENTREZ ids from the names of:
+## At the exon level, you can get the gene Gencode ids from the names of:
 # rowRanges(rse_exon)
 ```
 
@@ -379,18 +378,18 @@ You can view the final report [here](SRP009615-results.html).
 
 ## Finding gene names
 
-The gene ENTREZ ids are included in several objects in `recount`. With these ids you can find the gene symbols, gene names and other information. The `r Biocpkg('org.Hs.eg.db')` is useful for finding this information and the following code shows how to get the gene names and symbols.
+The gene Gencode ids are included in several objects in `recount`. With these ids you can find the gene symbols, gene names and other information. The `r Biocpkg('org.Hs.eg.db')` is useful for finding this information and the following code shows how to get the gene names and symbols.
 
 ```{r 'geneSymbols'}
 ## Load required library
 library('org.Hs.eg.db')
 
-## Extract ENTREZ gene ids
-entrez <- names(recount_genes)
+## Extract Gencode gene ids
+gencode <- gsub('\\..*', '', names(recount_genes))
 
 ## Find the gene information we are interested in
-gene_info <- select(org.Hs.eg.db, entrez, c('ENTREZID', 'GENENAME', 'SYMBOL'),
-    'ENTREZID')
+gene_info <- select(org.Hs.eg.db, gencode, c('ENTREZID', 'GENENAME', 'SYMBOL',
+    'ENSEMBL'), 'ENSEMBL')
 
 ## Explore part of the results
 dim(gene_info)
@@ -500,7 +499,7 @@ report2 <- DESeq2Report(dds_ers, res = res_ers,
 
 This section describes the annotation used in `recount`.
 
-We used the annotation information from the `r Biocpkg('TxDb.Hsapiens.UCSC.hg38.knownGene')` package version 3.1.3 to get the list of genes that have a Entrez `gene_id`. We then used the `r Biocpkg('org.Hs.eg.db')` package to get the gene symbols. For each gene, we also counted the total length of exonic base pairs for that given gene and stored this information in the `bp_length` column. You can see below this information for the `rse_gene` object included in `r Biocpkg('recount')`. The `rownames()` are the Entrez `gene_id`.
+We used the comprehensive gene annotation for (`CHR` regions) from [Gencode v25](https://www.gencodegenes.org/releases/25.html) (GRCh38.p7) to get the list of genes. Specifically [this GFF3](ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_25/gencode.v25.annotation.gff3.gz) file. We then used the `r Biocpkg('org.Hs.eg.db')` package to get the gene symbols. For each gene, we also counted the total length of exonic base pairs for that given gene and stored this information in the `bp_length` column. You can see below this information for the `rse_gene` object included in `r Biocpkg('recount')`. The `rownames()` are the Gencode `gene_id`.
 
 ```{r, 'gene_annotation'}
 ## Gene annotation information
@@ -510,7 +509,7 @@ rowRanges(rse_gene_SRP009615)
 rowData(rse_gene_SRP009615)
 ```
 
-For an `rse_exon` object, the `rownames()` correspond to the Entrez `gene_id`. You can add a `gene_id` column if you are interested in subsetting the whole `rse_exon` object.
+For an `rse_exon` object, the `rownames()` correspond to the Gencode `gene_id`. You can add a `gene_id` column if you are interested in subsetting the whole `rse_exon` object.
 
 
 ```{r, 'exon_annotation'}
@@ -525,11 +524,11 @@ rowRanges(rse_exon)
 rowRanges(rse_exon)$gene_id <- rownames(rse_exon)
 
 ## Example subset
-rse_exon_subset <- subset(rse_exon, subset = gene_id == '1')
+rse_exon_subset <- subset(rse_exon, subset = gene_id == 'ENSG00000000003.14')
 rowRanges(rse_exon_subset)
 ```
 
-The exons in a `rse_exon` object are those that have a Entrez `gene_id` and that were reduced as described in the `r Biocpkg('GenomicRanges')` package:
+The exons in a `rse_exon` object are those that have a Gencode `gene_id` and that were reduced as described in the `r Biocpkg('GenomicRanges')` package:
 
 ```
 ?`inter-range-methods`
@@ -566,7 +565,9 @@ dim(geneMatrix)
 head(geneMatrix)
 ```
 
-The above solution works well for a small set of samples. However, `bwtool` is faster for processing large sets. You can see how we used `bwtool` with the annotation from `r Biocpkg('TxDb.Hsapiens.UCSC.hg38.knownGene')` package version 3.1.3 at [leekgroup/recount-website](https://github.com/leekgroup/recount-website). It's much faster than R and less memory intensive but requires several steps such as preparing an appropriate [exons BED file](https://github.com/leekgroup/recount-website/blob/master/genes/create_bed.R), [running bwtool](https://github.com/leekgroup/recount-website/blob/master/bwtool/run_bwtool.sh), [loading the exon counts](https://github.com/leekgroup/recount-website/blob/bc849a34e29d82dadc5d8f10508eaf573c26611d/rse/create_rse.R#L540-L546) and [summarizing them at the gene level](https://github.com/leekgroup/recount-website/blob/bc849a34e29d82dadc5d8f10508eaf573c26611d/rse/create_rse.R#L566-L568). Note that you will need to download the BigWig files first.
+The above solution works well for a small set of samples. However, `bwtool` is faster for processing large sets. You can see how we used `bwtool` at [leekgroup/recount-website](https://github.com/leekgroup/recount-website). It's much faster than R and less memory intensive but requires several steps such as preparing an appropriate [exons BED file](https://github.com/leekgroup/recount-website/blob/master/genes/create_bed.R), [running bwtool](https://github.com/leekgroup/recount-website/blob/master/bwtool/run_bwtool.sh), [loading the exon counts](https://github.com/leekgroup/recount-website/blob/bc849a34e29d82dadc5d8f10508eaf573c26611d/rse/create_rse.R#L540-L546) and [summarizing them at the gene level](https://github.com/leekgroup/recount-website/blob/bc849a34e29d82dadc5d8f10508eaf573c26611d/rse/create_rse.R#L566-L568). Note that you will need to download the BigWig files first.
+
+Finally, the BigWig files hosted by recount have the following chromosome names and sizes as specified in [hg38.sizes](https://github.com/nellore/runs/blob/master/gtex/hg38.sizes). You'll have to make sure that you match these names when using alternative annotations.
 
 
 # Candidate gene fusions
@@ -747,7 +748,6 @@ The `r Biocpkg('recount')` package `r citep(bib[['recount']])` was made possible
 * `r Biocpkg('S4Vectors')` `r citep(bib[['S4Vectors']])`
 * `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])`
 * `r CRANpkg('testthat')` `r citep(bib[['testthat']])`
-* `r Biocannopkg('TxDb.Hsapiens.UCSC.hg138.knownGene')` `r citep(bib[['TxDb.Hsapiens.UCSC.hg38.knownGene']])`
 
 
 Code for creating the vignette
@@ -795,12 +795,11 @@ session_info()
 ## Code for re-creating the data distributed in this package
 
 ## Genes/exons
-library('GenomicRanges')
-load('../../recount-website/genes/ucsc-knowngene-hg38-exons.Rdata')
-recount_exons <- exons
-save(recount_exons, file = '../data/recount_exons.RData')
-load('../../recount-website/genes/ucsc-knowngene-hg38-genes-bp-length.Rdata')
-recount_genes <- genes
+library('recount')
+recount_both <- reproduce_ranges('both', db = 'Gencode.v25')
+recount_exons <- recount_both$exon
+save(recount_exons, file = '../data/recount_exons.RData', compress = 'xz')
+recount_genes <- recount_both$gene
 save(recount_genes, file = '../data/recount_genes.RData', compress = 'xz')
 
 ## URL table

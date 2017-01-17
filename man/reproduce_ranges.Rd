@@ -4,7 +4,7 @@
 \alias{reproduce_ranges}
 \title{Reproduce the gene or exons used in the RangedSummarizedExperiment objects}
 \usage{
-reproduce_ranges(level = "gene", db = "TxDb.Hsapiens.UCSC.hg38.knownGene")
+reproduce_ranges(level = "gene", db = "Gencode.v25")
 }
 \arguments{
 \item{level}{Either \code{genes} or \code{exon}. It specifies whether to
@@ -12,12 +12,13 @@ return Gene or exon level information as a
 \link[GenomicRanges]{GRanges-class} or 
 \link[GenomicRanges]{GRangesList-class} object respectively. The gene level
 information contains the width of the reduced exons for that given gene
-which can be used to normalize the counts provided by recount.}
+which can be used to normalize the counts provided by recount.
+Can also be \code{both} in which case a 2 element list with the exon and the
+gene output is returned.}
 
-\item{db}{Either \code{TxDb.Hsapiens.UCSC.hg38.knownGene} (default) or
+\item{db}{Either \code{Gencode.v25} (default) or
 \code{EnsDb.Hsapiens.v79}. The default option reproduces the annotation
-used when creating recount (when using TxDb.Hsapiens.UCSC.hg38.knownGene
-version 3.1.3) or updates it. EnsDb.Hsapiens.v79 can be used
+used when creating recount. EnsDb.Hsapiens.v79 can be used
 for an alternative annotation as showcased in the recount vignette.}
 }
 \value{
@@ -29,19 +30,14 @@ like \link{recount_exons}.
 This function reproduces the gene or exon level information used for creating
 the \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
 objects provided by recount. The annotation is based on
-\code{TxDb.Hsapiens.UCSC.hg38.knownGene} with the gene-level 
+Gencode v25 with the gene-level 
 information extracted with \code{genes()} (see 
-\link[GenomicFeatures]{transcripts} with default arguments. It can also be
-used to generate similar results with newer annotation or with alternative
-annotations for the human hg38 assembly.
+\link[GenomicFeatures]{transcripts} with default arguments.
 }
 \details{
-Note that the information used in recount was originally calculated with
-\url{https://github.com/leekgroup/recount-website/blob/master/genes/create_bed.R}
-with the versions as noted in
-\url{https://github.com/leekgroup/recount-website/blob/master/genes/logs/genes-hg38-ucsc.o1192789}.
-The actual package tarball for TxDb.Hsapiens.UCSC.hg38.knownGene we used is 
-available at \url{https://jhubiostatistics.shinyapps.io/recount/TxDb.Hsapiens.UCSC.hg38.knownGene_3.1.3.tar.gz}.
+For Gencode.v25, we use the comprehensive gene annotation (regions: 
+\code{CHR}) from \url{https://www.gencodegenes.org/releases/25.html}
+(GRCh38.p7).
 }
 \examples{
 

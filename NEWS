@@ -1,3 +1,11 @@
+CHANGES IN VERSION 1.1.13
+-------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o We dropped TxDb.Hsapiens.UCSC.hg38.knownGene completely from recount
+         and will be using Gencode v25 instead.
+
 CHANGES IN VERSION 1.1.12
 -------------------------
 
