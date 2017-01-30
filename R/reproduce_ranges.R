@@ -34,6 +34,7 @@
 #' @export
 #'
 #' @import GenomicRanges
+#' @import GenomicFeatures
 #'
 #' @seealso \link{recount_genes}, \link{recount_exons},
 #'     \url{https://github.com/nellore},
