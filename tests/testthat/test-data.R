@@ -68,7 +68,7 @@ test_that('Scaling', {
     expect_gt(scaleFac_mapped[1], scaleFac[1])
     expect_gt(scaleFac_mapped[2], scaleFac[2])
     expect_gt(scaleFac_mapped[3], scaleFac[3])
-    expect_equal(assay(rse, 1) / matrix(rep(scaleFac, each = 23779),
+    expect_equal(assay(rse, 1) / matrix(rep(scaleFac, each = 58037),
         ncol = 12), assay(rse_gene_SRP009615, 1))
 })
 
