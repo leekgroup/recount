@@ -1,3 +1,11 @@
+CHANGES IN VERSION 1.1.14
+-------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Complete the change to Gencode v25 annotation for exon and gene counts.
+
+
 CHANGES IN VERSION 1.1.13
 -------------------------
 
