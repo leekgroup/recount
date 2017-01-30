@@ -1,7 +1,7 @@
 Package: recount
 Title: Explore and download data from the recount project
-Version: 1.1.12
-Date: 2017-01-04
+Version: 1.1.13
+Date: 2017-01-17
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "ctb",
     email = "anellore@gmail.com"), person(c("Andrew", "E."), "Jaffe",
@@ -43,8 +43,7 @@ Suggests:
     org.Hs.eg.db,
     regionReport (>= 1.9.4),
     rmarkdown (>= 0.9.5),
-    testthat,
-    TxDb.Hsapiens.UCSC.hg38.knownGene
+    testthat
 VignetteBuilder: knitr
 Description: Explore and download data from the recount project available at
     https://jhubiostatistics.shinyapps.io/recount/. Using the recount package you can

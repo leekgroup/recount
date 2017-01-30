@@ -1,12 +1,12 @@
 #' Exon annotation used in recount
 #'
-#' Exon annotation extracted from TxDb.Hsapiens.UCSC.hg38.knownGene used in
-#' recount.
+#' Exon annotation extracted from Gencode v25 (GRCh38.p7) used in recount.
+#' Data extraced on January 17th, 2017.
 #'
 #' @name recount_exons
 #' @docType data
 #' @format A \link[GenomicRanges]{GRangesList-class} with one element per 
-#' gene. The names match the gene UCSC ids.
+#' gene. The names match the gene Gencode v25 ids.
 #'
 #' @keywords datasets
 #' @seealso \link{reproduce_ranges}, \link{recount_genes}
