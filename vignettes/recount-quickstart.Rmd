@@ -17,7 +17,7 @@ Quick start to using to `r Biocpkg('recount')`
 __As of January 30, 2017 the annotation used for the exon and gene counts is Gencode v25.__
 
 
-<a href="https://jhubiostatistics.shinyapps.io/recount/"><img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/website/recount.png" align="center"></a>
+<a href="https://jhubiostatistics.shinyapps.io/recount/"><img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/website/recount.png" align="center" width = "600"></a>
 
 
 ```{r vignetteSetup, echo=FALSE, message=FALSE, warning = FALSE}
