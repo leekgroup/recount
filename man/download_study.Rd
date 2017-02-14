@@ -90,4 +90,3 @@ expect_equivalent(rse_gene, rse_gene_SRP009615)
 \author{
 Leonardo Collado-Torres
 }
-

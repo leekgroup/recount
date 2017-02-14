@@ -51,12 +51,11 @@ length(recount_genes)
 }
 
 }
-\author{
-Leonardo Collado-Torres
-}
 \seealso{
 \link{recount_genes}, \link{recount_exons},
     \url{https://github.com/nellore},
     \url{https://jhubiostatistics.shinyapps.io/recount/}
 }
-
+\author{
+Leonardo Collado-Torres
+}

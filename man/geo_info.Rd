@@ -40,4 +40,3 @@ geo_info('GSM836270')
 \author{
 Leonardo Collado-Torres, Andrew Jaffe
 }
-

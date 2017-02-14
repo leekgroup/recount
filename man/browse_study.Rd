@@ -28,10 +28,9 @@ url <- browse_study(id)
 ## See the actual URL
 url
 }
-\author{
-Leonardo Collado-Torres
-}
 \seealso{
 \link{abstract_search}
 }
-
+\author{
+Leonardo Collado-Torres
+}

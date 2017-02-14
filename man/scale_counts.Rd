@@ -74,10 +74,9 @@ load(file.path(project_info$project, 'rse_gene.Rdata'))
 identical(rse_gene, rse_gene_SRP009615)
 }
 }
-\author{
-Leonardo Collado-Torres
-}
 \seealso{
 \link{download_study}
 }
-
+\author{
+Leonardo Collado-Torres
+}

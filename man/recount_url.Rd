@@ -22,4 +22,3 @@ internally in \link{download_study}.
 \link{download_study}
 }
 \keyword{datasets}
-

@@ -39,4 +39,3 @@ find_geo('SRX110461')
 \author{
 Leonardo Collado-Torres
 }
-

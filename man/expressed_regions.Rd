@@ -61,11 +61,10 @@ single <- unlist(GRangesList(regs))
 }
 
 }
-\author{
-Leonardo Collado-Torres
-}
 \seealso{
 \link{download_study}, \link[derfinder]{findRegions},
 \link[derfinder]{railMatrix}
 }
-
+\author{
+Leonardo Collado-Torres
+}

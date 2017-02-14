@@ -65,6 +65,9 @@ project and/or are thinking of using different sets of \code{regions} (for
 example, from different cutoffs applied to \link{expressed_regions}).
 Alternatively check the \code{SciServer} section on the vignette to see
 how to access all the recount data via a R Jupyter Notebook.
+
+If you have \code{bwtool} installed, you can use
+\url{https://github.com/LieberInstitute/recount.bwtool} for faster results.
 }
 \examples{
 
@@ -82,11 +85,10 @@ if(.Platform$OS.type != 'windows') {
 }
 
 }
-\author{
-Leonardo Collado-Torres
-}
 \seealso{
 \link{download_study}, \link[derfinder]{findRegions},
 \link[derfinder]{railMatrix}
 }
-
+\author{
+Leonardo Collado-Torres
+}
