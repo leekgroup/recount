@@ -42,4 +42,3 @@ metadata <- all_metadata()
 \author{
 Leonardo Collado-Torres
 }
-

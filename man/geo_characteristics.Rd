@@ -43,4 +43,3 @@ geodata[, c('characteristics', 'cells', 'shrna.expression', 'treatment')]
 \author{
 Leonardo Collado-Torres
 }
-

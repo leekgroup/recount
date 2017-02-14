@@ -27,4 +27,3 @@ used for normalizing the counts provided in the
 \link{reproduce_ranges}, \link{recount_exons}
 }
 \keyword{datasets}
-

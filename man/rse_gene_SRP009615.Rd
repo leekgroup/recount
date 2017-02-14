@@ -18,4 +18,3 @@ level for study SRP009615. Used as an example in \link{scale_counts}.
 \link{scale_counts}, \link{download_study}
 }
 \keyword{datasets}
-

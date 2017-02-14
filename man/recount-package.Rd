@@ -22,4 +22,3 @@ recount project.
 Leonardo Collado-Torres <lcollado@jhu.edu>
 }
 \keyword{package}
-

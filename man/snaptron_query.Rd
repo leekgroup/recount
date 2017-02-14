@@ -52,12 +52,11 @@ snaptron_query(junctions_v2, version = 'srav2')
 snaptron_query(junctions_v2, version = 'gtex')
 snaptron_query(junctions_v2, version = 'tcga')
 }
-\author{
-Leonardo Collado-Torres
-}
 \references{
 Please cite \url{http://snaptron.cs.jhu.edu/snaptron/docs/}
 if you use this function as Snaptron is a separate project from recount.
 Thank you!
 }
-
+\author{
+Leonardo Collado-Torres
+}

@@ -540,7 +540,7 @@ You can reproduce the gene and exon information using the function `reproduce_ra
 
 ## Using another/newer annotation
 
-If you are interested in using another annotation based on hg38 coordinates you can do so using the function `coverage_matrix()` or by running [bwtool](https://github.com/CRG-Barcelona/bwtool/wiki) thanks to the BigWig files in `recount`.
+If you are interested in using another annotation based on hg38 coordinates you can do so using the function `coverage_matrix()` or by running [bwtool](https://github.com/CRG-Barcelona/bwtool/wiki) thanks to the BigWig files in `recount`, in which case [recount.bwtool](https://github.com/LieberInstitute/recount.bwtool) will be helpful.
 
 If you are re-processing a small set of samples, it simply might be easier to use `coverage_matrix()` as shown below using the annotation information provided by the `r Biocpkg('EnsDb.Hsapiens.v79')` package.
 
@@ -567,7 +567,7 @@ dim(geneMatrix)
 head(geneMatrix)
 ```
 
-The above solution works well for a small set of samples. However, `bwtool` is faster for processing large sets. You can see how we used `bwtool` at [leekgroup/recount-website](https://github.com/leekgroup/recount-website). It's much faster than R and less memory intensive but requires several steps such as preparing an appropriate [exons BED file](https://github.com/leekgroup/recount-website/blob/master/genes/create_bed.R), [running bwtool](https://github.com/leekgroup/recount-website/blob/master/bwtool/run_bwtool.sh), [loading the exon counts](https://github.com/leekgroup/recount-website/blob/bc849a34e29d82dadc5d8f10508eaf573c26611d/rse/create_rse.R#L540-L546) and [summarizing them at the gene level](https://github.com/leekgroup/recount-website/blob/bc849a34e29d82dadc5d8f10508eaf573c26611d/rse/create_rse.R#L566-L568). Note that you will need to download the BigWig files first.
+The above solution works well for a small set of samples. However, `bwtool` is faster for processing large sets. You can see how we used `bwtool` at [leekgroup/recount-website](https://github.com/leekgroup/recount-website). It's much faster than R and the small package [recount.bwtool](https://github.com/LieberInstitute/recount.bwtool) will be helpful for such scenarios. Note that you will need to download the BigWig files first unless you are working at [JHPCE](https://jhpce.jhu.edu/) or [SciServer](http://www.sciserver.org/).
 
 Finally, the BigWig files hosted by recount have the following chromosome names and sizes as specified in [hg38.sizes](https://github.com/nellore/runs/blob/master/gtex/hg38.sizes). You'll have to make sure that you match these names when using alternative annotations.
 

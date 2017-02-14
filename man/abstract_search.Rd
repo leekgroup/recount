@@ -38,10 +38,9 @@ project_info <- abstract_search('Geuvadis consortium')
 ## See some summary information for this project
 project_info
 }
-\author{
-Leonardo Collado-Torres
-}
 \seealso{
 \link{browse_study}, \link{recount_abstract}
 }
-
+\author{
+Leonardo Collado-Torres
+}
