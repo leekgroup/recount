@@ -123,7 +123,7 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     
     
     ## Define library size normalization factor
-    targetSize <- 40e6 * 100
+    targetSize <- 40e6
     totalMapped <- pheno$auc[m]
     mappedPerXM <- totalMapped / targetSize
     
