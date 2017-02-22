@@ -173,7 +173,7 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
         info <- readLines(phenoFile)
         res <- read.table(text = info[grepl(paste0('^project|^', project),
             info)], header = TRUE, stringsAsFactors = FALSE, sep = '\t',
-            comment.char = '')
+            comment.char = '', quote = '')
     }
     return(res)
 }
