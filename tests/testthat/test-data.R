@@ -141,13 +141,15 @@ test_that('Snaptron', {
 })
 
 ## Weird pheno files
-projects <- c('SRP036843', 'SRP029334')
+## First 2 are separate from the rest
+projects <- c('SRP036843', 'SRP029334', 'SRP050563', 'SRP055438', 'SRP055749',
+    'SRP058120', 'SRP005342', 'SRP007508', 'SRP015668')
 sapply(projects, download_study, type = 'phenotype')
 phenoFiles <- sapply(projects, function(x) { file.path(x, paste0(x, '.tsv')) })
 pheno <- mapply(recount:::.read_pheno, phenoFiles, projects, SIMPLIFY = FALSE)
+
 pheno_tcga <- recount:::.read_pheno('doesntexist', 'TCGA')
 test_that('Weird pheno files', {
-    expect_equal(nrow(pheno[[1]]), 3)
-    expect_equal(nrow(pheno[[2]]), 5)
+    expect_equivalent(sapply(pheno, nrow), c(3, 5, 4, 33, 16, 30, 12, 5, 33))
     expect_equal(dim(pheno_tcga), c(11284, 862))
 })

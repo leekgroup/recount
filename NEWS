@@ -1,3 +1,11 @@
+CHANGES IN VERSION 1.1.18
+-------------------------
+
+BUG FIXES
+
+    o coverage_matrix()'s helper function .read_pheno() was failing for some
+        projects.
+
 CHANGES IN VERSION 1.1.16
 -------------------------
 
