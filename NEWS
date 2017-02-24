@@ -1,3 +1,12 @@
+CHANGES IN VERSION 1.1.19
+-------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o coverage_matrix() now returns a RangedSummarizedExperiment object. This
+        matches the behavior of recount.bwtool::coverage_matrix_bwtool() and
+        is more consistent with the use of RSE objects in recount.
+
 CHANGES IN VERSION 1.1.18
 -------------------------
 
@@ -20,7 +29,7 @@ CHANGES IN VERSION 1.1.14
 
 SIGNIFICANT USER-VISIBLE CHANGES
 
-    o Complete the change to Gencode v25 annotation for exon and gene counts.
+    o Completed the change to Gencode v25 annotation for exon and gene counts.
 
 
 CHANGES IN VERSION 1.1.13

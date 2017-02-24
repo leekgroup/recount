@@ -73,6 +73,7 @@ download_study(project_info$project)
 load(file.path(project_info$project, 'rse_gene.Rdata'))
 identical(rse_gene, rse_gene_SRP009615)
 }
+
 }
 \seealso{
 \link{download_study}

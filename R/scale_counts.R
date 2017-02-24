@@ -65,6 +65,7 @@
 #' load(file.path(project_info$project, 'rse_gene.Rdata'))
 #' identical(rse_gene, rse_gene_SRP009615)
 #' }
+#'
 
 
 scale_counts <- function(rse, by = 'auc', targetSize = 4e7, L = 100,
