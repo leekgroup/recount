@@ -19,9 +19,8 @@
 #' will be printed.
 #' 
 #'
-#' @return A matrix with one row per region and one column per sample. The
-#' numbers in the cells are the counts (number of reads, or fraction in some
-#' cases) overlapping the region.
+#' @return A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+#' object with the counts stored in the assays slot. 
 #'
 #' @details When using \code{outdir = NULL} the information will be accessed
 #' from the web on the fly. If you encounter internet access problems, it might
@@ -34,12 +33,15 @@
 #'
 #' If you have \code{bwtool} installed, you can use
 #' \url{https://github.com/LieberInstitute/recount.bwtool} for faster results.
+#' Note that you will need to run \link{scale_counts} after running
+#' \code{coverage_matrix_bwtool()}.
 #'
 #' @author Leonardo Collado-Torres
 #' @export
 #'
 #' @importFrom utils read.table
 #' @import derfinder GenomicRanges RCurl BiocParallel
+#' SummarizedExperiment S4Vectors
 #'
 #' @seealso \link{download_study}, \link[derfinder]{findRegions},
 #' \link[derfinder]{railMatrix}
@@ -53,10 +55,10 @@
 #'         maxClusterGap = 3000L)
 #'
 #'     ## Now calculate the coverage matrix for this study
-#'     coverageMatrix <- coverage_matrix('DRP002835', 'chrY', regions)
+#'     rse <- coverage_matrix('DRP002835', 'chrY', regions)
 #'
 #'     ## One row per region
-#'     identical(length(regions), nrow(coverageMatrix))
+#'     identical(length(regions), nrow(rse))
 #' }
 #'
 
@@ -118,12 +120,13 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     
     ## Get sample names
     m <- match(url_table$file_name[samples_i], pheno$bigwig_file)
+    ## Match the pheno with the samples
+    pheno <- pheno[m, ]
     if(project != 'TCGA') {
-        names(sampleFiles) <- pheno$run[m]
+        names(sampleFiles) <- pheno$run
     } else {
-        names(sampleFiles) <- pheno$gdc_file_id[m]
+        names(sampleFiles) <- pheno$gdc_file_id
     }
-    
     
     ## Define library size normalization factor
     targetSize <- 40e6
@@ -159,8 +162,13 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     ## Group results from chunks
     coverageMatrix <- do.call(rbind, lapply(resChunks, '[[', 'coverageMatrix'))
     
+    ## Build a RSE object
+    rse <- SummarizedExperiment::SummarizedExperiment(
+        assays = list('counts' = coverageMatrix),
+        colData = DataFrame(pheno), rowRanges = regions)
+    
     ## Finish
-    return(coverageMatrix)
+    return(rse)
 }
 
 

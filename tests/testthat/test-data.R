@@ -87,15 +87,15 @@ if(.Platform$OS.type != 'windows') {
     })
 
 
-    coverageMatrix <- coverage_matrix('SRP002001', 'chrY', regions)
+    rse_ER <- coverage_matrix('SRP002001', 'chrY', regions)
     ## Same for the phenotype data and the sample bigwig file
     unlink(localfiles['SRP002001.tsv'])
     unlink(localfiles['SRR036661.bw'])
 
     test_that('Coverage matrix', {
-        expect_equal(coverageMatrix,
+        expect_equal(rse_ER,
             coverage_matrix('SRP002001', 'chrY', regions, outdir = tmpdir))
-        expect_equal(coverageMatrix,
+        expect_equal(rse_ER,
             coverage_matrix('SRP002001', 'chrY', regions, outdir = tmpdir,
             chunksize = 500))
     })
