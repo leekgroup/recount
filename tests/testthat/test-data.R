@@ -151,5 +151,5 @@ pheno <- mapply(recount:::.read_pheno, phenoFiles, projects, SIMPLIFY = FALSE)
 pheno_tcga <- recount:::.read_pheno('doesntexist', 'TCGA')
 test_that('Weird pheno files', {
     expect_equivalent(sapply(pheno, nrow), c(3, 5, 4, 33, 16, 30, 12, 5, 33))
-    expect_equal(dim(pheno_tcga), c(11284, 862))
+    expect_equal(dim(pheno_tcga), c(11284, 864))
 })
