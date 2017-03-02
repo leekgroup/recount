@@ -158,7 +158,7 @@ system.time( rse_ER <- coverage_matrix('SRP009615', 'chrY', regions) )
 covMat <- round(assays(rse_ER)$counts, 0)
 
 ## Get phenotype data for study SRP009615
-pheno <- coldData(rse_ER)
+pheno <- colData(rse_ER)
 
 ## Complete the phenotype table with the data we got from GEO
 m <- match(pheno$run, sample_info$run)
