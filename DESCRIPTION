@@ -1,7 +1,7 @@
 Package: recount
 Title: Explore and download data from the recount project
-Version: 1.1.20
-Date: 2017-02-27
+Version: 1.1.21
+Date: 2017-03-02
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "ctb",
     email = "anellore@gmail.com"), person(c("Andrew", "E."), "Jaffe",
@@ -59,7 +59,7 @@ License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/leekgroup/recount
-BugReports: https://github.com/leekgroup/recount/issues
+BugReports: https://support.bioconductor.org/t/recount/
 biocViews: Coverage, DifferentialExpression, GeneExpression, RNASeq, Sequencing,
     Software, DataImport
 RoxygenNote: 6.0.1
