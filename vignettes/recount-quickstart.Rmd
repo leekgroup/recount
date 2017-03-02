@@ -684,7 +684,7 @@ If you use [SciServer](http://www.sciserver.org/) for your published work, pleas
 
 ## Install `r Biocpkg('recount')`
 
-`R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Biocpkg('recount')` is a `R` package available via the [Bioconductor](http://bioconductor/packages/derfinder) repository for packages. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Biocpkg('recount')` by using the following commands in your `R` session:
+`R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Biocpkg('recount')` is a `R` package available via the [Bioconductor](http://bioconductor/packages/recount) repository for packages. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Biocpkg('recount')` by using the following commands in your `R` session:
 
 ```{r 'installDer', eval = FALSE}
 ## try http:// if https:// URLs are not supported
