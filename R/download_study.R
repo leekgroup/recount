@@ -95,7 +95,9 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
     
     ## Subset url data
     url_table <- url_table[url_table$project == project, ]
-    stopifnot(nrow(url_table) > 0)
+    if(nrow(url_table) == 0) {
+        stop("Invalid 'project' argument. There's no such 'project' in the recount_url data.frame.")
+    }
     
     ## If all, download each type individually
     if(type == 'all') {

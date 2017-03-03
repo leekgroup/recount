@@ -78,7 +78,9 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     
     ## Subset url data
     url_table <- url_table[url_table$project == project, ]
-    stopifnot(nrow(url_table) > 0)
+    if(nrow(url_table) == 0) {
+        stop("Invalid 'project' argument. There's no such 'project' in the recount_url data.frame.")
+    }
     
     ## Find chromosome length if absent
     if(is.null(chrlen)) {
