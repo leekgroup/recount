@@ -153,3 +153,11 @@ test_that('Weird pheno files', {
     expect_equivalent(sapply(pheno, nrow), c(3, 5, 4, 33, 16, 30, 12, 5, 33))
     expect_equal(dim(pheno_tcga), c(11284, 864))
 })
+
+
+test_that('RPKM', {
+    expect_equal(getRPKM(rse_gene_SRP009615)[1, ], assays(rse_gene_SRP009615)$count[1, ] / (rowData(rse_gene_SRP009615)$bp_length[1] / 1000) / (colSums(assays(rse_gene_SRP009615)$count)/1e6))
+    expect_equal(getRPKM(rse_gene_SRP009615, length_var = NULL)[1, ], assays(rse_gene_SRP009615)$count[1, ] / (width(rowRanges(rse_gene_SRP009615))[1] / 1000) / (colSums(assays(rse_gene_SRP009615)$count)/1e6))
+    expect_equal(getRPKM(rse_gene_SRP009615, mapped_var = 'mapped_read_count')[1, ], assays(rse_gene_SRP009615)$count[1, ] / (rowData(rse_gene_SRP009615)$bp_length[1] / 1000) / (colData(rse_gene_SRP009615)$mapped_read_count/1e6))
+    expect_equal(getRPKM(rse_gene_SRP009615, length_var = NULL, mapped_var = 'mapped_read_count')[1, ], assays(rse_gene_SRP009615)$count[1, ] / (width(rowRanges(rse_gene_SRP009615))[1] / 1000) / (colData(rse_gene_SRP009615)$mapped_read_count/1e6))
+})
