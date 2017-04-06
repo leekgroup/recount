@@ -1,3 +1,11 @@
+CHANGES IN VERSION 1.1.25
+-------------------------
+
+NEW FEATURES
+
+    o Added the function getRPKM() which can be used with
+        RangedSummarizedExperiment objects from recount and from other sources.
+
 CHANGES IN VERSION 1.1.24
 -------------------------
 
