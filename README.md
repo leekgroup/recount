@@ -9,7 +9,7 @@ Bioc-release <a href="https://bioconductor.org/developers/how-to/unitTesting-gui
 recount
 =======
 
-Explore and download data from the recount project available at the [recount website](https://jhubiostatistics.shinyapps.io/recount/). Using the `recount` package you can download _RangedSummarizedExperiment_ objects at the gene, exon or exon-exon junctions level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The _RangedSummarizedExperiment_ objects can be used by different packages for performing differential expression analysis. Using [derfinder](http://bioconductor.org/packages/derfinder) you can perform annotation-agnostic differential expression analyses with the data from the recount project. 
+Explore and download data from the recount project available at the [recount2 website](https://jhubiostatistics.shinyapps.io/recount/). Using the `recount` package you can download _RangedSummarizedExperiment_ objects at the gene, exon or exon-exon junctions level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The _RangedSummarizedExperiment_ objects can be used by different packages for performing differential expression analysis. Using [derfinder](http://bioconductor.org/packages/derfinder) you can perform annotation-agnostic differential expression analyses with the data from the recount project. 
 
 For more information about `recount` check the vignettes.
 
@@ -28,7 +28,7 @@ biocLite(c('derfinder', 'DESeq2'))
 
 # Vignettes
 
-The vignettes for this package can be viewed via [Bioconductor's website](http://www.bioconductor.org/packages/recount) (manual [backup](http://leekgroup.github.io/recount/)).
+The vignettes for this package can be viewed via [Bioconductor's website](http://www.bioconductor.org/packages/recount).
 
 
 # Citation
@@ -38,18 +38,17 @@ run this yourself to check for any updates on how to cite __recount__.
 
 To cite the __recount__ package in publications use:
 
-Collado-Torres L, Nellore A, Kammers K, Ellis SE, Taub MA, Hansen KD, Jaffe AE, Langmead B and Leek JT (2016). “recount: A large-scale resource of analysis-ready RNA-seq expression data.” _bioRxiv_. doi: 10.1101/068478 (URL: http://doi.org/10.1101/068478), <URL:
-http://biorxiv.org/content/early/2016/08/08/068478>.
+Collado-Torres L, Nellore A, Kammers K, Ellis SE, Taub MA, Hansen KD, Jaffe AE, Langmead B and Leek JT (2017). “Reproducible RNA-seq analysis using _recount2_.” _Nature Biotechnology_. doi: 10.1038/nbt.3838 (URL: http://doi.org/10.1038/nbt.3838), <URL: http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html>.
 
 A BibTeX entry for LaTeX users is
 
 @Article{,
-    title = {recount: A large-scale resource of analysis-ready RNA-seq expression data},
+    title = {Reproducible RNA-seq analysis using recount2},
     author = {Leonardo Collado-Torres and Abhinav Nellore and Kai Kammers and Shannon E. Ellis and Margaret A. Taub and Kasper D. Hansen and  and Andrew E. Jaffe and Ben Langmead and Jeffrey T. Leek},
-    year = {2016},
-    journal = {bioRxiv},
-	doi = {10.1101/068478}
-    url = {http://biorxiv.org/content/early/2016/08/08/068478},
+    year = {2017},
+    journal = {Nature Biotechnology},
+    doi = {10.1038/nbt.3838},
+    url = {http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html},
 }
 
 # Testing
