@@ -1,5 +1,5 @@
 bibentry(bibtype="article",
-        title = "recount: A large-scale resource of analysis-ready RNA-seq expression data",
+        title = "Reproducible RNA-seq analysis using recount2",
         author = personList(
             as.person("Leonardo Collado-Torres"),
             as.person("Abhinav Nellore"),
@@ -11,8 +11,8 @@ bibentry(bibtype="article",
 			as.person("Ben Langmead"),
             as.person("Jeffrey T. Leek")
         ),
-        year = 2016,
-        journal = "bioRxiv",
-        doi = "10.1101/068478",
-        url = "http://biorxiv.org/content/early/2016/08/08/068478"
+        year = 2017,
+        journal = "Nature Biotechnology",
+        doi = "10.1038/nbt.3838",
+        url = "http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html"
     )
