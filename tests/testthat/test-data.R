@@ -161,3 +161,8 @@ test_that('RPKM', {
     expect_equal(getRPKM(rse_gene_SRP009615, mapped_var = 'mapped_read_count')[1, ], assays(rse_gene_SRP009615)$count[1, ] / (rowData(rse_gene_SRP009615)$bp_length[1] / 1000) / (colData(rse_gene_SRP009615)$mapped_read_count/1e6))
     expect_equal(getRPKM(rse_gene_SRP009615, length_var = NULL, mapped_var = 'mapped_read_count')[1, ], assays(rse_gene_SRP009615)$count[1, ] / (width(rowRanges(rse_gene_SRP009615))[1] / 1000) / (colData(rse_gene_SRP009615)$mapped_read_count/1e6))
 })
+
+rse_pred <- add_predictions(rse_gene_SRP009615)
+test_that('Predictions', {
+    expect_equal(all(c('reported_sex', 'predicted_sex', 'accuracy_sex', 'reported_samplesource', 'predicted_samplesource', 'accuracy_samplesource', 'reported_tissue', 'predicted_tissue', 'accuracy_tissue', 'reported_sequencingstrategy', 'predicted_sequencingstrategy', 'accuracy_sequencingstrategy') %in% colnames(colData(rse_pred))), TRUE)
+})
