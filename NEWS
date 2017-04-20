@@ -1,3 +1,12 @@
+CHANGES IN VERSION 1.1.27
+-------------------------
+
+NEW FEATURES
+
+    o Added the add_predictions() function which appends the predicted
+        phenotypes to a RSE object downloaded with recount. The phenotypes
+        were predicted by Shannon Ellis et al, 2017 (citation coming up soon!).
+
 CHANGES IN VERSION 1.1.26
 -------------------------
 
