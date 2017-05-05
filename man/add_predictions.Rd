@@ -4,7 +4,7 @@
 \alias{add_predictions}
 \title{Add predicted phenotypes to a recount rse object}
 \usage{
-add_predictions(rse, is_tcga = FALSE, version = "0.0.03", verbose = TRUE)
+add_predictions(rse, is_tcga = FALSE, version = "latest", verbose = TRUE)
 }
 \arguments{
 \item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
@@ -16,7 +16,8 @@ Otherwise set to \code{FALSE} (default).}
 \item{version}{The version number for the predicted phenotypes data. It has
 to match one of the available numbers at
 \url{https://github.com/leekgroup/recount-website/blob/master/predictions/}.
-Feel free to check if there is a newer version than the default (0.0.03).}
+Feel free to check if there is a newer version than the default. The version
+used is printed as part of the file name.}
 
 \item{verbose}{If \code{TRUE} it will print a message of where the 
 predictions file is being downloaded to.}
