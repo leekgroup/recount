@@ -17,6 +17,12 @@
 #' \link[BiocParallel]{SerialParam-class} will be used.
 #' @param verboseLoad If \code{TRUE} basic status updates for loading the data
 #' will be printed.
+#' @param scale If \code{TRUE}, the coverage counts will be scaled to read 
+#' counts based on a library size of 40 million reads. Set \code{scale} to 
+#' \code{FALSE} if you want the raw coverage counts. The scaling method is by
+#' AUC, as in the default option of \link{scale_counts}.
+#' @param round If \code{TRUE}, the counts are rounded to integers. Set to 
+#' \code{TRUE} if you want to match the defaults of \link{scale_counts}.
 #' 
 #'
 #' @return A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
@@ -62,7 +68,9 @@
 #' }
 #'
 
-coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = NULL, outdir = NULL, chrlen = NULL, verbose = TRUE, verboseLoad = verbose, ...) {    
+coverage_matrix <- function(project, chr, regions, chunksize = 1000,
+    bpparam = NULL, outdir = NULL, chrlen = NULL, verbose = TRUE,
+    verboseLoad = verbose, scale = TRUE, round = FALSE, ...) {    
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(is.character(chr) & length(chr) == 1)
@@ -131,9 +139,14 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     }
     
     ## Define library size normalization factor
-    targetSize <- 40e6
-    totalMapped <- pheno$auc[m]
-    mappedPerXM <- totalMapped / targetSize
+    if(scale) {
+        targetSize <- 40e6
+        totalMapped <- pheno$auc[m]
+        mappedPerXM <- totalMapped / targetSize
+    } else {
+        mappedPerXM <- rep(1, nrow(pheno))
+    }
+    
     
     ## Keep only regions from the chr in question
     regions <- regions[seqnames(regions) == chr]
@@ -163,6 +176,8 @@ coverage_matrix <- function(project, chr, regions, chunksize = 1000, bpparam = N
     
     ## Group results from chunks
     coverageMatrix <- do.call(rbind, lapply(resChunks, '[[', 'coverageMatrix'))
+    
+    if(round) coverageMatrix <- round(coverageMatrix, 0)
     
     ## Build a RSE object
     rse <- SummarizedExperiment::SummarizedExperiment(

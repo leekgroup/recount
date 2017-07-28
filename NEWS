@@ -1,3 +1,15 @@
+CHANGES IN VERSION 1.3.2
+------------------------
+
+NEW FEATURES
+
+    o coverage_matrix() now has two new arguments: scale and round. Use
+        scale = FALSE to get raw coverage counts, which you can then scale with
+        scale_counts(). scale is set to TRUE by default, so the counts are
+        scaled to a library size of 40 million reads. round is set to FALSE by
+        default, but can be set to TRUE if you want to get integer counts, just
+        as in the default of scale_counts().
+
 CHANGES IN VERSION 1.3.1
 ------------------------
 
