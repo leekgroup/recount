@@ -7,7 +7,7 @@ given SRA study.}
 \usage{
 coverage_matrix(project, chr, regions, chunksize = 1000, bpparam = NULL,
   outdir = NULL, chrlen = NULL, verbose = TRUE, verboseLoad = verbose,
-  ...)
+  scale = TRUE, round = FALSE, ...)
 }
 \arguments{
 \item{project}{A character vector with one SRA study id.}
@@ -42,6 +42,14 @@ way.}
 
 \item{verboseLoad}{If \code{TRUE} basic status updates for loading the data
 will be printed.}
+
+\item{scale}{If \code{TRUE}, the coverage counts will be scaled to read 
+counts based on a library size of 40 million reads. Set \code{scale} to 
+\code{FALSE} if you want the raw coverage counts. The scaling method is by
+AUC, as in the default option of \link{scale_counts}.}
+
+\item{round}{If \code{TRUE}, the counts are rounded to integers. Set to 
+\code{TRUE} if you want to match the defaults of \link{scale_counts}.}
 
 \item{...}{Additional arguments passed to \link{download_study} when
 \code{outdir} is specified but the required files are missing.}
