@@ -1,7 +1,7 @@
 Package: recount
 Title: Explore and download data from the recount project
-Version: 1.3.3
-Date: 2017-08-07
+Version: 1.3.4
+Date: 2017-08-10
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "ctb",
     email = "anellore@gmail.com"), person(c("Andrew", "E."), "Jaffe",
@@ -54,7 +54,7 @@ Description: Explore and download data from the recount project available at
     performing differential expression analysis. Using
     http://bioconductor.org/packages/derfinder you can perform
     annotation-agnostic differential expression analyses with the data from the
-    recount project as described at http://biorxiv.org/content/early/2016/08/08/068478.
+    recount project as described at http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html.
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
