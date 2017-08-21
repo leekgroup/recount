@@ -7,7 +7,7 @@ author:
     - &ccb Center for Computational Biology, Johns Hopkins University
     email: leo.collado@libd.org
 output: 
-  BiocStyle::html_document2:
+  BiocStyle::html_document:
     self_contained: yes
     toc: true
     toc_float: true
@@ -372,9 +372,9 @@ dds <- DESeq(dds, test = 'LRT', reduced = ~ gene_target, fitType = 'local')
 res <- results(dds)
 ```
 
-We can now use functions from `r Biocpkg('DESeq2')` to explore the results. For more details check the `r Biocpkg('DESeq2')` vignette. For example, we can make a MA plot as shown below.
+We can now use functions from `r Biocpkg('DESeq2')` to explore the results. For more details check the `r Biocpkg('DESeq2')` vignette. For example, we can make a MA plot as shown in Figure \@ref(fig:maplot).
 
-```{r 'ma_plot'}
+```{r 'maplot', fig.cap = "MA plot for group differences adjusted by gene target for SRP009615 using gene-level data."}
 ## Explore results
 plotMA(res, main="DESeq2 results for SRP009615")
 ```
@@ -518,9 +518,9 @@ dds_ers <- DESeq(dds_ers, test = 'LRT', reduced = ~ gene_target,
 res_ers <- results(dds_ers)
 ```
 
-We can then visually explore the results, like we did before.
+We can then visually explore the results as shown in Figure \@ref(fig:maploters), like we did before in Figure \@ref(fig:maplot).
 
-```{r 'ma_plot_ers', eval = .Platform$OS.type != 'windows'}
+```{r 'maploters', eval = .Platform$OS.type != 'windows', fig.cap = "MA plot for group differences adjusted by gene target for SRP009615 using ER-level data (just chrY)."}
 ## Explore results
 plotMA(res_ers, main="DESeq2 results for SRP009615 (ER-level, chrY)")
 ```
@@ -684,29 +684,41 @@ Not everyone has over 8 terabytes of disk space available to download all the da
 ## Step by step
 
 
-To use _SciServer_, you first have to go to http://www.sciserver.org/ then click on "Login to SciServer". If you are a first time user, click on "Register New Account" and enter the information they request as shown on the next image.
+To use _SciServer_, you first have to go to http://www.sciserver.org/ then click on "Login to SciServer". If you are a first time user, click on "Register New Account" and enter the information they request as shown on Figure \@ref(fig:Figure1).
 
-<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/register.png" align="center"></a>
+```{r Figure1, out.width="100%", fig.align="center", fig.cap = "SIgn up to SciServer", echo = FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/register.png")
+```
 
-Once you've registered, open the [SciServer compute tool](http://compute.sciserver.org/dashboard/).
+Once you've registered, open the [SciServer compute tool](http://compute.sciserver.org/dashboard/) (see Figure \@ref(fig:Figure2)).
 
-<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/sciserver-compute.png" align="center"></a>
+```{r Figure2, out.width="100%", fig.align="center", fig.cap = "Click on SciServer Compute,", echo = FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/sciserver-compute.png")
+```
 
-Then click on "Create container", choose a name of your preference and make sure that you choose to load R 3.3.x and the `recount` public volume. This will enable you to access all of the `recount` data as if it was on your computer. Click "Create" once you are ready.
+Then click on "Create container", choose a name of your preference and make sure that you choose to load R 3.3.x and the `recount` public volume (see Figure \@ref(fig:Figure3)). This will enable you to access all of the `recount` data as if it was on your computer. Click "Create" once you are ready.
 
-<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/new-container.png" align="center"></a>
+```{r Figure3, out.width="100%", fig.align="center", fig.cap = "Select the appropriate image and load the recount public volume.", echo = FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/new-container.png")
+```
 
-Once you have a container, create a new R _Notebook_ as shown in the image below.
+Once you have a container, create a new R _Notebook_ as shown in Figure \@ref(fig:Figure4).
 
-<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/new-R.png" align="center"></a>
+```{r Figure4, out.width="100%", fig.align="center", fig.cap = "Create a R notebook.", echo = FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/new-R.png")
+```
 
-In this R _Notebook_ you can insert new code _cells_ where you can type R code. For example, you can install `r Biocpkg('recount')` and `r Biocpkg('DESeq2')` to run the code example from this vignette. You first have to install the packages as shown below.
+In this R _Notebook_ you can insert new code _cells_ where you can type R code. For example, you can install `r Biocpkg('recount')` and `r Biocpkg('DESeq2')` to run the code example from this vignette. You first have to install the packages as shown in Figure \@ref(fig:Figure5).
 
-<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/demo1.png" align="center"></a>
+```{r Figure5, out.width="100%", fig.align="center", fig.cap = "Install recount and DESeq2 on SciServer.", echo = FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/demo1.png")
+```
 
-Then, the main part when using _SciServer_ is to use to remember that all the `recount` data is available locally. So instead of using `download_study()`, you can simply use `load()` with the correct path as shown below.
+Then, the main part when using _SciServer_ is to use to remember that all the `recount` data is available locally. So instead of using `download_study()`, you can simply use `load()` with the correct path as shown in Figure \@ref(fig:Figure6).
 
-<img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/demo2.png" align="center"></a>
+```{r Figure6, out.width="100%", fig.align="center", fig.cap = "recount files are available locally so remmeber to use the local data when working on SciServer.", echo = FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/leekgroup/recount-website/master/sciserver_demo/demo2.png")
+```
 
 Several functions in the `r Biocpkg('recount')` package have the `outdir` argument, which you can specify to use the data locally. Try using `expressed_regions()` in _SciServer_ to get started with the following code:
 
@@ -853,7 +865,7 @@ with `r CRANpkg('knitr')` `r citep(bib[['knitr']])` and `r CRANpkg('rmarkdown')`
 
 Citations made with `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`.
 
-```{r vignetteBiblio, results = 'asis', echo = FALSE, warning = FALSE}
+```{r vignetteBiblio, results = 'asis', echo = FALSE, warning = FALSE, message = FALSE}
 ## Print bibliography
 bibliography()
 ```
