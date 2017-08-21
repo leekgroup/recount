@@ -33,7 +33,7 @@ Imports:
     utils
 Suggests:
     AnnotationDbi,
-    BiocStyle (>= 2.3.20),
+    BiocStyle (>= 2.5.19),
     DESeq2,
     devtools (>= 1.6),
     EnsDb.Hsapiens.v79,
