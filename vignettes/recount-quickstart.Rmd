@@ -81,7 +81,7 @@ cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
 # https://github.com/cboettig/knitcitations/issues/63
 
 ## Write bibliography information
-bibs <- c(
+bib <- c(
     AnnotationDbi = citation('AnnotationDbi'),
     BiocParallel = citation('BiocParallel'),
     BiocStyle = citation('BiocStyle'),
@@ -110,12 +110,7 @@ bibs <- c(
     testthat = citation('testthat')
 )
 
-write.bibtex(bibs,
-    file = 'quickstartRef.bib')
-bib <- read.bibtex('quickstartRef.bib')
-
-## Assign short names
-names(bib) <- names(bibs)
+write.bibtex(bib, file = 'quickstartRef.bib')
 ```
 
 Here is a very quick example of how to download a `RangedSummarizedExperiment` object with the gene counts for a 2 groups project (12 samples) with SRA study id [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615) using the `r Biocpkg('recount')` package `r citep(bib[['recount']])`. The `RangedSummarizedExperiment` object is defined in the `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])` package and can be used for differential expression analysis with different packages. Here we show how to use `r Biocpkg('DESeq2')` `r citep(bib[['DESeq2']])` to perform the differential expresion analysis.
