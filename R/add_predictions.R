@@ -63,7 +63,13 @@
 add_predictions <- function(rse, is_tcga = FALSE, version = 'latest', 
     verbose = TRUE) {
         
-    if(version == 'latest') version <- '0.0.03'
+    if(version == 'latest') version <- tryCatch(suppressWarnings(readLines(
+        'https://raw.githubusercontent.com/leekgroup/recount-website/master/predictions/latestVersion.txt'))[1]
+        , error = function(e) {
+            print(e)
+            v <- '0.0.05'
+            message(paste(Sys.time(), 'Failed to check the latest version, using version', v))
+            return(v) })
     
     ## Download file
     predfile <- paste0('PredictedPhenotypes_v', version, '.rda')
