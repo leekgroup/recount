@@ -1,4 +1,11 @@
-bibentry(bibtype="article",
+pkgVer <- function(pkg) {
+    if (!exists("meta") || is.null(meta)) meta <- packageDescription(pkg)
+    ver <- meta$Version
+    paste0('https://github.com/leekgroup/', pkg, ' - R package version ', ver)
+}
+
+c(
+    bibentry(bibtype="article",
         title = "Reproducible RNA-seq analysis using recount2",
         author = personList(
             as.person("Leonardo Collado-Torres"),
@@ -15,4 +22,23 @@ bibentry(bibtype="article",
         journal = "Nature Biotechnology",
         doi = "10.1038/nbt.3838",
         url = "http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html"
+    ),
+    bibentry(bibtype="manual",
+        title = "Explore and download data from the recount project",
+        author = personList(
+            as.person("Leonardo Collado-Torres"),
+            as.person("Abhinav Nellore"),
+            as.person("Kai Kammers"),
+            as.person("Shannon E. Ellis"),
+            as.person("Margaret A. Taub"),
+            as.person("Kasper D. Hansen"),
+            as.person("Andrew E. Jaffe"),
+			as.person("Ben Langmead"),
+            as.person("Jeffrey T. Leek")
+        ),
+        year = 2017,
+        url = "http://www.bioconductor.org/packages/recount",
+        note = pkgVer('recount'),
+        doi = '10.18129/B9.bioc.recount'
     )
+)
