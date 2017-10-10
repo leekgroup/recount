@@ -36,6 +36,7 @@ cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
 
 ## Write bibliography information
 bib <- c(
+    R = citation(),
     AnnotationDbi = RefManageR::BibEntry(bibtype = 'manual',
         key = 'AnnotationDbi',
         author = 'Hervé Pagès and Marc Carlson and Seth Falcon and Nianhua Li',
@@ -60,7 +61,6 @@ bib <- c(
     knitcitations = citation('knitcitations'),
     knitr = citation('knitr')[3],
     org.Hs.eg.db = citation('org.Hs.eg.db'),
-    R = citation(),
     RCurl = citation('RCurl'),
 	recount = citation('recount')[1],
     recountworkflow = citation('recount')[2],
