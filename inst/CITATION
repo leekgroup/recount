@@ -23,6 +23,32 @@ c(
         doi = "10.1038/nbt.3838",
         url = "http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html"
     ),
+    bibentry(bibtype="article",
+        title = "recount workflow: Accessing over 70,000 human RNA-seq samples with Bioconductor [version 1; referees: 1 approved, 2 approved with reservations]",
+        author = personList(
+            as.person("Leonardo Collado-Torres"),
+            as.person("Abhinav Nellore"),
+            as.person("Andrew E. Jaffe"),
+            as.person("Jeffrey T. Leek")
+        ),
+        year = 2017,
+        journal = "F1000Research",
+        doi = "10.12688/f1000research.12223.1",
+        url = "https://f1000research.com/articles/6-1558/v1"
+    ),
+    bibentry(bibtype="article",
+        title = "Improving the value of public RNA-seq expression data by phenotype prediction",
+        author = personList(
+            as.person("Shannon E. Ellis"),
+            as.person("Leonardo Collado-Torres"),
+            as.person("Andrew E. Jaffe"),
+            as.person("Jeffrey T. Leek")
+        ),
+        year = 2017,
+        journal = "bioRxiv",
+        doi = "10.1101/145656",
+        url = "https://www.biorxiv.org/content/early/2017/06/03/145656"
+    ),
     bibentry(bibtype="manual",
         title = "Explore and download data from the recount project",
         author = personList(

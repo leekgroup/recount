@@ -1,3 +1,14 @@
+CHANGES IN VERSION 1.3.9
+------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Added citations for 
+        https://www.biorxiv.org/content/early/2017/06/03/145656 and
+        https://f1000research.com/articles/6-1558/v1 as well as mentions to
+        them in the vignette.
+
+
 CHANGES IN VERSION 1.3.7
 ------------------------
 

@@ -52,8 +52,10 @@ predictions to a
 to the \code{colData()} slot.
 }
 \details{
-If you use these predicted phenotypes please cite Ellis et al, in 
-prep, 2017.
+If you use these predicted phenotypes please cite the Ellis et al
+bioRxiv pre-print available at 
+https://www.biorxiv.org/content/early/2017/06/03/145656. See citation
+details with citation('recount').
 }
 \examples{
 
@@ -65,7 +67,8 @@ colData(rse_gene)
 
 }
 \references{
-Ellis et al, in prep, 2017.
+Ellis et al, bioRxiv, 2017.
+https://www.biorxiv.org/content/early/2017/06/03/145656
 }
 \author{
 Leonardo Collado-Torres
