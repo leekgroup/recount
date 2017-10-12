@@ -11,7 +11,7 @@
 #' return Gene or exon level information as a 
 #' \link[GenomicRanges]{GRanges-class} or 
 #' \link[GenomicRanges]{GRangesList-class} object respectively. The gene level
-#' information contains the width of the reduced exons for that given gene
+#' information contains the width of the disjoint exons for that given gene
 #' which can be used to normalize the counts provided by recount.
 #' Can also be \code{both} in which case a 2 element list with the exon and the
 #' gene output is returned.
@@ -81,13 +81,13 @@ reproduce_ranges <- function(level = 'gene', db = 'Gencode.v25') {
         exons <- exons[names(exons) %in% names(genes)]
     }
         
-    ## Reduce exons by gene so the exons won't be overlapping each other inside a gene
-    exons <- GenomicRanges::reduce(exons)
+    ## Disjoin exons by gene so the exons won't be overlapping each other inside a gene
+    exons <- GenomicRanges::disjoin(exons)
 
     if(level == 'exon') return(exons)
         
     ## For 'gene' or 'both', continue by:
-    ## * adding length of reduced exons by gene
+    ## * adding length of disjoint exons by gene
     genes$bp_length <- sum(GenomicRanges::width(exons))
     
     ## * adding gene symbol

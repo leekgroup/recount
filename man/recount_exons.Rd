@@ -8,7 +8,7 @@
 gene. The names match the gene Gencode v25 ids.}
 \description{
 Exon annotation extracted from Gencode v25 (GRCh38.p7) used in recount.
-Data extraced on January 17th, 2017.
+Data extraced on October 12th, 2017.
 }
 \references{
 \url{https://jhubiostatistics.shinyapps.io/recount/}

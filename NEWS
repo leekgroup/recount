@@ -1,5 +1,14 @@
-CHANGES IN VERSION 1.3.2
-------------------------
+CHANGES IN VERSION 1.3.13
+-------------------------
+
+BUG FIXES
+
+    o Changed reproduce_ranges() since disjoint exons are more useful than
+        reduced exons for downstream analyses.
+
+
+CHANGES IN VERSION 1.3.12
+-------------------------
 
 NEW FEATURES
 
