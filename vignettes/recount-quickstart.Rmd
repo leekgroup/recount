@@ -359,11 +359,24 @@ Shannon Ellis et at have predicted phenotypic information that can be used with 
 
 ## DE analysis
 
-The [recount project](https://jhubiostatistics.shinyapps.io/recount/) records the sum of the base level coverage for each gene (or exon). These raw counts have to be scaled and there are several ways in which you can choose to do so. The function `scale_counts()` helps you scale them in a way that is tailored to [Rail-RNA](http://rail.bio) output.
+The [recount project](https://jhubiostatistics.shinyapps.io/recount/) records the sum of the base level coverage for each gene (or exon). These raw counts have to be scaled and there are several ways in which you can choose to do so. The function `scale_counts()` helps you scale them in a way that is tailored to [Rail-RNA](http://rail.bio) output. If you prefer read counts without scaling, check the function `read_counts()`. Below we show some of the differences.
 
 ```{r 'scale_counts'}
 ## Scale counts by taking into account the total coverage per sample
 rse <- scale_counts(rse_gene)
+
+##### Details about counts #####
+
+## Scale counts to 40 million mapped reads. Not all mapped reads are in exonic
+## sequence, so the total is not necessarily 40 million.
+colSums(assays(rse)$counts) / 1e6
+
+## Compute read counts
+rse_read_counts <- read_counts(rse_gene)
+## Difference between read counts and number of reads downloaded by Rail-RNA
+colSums(assays(rse_read_counts)$counts) / 1e6 -
+    colData(rse_read_counts)$reads_downloaded / 1e6
+## Check the help page for read_counts() for more details
 ```
 
 We are almost ready to perform our differential expression analysis. Lets just add the information we recovered [GEO](http://www.ncbi.nlm.nih.gov/geo/) about these samples.

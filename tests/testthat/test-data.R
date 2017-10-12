@@ -166,3 +166,11 @@ rse_pred <- add_predictions(rse_gene_SRP009615)
 test_that('Predictions', {
     expect_equal(all(c('reported_sex', 'predicted_sex', 'accuracy_sex', 'reported_samplesource', 'predicted_samplesource', 'accuracy_samplesource', 'reported_tissue', 'predicted_tissue', 'accuracy_tissue', 'reported_sequencingstrategy', 'predicted_sequencingstrategy', 'accuracy_sequencingstrategy') %in% colnames(colData(rse_pred))), TRUE)
 })
+
+## read_counts
+download_study('DRP000499')
+load('DRP000499/rse_gene.Rdata')
+test_that('read_counts', {
+    expect_equal(all(colSums(assays(read_counts(rse_gene, use_paired_end = FALSE))$counts) / colSums(assays(read_counts(rse_gene))$counts) == 2), TRUE)
+    expect_equal(all(sign(colSums(assays(read_counts(rse_gene))$counts) / 1e6 - colData(rse_gene)$reads_downloaded / 1e6 /2) == -1), TRUE)
+})

@@ -41,7 +41,8 @@ choose how to scale the raw counts provided by the recount project. Note that
 the raw counts are the sum of the base level coverage so you have to take
 into account the read length or simply the total coverage for the given
 sample (default option). You might want to do some further scaling to take
-into account the gene or exon lengths.
+into account the gene or exon lengths. If you prefer to calculate read counts
+without scaling check the function \link{read_counts}.
 }
 \details{
 Rail-RNA \url{http://rail.bio} uses soft clipping when aligning
@@ -76,7 +77,7 @@ identical(rse_gene, rse_gene_SRP009615)
 
 }
 \seealso{
-\link{download_study}
+\link{download_study}, \link{read_counts}
 }
 \author{
 Leonardo Collado-Torres

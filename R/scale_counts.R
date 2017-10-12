@@ -5,7 +5,8 @@
 #' the raw counts are the sum of the base level coverage so you have to take
 #' into account the read length or simply the total coverage for the given
 #' sample (default option). You might want to do some further scaling to take
-#' into account the gene or exon lengths.
+#' into account the gene or exon lengths. If you prefer to calculate read counts
+#' without scaling check the function \link{read_counts}.
 #'
 #' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
 #' object as downloaded with \link{download_study}.
@@ -35,7 +36,7 @@
 #' is the average fragment length. This is taken into account when using
 #' \code{by = 'mapped_reads'}.
 #'
-#' @seealso \link{download_study}
+#' @seealso \link{download_study}, \link{read_counts}
 #'
 #' @importFrom methods is
 #'
