@@ -304,7 +304,7 @@ rse_gene
 colData(rse_gene)
 
 ## At the gene level, the row data includes the gene Gencode ids, the gene
-## symbols and the sum of the reduced exons widths, which can be used for 
+## symbols and the sum of the disjoint exons widths, which can be used for 
 ## taking into account the gene length.
 rowData(rse_gene)
 
@@ -600,7 +600,7 @@ rse_exon_subset <- subset(rse_exon, subset = gene_id == 'ENSG00000000003.14')
 rowRanges(rse_exon_subset)
 ```
 
-The exons in a `rse_exon` object are those that have a Gencode `gene_id` and that were reduced as described in the `r Biocpkg('GenomicRanges')` package:
+The exons in a `rse_exon` object are those that have a Gencode `gene_id` and that were disjointed as described in the `r Biocpkg('GenomicRanges')` package:
 
 ```
 ?`inter-range-methods`
@@ -615,7 +615,7 @@ If you are interested in using another annotation based on hg38 coordinates you 
 If you are re-processing a small set of samples, it simply might be easier to use `coverage_matrix()` as shown below using the annotation information provided by the `r Biocpkg('EnsDb.Hsapiens.v79')` package.
 
 ```{r, eval = .Platform$OS.type != 'windows'}
-## Get the reduced exons based on EnsDb.Hsapiens.v79 which matches hg38
+## Get the disjoint exons based on EnsDb.Hsapiens.v79 which matches hg38
 exons <- reproduce_ranges('exon', db = 'EnsDb.Hsapiens.v79')
 
 ## Change the chromosome names to match those used in the BigWig files

@@ -11,7 +11,7 @@ reproduce_ranges(level = "gene", db = "Gencode.v25")
 return Gene or exon level information as a 
 \link[GenomicRanges]{GRanges-class} or 
 \link[GenomicRanges]{GRangesList-class} object respectively. The gene level
-information contains the width of the reduced exons for that given gene
+information contains the width of the disjoint exons for that given gene
 which can be used to normalize the counts provided by recount.
 Can also be \code{both} in which case a 2 element list with the exon and the
 gene output is returned.}

@@ -1,5 +1,25 @@
-CHANGES IN VERSION 1.3.2
+CHANGES IN VERSION 1.4.3
 ------------------------
+
+BUG FIXES
+
+    o The Bioc 3.6 version of recount was missing an important commit.
+        https://github.com/leekgroup/recount/commits/RELEASE_3_6 was missing
+        https://github.com/leekgroup/recount/commit/a8a078a2389bb3da09a4a03796a231044f5f97b0
+        which lead to https://github.com/leekgroup/recount-website/issues/10.
+
+
+CHANGES IN VERSION 1.3.13
+-------------------------
+
+BUG FIXES
+
+    o Changed reproduce_ranges() since disjoint exons are more useful than
+        reduced exons for downstream analyses.
+
+
+CHANGES IN VERSION 1.3.12
+-------------------------
 
 NEW FEATURES
 

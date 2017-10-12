@@ -1,7 +1,7 @@
 #' Exon annotation used in recount
 #'
 #' Exon annotation extracted from Gencode v25 (GRCh38.p7) used in recount.
-#' Data extraced on January 17th, 2017.
+#' Data extraced on October 12th, 2017.
 #'
 #' @name recount_exons
 #' @docType data
