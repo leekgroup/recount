@@ -18,9 +18,9 @@
 #'
 #' @return A \link[GenomicRanges]{GRanges-class} object with the results from
 #' the Snaptron query. For information on the different columns please see
-#' \url{http://snaptron.cs.jhu.edu/snaptron/docs/}.
+#' \url{http://snaptron.cs.jhu.edu}.
 #'
-#' @references Please cite \url{http://snaptron.cs.jhu.edu/snaptron/docs/}
+#' @references Please cite \url{http://snaptron.cs.jhu.edu}
 #' if you use this function as Snaptron is a separate project from recount.
 #' Thank you!
 #'
