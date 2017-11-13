@@ -25,7 +25,7 @@ from the TCGA consortium on hg38 coordinates.}
 \value{
 A \link[GenomicRanges]{GRanges-class} object with the results from
 the Snaptron query. For information on the different columns please see
-\url{http://snaptron.cs.jhu.edu/snaptron/docs/}.
+\url{http://snaptron.cs.jhu.edu}.
 }
 \description{
 This function uses the Snaptron API to query specific exon-exon junctions
@@ -53,7 +53,7 @@ snaptron_query(junctions_v2, version = 'gtex')
 snaptron_query(junctions_v2, version = 'tcga')
 }
 \references{
-Please cite \url{http://snaptron.cs.jhu.edu/snaptron/docs/}
+Please cite \url{http://snaptron.cs.jhu.edu}
 if you use this function as Snaptron is a separate project from recount.
 Thank you!
 }
