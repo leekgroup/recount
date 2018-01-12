@@ -10,6 +10,9 @@ SRP009615.}
 \description{
 \link[SummarizedExperiment]{RangedSummarizedExperiment-class} at the gene 
 level for study SRP009615. Used as an example in \link{scale_counts}.
+Matches the version2 file
+(details at \url{https://jhubiostatistics.shinyapps.io/recount/}) under the
+documentation tab.
 }
 \references{
 \url{https://jhubiostatistics.shinyapps.io/recount/}

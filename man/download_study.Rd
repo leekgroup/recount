@@ -5,7 +5,7 @@
 \title{Download data for a given SRA study id from the recount project}
 \usage{
 download_study(project, type = "rse-gene", outdir = project,
-  download = TRUE, ...)
+  download = TRUE, version = 2, ...)
 }
 \arguments{
 \item{project}{A character vector with one SRA study id.}
@@ -21,6 +21,9 @@ download_study(project, type = "rse-gene", outdir = project,
     \item{rse-jx}{ the exon-exon junction level 
     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
     a file named rse_jx.Rdata.}
+    \item{rse-tx}{ the transcript level 
+    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+    a file named rse_tx.RData.}
     \item{counts-gene}{ the gene-level counts in a tsv file named
     counts_gene.tsv.gz.}
     \item{counts-exon}{ the exon-level counts in a tsv file named
@@ -48,6 +51,15 @@ how to access all the recount data via a R Jupyter Notebook.}
 
 \item{download}{Whether to download the files or just get the download urls.}
 
+\item{version}{A single integer specifying which version of the files to
+download. Valid options are 1 and 2, as described in 
+\url{https://jhubiostatistics.shinyapps.io/recount/} under the
+documentation tab. Briefly, version 1 are counts based on reduced exons while
+version 2 are based on disjoint exons. This argument mostly just matters for
+the exon counts. Defaults to version 2 (disjoint exons).
+Use \code{version = 1} for backward compatability with exon counts
+prior to version 1.5.3 of the package.}
+
 \item{...}{Additional arguments passed to \link[downloader]{download}.}
 }
 \value{
@@ -64,7 +76,9 @@ sample bigWig files or the mean coverage bigWig file.
 Check \url{http://stackoverflow.com/a/34383991} if you need to find
 the effective URLs. For example,
 \url{http://duffel.rail.bio/recount/DRP000366/bw/mean_DRP000366.bw} points to
-a temporary link from Amazon Cloud Drive.
+a link from SciServer.
+
+Transcript quantificiations are described in Fu et al, 2018.
 }
 \examples{
 ## Find the URL to download the RangedSummarizedExperiment for the

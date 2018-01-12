@@ -18,6 +18,9 @@
 #'     \item{rse-jx}{ the exon-exon junction level 
 #'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
 #'     a file named rse_jx.Rdata.}
+#'     \item{rse-tx}{ the transcript level 
+#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+#'     a file named rse_tx.RData.}
 #'     \item{counts-gene}{ the gene-level counts in a tsv file named
 #'     counts_gene.tsv.gz.}
 #'     \item{counts-exon}{ the exon-level counts in a tsv file named
@@ -42,6 +45,14 @@
 #' Alternatively check the \code{SciServer} section on the vignette to see
 #' how to access all the recount data via a R Jupyter Notebook.
 #' @param download Whether to download the files or just get the download urls.
+#' @param version A single integer specifying which version of the files to
+#' download. Valid options are 1 and 2, as described in 
+#' \url{https://jhubiostatistics.shinyapps.io/recount/} under the
+#' documentation tab. Briefly, version 1 are counts based on reduced exons while
+#' version 2 are based on disjoint exons. This argument mostly just matters for
+#' the exon counts. Defaults to version 2 (disjoint exons).
+#' Use \code{version = 1} for backward compatability with exon counts
+#' prior to version 1.5.3 of the package.
 #' @param ... Additional arguments passed to \link[downloader]{download}.
 #'
 #' @return Returns invisibly the URL(s) for the files that were downloaded.
@@ -49,7 +60,9 @@
 #' @details Check \url{http://stackoverflow.com/a/34383991} if you need to find
 #' the effective URLs. For example,
 #' \url{http://duffel.rail.bio/recount/DRP000366/bw/mean_DRP000366.bw} points to
-#' a temporary link from Amazon Cloud Drive.
+#' a link from SciServer.
+#'
+#' Transcript quantificiations are described in Fu et al, 2018.
 #'
 #'
 #' @author Leonardo Collado-Torres
@@ -80,11 +93,12 @@
 #'
 
 download_study <- function(project, type = 'rse-gene', outdir = project,
-    download = TRUE, ...) {
+    download = TRUE, version = 2, ...) {
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
+    stopifnot(version %in% c(1, 2))
     stopifnot(type %in% c(
-        'rse-gene', 'rse-exon', 'rse-jx',
+        'rse-gene', 'rse-exon', 'rse-jx', 'rse-tx',
         'counts-gene', 'counts-exon', 'counts-jx',
         'phenotype', 'files-info', 'samples', 'mean', 'all'))
     stopifnot(length(type) == 1)
@@ -92,6 +106,9 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
     
     ## Use table from the package
     url_table <- recount::recount_url
+    
+    ## URLs default to version 2 (disjoint exons).
+    if(version == 1) url_table$url <- gsub('v2/', '', url_table$url)
     
     ## Subset url data
     url_table <- url_table[url_table$project == project, ]
@@ -102,12 +119,12 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
     ## If all, download each type individually
     if(type == 'all') {
         urls <- sapply(c(
-            'rse-gene', 'rse-exon', 'rse-jx', 
+            'rse-gene', 'rse-exon', 'rse-jx', 'rse-tx',
             'counts-gene', 'counts-exon', 'counts-jx',
             'phenotype', 'files-info', 'samples', 'mean'), function(file_type) {
             Sys.sleep(round(runif(1, 2, 5), 0))
             download_study(project = project, type = file_type,
-                outdir = outdir, download = download, ...)
+                outdir = outdir, download = download, version = version, ...)
         })
         return(invisible(urls))
     }
@@ -128,6 +145,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
             'rse-gene' = 'rse_gene.Rdata',
             'rse-exon' = 'rse_exon.Rdata',
             'rse-jx' = 'rse_jx.Rdata',
+            'rse-tx' = 'rse_tx.RData',
             'counts-gene' = 'counts_gene.tsv.gz',
             'counts-exon' = 'counts_exon.tsv.gz',
             'counts-jx' = 'counts_jx.tsv.gz',

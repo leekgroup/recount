@@ -128,14 +128,17 @@ citation('recount')
 
 # Quick start to using to `r Biocpkg('recount')`
 
-__As of January 30, 2017 the annotation used for the exon and gene counts is Gencode v25.__
+Main updates:
+
+* __As of January 30, 2017 the annotation used for the exon and gene counts is Gencode v25.__
+* __As of January 12, 2018 transcripts counts are available via recount2 thanks to the work of Fu et al. Disjoint exon counts (version 2) were also released as described in detail in the [recount website](https://jhubiostatistics.shinyapps.io/recount/) documentation tab.__
 
 
 <a href="https://jhubiostatistics.shinyapps.io/recount/"><img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/website/recount.png" align="center" width="600"></a>
 
 Here is a very quick example of how to download a `RangedSummarizedExperiment` object with the gene counts for a 2 groups project (12 samples) with SRA study id [SRP009615](http://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP009615) using the `r Biocpkg('recount')` package `r citep(bib[['recount']])`. The `RangedSummarizedExperiment` object is defined in the `r Biocpkg('SummarizedExperiment')` `r citep(bib[['SummarizedExperiment']])` package and can be used for differential expression analysis with different packages. Here we show how to use `r Biocpkg('DESeq2')` `r citep(bib[['DESeq2']])` to perform the differential expresion analysis.
 
-This quick analysis is explained in more detail later on in this document. Further information about the recount project can be found in the publication [pre-print](http://biorxiv.org/content/early/2016/08/08/068478).
+This quick analysis is explained in more detail later on in this document. Further information about the recount project can be found in the [main publication](https://www.nature.com/articles/nbt.3838). Check the [recount website](https://jhubiostatistics.shinyapps.io/recount/) for related publications.
  
 ```{r 'ultraQuick', eval = FALSE}
 ## Load library
@@ -855,11 +858,15 @@ save(recount_genes, file = '../data/recount_genes.RData', compress = 'xz')
 ## URL table
 load('../../recount-website/fileinfo/upload_table.Rdata')
 recount_url <- upload_table
-## Fake urls for now
+## Create URLs
 is.bw <- grepl('[.]bw$', recount_url$file_name)
 recount_url$url <- NA
-recount_url$url[!is.bw] <- paste0('http://duffel.rail.bio/recount/',
+recount_url$url[!is.bw] <-paste0('http://duffel.rail.bio/recount/',
     recount_url$project[!is.bw], '/', recount_url$file_name[!is.bw])
+recount_url$url[!is.bw & recount_url$version2] <-
+    paste0('http://duffel.rail.bio/recount/v2/',
+    recount_url$project[!is.bw & recount_url$version2], '/',
+    recount_url$file_name[!is.bw & recount_url$version2])
 recount_url$url[is.bw] <- paste0('http://duffel.rail.bio/recount/',
     recount_url$project[is.bw], '/bw/', recount_url$file_name[is.bw])
 save(recount_url, file = '../data/recount_url.RData', compress = 'xz')
