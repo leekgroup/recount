@@ -66,6 +66,8 @@
 add_predictions <- function(rse, is_tcga = FALSE, version = 'latest', 
     verbose = TRUE) {
         
+    ## For a NOTE in R CMD check
+    PredictedPhenotypes <- NULL
     if(version == 'latest') version <- tryCatch(suppressWarnings(readLines(
         'https://raw.githubusercontent.com/leekgroup/recount-website/master/predictions/latestVersion.txt'))[1]
         , error = function(e) {

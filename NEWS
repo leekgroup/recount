@@ -1,3 +1,11 @@
+CHANGES IN VERSION 1.5.4
+------------------------
+
+BUG FIXES
+
+    o Fix a unit test for download_study(), add another test for the versions,
+        and fix a NOTE in R CMD check.
+
 CHANGES IN VERSION 1.5.3
 ------------------------
 
