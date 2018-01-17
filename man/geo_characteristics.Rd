@@ -14,7 +14,7 @@ geo_characteristics(pheno)
 A 1 row data.frame with the characteristic fields as column names 
 and the values as the entries on the first row. If the authors of the study
 used the same names for all samples, you can then combine them using
-\link[base]{rbind}.
+\link[base:cbind]{rbind}.
 }
 \description{
 This function builds a data.frame from the GEO characteristics extracted
