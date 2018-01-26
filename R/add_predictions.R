@@ -85,7 +85,7 @@ add_predictions <- function(rse, is_tcga = FALSE, version = 'latest',
     
     if(verbose) message(paste(Sys.time(), 'downloading the predictions to', destfile))
     downloader::download(url, destfile = destfile, mode = 'wb') 
-    load(destfile)
+    load(destfile, verbose = verbose)
         
     if(is_tcga) {
         map <- match(colData(rse)$gdc_file_id, PredictedPhenotypes$sample_id)
