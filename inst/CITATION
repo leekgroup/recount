@@ -28,8 +28,7 @@ c(
         author = personList(
             as.person("Leonardo Collado-Torres"),
             as.person("Abhinav Nellore"),
-            as.person("Andrew E. Jaffe"),
-            as.person("Jeffrey T. Leek")
+            as.person("Andrew E. Jaffe")
         ),
         year = 2017,
         journal = "F1000Research",
