@@ -9,7 +9,8 @@
 #'
 #'
 #' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
-#' object as downloaded with \link{download_study}.
+#' object as downloaded with \link{download_study}. If this argument is
+#' not specified, the function will return the raw metadata table.
 #' @param source A valid source name. The only supported option at this
 #' moment is \code{recount_brain_v1}.
 #' @param is_tcga Set to \code{TRUE} only when \code{rse} is from TCGA.
@@ -64,6 +65,9 @@
 #' colData(rse_gene)
 #' }
 #'
+#' ## Obtain all the recount_brain_v1 metadata
+#' recount_brain_v1 <- add_metadata(source = 'recount_brain_v1')
+#'
 
 add_metadata <- function(rse, source = 'recount_brain_v1', is_tcga = FALSE,
     verbose = TRUE) {
@@ -93,6 +97,8 @@ add_metadata <- function(rse, source = 'recount_brain_v1', is_tcga = FALSE,
         get(to_use$object)
     }
     new_meta <- load_meta()
+    
+    if(missing(rse)) return(new_meta)
         
     if(is_tcga) {
         map <- match(colData(rse)$gdc_file_id, new_meta[, to_use$sample_id])

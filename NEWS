@@ -1,3 +1,11 @@
+CHANGES IN VERSION 1.5.9
+------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o The functions add_metadata() and add_predictions() now return the
+        sample metadata or predictions when the 'rse' argument is missing.
+
 CHANGES IN VERSION 1.5.6
 ------------------------
 

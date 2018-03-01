@@ -9,7 +9,8 @@ add_metadata(rse, source = "recount_brain_v1", is_tcga = FALSE,
 }
 \arguments{
 \item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
-object as downloaded with \link{download_study}.}
+object as downloaded with \link{download_study}. If this argument is
+not specified, the function will return the raw metadata table.}
 
 \item{source}{A valid source name. The only supported option at this
 moment is \code{recount_brain_v1}.}
@@ -67,6 +68,9 @@ rse_gene <- add_metadata(rse_gene)
 ## Check the metadata
 colData(rse_gene)
 }
+
+## Obtain all the recount_brain_v1 metadata
+recount_brain_v1 <- add_metadata(source = 'recount_brain_v1')
 
 }
 \references{

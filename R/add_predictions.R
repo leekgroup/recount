@@ -7,7 +7,8 @@
 #' to the \code{colData()} slot.
 #'
 #' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
-#' object as downloaded with \link{download_study}.
+#' object as downloaded with \link{download_study}. If this argument is
+#' not specified, the function will return the full predictions table.
 #' @param is_tcga Set to \code{TRUE} only when \code{rse} is from TCGA.
 #' Otherwise set to \code{FALSE} (default).
 #' @param version The version number for the predicted phenotypes data. It has
@@ -62,6 +63,9 @@
 #' ## Explore the predictions
 #' colData(rse_gene)
 #'
+#' ## Download all the latest predictions
+#' PredictedPhenotypes <- add_predictions()
+#'
 
 add_predictions <- function(rse, is_tcga = FALSE, version = 'latest', 
     verbose = TRUE) {
@@ -86,6 +90,7 @@ add_predictions <- function(rse, is_tcga = FALSE, version = 'latest',
     if(verbose) message(paste(Sys.time(), 'downloading the predictions to', destfile))
     downloader::download(url, destfile = destfile, mode = 'wb') 
     load(destfile, verbose = verbose)
+    if(missing(rse)) return(PredictedPhenotypes)
         
     if(is_tcga) {
         map <- match(colData(rse)$gdc_file_id, PredictedPhenotypes$sample_id)

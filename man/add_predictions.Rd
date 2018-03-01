@@ -8,7 +8,8 @@ add_predictions(rse, is_tcga = FALSE, version = "latest", verbose = TRUE)
 }
 \arguments{
 \item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
-object as downloaded with \link{download_study}.}
+object as downloaded with \link{download_study}. If this argument is
+not specified, the function will return the full predictions table.}
 
 \item{is_tcga}{Set to \code{TRUE} only when \code{rse} is from TCGA.
 Otherwise set to \code{FALSE} (default).}
@@ -64,6 +65,9 @@ rse_gene <- add_predictions(rse_gene_SRP009615)
 
 ## Explore the predictions
 colData(rse_gene)
+
+## Download all the latest predictions
+PredictedPhenotypes <- add_predictions()
 
 }
 \references{
