@@ -88,6 +88,7 @@ url <- download_study('ERP001942', download = FALSE)
 ## See the actual URL
 url
 
+\dontrun{
 ## Download the example data included in the package for study SRP009615
 
 url2 <- download_study('SRP009615')
@@ -99,6 +100,8 @@ load(file.path('SRP009615', 'rse_gene.Rdata'))
 ## Compare the data
 library('testthat')
 expect_equivalent(rse_gene, rse_gene_SRP009615)
+
+}
 
 }
 \author{

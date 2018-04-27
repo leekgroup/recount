@@ -41,10 +41,10 @@ For Gencode.v25, we use the comprehensive gene annotation (regions:
 }
 \examples{
 
+\dontrun{
 ## Reproduce gene level information
 genes <- reproduce_ranges()
 
-\dontrun{
 ## Compare against recount_genes
 length(genes)
 length(recount_genes)

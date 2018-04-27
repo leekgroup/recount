@@ -1,3 +1,13 @@
+CHANGES IN VERSION 1.5.11
+-------------------------
+
+BUG FIXES
+
+    o Change some examples to dontrun and improve the code that cleans up after
+        the tests. This should reduce the size of files left in tmp although
+        they didn't seem too big to begin with.
+
+
 CHANGES IN VERSION 1.5.9
 ------------------------
 

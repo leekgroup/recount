@@ -8,6 +8,14 @@ url <- download_study('SRP009615', outdir = file.path(tempdir(), 'SRP009615'))
 ## Load the data
 load(file.path(tempdir(), 'SRP009615', 'rse_gene.Rdata'))
 
+## Check size once:
+# > file.path(tempdir(), 'SRP009615', 'rse_gene.Rdata')
+# [1] "/var/folders/cx/n9s558kx6fb7jf5z_pgszgb80000gn/T//Rtmptm6u0K/SRP009615/rse_gene.Rdata"
+# >
+# > system('ls -lh /var/folders/cx/n9s558kx6fb7jf5z_pgszgb80000gn/T//Rtmptm6u0K/SRP009615/rse_gene.Rdata')
+# -rw-r--r--  1 lcollado  staff   3.0M Apr 27 16:35 /var/folders/cx/n9s558kx6fb7jf5z_pgszgb80000gn/T//Rtmptm6u0K/SRP009615/rse_gene.Rdata
+unlink(file.path(tempdir(), 'SRP009615', 'rse_gene.Rdata'))
+
 ## Compare the data
 test_that('Example RSE', {
     expect_equivalent(rse_gene, rse_gene_SRP009615)
@@ -57,9 +65,6 @@ test_that('Project SRP002001', {
     expect_equivalent(fileinfo$md5sum[match(names(md5), fileinfo$file)], md5)
 })
 
-
-
-
 scaleFac <- scale_counts(rse_gene_SRP009615, factor_only = TRUE)
 scaleFac_mapped <- scale_counts(rse_gene_SRP009615, by = 'mapped_reads', 
     factor_only = TRUE)
@@ -104,6 +109,14 @@ if(.Platform$OS.type != 'windows') {
             chunksize = 500))
     })
 }
+
+## Check size once:
+# > tmpdir
+# [1] "/var/folders/cx/n9s558kx6fb7jf5z_pgszgb80000gn/T//Rtmptm6u0K/SRP002001"
+# > system('du -sh /var/folders/cx/n9s558kx6fb7jf5z_pgszgb80000gn/T//Rtmptm6u0K/SRP002001')
+# 74M    /var/folders/cx/n9s558kx6fb7jf5z_pgszgb80000gn/T//Rtmptm6u0K/SRP00200
+unlink(tmpdir, recursive = TRUE)
+
 
 metadata <- all_metadata()
 test_that('All metadata', {
@@ -178,3 +191,6 @@ test_that('read_counts', {
     expect_equal(all(colSums(assays(read_counts(rse_gene, use_paired_end = FALSE))$counts) / colSums(assays(read_counts(rse_gene))$counts) == 2), TRUE)
     expect_equal(all(sign(colSums(assays(read_counts(rse_gene))$counts) / 1e6 - colData(rse_gene)$reads_downloaded / 1e6 /2) == -1), TRUE)
 })
+
+## Clean up
+for(p in c(projects, 'DRP000499')) unlink(p, recursive = TRUE)

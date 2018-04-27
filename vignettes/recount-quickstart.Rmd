@@ -296,6 +296,9 @@ download_study(project_info$project)
 
 ## Load the data
 load(file.path(project_info$project, 'rse_gene.Rdata'))
+
+## Delete it if you don't need it anymore
+unlink(project_info$project, recursive = TRUE)
 ```
 
 We can explore a bit this _RangedSummarizedExperiment_ as shown below.
@@ -592,6 +595,9 @@ For an `rse_exon` object, the `rownames()` correspond to the Gencode `gene_id`. 
 download_study('SRP009615', type = 'rse-exon')
 load(file.path('SRP009615', 'rse_exon.Rdata'))
 
+## Delete it if you don't need it anymore
+unlink('SRP009615', recursive = TRUE)
+
 ## Annotation information
 rowRanges(rse_exon)
 
@@ -656,6 +662,9 @@ library('recount')
 ## Download and load RSE object for SRP009615 study
 download_study('SRP009615', type = 'rse-jx')
 load(file.path('SRP009615', 'rse_jx.Rdata'))
+
+## Delete it if you don't need it anymore
+unlink('SRP009615', recursive = TRUE)
 
 ## Exon-exon junctions by class
 table(rowRanges(rse_jx)$class)

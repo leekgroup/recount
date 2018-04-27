@@ -42,6 +42,7 @@ junctions <- GRanges(seqnames = 'chr2', IRanges(
 ## Check against Snaptron SRA version 1 (hg19 coordinates)
 snaptron_query(junctions)
 
+\dontrun{
 ## Check another set of junctions against SRA version 2 (more data, hg38 
 ## coordinates)
 junctions_v2 <- GRanges(seqnames = 'chr2', IRanges(
@@ -51,6 +52,7 @@ snaptron_query(junctions_v2, version = 'srav2')
 ## Check these junctions in GTEx and TCGA data
 snaptron_query(junctions_v2, version = 'gtex')
 snaptron_query(junctions_v2, version = 'tcga')
+}
 }
 \references{
 Please cite \url{http://snaptron.cs.jhu.edu}

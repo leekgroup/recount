@@ -79,6 +79,7 @@
 #' ## See the actual URL
 #' url
 #' 
+#' \dontrun{
 #' ## Download the example data included in the package for study SRP009615
 #'
 #' url2 <- download_study('SRP009615')
@@ -90,6 +91,8 @@
 #' ## Compare the data
 #' library('testthat')
 #' expect_equivalent(rse_gene, rse_gene_SRP009615)
+#'
+#' }
 #'
 
 download_study <- function(project, type = 'rse-gene', outdir = project,
