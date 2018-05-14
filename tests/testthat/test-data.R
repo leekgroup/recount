@@ -34,7 +34,7 @@ test_that('Download URLs', {
 tmpdir <- file.path(tempdir(), 'SRP002001')
 urls <- download_study('SRP002001', type = 'all', outdir = tmpdir)
 expected_urls <- paste0('http://duffel.rail.bio/recount/', 
-    rep(rep(c('v2/', ''), 3), c(2, 2, 2, 2, 1, 2)), 'SRP002001/',
+    rep(rep(c('v2/', ''), 3), c(2, 1, 3, 2, 1, 2)), 'SRP002001/',
     c('rse_gene.Rdata', 'rse_exon.Rdata', 'rse_jx.Rdata', 
         'rse_tx.RData', 'counts_gene.tsv.gz',
         'counts_exon.tsv.gz', 'counts_jx.tsv.gz', 
