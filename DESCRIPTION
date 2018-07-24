@@ -1,6 +1,6 @@
 Package: recount
 Title: Explore and download data from the recount project
-Version: 1.7.3
+Version: 1.7.4
 Date: 2018-07-24
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "ctb",
@@ -42,6 +42,7 @@ Suggests:
     knitcitations,
     knitr (>= 1.6),
     org.Hs.eg.db,
+    RefManageR,
     regionReport (>= 1.9.4),
     rmarkdown (>= 0.9.5),
     testthat
