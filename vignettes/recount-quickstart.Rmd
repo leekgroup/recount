@@ -91,12 +91,11 @@ write.bibtex(bib, file = 'quickstartRef.bib')
 `R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Biocpkg('recount')` is a `R` package available via the [Bioconductor](http://bioconductor/packages/recount) repository for packages. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Biocpkg('recount')` by using the following commands in your `R` session:
 
 ```{r 'installDer', eval = FALSE}
-## try http:// if https:// URLs are not supported
-source("https://bioconductor.org/biocLite.R")
-biocLite("recount")
+install.packages("BiocManager")
+BiocManager::install("recount")
 
 ## Check that you have a valid Bioconductor installation
-biocValid()
+BiocManager::valid()
 ```
 
 ## Required knowledge
@@ -264,9 +263,8 @@ This is a brief overview of what you can do with `r Biocpkg('recount')`. In this
 If you don't have `r Biocpkg('recount')` installed, please do so with:
 
 ```{r 'install', eval = FALSE}
-## try http:// if https:// URLs are not supported
-source("https://bioconductor.org/biocLite.R")
-biocLite("recount")
+install.packages("BiocManager")
+BiocManager::install("recount")
 ```
 
 Next we load the required packages. Loading `r Biocpkg('recount')` will load the required dependencies.

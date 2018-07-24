@@ -15,15 +15,15 @@ For more information about `recount` check the vignettes.
 
 # Installation instructions
 
-Get R 3.3.x from [CRAN](http://cran.r-project.org/).
+Get R 3.5.x from [CRAN](http://cran.r-project.org/).
 
 ```R
 ## From Bioconductor
-source('http://bioconductor.org/biocLite.R')
-biocLite('recount')
+install.packages("BiocManager")
+BiocManager::install('recount')
 
 ## Suggested:
-biocLite(c('derfinder', 'DESeq2'))
+BiocManager::install(c('derfinder', 'DESeq2'))
 ```
 
 # Vignettes
