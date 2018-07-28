@@ -1,3 +1,10 @@
+CHANGES IN VERSION 1.6.3
+------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o add_metadata() can now download the recount_brain_v2 data.
+
 CHANGES IN VERSION 1.6.2
 ------------------------
 

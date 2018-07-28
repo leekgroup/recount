@@ -12,8 +12,8 @@ add_metadata(rse, source = "recount_brain_v1", is_tcga = FALSE,
 object as downloaded with \link{download_study}. If this argument is
 not specified, the function will return the raw metadata table.}
 
-\item{source}{A valid source name. The only supported option at this
-moment is \code{recount_brain_v1}.}
+\item{source}{A valid source name. The only supported options at this
+moment are \code{recount_brain_v1} and \code{recount_brain_v2}.}
 
 \item{is_tcga}{Set to \code{TRUE} only when \code{rse} is from TCGA.
 Otherwise set to \code{FALSE} (default).}
@@ -27,6 +27,9 @@ object with the sample metadata columns appended to the \code{colData()}
 slot.
 For \code{source = "recount_brain_v1"}, the metadata columns are
 described at \url{http://lieberinstitute.github.io/recount-brain/}.
+For \code{source = "recount_brain_v2"}, the metadata columns are
+described at
+ \url{http://lieberinstitute.github.io/recount-brain/cross_studies_metadata/cross_studies_metadata.html}.
 }
 \description{
 This function appends sample metadata information to a 
@@ -54,23 +57,25 @@ colData(rse_gene)
 ## http://lieberinstitute.github.io/recount-brain/. Note that it only
 ## includes studies from SRA, so no TCGA or GTEx (those have great
 ## sample metadata already available).
+## recount_brain_v2 includes GTEx and TCGA brain samples in addition to the
+## recount_brain_v1 data.
 
 \dontrun{
-## Example project that is present in recount_brain_v1.
+## Example project that is present in recount_brain_v2.
 
 ## Download and load the data
 download_study('ERP001304')
 load(file.path('ERP001304', 'rse_gene.Rdata'))
 
-## Add the sample metadata from recount_brain_v1
-rse_gene <- add_metadata(rse_gene)
+## Add the sample metadata from recount_brain_v2
+rse_gene <- add_metadata(rse_gene, source = 'recount_brain_v2')
 
 ## Check the metadata
 colData(rse_gene)
 }
 
-## Obtain all the recount_brain_v1 metadata
-recount_brain_v1 <- add_metadata(source = 'recount_brain_v1')
+## Obtain all the recount_brain_v2 metadata
+recount_brain_v2 <- add_metadata(source = 'recount_brain_v2')
 
 }
 \references{
