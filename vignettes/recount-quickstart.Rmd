@@ -46,7 +46,7 @@ bib <- c(
     BiocStyle = citation('BiocStyle'),
     derfinder = citation('derfinder')[1], 
     DESeq2 = citation('DESeq2'),
-    devtools = citation('devtools'),
+    sessioninfo = citation('sessioninfo'),
     downloader = citation('downloader'),
     EnsDb.Hsapiens.v79 = citation('EnsDb.Hsapiens.v79'),
     GEOquery = citation('GEOquery'),
@@ -791,7 +791,7 @@ The `r Biocpkg('recount')` package `r citep(bib[['recount']])` was made possible
 * `r Biocpkg('BiocParallel')` `r citep(bib[['BiocParallel']])`
 * `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
 * `r Biocpkg('derfinder')` `r citep(bib[['derfinder']])`
-* `r CRANpkg('devtools')` `r citep(bib[['devtools']])`
+* `r CRANpkg('sessioninfo')` `r citep(bib[['sessioninfo']])`
 * `r CRANpkg('downloader')` `r citep(bib[['downloader']])`
 * `r Biocpkg('EnsDb.Hsapiens.v79')` `r citep(bib[['EnsDb.Hsapiens.v79']])`
 * `r Biocpkg('GEOquery')` `r citep(bib[['GEOquery']])`
@@ -846,7 +846,7 @@ round(totalTime, digits=3)
 
 ```{r reproduce3, echo=FALSE}
 ## Session info
-library('devtools')
+library('sessioninfo')
 options(width = 120)
 session_info()
 ```
