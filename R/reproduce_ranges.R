@@ -62,7 +62,7 @@ reproduce_ranges <- function(level = 'gene', db = 'Gencode.v25') {
     ## Load required packages
     .load_install('GenomicFeatures')
     if (db == 'Gencode.v25') {
-            txdb <- GenomicFeatures::makeTxDbFromGFF('ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_25/gencode.v25.annotation.gff3.gz',
+            txdb <- GenomicFeatures::makeTxDbFromGFF('ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_25/gencode.v25.annotation.gff3.gz',
             format = 'gff3', organism = 'Homo sapiens')
     } else if(db == 'EnsDb.Hsapiens.v79') {
         .load_install('EnsDb.Hsapiens.v79')

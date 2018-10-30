@@ -575,7 +575,7 @@ report2 <- DESeq2Report(dds_ers, res = res_ers,
 
 This section describes the annotation used in `recount`.
 
-We used the comprehensive gene annotation for (`CHR` regions) from [Gencode v25](https://www.gencodegenes.org/releases/25.html) (GRCh38.p7) to get the list of genes. Specifically [this GFF3](ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_25/gencode.v25.annotation.gff3.gz) file. We then used the `r Biocpkg('org.Hs.eg.db')` package to get the gene symbols. For each gene, we also counted the total length of exonic base pairs for that given gene and stored this information in the `bp_length` column. You can see below this information for the `rse_gene` object included in `r Biocpkg('recount')`. The `rownames()` are the Gencode `gene_id`.
+We used the comprehensive gene annotation for (`CHR` regions) from [Gencode v25](https://www.gencodegenes.org/releases/25.html) (GRCh38.p7) to get the list of genes. Specifically [this GFF3](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_25/gencode.v25.annotation.gff3.gz) file. We then used the `r Biocpkg('org.Hs.eg.db')` package to get the gene symbols. For each gene, we also counted the total length of exonic base pairs for that given gene and stored this information in the `bp_length` column. You can see below this information for the `rse_gene` object included in `r Biocpkg('recount')`. The `rownames()` are the Gencode `gene_id`.
 
 ```{r, 'gene_annotation'}
 ## Gene annotation information

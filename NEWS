@@ -1,3 +1,13 @@
+CHANGES IN VERSION 1.7.7
+------------------------
+
+BUG FIXES
+
+    o Updated reproduce_ranges() to match the URL change in
+        Gencode from
+        ftp://ftp.sanger.ac.uk to ftp://ftp.ebi.ac.uk
+
+
 CHANGES IN VERSION 1.7.5
 ------------------------
 
