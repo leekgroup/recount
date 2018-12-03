@@ -1,6 +1,6 @@
 Package: recount
 Title: Explore and download data from the recount project
-Version: 1.9.0
+Version: 1.9.1
 Date: 2018-10-30
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "ctb",
