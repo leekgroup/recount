@@ -5,9 +5,9 @@
 \title{Given a set of regions for a chromosome, compute the coverage matrix for a
 given SRA study.}
 \usage{
-coverage_matrix(project, chr, regions, chunksize = 1000, bpparam = NULL,
-  outdir = NULL, chrlen = NULL, verbose = TRUE, verboseLoad = verbose,
-  scale = TRUE, round = FALSE, ...)
+coverage_matrix(project, chr, regions, chunksize = 1000,
+  bpparam = NULL, outdir = NULL, chrlen = NULL, verbose = TRUE,
+  verboseLoad = verbose, scale = TRUE, round = FALSE, ...)
 }
 \arguments{
 \item{project}{A character vector with one SRA study id.}

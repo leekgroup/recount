@@ -4,8 +4,8 @@
 \alias{expressed_regions}
 \title{Identify expressed regions from the mean coverage for a given SRA project}
 \usage{
-expressed_regions(project, chr, cutoff, outdir = NULL, maxClusterGap = 300L,
-  chrlen = NULL, verbose = TRUE, ...)
+expressed_regions(project, chr, cutoff, outdir = NULL,
+  maxClusterGap = 300L, chrlen = NULL, verbose = TRUE, ...)
 }
 \arguments{
 \item{project}{A character vector with one SRA study id.}

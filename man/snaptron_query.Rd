@@ -4,7 +4,8 @@
 \alias{snaptron_query}
 \title{Query Snaptron to get data from exon-exon junctions present in Intropolis}
 \usage{
-snaptron_query(junctions, version = "srav1", verbose = TRUE)
+snaptron_query(junctions, version = "srav1", verbose = TRUE,
+  async = TRUE)
 }
 \arguments{
 \item{junctions}{A \link[GenomicRanges]{GRanges-class} object with the
@@ -21,6 +22,11 @@ TCGA has about 36 million junctions from about 11 thousand samples
 from the TCGA consortium on hg38 coordinates.}
 
 \item{verbose}{If \code{TRUE} status updates will be printed.}
+
+\item{async}{Defaults to \code{TRUE} but in some situations it might be
+preferrable to set it to \code{FALSE}. This argument gets passed to
+\link[RCurl]{getURL}. Check \url{https://github.com/ChristopherWilks/snaptron/issues/11}
+for more details.}
 }
 \value{
 A \link[GenomicRanges]{GRanges-class} object with the results from

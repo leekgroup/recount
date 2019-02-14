@@ -15,6 +15,10 @@
 #' TCGA has about 36 million junctions from about 11 thousand samples
 #' from the TCGA consortium on hg38 coordinates.
 #' @param verbose If \code{TRUE} status updates will be printed.
+#' @param async Defaults to \code{TRUE} but in some situations it might be
+#' preferrable to set it to \code{FALSE}. This argument gets passed to
+#' \link[RCurl]{getURL}. Check \url{https://github.com/ChristopherWilks/snaptron/issues/11}
+#' for more details.
 #'
 #' @return A \link[GenomicRanges]{GRanges-class} object with the results from
 #' the Snaptron query. For information on the different columns please see
@@ -53,7 +57,7 @@
 #' snaptron_query(junctions_v2, version = 'tcga')
 #' }
 
-snaptron_query <- function(junctions, version = 'srav1', verbose = TRUE) {
+snaptron_query <- function(junctions, version = 'srav1', verbose = TRUE, async = TRUE) {
     ## Check input
     stopifnot(is(junctions, 'GRanges'))
     stopifnot(all(grepl('chr', seqlevels(junctions))))
@@ -67,7 +71,7 @@ snaptron_query <- function(junctions, version = 'srav1', verbose = TRUE) {
     
     ## Get results
     if(verbose) message(paste(Sys.time(), 'querying Snaptron'))
-    query_res <- getURL(urls)
+    query_res <- getURL(urls, async = async)
     
     ## Split by line
     if(verbose) message(paste(Sys.time(), 'processing results'))

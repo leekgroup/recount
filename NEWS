@@ -1,3 +1,13 @@
+CHANGES IN VERSION 1.9.2
+------------------------
+
+BUG FIXES
+
+    o Added the argument `async` to snaptron_query() which
+        can be set to FALSE to address the issue reported
+        at https://github.com/ChristopherWilks/snaptron/issues/11
+
+
 CHANGES IN VERSION 1.7.7
 ------------------------
 
