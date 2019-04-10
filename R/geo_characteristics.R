@@ -19,11 +19,19 @@
 #' @import S4Vectors
 #'
 #' @examples
+#'
 #' ## Load required library
 #' library('SummarizedExperiment')
 #' 
 #' ## Get the GEO accession ids
-#' geoids <- sapply(colData(rse_gene_SRP009615)$run[1:2], find_geo)
+#' # geoids <- sapply(colData(rse_gene_SRP009615)$run[1:2], find_geo)
+#' ## The previous example code works nearly all the time but it
+#' ## can occassionally fail depending on how rentrez is doing.
+#' ## This code makes sure that the example code runs.
+#' geoids <- tryCatch(
+#'     sapply(colData(rse_gene_SRP009615)$run[1:2], find_geo),
+#'     error = function(e) c('SRR387777' = 'GSM836270',
+#'        'SRR387778' = 'GSM836271'))
 #' 
 #' ## Get the data from GEO
 #' geodata <- do.call(rbind, sapply(geoids, geo_info))
