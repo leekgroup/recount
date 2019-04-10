@@ -3,16 +3,22 @@ Title: Explore and download data from the recount project
 Version: 1.9.3
 Date: 2019-04-10
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
-    email = "lcollado@jhu.edu"), person("Abhinav", "Nellore", role = "ctb",
+    email = "lcollado@jhu.edu", comment = c(ORCID = "0000-0003-2140-308X")),
+    person("Abhinav", "Nellore", role = "ctb",
     email = "anellore@gmail.com"), person(c("Andrew", "E."), "Jaffe",
-    role = "ctb", email = "andrew.jaffe@libd.org"), person(c("Margaret", "A."),
+    role = "ctb", email = "andrew.jaffe@libd.org",
+    comment = c(ORCID = "0000-0001-6886-1454")), person(c("Margaret", "A."),
     "Taub", role = "ctb", email = "mtaub@jhsph.edu"), person("Kai", "Kammers",
     role = "ctb", email = "kai.kammers@gmail.com"), person(c("Shannon", "E."),
-    "Ellis", role = "ctb", email = "sellis18@jhmi.edu"), person(c("Kasper",
+    "Ellis", role = "ctb", email = "sellis18@jhmi.edu",
+    comment = c(ORCID = "0000-0002-9231-0481")), person(c("Kasper",
     "Daniel"), "Hansen", role = c("ctb"),
-    email = "kasperdanielhansen@gmail.com"), person("Ben", "Langmead",
-    role = "ctb", email = 'langmea@cs.jhu.edu'), person(c("Jeffrey", "T."),
-    "Leek", role = c("aut", "ths"), email = "jtleek@gmail.com"))
+    email = "kasperdanielhansen@gmail.com",
+    comment = c(ORCID = "0000-0003-0086-0687")), person("Ben", "Langmead",
+    role = "ctb", email = 'langmea@cs.jhu.edu',
+    comment = c(ORCID = "0000-0003-2437-1976")), person(c("Jeffrey", "T."),
+    "Leek", role = c("aut", "ths"), email = "jtleek@gmail.com",
+    comment = c(ORCID = "0000-0002-2873-2671")))
 Depends:
     R (>= 3.3.0),
     SummarizedExperiment
