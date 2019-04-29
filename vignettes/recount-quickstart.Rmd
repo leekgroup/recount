@@ -130,7 +130,8 @@ citation('recount')
 Main updates:
 
 * __As of January 30, 2017 the annotation used for the exon and gene counts is Gencode v25.__
-* __As of January 12, 2018 transcripts counts are available via recount2 thanks to the work of Fu et al. Disjoint exon counts (version 2) were also released as described in detail in the [recount website](https://jhubiostatistics.shinyapps.io/recount/) documentation tab.__
+* __As of January 12, 2018 transcripts counts are available via recount2 thanks to the work of [Fu et al, bioRxiv, 2018](https://www.biorxiv.org/content/10.1101/247346v2). Disjoint exon counts (version 2) were also released as described in detail in the [recount website](https://jhubiostatistics.shinyapps.io/recount/) documentation tab.__
+* __As of April 29, 2019 FANTOM-CAT/recount2 annotation quantifications area available via recount2 thanks to the work by Luidy-Imada, Matam, et al., bioRxiv, 2019.__
 
 
 <a href="https://jhubiostatistics.shinyapps.io/recount/"><img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/website/recount.png" align="center" width="600"></a>
@@ -877,6 +878,14 @@ recount_url$url[!is.bw & recount_url$version2] <-
 recount_url$url[is.bw] <- paste0('http://duffel.rail.bio/recount/',
     recount_url$project[is.bw], '/bw/', recount_url$file_name[is.bw])
 save(recount_url, file = '../data/recount_url.RData', compress = 'xz')
+
+## Add FC-RC2 data
+load('../data/recount_url.RData')
+load('../../recount-website/fileinfo/fc_rc_url_table.Rdata')
+recount_url <- rbind(recount_url, fc_rc_url_table)
+rownames(recount_url) <- NULL
+save(recount_url, file = '../data/recount_url.RData', compress = 'xz')
+
 
 ## Abstract info
 load('../../recount-website/website/meta_web.Rdata')

@@ -40,6 +40,8 @@
 #'     time if the project has many samples. When using \code{type = 'all'} a
 #'     small delay will be added before each download request to avoid
 #'     request issues.}
+#'     \item{rse-fc}{ Downloads the FANTOM-CAT/recount2 rse file described in
+#'     Luidy-Imada, Matam, et al., bioRxiv, 2019.}
 #' }
 #' @param outdir The destination directory for the downloaded file(s).
 #' Alternatively check the \code{SciServer} section on the vignette to see
@@ -62,7 +64,11 @@
 #' \url{http://duffel.rail.bio/recount/DRP000366/bw/mean_DRP000366.bw} points to
 #' a link from SciServer.
 #'
-#' Transcript quantificiations are described in Fu et al, 2018.
+#' Transcript quantifications are described in Fu et al, bioRxiv, 2018.
+#' \url{https://www.biorxiv.org/content/10.1101/247346v2}
+#'
+#' FANTOM-CAT/recount2 quantifications are described in Luidy-Imada,
+#' Matam, et al., bioRxiv, 2019.
 #'
 #'
 #' @author Leonardo Collado-Torres
@@ -103,7 +109,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
     stopifnot(type %in% c(
         'rse-gene', 'rse-exon', 'rse-jx', 'rse-tx',
         'counts-gene', 'counts-exon', 'counts-jx',
-        'phenotype', 'files-info', 'samples', 'mean', 'all'))
+        'phenotype', 'files-info', 'samples', 'mean', 'rse-fc', 'all'))
     stopifnot(length(type) == 1)
     stopifnot(is.logical(download) & length(download) == 1)
     
@@ -154,7 +160,8 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
             'counts-jx' = 'counts_jx.tsv.gz',
             phenotype = paste0(project, '.tsv'),
             'files-info' = 'files_info.tsv',
-            mean = paste0('mean_', project, '.bw')
+            mean = paste0('mean_', project, '.bw'),
+            'rse-fc' = paste0('rse_fc_', project, '.Rdata')
         )
         url <- url_table$url[url_table$file_name == filename]
         if(length(url) == 0) return(NULL)

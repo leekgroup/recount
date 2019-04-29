@@ -28,6 +28,8 @@ test_that('Download URLs', {
     expect_equal(download_study('DRP000366', type = 'samples',
         download = FALSE),
         'http://duffel.rail.bio/recount/DRP000366/bw/DRR000897.bw')
+    expect_equal(download_study('DRP000366', type = 'rse-fc', download = FALSE),
+        'http://idies.jhu.edu/recount/data/fc_rc/rse_fc_DRP000366.Rdata')
 })
 
 ## Test downloading a small project entirely

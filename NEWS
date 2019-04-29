@@ -1,3 +1,15 @@
+CHANGES IN VERSION 1.9.5
+------------------------
+
+NEW FEATURES
+
+    o We have now released the FANTOM-CAT/recount2 RSE files
+        which you can access now through
+        download_study(type = 'rse-fc'). See
+        Luidy-Imada E, Matam T, et al, bioRxiv, 2019
+        for more information.
+
+
 CHANGES IN VERSION 1.9.4
 ------------------------
 
