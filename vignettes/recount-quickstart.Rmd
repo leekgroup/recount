@@ -695,6 +695,27 @@ snaptron_query(junctions)
 
 If you use `snaptron_query()` please cite [snaptron.cs.jhu.edu](http://snaptron.cs.jhu.edu). _Snaptron_ is separate from `r Biocpkg('recount')`. Thank you!
 
+# FANTOM-CAT annotation
+
+Thanks to Luidy-Imada, Matam, et al., bioRxiv, 2019 you can now use the `recount` package to access the FANTOM-CAT annotation that was merged with `recount2`. You can use the main `recount2` website or the `recount::download_study()` function by specifying `type = 'rse-fc'`. See their manuscript for further details on how this annotation was derived.
+
+```{r 'rse-fc example'}
+## Example use of download_study()
+## for downloading the FANTOM-CAT `rse_fc`
+## file for a given study
+download_study('DRP000366', type = 'rse-fc', download = FALSE)
+```
+
+
+# `recount-brain`
+
+The `recount-brain` project by [Ramzara et al., bioRxiv, 2019](https://www.biorxiv.org/content/10.1101/618025v1) contains curated metadata for brain studies present in `recount2` that you can access via `recount::add_metadata(source = 'recount_brain_v2')`. The manuscript by Razmara et al describes a curation process that can be used for curating other tissues or projects. If you are interested in doing such a project and/or contributing curated metadata to the `recount` package via the `add_metadata()` function please let us know.
+
+```{r 'recount-brain'}
+## recount-brain citation details
+citation('recount')[5]
+```
+
 
 # Download all the data
 

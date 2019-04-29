@@ -27,13 +27,13 @@
 #' described at
 #'  \url{http://lieberinstitute.github.io/recount-brain/cross_studies_metadata/cross_studies_metadata.html}.
 #'
-#' @details If you use the recount_brain data please cite the Razmara et al
-#' bioRxiv pre-print available at 
-#' (TODO update URL once it's available). See citation
-#' details with citation('recount').
+#' @details If you use the recount_brain data please cite the Razmara et al.
+#' bioRxiv, 2019 \url{https://www.biorxiv.org/content/10.1101/618025v1}.
+#' A bib file is available via citation('recount')[5].
 #'
 #' @references
-#' Razmara et al, in prep, 2018.
+#' Razmara et al, bioRxiv, 2019.
+#' \url{https://www.biorxiv.org/content/10.1101/618025v1}
 #'
 #' @author Leonardo Collado-Torres
 #' @export

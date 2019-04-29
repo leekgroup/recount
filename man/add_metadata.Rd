@@ -40,10 +40,9 @@ information comes from the recount_brain project described in more detail
 at \url{http://lieberinstitute.github.io/recount-brain/}.
 }
 \details{
-If you use the recount_brain data please cite the Razmara et al
-bioRxiv pre-print available at 
-(TODO update URL once it's available). See citation
-details with citation('recount').
+If you use the recount_brain data please cite the Razmara et al.
+bioRxiv, 2019 \url{https://www.biorxiv.org/content/10.1101/618025v1}.
+A bib file is available via citation('recount')[5].
 }
 \examples{
 
@@ -79,7 +78,8 @@ recount_brain_v2 <- add_metadata(source = 'recount_brain_v2')
 
 }
 \references{
-Razmara et al, in prep, 2018.
+Razmara et al, bioRxiv, 2019.
+\url{https://www.biorxiv.org/content/10.1101/618025v1}
 }
 \author{
 Leonardo Collado-Torres

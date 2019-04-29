@@ -65,5 +65,22 @@ c(
         url = "http://www.bioconductor.org/packages/recount",
         note = pkgVer('recount'),
         doi = '10.18129/B9.bioc.recount'
+    ),
+    bibentry(bibtype="article",
+        title = "recount-brain: a curated repository of human brain RNA-seq datasets metadata",
+        author = personList(
+            as.person("Ashkaun Razmara"),
+            as.person("Shannon E. Ellis"),
+            as.person("Dustin J. Sokolowski"),
+            as.person("Sean Davis"),
+            as.person("Michael D. Wilson"),
+            as.person("Jeffrey T. Leek"),
+            as.person("Andrew E. Jaffe"),
+            as.person("Leonardo Collado-Torres")
+        ),
+        year = 2019,
+        journal = "bioRxiv",
+        doi = "10.1101/618025",
+        url = "https://doi.org/10.1101/618025"
     )
 )
