@@ -1,3 +1,12 @@
+CHANGES IN VERSION 1.9.7
+------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Cleaned up the documentation of add_metadata()
+        and changed the default `source` from
+        `recount_brain_v1` to `recount_brain_v2`.
+
 CHANGES IN VERSION 1.9.6
 ------------------------
 

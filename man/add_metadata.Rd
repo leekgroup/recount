@@ -4,7 +4,7 @@
 \alias{add_metadata}
 \title{Add additional curated metadata to a recount rse object}
 \usage{
-add_metadata(rse, source = "recount_brain_v1", is_tcga = FALSE,
+add_metadata(rse, source = "recount_brain_v2", is_tcga = FALSE,
   verbose = TRUE)
 }
 \arguments{
@@ -25,11 +25,6 @@ predictions file is being downloaded to.}
 A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
 object with the sample metadata columns appended to the \code{colData()}
 slot.
-For \code{source = "recount_brain_v1"}, the metadata columns are
-described at \url{http://lieberinstitute.github.io/recount-brain/}.
-For \code{source = "recount_brain_v2"}, the metadata columns are
-described at
- \url{http://lieberinstitute.github.io/recount-brain/cross_studies_metadata/cross_studies_metadata.html}.
 }
 \description{
 This function appends sample metadata information to a 
@@ -40,6 +35,12 @@ information comes from the recount_brain project described in more detail
 at \url{http://lieberinstitute.github.io/recount-brain/}.
 }
 \details{
+For \code{source = "recount_brain_v1"} and
+\code{source = "recount_brain_v2"}, the metadata columns are
+described at \url{http://lieberinstitute.github.io/recount-brain/}.
+Alternatively, you can explore \code{recount_brain_v2} interactively at
+\url{https://jhubiostatistics.shinyapps.io/recount-brain/}.
+
 If you use the recount_brain data please cite the Razmara et al.
 bioRxiv, 2019 \url{https://www.biorxiv.org/content/10.1101/618025v1}.
 A bib file is available via citation('recount')[5].
@@ -47,33 +48,19 @@ A bib file is available via citation('recount')[5].
 \examples{
 
 ## Add the sample metadata to an example rse_gene object
-rse_gene <- add_metadata(rse_gene_SRP009615, 'recount_brain_v1')
+rse_gene <- add_metadata(rse_gene_SRP009615, 'recount_brain_v2')
 
 ## Explore the metadata
 colData(rse_gene)
 
-## For a list of studies present in recount_brain_v1 check
-## http://lieberinstitute.github.io/recount-brain/. Note that it only
-## includes studies from SRA, so no TCGA or GTEx (those have great
-## sample metadata already available).
+## For a list of studies present in recount_brain check
+## http://lieberinstitute.github.io/recount-brain/.
 ## recount_brain_v2 includes GTEx and TCGA brain samples in addition to the
-## recount_brain_v1 data.
+## recount_brain_v1 data, plus ontology information.
 
-\dontrun{
-## Example project that is present in recount_brain_v2.
 
-## Download and load the data
-download_study('ERP001304')
-load(file.path('ERP001304', 'rse_gene.Rdata'))
-
-## Add the sample metadata from recount_brain_v2
-rse_gene <- add_metadata(rse_gene, source = 'recount_brain_v2')
-
-## Check the metadata
-colData(rse_gene)
-}
-
-## Obtain all the recount_brain_v2 metadata
+## Obtain all the recount_brain_v2 metadata if you want to
+## explore the metadata manually
 recount_brain_v2 <- add_metadata(source = 'recount_brain_v2')
 
 }
