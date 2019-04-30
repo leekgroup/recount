@@ -41,7 +41,7 @@
 #'     small delay will be added before each download request to avoid
 #'     request issues.}
 #'     \item{rse-fc}{ Downloads the FANTOM-CAT/recount2 rse file described in
-#'     Luidy-Imada, Matam, et al., bioRxiv, 2019.}
+#'     Luidy-Imada, Sanchez, et al., bioRxiv, 2019.}
 #' }
 #' @param outdir The destination directory for the downloaded file(s).
 #' Alternatively check the \code{SciServer} section on the vignette to see
@@ -68,7 +68,7 @@
 #' \url{https://www.biorxiv.org/content/10.1101/247346v2}
 #'
 #' FANTOM-CAT/recount2 quantifications are described in Luidy-Imada,
-#' Matam, et al., bioRxiv, 2019.
+#' Sanchez, et al., bioRxiv, 2019.
 #'
 #'
 #' @author Leonardo Collado-Torres
