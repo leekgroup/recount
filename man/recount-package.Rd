@@ -19,6 +19,6 @@ annotation-agnostic differential expression analyses with the data from the
 recount project.
 }
 \author{
-Leonardo Collado-Torres <lcolladotor@gmail.com>
+Leonardo Collado-Torres <lcollado@jhu.edu>
 }
 \keyword{package}

@@ -131,7 +131,7 @@ Main updates:
 
 * __As of January 30, 2017 the annotation used for the exon and gene counts is Gencode v25.__
 * __As of January 12, 2018 transcripts counts are available via recount2 thanks to the work of [Fu et al, bioRxiv, 2018](https://www.biorxiv.org/content/10.1101/247346v2). Disjoint exon counts (version 2) were also released as described in detail in the [recount website](https://jhubiostatistics.shinyapps.io/recount/) documentation tab.__
-* __As of April 29, 2019 FANTOM-CAT/recount2 annotation quantifications area available via recount2 thanks to the work by Luidy-Imada, Sanchez, et al., bioRxiv, 2019.__
+* __As of April 29, 2019 FANTOM-CAT/recount2 annotation quantifications area available via recount2 thanks to the work by [Imada, Sanchez, et al., bioRxiv, 2019](https://www.biorxiv.org/content/10.1101/659490v1).__
 
 
 <a href="https://jhubiostatistics.shinyapps.io/recount/"><img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/website/recount.png" align="center" width="600"></a>
@@ -697,7 +697,7 @@ If you use `snaptron_query()` please cite [snaptron.cs.jhu.edu](http://snaptron.
 
 # FANTOM-CAT annotation
 
-Thanks to Luidy-Imada, Sanchez, et al., bioRxiv, 2019 you can now use the `recount` package to access the FANTOM-CAT annotation that was merged with `recount2`. You can use the main `recount2` website or the `recount::download_study()` function by specifying `type = 'rse-fc'`. See their manuscript for further details on how this annotation was derived.
+Thanks to [Imada, Sanchez, et al., bioRxiv, 2019](https://www.biorxiv.org/content/10.1101/659490v1) you can now use the `recount` package to access the FANTOM-CAT annotation that was merged with `recount2`. You can use the main `recount2` website or the `recount::download_study()` function by specifying `type = 'rse-fc'`. See their manuscript for further details on how this annotation was derived.
 
 ```{r 'rse-fc example'}
 ## Example use of download_study()

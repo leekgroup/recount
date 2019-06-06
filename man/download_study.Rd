@@ -44,7 +44,7 @@ download_study(project, type = "rse-gene", outdir = project,
     small delay will be added before each download request to avoid
     request issues.}
     \item{rse-fc}{ Downloads the FANTOM-CAT/recount2 rse file described in
-    Luidy-Imada, Sanchez, et al., bioRxiv, 2019.}
+    Imada, Sanchez, et al., bioRxiv, 2019.}
 }}
 
 \item{outdir}{The destination directory for the downloaded file(s).
@@ -83,8 +83,9 @@ a link from SciServer.
 Transcript quantifications are described in Fu et al, bioRxiv, 2018.
 \url{https://www.biorxiv.org/content/10.1101/247346v2}
 
-FANTOM-CAT/recount2 quantifications are described in Luidy-Imada,
+FANTOM-CAT/recount2 quantifications are described in Imada,
 Sanchez, et al., bioRxiv, 2019.
+\url{https://www.biorxiv.org/content/10.1101/659490v1}
 }
 \examples{
 ## Find the URL to download the RangedSummarizedExperiment for the
