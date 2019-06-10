@@ -12,17 +12,17 @@ download_study(project, type = "rse-gene", outdir = project,
 
 \item{type}{Specifies which files to download. The options are:
 \describe{
-    \item{rse-gene}{ the gene-level 
-    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+    \item{rse-gene}{ the gene-level
+    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
     a file named rse_gene.Rdata.}
-    \item{rse-exon}{ the exon-level 
-    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+    \item{rse-exon}{ the exon-level
+    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
     a file named rse_exon.Rdata.}
-    \item{rse-jx}{ the exon-exon junction level 
-    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+    \item{rse-jx}{ the exon-exon junction level
+    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
     a file named rse_jx.Rdata.}
-    \item{rse-tx}{ the transcript level 
-    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+    \item{rse-tx}{ the transcript level
+    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
     a file named rse_tx.RData.}
     \item{counts-gene}{ the gene-level counts in a tsv file named
     counts_gene.tsv.gz.}
@@ -35,9 +35,9 @@ download_study(project, type = "rse-gene", outdir = project,
     \item{files-info}{ the files information for the given study (including
     md5sum hashes) in a tsv file named files_info.tsv.}
     \item{samples}{ one bigWig file per sample in the study.}
-    \item{mean}{ one mean bigWig file for the samples in the study, 
+    \item{mean}{ one mean bigWig file for the samples in the study,
     with each sample normalized to a 40 million 100 bp library using the
-    total coverage sum (area under the coverage curve, AUC) for the given 
+    total coverage sum (area under the coverage curve, AUC) for the given
     sample.}
     \item{all}{ Downloads all the above types. Note that it might take some
     time if the project has many samples. When using \code{type = 'all'} a
@@ -54,7 +54,7 @@ how to access all the recount data via a R Jupyter Notebook.}
 \item{download}{Whether to download the files or just get the download urls.}
 
 \item{version}{A single integer specifying which version of the files to
-download. Valid options are 1 and 2, as described in 
+download. Valid options are 1 and 2, as described in
 \url{https://jhubiostatistics.shinyapps.io/recount/} under the
 documentation tab. Briefly, version 1 are counts based on reduced exons while
 version 2 are based on disjoint exons. This argument mostly just matters for
@@ -68,10 +68,10 @@ prior to version 1.5.3 of the package.}
 Returns invisibly the URL(s) for the files that were downloaded.
 }
 \description{
-Download the gene or exon level 
-\link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects 
-provided by the recount project. Alternatively download the counts, metadata 
-or file information for a given SRA study id. You can also download the 
+Download the gene or exon level
+\link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects
+provided by the recount project. Alternatively download the counts, metadata
+or file information for a given SRA study id. You can also download the
 sample bigWig files or the mean coverage bigWig file.
 }
 \details{

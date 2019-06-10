@@ -1,25 +1,25 @@
 #' Download data for a given SRA study id from the recount project
 #'
-#' Download the gene or exon level 
-#' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects 
-#' provided by the recount project. Alternatively download the counts, metadata 
-#' or file information for a given SRA study id. You can also download the 
+#' Download the gene or exon level
+#' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects
+#' provided by the recount project. Alternatively download the counts, metadata
+#' or file information for a given SRA study id. You can also download the
 #' sample bigWig files or the mean coverage bigWig file.
 #'
 #' @param project A character vector with one SRA study id.
 #' @param type Specifies which files to download. The options are:
 #' \describe{
-#'     \item{rse-gene}{ the gene-level 
-#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+#'     \item{rse-gene}{ the gene-level
+#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
 #'     a file named rse_gene.Rdata.}
-#'     \item{rse-exon}{ the exon-level 
-#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+#'     \item{rse-exon}{ the exon-level
+#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
 #'     a file named rse_exon.Rdata.}
-#'     \item{rse-jx}{ the exon-exon junction level 
-#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+#'     \item{rse-jx}{ the exon-exon junction level
+#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
 #'     a file named rse_jx.Rdata.}
-#'     \item{rse-tx}{ the transcript level 
-#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in 
+#'     \item{rse-tx}{ the transcript level
+#'     \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
 #'     a file named rse_tx.RData.}
 #'     \item{counts-gene}{ the gene-level counts in a tsv file named
 #'     counts_gene.tsv.gz.}
@@ -32,9 +32,9 @@
 #'     \item{files-info}{ the files information for the given study (including
 #'     md5sum hashes) in a tsv file named files_info.tsv.}
 #'     \item{samples}{ one bigWig file per sample in the study.}
-#'     \item{mean}{ one mean bigWig file for the samples in the study, 
+#'     \item{mean}{ one mean bigWig file for the samples in the study,
 #'     with each sample normalized to a 40 million 100 bp library using the
-#'     total coverage sum (area under the coverage curve, AUC) for the given 
+#'     total coverage sum (area under the coverage curve, AUC) for the given
 #'     sample.}
 #'     \item{all}{ Downloads all the above types. Note that it might take some
 #'     time if the project has many samples. When using \code{type = 'all'} a
@@ -48,7 +48,7 @@
 #' how to access all the recount data via a R Jupyter Notebook.
 #' @param download Whether to download the files or just get the download urls.
 #' @param version A single integer specifying which version of the files to
-#' download. Valid options are 1 and 2, as described in 
+#' download. Valid options are 1 and 2, as described in
 #' \url{https://jhubiostatistics.shinyapps.io/recount/} under the
 #' documentation tab. Briefly, version 1 are counts based on reduced exons while
 #' version 2 are based on disjoint exons. This argument mostly just matters for
@@ -82,10 +82,10 @@
 #' ## Find the URL to download the RangedSummarizedExperiment for the
 #' ## Geuvadis consortium study.
 #' url <- download_study('ERP001942', download = FALSE)
-#' 
+#'
 #' ## See the actual URL
 #' url
-#' 
+#'
 #' \dontrun{
 #' ## Download the example data included in the package for study SRP009615
 #'
@@ -113,19 +113,19 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
         'phenotype', 'files-info', 'samples', 'mean', 'rse-fc', 'all'))
     stopifnot(length(type) == 1)
     stopifnot(is.logical(download) & length(download) == 1)
-    
+
     ## Use table from the package
     url_table <- recount::recount_url
-    
+
     ## URLs default to version 2 (disjoint exons).
     if(version == 1) url_table$url <- gsub('v2/', '', url_table$url)
-    
+
     ## Subset url data
     url_table <- url_table[url_table$project == project, ]
     if(nrow(url_table) == 0) {
         stop("Invalid 'project' argument. There's no such 'project' in the recount_url data.frame.")
     }
-    
+
     ## If all, download each type individually
     if(type == 'all') {
         urls <- sapply(c(
@@ -138,7 +138,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
         })
         return(invisible(urls))
     }
-    
+
     ## Create output directory if needed
     if(download) {
         dir.create(outdir, showWarnings = FALSE)
@@ -167,10 +167,14 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
         url <- url_table$url[url_table$file_name == filename]
         if(length(url) == 0) return(NULL)
         if(download) {
-            message(paste(Sys.time(), 'downloading file', filename, 'to', 
+            message(paste(Sys.time(), 'downloading file', filename, 'to',
                 outdir))
-            xx <- downloader::download(url, destfile = file.path(outdir,
-                filename), mode = 'wb', ...)
+            xx <- download_retry(
+                url = url,
+                destfile = file.path(outdir, filename),
+                mode = 'wb',
+                ...
+            )
         }
     } else if(type == 'samples') {
         url_table <- url_table[url_table$file_name != paste0('mean_', project,
@@ -181,13 +185,16 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
             xx <- sapply(seq_len(nrow(sample_urls)), function(i, ...) {
                 message(paste(Sys.time(), 'downloading file',
                     sample_urls$file_name[i], 'to', outdir))
-                downloader::download(sample_urls$url[i], 
+                download_retry(
+                    url = sample_urls$url[i],
                     destfile = file.path(outdir, sample_urls$file_name[i]),
-                    mode = 'wb', ...)
+                    mode = 'wb',
+                    ...
+                )
             }, ...)
         }
     }
-    
+
     ## Return the actual url(s)
     return(invisible(url))
 }

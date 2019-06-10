@@ -1,6 +1,6 @@
 #' Add additional curated metadata to a recount rse object
 #'
-#' This function appends sample metadata information to a 
+#' This function appends sample metadata information to a
 #' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} from the
 #' recount2 project. The sample metadata comes from curated efforts
 #' independent from the original recount2 project. Currently the only
@@ -8,17 +8,17 @@
 #' at \url{http://lieberinstitute.github.io/recount-brain/}.
 #'
 #'
-#' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+#' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
 #' object as downloaded with \link{download_study}. If this argument is
 #' not specified, the function will return the raw metadata table.
 #' @param source A valid source name. The only supported options at this
 #' moment are \code{recount_brain_v1} and \code{recount_brain_v2}.
 #' @param is_tcga Set to \code{TRUE} only when \code{rse} is from TCGA.
 #' Otherwise set to \code{FALSE} (default).
-#' @param verbose If \code{TRUE} it will print a message of where the 
+#' @param verbose If \code{TRUE} it will print a message of where the
 #' predictions file is being downloaded to.
 #'
-#' @return A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+#' @return A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
 #' object with the sample metadata columns appended to the \code{colData()}
 #' slot.
 #'
@@ -28,7 +28,7 @@
 #' described at \url{http://lieberinstitute.github.io/recount-brain/}.
 #' Alternatively, you can explore \code{recount_brain_v2} interactively at
 #' \url{https://jhubiostatistics.shinyapps.io/recount-brain/}.
-#' 
+#'
 #' If you use the recount_brain data please cite the Razmara et al.
 #' bioRxiv, 2019 \url{https://www.biorxiv.org/content/10.1101/618025v1}.
 #' A bib file is available via citation('recount')[5].
@@ -65,9 +65,9 @@
 
 add_metadata <- function(rse, source = 'recount_brain_v2', is_tcga = FALSE,
     verbose = TRUE) {
-        
+
     stopifnot(length(source) == 1)
-        
+
     ## For a NOTE in R CMD check
     valid_sources <- data.frame(
         name = c('recount_brain_v1', 'recount_brain_v2'),
@@ -77,24 +77,28 @@ add_metadata <- function(rse, source = 'recount_brain_v2', is_tcga = FALSE,
         sample_id = c('run_s', 'run_s'),
         stringsAsFactors = FALSE
     )
-    
+
     stopifnot(tolower(source) %in% tolower(valid_sources$name))
-    
+
     to_use <- valid_sources[tolower(valid_sources$name) == tolower(source), ]
-    
+
     destfile <- file.path(tempdir(), paste0(to_use$name, '.Rdata'))
-    
-    
+
+
     if(verbose)  message(paste(Sys.time(), 'downloading the', to_use$object, 'metadata to', destfile))
-    downloader::download(to_use$url, destfile = destfile, mode = 'wb')
+    download_retry(
+        url = to_use$url,
+        destfile = destfile,
+        mode = 'wb'
+    )
     load_meta <- function() {
         load(destfile, verbose = verbose)
         get(to_use$object)
     }
     new_meta <- load_meta()
-    
+
     if(missing(rse)) return(new_meta)
-        
+
     if(is_tcga) {
         map <- match(colData(rse)$gdc_file_id, new_meta[, to_use$sample_id])
     } else {
@@ -103,19 +107,19 @@ add_metadata <- function(rse, source = 'recount_brain_v2', is_tcga = FALSE,
     if(verbose) {
         message(paste(Sys.time(), 'found', sum(!is.na(map)), 'out of', length(map), 'samples in the', to_use$object, 'metadata'))
     }
-    
+
     ## Make a dummy table with the new metadata to be added
     dummy <- as.data.frame(matrix(NA, nrow = ncol(rse),
         ncol = ncol(new_meta) - 1))
     cols_to_drop <- which(colnames(new_meta) == to_use$sample_id)
     colnames(dummy) <- colnames(new_meta)[- cols_to_drop]
-    
+
     ## In case new data is present
     if(any(!is.na(map))){
         dummy[!is.na(map), ] <- new_meta[map[!is.na(map)], - cols_to_drop]
-    }    
+    }
     rownames(dummy) <- NULL
-   
+
     ## Merge new metadata and return the rse
     colData(rse) <- cbind(colData(rse), dummy)
     return(rse)

@@ -8,7 +8,7 @@ add_metadata(rse, source = "recount_brain_v2", is_tcga = FALSE,
   verbose = TRUE)
 }
 \arguments{
-\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
 object as downloaded with \link{download_study}. If this argument is
 not specified, the function will return the raw metadata table.}
 
@@ -18,16 +18,16 @@ moment are \code{recount_brain_v1} and \code{recount_brain_v2}.}
 \item{is_tcga}{Set to \code{TRUE} only when \code{rse} is from TCGA.
 Otherwise set to \code{FALSE} (default).}
 
-\item{verbose}{If \code{TRUE} it will print a message of where the 
+\item{verbose}{If \code{TRUE} it will print a message of where the
 predictions file is being downloaded to.}
 }
 \value{
-A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
 object with the sample metadata columns appended to the \code{colData()}
 slot.
 }
 \description{
-This function appends sample metadata information to a 
+This function appends sample metadata information to a
 \link[SummarizedExperiment]{RangedSummarizedExperiment-class} from the
 recount2 project. The sample metadata comes from curated efforts
 independent from the original recount2 project. Currently the only
