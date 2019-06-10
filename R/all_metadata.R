@@ -17,7 +17,7 @@
 #' @import downloader
 #'
 #' @examples
-#' 
+#'
 #' metadata <- all_metadata()
 #'
 #' @details Note that for \code{subset = 'gtex'}, there are more variables than
@@ -36,21 +36,25 @@
 all_metadata <- function(subset = 'sra', verbose = TRUE) {
     ## For R CMD check
     metadata_clean <- NULL
-    
+
     ## check inputs
     subset <- tolower(subset)
     stopifnot(subset %in% c('sra', 'gtex', 'tcga'))
     stopifnot(length(subset) == 1)
-    
+
     ## Download file
     metafile <- paste0('metadata_clean_', subset, '.Rdata')
     url <- paste0(
         'https://github.com/leekgroup/recount-website/blob/master/metadata/',
         metafile, '?raw=true')
     destfile <- file.path(tempdir(), metafile)
-    
+
     if(verbose) message(paste(Sys.time(), 'downloading the metadata to', destfile))
-    downloader::download(url, destfile = destfile, mode = 'wb') 
+    download_retry(
+        url = url,
+        destfile = destfile,
+        mode = 'wb'
+    )
     load(destfile)
     return(metadata_clean)
 }

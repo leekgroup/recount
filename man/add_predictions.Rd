@@ -8,7 +8,7 @@ add_predictions(rse, is_tcga = FALSE, version = "latest",
   verbose = TRUE)
 }
 \arguments{
-\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
 object as downloaded with \link{download_study}. If this argument is
 not specified, the function will return the full predictions table.}
 
@@ -21,11 +21,11 @@ to match one of the available numbers at
 Feel free to check if there is a newer version than the default. The version
 used is printed as part of the file name.}
 
-\item{verbose}{If \code{TRUE} it will print a message of where the 
+\item{verbose}{If \code{TRUE} it will print a message of where the
 predictions file is being downloaded to.}
 }
 \value{
-A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
 object with the prediction columns appended to the \code{colData()} slot.
 The predicted phenotypes are:
 \describe{
@@ -40,14 +40,14 @@ next:
 \item{reported_phenotype }{ \code{NA} when not available,}
 \item{predicted_phenotype }{ \code{NA} when we did not predict, "Unassigned"
 when prediction was ambiguous,}
-\item{accuracy_phenotype }{ accuracy is assigned per dataset based on 
-comparison to samples for which we had reported phenotype information so 
+\item{accuracy_phenotype }{ accuracy is assigned per dataset based on
+comparison to samples for which we had reported phenotype information so
 there are three distinct values per predictor (GTEx, TCGA, SRA) across all
 studies.}
 }
 }
 \description{
-Shannon Ellis et al (2017) predicted phenotypes based on expression data for 
+Shannon Ellis et al (2017) predicted phenotypes based on expression data for
 the samples in the recount2 project. Using this function you can add the
 predictions to a
 \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object
@@ -55,7 +55,7 @@ to the \code{colData()} slot.
 }
 \details{
 If you use these predicted phenotypes please cite the Ellis et al
-bioRxiv pre-print available at 
+bioRxiv pre-print available at
 https://www.biorxiv.org/content/early/2017/06/03/145656. See citation
 details with citation('recount').
 }
