@@ -1,6 +1,6 @@
 Package: recount
 Title: Explore and download data from the recount project
-Version: 1.11.4
+Version: 1.11.5
 Date: 2019-06-10
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "lcolladotor@gmail.com", comment = c(ORCID = "0000-0003-2140-308X")),
