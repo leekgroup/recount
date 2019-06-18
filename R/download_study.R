@@ -132,7 +132,7 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
             'rse-gene', 'rse-exon', 'rse-jx', 'rse-tx',
             'counts-gene', 'counts-exon', 'counts-jx',
             'phenotype', 'files-info', 'samples', 'mean'), function(file_type) {
-            Sys.sleep(round(runif(1, 2, 5), 0))
+            Sys.sleep(runif(n = 1, min = 2, max = 5))
             download_study(project = project, type = file_type,
                 outdir = outdir, download = download, version = version, ...)
         })
