@@ -42,7 +42,7 @@ download_retry <- function(url, destfile = basename(url), mode = 'wb',
         if (!inherits(result, "error"))
             break
         ## Wait between 0 and 2 seconds between retries
-        Sys.sleep(runif(n = 1, min = 0, max = 2))
+        Sys.sleep(runif(n = 1, min = 2, max = 5))
         N.TRIES <- N.TRIES - 1L
     }
 

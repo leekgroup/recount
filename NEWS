@@ -7,7 +7,7 @@ NEW FEATURES
         http://bioconductor.org/developers/how-to/web-query/ such that
         download_file() and other recount functions will re-try to download a
         file 3 times before giving up. This should help reduce the number of
-        occassional failed Bioconductor nightly checks.
+        occasional failed Bioconductor nightly checks.
 
 
 CHANGES IN VERSION 1.9.7
