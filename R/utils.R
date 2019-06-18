@@ -1,32 +1,44 @@
-#' Attempt to load the namespace of a package and install it if it's missing
+#' Attempt to load the namespace of one or more packages
 #'
-#' This function uses requireNamespace to try to load a package. But if it's
-#' misssing it will then install it via Bioconductor.
+#' This function uses requireNamespace to try to load one or more packages.
+#' If a package is missing, it will suggest how to install it via Bioconductor
+#' before quitting.
 #'
-#' @param pkg A single character vector with the name of the package.
-#' @param quietly Whether to run requireNamespace and BiocManager::install
-#' quietly or not.
+#' @param pkg A character vector with the names of the packages to check.
 #'
 #' @details Taken from the regionReport package
+#' Updated after feedback from Marcel Ramos at
+#' \url{https://github.com/leekgroup/recount/issues/14}
 #'
 #' @author Leonardo Collado-Torres
 #'
-.load_install <- function(pkg, quietly = TRUE) {
-    attemptName <- requireNamespace(pkg, quietly = quietly)
-    if(!attemptName) {
-        attemptInstall <- tryCatch(BiocManager::install(pkg,
-            suppressUpdates = quietly),
-            warning = function(w) 'failed')
-        if(attemptInstall == 'failed') stop(paste('Failed to install', pkg))
-        attemptName <- requireNamespace(pkg, quietly = quietly)
-    }
-    if(attemptName) {
-        if(quietly) {
-            suppressPackageStartupMessages(library(package = pkg,
-                character.only = TRUE))
-        } else {
-            library(package = pkg, character.only = TRUE)
-        }
+
+.load_check <- function(pkg) {
+    ## Check the input
+    stopifnot(is.character(pkg))
+    ## Try to load the packages
+    works <- sapply(pkg, requireNamespace, quietly = TRUE)
+
+    ## If some failed, then give a useful error before quitting
+    if(any(!works)) {
+        x <- pkg[!works]
+        stop(paste0(
+            Sys.time(),
+            ' Package',
+            ifelse(length(x) > 1, 's', ''),
+            ' ',
+            paste(x, collapse = ', '),
+            ' ',
+            ifelse(length(x) > 1, 'are', 'is'),
+            ' missing. Install ',
+            ifelse(length(x) > 1, 'them', 'it'),
+            ' with BiocManager::install(',
+            ifelse(length(x) > 1, 'c(', ''),
+            '"',
+            paste(x, collapse = '", "'),
+            '")',
+            ifelse(length(x) > 1, ')', '')
+        ))
     }
     return(invisible(NULL))
 }
