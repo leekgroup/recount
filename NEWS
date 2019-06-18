@@ -1,3 +1,15 @@
+CHANGES IN VERSION 1.10.7
+-------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Renamed .load_install() as .load_check() as this function now only checks
+        that the package(s) was installed and returns an error if missing. The
+        error shows the user how to install the package(s) they are missing
+        instead of installing them automatically. This complies with Marcel
+        Ramos' request at https://github.com/leekgroup/recount/issues/14.
+
+
 CHANGES IN VERSION 1.10.4
 -------------------------
 
