@@ -106,7 +106,7 @@ BiocManager::valid()
 * `r Biocpkg('DEFormats')` package for switching the objects to those used by other differential expression packages such as `r Biocpkg('edgeR')`,
 * `r Biocpkg('derfinder')` package for performing annotation-agnostic differential expression analysis.
 
-If you are asking yourself the question "Where do I start using Bioconductor?" you might be interested in [this blog post](http://lcolladotor.github.io/2014/10/16/startBioC/#.VkOKbq6rRuU).
+If you are asking yourself the question "Where do I start using Bioconductor?" you might be interested in [this blog post](http://lcolladotor.github.io/2014/10/16/startbioc/#.VkOKbq6rRuU).
 
 ## Asking for help
 
