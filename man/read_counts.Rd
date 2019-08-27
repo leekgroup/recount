@@ -38,7 +38,7 @@ will return non-sensical results.
 \examples{
 
 ## Difference between read counts and reads downloaded by Rail-RNA
-colSums(assays(read_counts(rse_gene_SRP009615))$counts) / 1e6 - 
+colSums(assays(read_counts(rse_gene_SRP009615))$counts) / 1e6 -
     colData(rse_gene_SRP009615)$reads_downloaded /1e6
 
 ## Paired-end read counts vs fragment counts (single-end counts)
@@ -48,15 +48,15 @@ colSums(assays(read_counts(rse_gene, use_paired_end = FALSE))$counts) /
     colSums(assays(read_counts(rse_gene))$counts)
 
 ## Difference between paired-end read counts vs paired-end reads downloaded
-colSums(assays(read_counts(rse_gene))$counts) / 1e6 - 
+colSums(assays(read_counts(rse_gene))$counts) / 1e6 -
     colData(rse_gene)$reads_downloaded / 1e6 /2
 
 }
 \references{
 Collado-Torres L, Nellore A and Jaffe AE. recount workflow: Accessing over
-70,000 human RNA-seq samples with Bioconductor \link[=version 1; referees: 1 
-approved, 2 approved with reservations]{version 1; referees: 1 approved, 2 approved with reservations}. F1000Research 2017, 6:1558
-(doi: 10.12688/f1000research.12223.1)
+70,000 human RNA-seq samples with Bioconductor version 1; referees: 1
+approved, 2 approved with reservations. F1000Research 2017, 6:1558
+doi: 10.12688/f1000research.12223.1.
 }
 \seealso{
 \link{scale_counts}
