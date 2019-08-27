@@ -1,29 +1,29 @@
 #' Compute read counts
 #'
 #' As described in the recount workflow, the counts provided by the recount2
-#' project are base-pair counts. You can scale them using \link{scale_counts}
+#' project are base-pair counts. You can scale them using [scale_counts]
 #' or compute the read counts using the area under coverage information (AUC).
 #' We use the AUC because Rail-RNA soft clips some reads.
 #'
-#' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
-#' object as downloaded with \link{download_study}.
-#' @param use_paired_end A logical vector. When \code{TRUE} it uses the
-#' paired-end flag (\code{colData(rse)$paired_end}) to determine whether
+#' @param rse A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] 
+#' object as downloaded with [download_study].
+#' @param use_paired_end A logical vector. When `TRUE` it uses the
+#' paired-end flag (`colData(rse)$paired_end`) to determine whether
 #' the sample is paired-end or not. If it's paired-end, then it divides the
 #' counts by 2 to return paired-end read counts instead of fragment counts.
-#' When \code{FALSE}, this information is ignored.
+#' When `FALSE`, this information is ignored.
 #' @param round Whether to round the counts to integers or not.
 #'
 #' @return Returns a
-#' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object with
+#' [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] object with
 #' the read counts.
 #'
-#' @seealso \link{scale_counts}
+#' @seealso [scale_counts]
 #'
 #' @details
 #' Check the recount workflow for details about the counts provided by
 #' the recount2 project.
-#' Note that this function should not be used after \link{scale_counts} or it 
+#' Note that this function should not be used after [scale_counts] or it 
 #' will return non-sensical results.
 #'
 #' @references

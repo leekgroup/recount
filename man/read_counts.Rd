@@ -7,7 +7,7 @@
 read_counts(rse, use_paired_end = TRUE, round = FALSE)
 }
 \arguments{
-\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+\item{rse}{A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 object as downloaded with \link{download_study}.}
 
 \item{use_paired_end}{A logical vector. When \code{TRUE} it uses the
@@ -20,7 +20,7 @@ When \code{FALSE}, this information is ignored.}
 }
 \value{
 Returns a
-\link[SummarizedExperiment]{RangedSummarizedExperiment-class} object with
+\link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class} object with
 the read counts.
 }
 \description{
@@ -32,7 +32,7 @@ We use the AUC because Rail-RNA soft clips some reads.
 \details{
 Check the recount workflow for details about the counts provided by
 the recount2 project.
-Note that this function should not be used after \link{scale_counts} or it 
+Note that this function should not be used after \link{scale_counts} or it
 will return non-sensical results.
 }
 \examples{
@@ -53,9 +53,9 @@ colSums(assays(read_counts(rse_gene))$counts) / 1e6 -
 
 }
 \references{
-Collado-Torres L, Nellore A and Jaffe AE. recount workflow: Accessing over 
-70,000 human RNA-seq samples with Bioconductor [version 1; referees: 1 
-approved, 2 approved with reservations]. F1000Research 2017, 6:1558 
+Collado-Torres L, Nellore A and Jaffe AE. recount workflow: Accessing over
+70,000 human RNA-seq samples with Bioconductor \link[=version 1; referees: 1 
+approved, 2 approved with reservations]{version 1; referees: 1 approved, 2 approved with reservations}. F1000Research 2017, 6:1558
 (doi: 10.12688/f1000research.12223.1)
 }
 \seealso{

@@ -12,39 +12,39 @@ download_study(project, type = "rse-gene", outdir = project,
 
 \item{type}{Specifies which files to download. The options are:
 \describe{
-    \item{rse-gene}{ the gene-level
-    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
-    a file named rse_gene.Rdata.}
-    \item{rse-exon}{ the exon-level
-    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
-    a file named rse_exon.Rdata.}
-    \item{rse-jx}{ the exon-exon junction level
-    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
-    a file named rse_jx.Rdata.}
-    \item{rse-tx}{ the transcript level
-    \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object in
-    a file named rse_tx.RData.}
-    \item{counts-gene}{ the gene-level counts in a tsv file named
-    counts_gene.tsv.gz.}
-    \item{counts-exon}{ the exon-level counts in a tsv file named
-    counts_exon.tsv.gz.}
-    \item{counts-jx}{ the exon-exon junction level counts in a tsv file named
-    counts_jx.tsv.gz.}
-    \item{phenotype}{ the phenotype data for the study in a tsv file named
-    \code{project}.tsv.}
-    \item{files-info}{ the files information for the given study (including
-    md5sum hashes) in a tsv file named files_info.tsv.}
-    \item{samples}{ one bigWig file per sample in the study.}
-    \item{mean}{ one mean bigWig file for the samples in the study,
-    with each sample normalized to a 40 million 100 bp library using the
-    total coverage sum (area under the coverage curve, AUC) for the given
-    sample.}
-    \item{all}{ Downloads all the above types. Note that it might take some
-    time if the project has many samples. When using \code{type = 'all'} a
-    small delay will be added before each download request to avoid
-    request issues.}
-    \item{rse-fc}{ Downloads the FANTOM-CAT/recount2 rse file described in
-    Imada, Sanchez, et al., bioRxiv, 2019.}
+\item{rse-gene}{ the gene-level
+\link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class} object in
+a file named rse_gene.Rdata.}
+\item{rse-exon}{ the exon-level
+\link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class} object in
+a file named rse_exon.Rdata.}
+\item{rse-jx}{ the exon-exon junction level
+\link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class} object in
+a file named rse_jx.Rdata.}
+\item{rse-tx}{ the transcript level
+\link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class} object in
+a file named rse_tx.RData.}
+\item{counts-gene}{ the gene-level counts in a tsv file named
+counts_gene.tsv.gz.}
+\item{counts-exon}{ the exon-level counts in a tsv file named
+counts_exon.tsv.gz.}
+\item{counts-jx}{ the exon-exon junction level counts in a tsv file named
+counts_jx.tsv.gz.}
+\item{phenotype}{ the phenotype data for the study in a tsv file named
+\code{project}.tsv.}
+\item{files-info}{ the files information for the given study (including
+md5sum hashes) in a tsv file named files_info.tsv.}
+\item{samples}{ one bigWig file per sample in the study.}
+\item{mean}{ one mean bigWig file for the samples in the study,
+with each sample normalized to a 40 million 100 bp library using the
+total coverage sum (area under the coverage curve, AUC) for the given
+sample.}
+\item{all}{ Downloads all the above types. Note that it might take some
+time if the project has many samples. When using \code{type = 'all'} a
+small delay will be added before each download request to avoid
+request issues.}
+\item{rse-fc}{ Downloads the FANTOM-CAT/recount2 rse file described in
+Imada, Sanchez, et al., bioRxiv, 2019.}
 }}
 
 \item{outdir}{The destination directory for the downloaded file(s).
@@ -62,14 +62,14 @@ the exon counts. Defaults to version 2 (disjoint exons).
 Use \code{version = 1} for backward compatability with exon counts
 prior to version 1.5.3 of the package.}
 
-\item{...}{Additional arguments passed to \link[downloader]{download}.}
+\item{...}{Additional arguments passed to \link[downloader:download]{download}.}
 }
 \value{
 Returns invisibly the URL(s) for the files that were downloaded.
 }
 \description{
 Download the gene or exon level
-\link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects
+\link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class} objects
 provided by the recount project. Alternatively download the counts, metadata
 or file information for a given SRA study id. You can also download the
 sample bigWig files or the mean coverage bigWig file.

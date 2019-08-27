@@ -1,23 +1,23 @@
 #' Retry multiple times to download a file
 #'
 #' This function is based on the Bioconductor guidelines for querying data from
-#' the web at \url{http://bioconductor.org/developers/how-to/web-query/}. It
-#' will run \link[downloader]{download} a set of \code{N.TRIES} times before
+#' the web at <http://bioconductor.org/developers/how-to/web-query/>. It
+#' will run [download][downloader::download] a set of `N.TRIES` times before
 #' giving up. We implemented this function to reduce the number of Bioconductor
 #' build errors due to the occassional errors from our data hosting server.
 #'
-#' @param url The URL to download. Passed to \link[downloader]{download}.
+#' @param url The URL to download. Passed to [download][downloader::download].
 #' @param destfile The destination file. Defaults to the base name of the URL.
-#' Passed to \link[downloader]{download}.
-#' @param mode Mode for writing the file. The default \code{wb} is used for
-#' binary files. This value is passed to \link[downloader]{download} which
-#' passes it to \link[utils]{download.file}.
+#' Passed to [download][downloader::download].
+#' @param mode Mode for writing the file. The default `wb` is used for
+#' binary files. This value is passed to [download][downloader::download] which
+#' passes it to [download.file][utils::download.file].
 #' @param N.TRIES The number of download attempts before giving up; default: 3.
 #' Should be an integer of length one with a value greater than 0.
-#' @param ... Additional arguments passed to \link[downloader]{download}.
+#' @param ... Additional arguments passed to [download][downloader::download].
 #'
 #' @return An invisible integer code as specified in
-#' \link[utils]{download.file}.
+#' [download.file][utils::download.file].
 #' @export
 #'
 #' @examples

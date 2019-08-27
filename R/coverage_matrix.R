@@ -1,46 +1,46 @@
 #' Given a set of regions for a chromosome, compute the coverage matrix for a
 #' given SRA study.
 #'
-#' Given a set of genomic regions as created by \link{expressed_regions}, this
+#' Given a set of genomic regions as created by [expressed_regions], this
 #' function computes the coverage matrix for a library size of 40 million 100 bp
 #' reads for a given SRA study.
 #'
 #' @inheritParams expressed_regions
-#' @param regions A \link[GenomicRanges]{GRanges-class} object with regions
-#' for \code{chr} for which to calculate the coverage matrix.
+#' @param regions A [GRanges-class][GenomicRanges::GRanges-class] object with regions
+#' for `chr` for which to calculate the coverage matrix.
 #' @param chunksize A single integer vector defining the chunksize to use for
 #' computing the coverage matrix. Regions will be split into different chunks
 #' which can be useful when using a parallel instance as defined by 
-#' \code{bpparam}.
-#' @param bpparam A \link[BiocParallel]{BiocParallelParam-class} instance which
+#' `bpparam`.
+#' @param bpparam A [BiocParallelParam-class][BiocParallel::BiocParallelParam-class] instance which
 #' will be used to calculate the coverage matrix in parallel. By default, 
-#' \link[BiocParallel]{SerialParam-class} will be used.
-#' @param verboseLoad If \code{TRUE} basic status updates for loading the data
+#' [SerialParam-class][BiocParallel::SerialParam-class] will be used.
+#' @param verboseLoad If `TRUE` basic status updates for loading the data
 #' will be printed.
-#' @param scale If \code{TRUE}, the coverage counts will be scaled to read 
-#' counts based on a library size of 40 million reads. Set \code{scale} to 
-#' \code{FALSE} if you want the raw coverage counts. The scaling method is by
-#' AUC, as in the default option of \link{scale_counts}.
-#' @param round If \code{TRUE}, the counts are rounded to integers. Set to 
-#' \code{TRUE} if you want to match the defaults of \link{scale_counts}.
+#' @param scale If `TRUE`, the coverage counts will be scaled to read 
+#' counts based on a library size of 40 million reads. Set `scale` to 
+#' `FALSE` if you want the raw coverage counts. The scaling method is by
+#' AUC, as in the default option of [scale_counts].
+#' @param round If `TRUE`, the counts are rounded to integers. Set to 
+#' `TRUE` if you want to match the defaults of [scale_counts].
 #' 
 #'
-#' @return A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+#' @return A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class]
 #' object with the counts stored in the assays slot. 
 #'
-#' @details When using \code{outdir = NULL} the information will be accessed
+#' @details When using `outdir = NULL` the information will be accessed
 #' from the web on the fly. If you encounter internet access problems, it might
-#' be best to first download the BigWig files using \link{download_study}. This
+#' be best to first download the BigWig files using [download_study]. This
 #' might be the best option if you are accessing all chromosomes for a given
-#' project and/or are thinking of using different sets of \code{regions} (for
-#' example, from different cutoffs applied to \link{expressed_regions}).
-#' Alternatively check the \code{SciServer} section on the vignette to see
+#' project and/or are thinking of using different sets of `regions` (for
+#' example, from different cutoffs applied to [expressed_regions]).
+#' Alternatively check the `SciServer` section on the vignette to see
 #' how to access all the recount data via a R Jupyter Notebook.
 #'
-#' If you have \code{bwtool} installed, you can use
-#' \url{https://github.com/LieberInstitute/recount.bwtool} for faster results.
-#' Note that you will need to run \link{scale_counts} after running
-#' \code{coverage_matrix_bwtool()}.
+#' If you have `bwtool` installed, you can use
+#' <https://github.com/LieberInstitute/recount.bwtool> for faster results.
+#' Note that you will need to run [scale_counts] after running
+#' `coverage_matrix_bwtool()`.
 #'
 #' @author Leonardo Collado-Torres
 #' @export
@@ -49,8 +49,8 @@
 #' @import derfinder GenomicRanges RCurl BiocParallel
 #' SummarizedExperiment S4Vectors
 #'
-#' @seealso \link{download_study}, \link[derfinder]{findRegions},
-#' \link[derfinder]{railMatrix}
+#' @seealso [download_study], [findRegions][derfinder::findRegions],
+#' [railMatrix][derfinder::railMatrix]
 #'
 #' @examples
 #'

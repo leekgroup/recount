@@ -5,21 +5,21 @@
 #' package.
 #'
 #' @param query A character vector with the text to search for via
-#' \link[base]{grep} in the abstract info available at \link{recount_abstract}.
+#' [grep][base::grep] in the abstract info available at [recount_abstract].
 #' @param id_only Whether to only return the project id or to return summary
 #' information for the project(s) that match the query.
-#' @param ... Additional arguments passed to \link[base]{grep}.
+#' @param ... Additional arguments passed to [grep][base::grep].
 #'
-#' @return If \code{id_only = TRUE} it returns a character vector with the
-#' project SRA ids (accession numbers). If \code{id_only = FALSE} it returns a
-#' subset of \link{recount_abstract} for the abstracts that contained the query.
+#' @return If `id_only = TRUE` it returns a character vector with the
+#' project SRA ids (accession numbers). If `id_only = FALSE` it returns a
+#' subset of [recount_abstract] for the abstracts that contained the query.
 #'
 #' @details Both the query and the abstracts are searched in lower case.
 #'
 #' For a more powerful search use the recount project website at
-#' \url{https://jhubiostatistics.shinyapps.io/recount/}.
+#' <https://jhubiostatistics.shinyapps.io/recount/>.
 #'
-#' @seealso \link{browse_study}, \link{recount_abstract}
+#' @seealso [browse_study], [recount_abstract]
 #'
 #' @author Leonardo Collado-Torres
 #' @export

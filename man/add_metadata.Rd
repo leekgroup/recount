@@ -8,7 +8,7 @@ add_metadata(rse, source = "recount_brain_v2", is_tcga = FALSE,
   verbose = TRUE)
 }
 \arguments{
-\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+\item{rse}{A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 object as downloaded with \link{download_study}. If this argument is
 not specified, the function will return the raw metadata table.}
 
@@ -22,13 +22,13 @@ Otherwise set to \code{FALSE} (default).}
 predictions file is being downloaded to.}
 }
 \value{
-A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 object with the sample metadata columns appended to the \code{colData()}
 slot.
 }
 \description{
 This function appends sample metadata information to a
-\link[SummarizedExperiment]{RangedSummarizedExperiment-class} from the
+\link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class} from the
 recount2 project. The sample metadata comes from curated efforts
 independent from the original recount2 project. Currently the only
 information comes from the recount_brain project described in more detail
@@ -43,7 +43,7 @@ Alternatively, you can explore \code{recount_brain_v2} interactively at
 
 If you use the recount_brain data please cite the Razmara et al.
 bioRxiv, 2019 \url{https://www.biorxiv.org/content/10.1101/618025v1}.
-A bib file is available via citation('recount')[5].
+A bib file is available via citation('recount')\link{5}.
 }
 \examples{
 

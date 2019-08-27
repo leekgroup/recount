@@ -13,7 +13,7 @@ find_geo(run, verbose = FALSE, sleep = 1/2)
 over a larger number of SRA run ids.}
 
 \item{sleep}{The number of seconds (or fraction) to wait before downloading
-data using \link[GEOquery]{getGEO}. This is important if you are looking over
+data using \link[GEOquery:getGEO]{getGEO}. This is important if you are looking over
 \code{geo_info()} given the constraints published at
 \url{https://www.ncbi.nlm.nih.gov/books/NBK25497/}.}
 }

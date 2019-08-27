@@ -1,7 +1,7 @@
 #' Files and URLs hosted by the recount project
 #'
 #' Files and URLs as provided by the recount project. This information is used
-#' internally in \link{download_study}.
+#' internally in [download_study].
 #'
 #' @name recount_url
 #' @docType data
@@ -19,6 +19,6 @@
 #' }
 #'
 #' @keywords datasets
-#' @seealso \link{download_study}
-#' @references \url{https://jhubiostatistics.shinyapps.io/recount/}
+#' @seealso [download_study]
+#' @references <https://jhubiostatistics.shinyapps.io/recount/>
 NULL 

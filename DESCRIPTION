@@ -71,3 +71,4 @@ BugReports: https://support.bioconductor.org/t/recount/
 biocViews: Coverage, DifferentialExpression, GeneExpression, RNASeq, Sequencing,
     Software, DataImport, ImmunoOncology
 RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)

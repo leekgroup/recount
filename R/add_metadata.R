@@ -1,42 +1,42 @@
 #' Add additional curated metadata to a recount rse object
 #'
 #' This function appends sample metadata information to a
-#' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} from the
+#' [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] from the
 #' recount2 project. The sample metadata comes from curated efforts
 #' independent from the original recount2 project. Currently the only
 #' information comes from the recount_brain project described in more detail
-#' at \url{http://lieberinstitute.github.io/recount-brain/}.
+#' at <http://lieberinstitute.github.io/recount-brain/>.
 #'
 #'
-#' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
-#' object as downloaded with \link{download_study}. If this argument is
+#' @param rse A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class]
+#' object as downloaded with [download_study]. If this argument is
 #' not specified, the function will return the raw metadata table.
 #' @param source A valid source name. The only supported options at this
-#' moment are \code{recount_brain_v1} and \code{recount_brain_v2}.
-#' @param is_tcga Set to \code{TRUE} only when \code{rse} is from TCGA.
-#' Otherwise set to \code{FALSE} (default).
-#' @param verbose If \code{TRUE} it will print a message of where the
+#' moment are `recount_brain_v1` and `recount_brain_v2`.
+#' @param is_tcga Set to `TRUE` only when `rse` is from TCGA.
+#' Otherwise set to `FALSE` (default).
+#' @param verbose If `TRUE` it will print a message of where the
 #' predictions file is being downloaded to.
 #'
-#' @return A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
-#' object with the sample metadata columns appended to the \code{colData()}
+#' @return A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class]
+#' object with the sample metadata columns appended to the `colData()`
 #' slot.
 #'
 #' @details
-#' For \code{source = "recount_brain_v1"} and
-#' \code{source = "recount_brain_v2"}, the metadata columns are
-#' described at \url{http://lieberinstitute.github.io/recount-brain/}.
-#' Alternatively, you can explore \code{recount_brain_v2} interactively at
-#' \url{https://jhubiostatistics.shinyapps.io/recount-brain/}.
+#' For `source = "recount_brain_v1"` and
+#' `source = "recount_brain_v2"`, the metadata columns are
+#' described at <http://lieberinstitute.github.io/recount-brain/>.
+#' Alternatively, you can explore `recount_brain_v2` interactively at
+#' <https://jhubiostatistics.shinyapps.io/recount-brain/>.
 #'
 #' If you use the recount_brain data please cite the Razmara et al.
-#' bioRxiv, 2019 \url{https://www.biorxiv.org/content/10.1101/618025v1}.
+#' bioRxiv, 2019 <https://www.biorxiv.org/content/10.1101/618025v1>.
 #' A bib file is available via citation('recount')[5].
 #'
 #'
 #' @references
 #' Razmara et al, bioRxiv, 2019.
-#' \url{https://www.biorxiv.org/content/10.1101/618025v1}
+#' <https://www.biorxiv.org/content/10.1101/618025v1>
 #'
 #' @author Leonardo Collado-Torres
 #' @export

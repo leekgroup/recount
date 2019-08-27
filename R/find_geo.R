@@ -1,15 +1,15 @@
 #' Find the GEO accession id for a given SRA run
 #'
 #' Given a SRA run id, this function will retrieve the GEO accession id
-#' (starting with GSM) if it's available. Otherwise it will return \code{NA}.
+#' (starting with GSM) if it's available. Otherwise it will return `NA`.
 #'
 #' @param run A character vector of length 1 with the SRA run accession id.
 #' @param verbose Whether to print a message for the run. Useful when looping
 #' over a larger number of SRA run ids.
 #' @param sleep The number of seconds (or fraction) to wait before downloading
-#' data using \link[GEOquery]{getGEO}. This is important if you are looking over
-#' \code{geo_info()} given the constraints published at
-#' \url{https://www.ncbi.nlm.nih.gov/books/NBK25497/}.
+#' data using [getGEO][GEOquery::getGEO]. This is important if you are looking over
+#' `geo_info()` given the constraints published at
+#' <https://www.ncbi.nlm.nih.gov/books/NBK25497/>.
 #'
 #' @return The GEO accession id for the corresponding sample.
 #'
@@ -22,7 +22,7 @@
 #' accession ids, not all projects had GEO entries at the time these tables
 #' were created. This function will then be useful to check if there is a GEO
 #' accession id for a given sample (run). If there is, you can then retrieve
-#' the information using \link{geo_info}.
+#' the information using [geo_info].
 #'
 #' @examples
 #' ## Find the GEO accession id for for SRX110461

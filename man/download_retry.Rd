@@ -8,28 +8,28 @@ download_retry(url, destfile = basename(url), mode = "wb",
   N.TRIES = 3L, ...)
 }
 \arguments{
-\item{url}{The URL to download. Passed to \link[downloader]{download}.}
+\item{url}{The URL to download. Passed to \link[downloader:download]{download}.}
 
 \item{destfile}{The destination file. Defaults to the base name of the URL.
-Passed to \link[downloader]{download}.}
+Passed to \link[downloader:download]{download}.}
 
 \item{mode}{Mode for writing the file. The default \code{wb} is used for
-binary files. This value is passed to \link[downloader]{download} which
-passes it to \link[utils]{download.file}.}
+binary files. This value is passed to \link[downloader:download]{download} which
+passes it to \link[utils:download.file]{download.file}.}
 
 \item{N.TRIES}{The number of download attempts before giving up; default: 3.
 Should be an integer of length one with a value greater than 0.}
 
-\item{...}{Additional arguments passed to \link[downloader]{download}.}
+\item{...}{Additional arguments passed to \link[downloader:download]{download}.}
 }
 \value{
 An invisible integer code as specified in
-\link[utils]{download.file}.
+\link[utils:download.file]{download.file}.
 }
 \description{
 This function is based on the Bioconductor guidelines for querying data from
 the web at \url{http://bioconductor.org/developers/how-to/web-query/}. It
-will run \link[downloader]{download} a set of \code{N.TRIES} times before
+will run \link[downloader:download]{download} a set of \code{N.TRIES} times before
 giving up. We implemented this function to reduce the number of Bioconductor
 build errors due to the occassional errors from our data hosting server.
 }

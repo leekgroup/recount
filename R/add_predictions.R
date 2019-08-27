@@ -3,24 +3,24 @@
 #' Shannon Ellis et al (2017) predicted phenotypes based on expression data for
 #' the samples in the recount2 project. Using this function you can add the
 #' predictions to a
-#' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object
-#' to the \code{colData()} slot.
+#' [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] object
+#' to the `colData()` slot.
 #'
-#' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
-#' object as downloaded with \link{download_study}. If this argument is
+#' @param rse A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class]
+#' object as downloaded with [download_study]. If this argument is
 #' not specified, the function will return the full predictions table.
-#' @param is_tcga Set to \code{TRUE} only when \code{rse} is from TCGA.
-#' Otherwise set to \code{FALSE} (default).
+#' @param is_tcga Set to `TRUE` only when `rse` is from TCGA.
+#' Otherwise set to `FALSE` (default).
 #' @param version The version number for the predicted phenotypes data. It has
 #' to match one of the available numbers at
-#' \url{https://github.com/leekgroup/recount-website/blob/master/predictions/}.
+#' <https://github.com/leekgroup/recount-website/blob/master/predictions/>.
 #' Feel free to check if there is a newer version than the default. The version
 #' used is printed as part of the file name.
-#' @param verbose If \code{TRUE} it will print a message of where the
+#' @param verbose If `TRUE` it will print a message of where the
 #' predictions file is being downloaded to.
 #'
-#' @return A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
-#' object with the prediction columns appended to the \code{colData()} slot.
+#' @return A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class]
+#' object with the prediction columns appended to the `colData()` slot.
 #' The predicted phenotypes are:
 #' \describe{
 #' \item{sex }{ male or female,}
@@ -31,8 +31,8 @@
 #' For each of the predicted phenotypes there are several columns as described
 #' next:
 #' \describe{
-#' \item{reported_phenotype }{ \code{NA} when not available,}
-#' \item{predicted_phenotype }{ \code{NA} when we did not predict, "Unassigned"
+#' \item{reported_phenotype }{ `NA` when not available,}
+#' \item{predicted_phenotype }{ `NA` when we did not predict, "Unassigned"
 #' when prediction was ambiguous,}
 #' \item{accuracy_phenotype }{ accuracy is assigned per dataset based on
 #' comparison to samples for which we had reported phenotype information so

@@ -8,9 +8,9 @@ reproduce_ranges(level = "gene", db = "Gencode.v25")
 }
 \arguments{
 \item{level}{Either \code{genes} or \code{exon}. It specifies whether to
-return Gene or exon level information as a 
-\link[GenomicRanges]{GRanges-class} or 
-\link[GenomicRanges]{GRangesList-class} object respectively. The gene level
+return Gene or exon level information as a
+\link[GenomicRanges:GRanges-class]{GRanges-class} or
+\link[GenomicRanges:GRangesList-class]{GRangesList-class} object respectively. The gene level
 information contains the width of the disjoint exons for that given gene
 which can be used to normalize the counts provided by recount.
 Can also be \code{both} in which case a 2 element list with the exon and the
@@ -22,20 +22,20 @@ used when creating recount. EnsDb.Hsapiens.v79 can be used
 for an alternative annotation as showcased in the recount vignette.}
 }
 \value{
-Either a \link[GenomicRanges]{GRanges-class} object like 
-\link{recount_genes} or a \link[GenomicRanges]{GRangesList-class} object 
+Either a \link[GenomicRanges:GRanges-class]{GRanges-class} object like
+\link{recount_genes} or a \link[GenomicRanges:GRangesList-class]{GRangesList-class} object
 like \link{recount_exons}.
 }
 \description{
 This function reproduces the gene or exon level information used for creating
-the \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+the \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 objects provided by recount. The annotation is based on
-Gencode v25 with the gene-level 
-information extracted with \code{genes()} (see 
-\link[GenomicFeatures]{transcripts} with default arguments.
+Gencode v25 with the gene-level
+information extracted with \code{genes()} (see
+\link[GenomicFeatures:transcripts]{transcripts} with default arguments.
 }
 \details{
-For Gencode.v25, we use the comprehensive gene annotation (regions: 
+For Gencode.v25, we use the comprehensive gene annotation (regions:
 \code{CHR}) from \url{https://www.gencodegenes.org/releases/25.html}
 (GRCh38.p7).
 }
@@ -53,8 +53,8 @@ length(recount_genes)
 }
 \seealso{
 \link{recount_genes}, \link{recount_exons},
-    \url{https://github.com/nellore},
-    \url{https://jhubiostatistics.shinyapps.io/recount/}
+\url{https://github.com/nellore},
+\url{https://jhubiostatistics.shinyapps.io/recount/}
 }
 \author{
 Leonardo Collado-Torres
