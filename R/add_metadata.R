@@ -31,7 +31,7 @@
 #'
 #' If you use the recount_brain data please cite the Razmara et al.
 #' bioRxiv, 2019 <https://www.biorxiv.org/content/10.1101/618025v1>.
-#' A bib file is available via citation('recount')[5].
+#' A bib file is available via citation('recount').
 #'
 #'
 #' @references
