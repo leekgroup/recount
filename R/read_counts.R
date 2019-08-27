@@ -5,7 +5,7 @@
 #' or compute the read counts using the area under coverage information (AUC).
 #' We use the AUC because Rail-RNA soft clips some reads.
 #'
-#' @param rse A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] 
+#' @param rse A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class]
 #' object as downloaded with [download_study].
 #' @param use_paired_end A logical vector. When `TRUE` it uses the
 #' paired-end flag (`colData(rse)$paired_end`) to determine whether
@@ -23,14 +23,14 @@
 #' @details
 #' Check the recount workflow for details about the counts provided by
 #' the recount2 project.
-#' Note that this function should not be used after [scale_counts] or it 
+#' Note that this function should not be used after [scale_counts] or it
 #' will return non-sensical results.
 #'
 #' @references
-#' Collado-Torres L, Nellore A and Jaffe AE. recount workflow: Accessing over 
-#' 70,000 human RNA-seq samples with Bioconductor [version 1; referees: 1 
-#' approved, 2 approved with reservations]. F1000Research 2017, 6:1558 
-#' (doi: 10.12688/f1000research.12223.1)
+#' Collado-Torres L, Nellore A and Jaffe AE. recount workflow: Accessing over
+#' 70,000 human RNA-seq samples with Bioconductor version 1; referees: 1
+#' approved, 2 approved with reservations. F1000Research 2017, 6:1558
+#' doi: 10.12688/f1000research.12223.1.
 #'
 #' @author Leonardo Collado-Torres
 #' @export
@@ -39,7 +39,7 @@
 #' @examples
 #'
 #' ## Difference between read counts and reads downloaded by Rail-RNA
-#' colSums(assays(read_counts(rse_gene_SRP009615))$counts) / 1e6 - 
+#' colSums(assays(read_counts(rse_gene_SRP009615))$counts) / 1e6 -
 #'     colData(rse_gene_SRP009615)$reads_downloaded /1e6
 #'
 #' ## Paired-end read counts vs fragment counts (single-end counts)
@@ -49,12 +49,12 @@
 #'     colSums(assays(read_counts(rse_gene))$counts)
 #'
 #' ## Difference between paired-end read counts vs paired-end reads downloaded
-#' colSums(assays(read_counts(rse_gene))$counts) / 1e6 - 
+#' colSums(assays(read_counts(rse_gene))$counts) / 1e6 -
 #'     colData(rse_gene)$reads_downloaded / 1e6 /2
 #'
 
 read_counts <- function(rse, use_paired_end = TRUE, round = FALSE) {
-    
+
     if(use_paired_end) {
         counts <- t(t(assays(rse)$counts) /
             (colData(rse)$auc / (colData(rse)$mapped_read_count /
