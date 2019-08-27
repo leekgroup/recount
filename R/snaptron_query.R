@@ -3,28 +3,28 @@
 #' This function uses the Snaptron API to query specific exon-exon junctions
 #' that are available via Intropolis as described in the vignette.
 #'
-#' @param junctions A \link[GenomicRanges]{GRanges-class} object with the
+#' @param junctions A [GRanges-class][GenomicRanges::GRanges-class] object with the
 #' exon-exon junctions of interest. The chromosome names should be in UCSC
 #' format, such as 'chr1'. The strand information is ignored in the query.
-#' @param version Either \code{srav1}, \code{srav2}, \code{gtex} or 
-#' \code{tcga}. SRA Version 1 of Intropolis has the
+#' @param version Either `srav1`, `srav2`, `gtex` or 
+#' `tcga`. SRA Version 1 of Intropolis has the
 #' exon-exon junctions from about 20 thousand RNA-seq samples in hg19 
 #' coordinates. SRA Version 2 has the data from about 50 thousand RNA-seq 
 #' samples aligned to hg38. GTEx has about 30 million junctions from about 10
 #' thousand samples from the GTEx consortium on hg38 coordinates. Finally,
 #' TCGA has about 36 million junctions from about 11 thousand samples
 #' from the TCGA consortium on hg38 coordinates.
-#' @param verbose If \code{TRUE} status updates will be printed.
-#' @param async Defaults to \code{TRUE} but in some situations it might be
-#' preferrable to set it to \code{FALSE}. This argument gets passed to
-#' \link[RCurl]{getURL}. Check \url{https://github.com/ChristopherWilks/snaptron/issues/11}
+#' @param verbose If `TRUE` status updates will be printed.
+#' @param async Defaults to `TRUE` but in some situations it might be
+#' preferrable to set it to `FALSE`. This argument gets passed to
+#' [getURL][RCurl::getURL]. Check <https://github.com/ChristopherWilks/snaptron/issues/11>
 #' for more details.
 #'
-#' @return A \link[GenomicRanges]{GRanges-class} object with the results from
+#' @return A [GRanges-class][GenomicRanges::GRanges-class] object with the results from
 #' the Snaptron query. For information on the different columns please see
-#' \url{http://snaptron.cs.jhu.edu}.
+#' <http://snaptron.cs.jhu.edu>.
 #'
-#' @references Please cite \url{http://snaptron.cs.jhu.edu}
+#' @references Please cite <http://snaptron.cs.jhu.edu>
 #' if you use this function as Snaptron is a separate project from recount.
 #' Thank you!
 #'

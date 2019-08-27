@@ -9,7 +9,7 @@
 #'
 #' @author Leonardo Collado-Torres
 #' @export
-#' @seealso \link{abstract_search}
+#' @seealso [abstract_search]
 #'
 #' @importFrom utils browseURL
 #'

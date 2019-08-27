@@ -15,33 +15,33 @@ expressed_regions(project, chr, cutoff, outdir = NULL,
 \item{cutoff}{The base-pair level cutoff to use.}
 
 \item{outdir}{The destination directory for the downloaded file(s) that were
-previously downloaded with \link{download_study}. If the files are missing, 
+previously downloaded with \link{download_study}. If the files are missing,
 but \code{outdir} is specified, they will get downloaded first. By default
 \code{outdir} is set to \code{NULL} which will use the data from the web.
 We only recommend downloading the full data if you will use it several times.}
 
 \item{maxClusterGap}{This determines the maximum gap between candidate ERs.}
 
-\item{chrlen}{The chromosome length in base pairs. If it's \code{NULL}, the 
+\item{chrlen}{The chromosome length in base pairs. If it's \code{NULL}, the
 chromosome length is extracted from the Rail-RNA runs GitHub repository.
 Alternatively check the \code{SciServer} section on the vignette to see
 how to access all the recount data via a R Jupyter Notebook.}
 
-\item{verbose}{If \code{TRUE} basic status updates will be printed along the 
+\item{verbose}{If \code{TRUE} basic status updates will be printed along the
 way.}
 
 \item{...}{Additional arguments passed to \link{download_study} when
 \code{outdir} is specified but the required files are missing.}
 }
 \value{
-A \link[GenomicRanges]{GRanges-class} object as created by
-\link[derfinder]{findRegions}.
+A \link[GenomicRanges:GRanges-class]{GRanges-class} object as created by
+\link[derfinder:findRegions]{findRegions}.
 }
 \description{
 This function uses the pre-computed mean coverage for a given SRA project to
 identify the expressed regions (ERs) for a given chromosome. It returns a
-\link[GenomicRanges]{GRanges-class} object with the expressed regions as
-defined by \link[derfinder]{findRegions}.
+\link[GenomicRanges:GRanges-class]{GRanges-class} object with the expressed regions as
+defined by \link[derfinder:findRegions]{findRegions}.
 }
 \examples{
 ## Define expressed regions for study SRP009615, chrY
@@ -62,8 +62,8 @@ single <- unlist(GRangesList(regs))
 
 }
 \seealso{
-\link{download_study}, \link[derfinder]{findRegions},
-\link[derfinder]{railMatrix}
+\link{download_study}, \link[derfinder:findRegions]{findRegions},
+\link[derfinder:railMatrix]{railMatrix}
 }
 \author{
 Leonardo Collado-Torres

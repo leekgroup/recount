@@ -8,7 +8,7 @@ add_predictions(rse, is_tcga = FALSE, version = "latest",
   verbose = TRUE)
 }
 \arguments{
-\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+\item{rse}{A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 object as downloaded with \link{download_study}. If this argument is
 not specified, the function will return the full predictions table.}
 
@@ -25,7 +25,7 @@ used is printed as part of the file name.}
 predictions file is being downloaded to.}
 }
 \value{
-A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 object with the prediction columns appended to the \code{colData()} slot.
 The predicted phenotypes are:
 \describe{
@@ -50,7 +50,7 @@ studies.}
 Shannon Ellis et al (2017) predicted phenotypes based on expression data for
 the samples in the recount2 project. Using this function you can add the
 predictions to a
-\link[SummarizedExperiment]{RangedSummarizedExperiment-class} object
+\link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class} object
 to the \code{colData()} slot.
 }
 \details{

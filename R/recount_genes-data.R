@@ -5,12 +5,12 @@
 #' to the version from January 17th, 2017.
 #' It includes the sum of the width of the disjoint exons which can be
 #' used for normalizing the counts provided in the 
-#' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} objects.
+#' [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] objects.
 #'
 #' @name recount_genes
 #' @docType data
-#' @format A \link[GenomicRanges]{GRanges-class} with one range per gene. The 
-#' names match their Gencode v25 ids. The \link[GenomicRanges]{GRanges-class}
+#' @format A [GRanges-class][GenomicRanges::GRanges-class] with one range per gene. The 
+#' names match their Gencode v25 ids. The [GRanges-class][GenomicRanges::GRanges-class]
 #' has three metadata columns.
 #' \describe{
 #'     \item{gene_id }{  the Gencode v25 ids, identical to the names.}
@@ -19,6 +19,6 @@
 #'     \item{symbol }{ a CharacterList with the corresponding gene symbols.}
 #' }
 #' @keywords datasets
-#' @seealso \link{reproduce_ranges}, \link{recount_exons}
-#' @references \url{https://jhubiostatistics.shinyapps.io/recount/}
+#' @seealso [reproduce_ranges], [recount_exons]
+#' @references <https://jhubiostatistics.shinyapps.io/recount/>
 NULL

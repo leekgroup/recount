@@ -3,20 +3,20 @@
 #' This function uses GEOquery to extract information for a given sample. The
 #' GEO accession ids for the sample can be found in the study phenotype table.
 #'
-#' @return Returns a \link[S4Vectors]{DataFrame-class} with the information
+#' @return Returns a [DataFrame-class][S4Vectors::DataFrame-class] with the information
 #' from GEO available for the given sample.
 #'
 #' @param geoid A character vector of length 1 with the GEO accession id for
 #' a given sample.
-#' @param verbose If \code{TRUE} the \code{geoid} will be shown.
+#' @param verbose If `TRUE` the `geoid` will be shown.
 #' @param sleep The number of seconds (or fraction) to wait before downloading
-#' data using \link[GEOquery]{getGEO}. This is important if you are looking over
-#' \code{geo_info()} given the constraints published at
-#' \url{https://www.ncbi.nlm.nih.gov/books/NBK25497/}.
-#' @param getGPL This argument is passed to \link[GEOquery]{getGEO} and is set
-#' to \code{FALSE} by default to speed up the process.
-#' @param destdir This argument is passed to \link[GEOquery]{getGEO}.
-#' @param ... Additional arguments passed to \link[GEOquery]{getGEO}.
+#' data using [getGEO][GEOquery::getGEO]. This is important if you are looking over
+#' `geo_info()` given the constraints published at
+#' <https://www.ncbi.nlm.nih.gov/books/NBK25497/>.
+#' @param getGPL This argument is passed to [getGEO][GEOquery::getGEO] and is set
+#' to `FALSE` by default to speed up the process.
+#' @param destdir This argument is passed to [getGEO][GEOquery::getGEO].
+#' @param ... Additional arguments passed to [getGEO][GEOquery::getGEO].
 #'
 #' @author Leonardo Collado-Torres, Andrew Jaffe
 #' @export

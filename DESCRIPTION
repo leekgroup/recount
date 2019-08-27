@@ -1,7 +1,7 @@
 Package: recount
 Title: Explore and download data from the recount project
-Version: 1.11.8
-Date: 2019-07-01
+Version: 1.11.9
+Date: 2019-08-27
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "lcolladotor@gmail.com", comment = c(ORCID = "0000-0003-2140-308X")),
     person("Abhinav", "Nellore", role = "ctb",
@@ -71,3 +71,4 @@ BugReports: https://support.bioconductor.org/t/recount/
 biocViews: Coverage, DifferentialExpression, GeneExpression, RNASeq, Sequencing,
     Software, DataImport, ImmunoOncology
 RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)

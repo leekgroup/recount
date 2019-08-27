@@ -6,37 +6,37 @@
 #' into account the read length or simply the total coverage for the given
 #' sample (default option). You might want to do some further scaling to take
 #' into account the gene or exon lengths. If you prefer to calculate read counts
-#' without scaling check the function \link{read_counts}.
+#' without scaling check the function [read_counts].
 #'
-#' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
-#' object as downloaded with \link{download_study}.
-#' @param by Either \code{auc} or \code{mapped_reads}. If set to \code{auc} it 
+#' @param rse A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] 
+#' object as downloaded with [download_study].
+#' @param by Either `auc` or `mapped_reads`. If set to `auc` it 
 #' will scale the counts by the total coverage of the sample. That is, the area
-#' under the curve (AUC) of the coverage. If set to \code{mapped_reads} it will
+#' under the curve (AUC) of the coverage. If set to `mapped_reads` it will
 #' scale the counts by the number of mapped reads, whether the library was
-#' paired-end or not, and the desired read length (\code{L}).
+#' paired-end or not, and the desired read length (`L`).
 #' @param targetSize The target library size in number of single end reads.
-#' @param L The target read length. Only used when \code{by = 'mapped_reads'}
-#' since it cancels out in the calculation when using \code{by = 'auc'}.
+#' @param L The target read length. Only used when `by = 'mapped_reads'`
+#' since it cancels out in the calculation when using `by = 'auc'`.
 #' @param factor_only Whether to only return the numeric scaling factor or
-#' to return a \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
-#' object with the counts scaled. If set to \code{TRUE}, you have to multiply 
+#' to return a [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] 
+#' object with the counts scaled. If set to `TRUE`, you have to multiply 
 #' the sample counts by this scaling factor.
 #' @param round Whether to round the counts to integers or not.
 #'
-#' @return If \code{factor_only = TRUE} it returns a numeric vector with the
-#' scaling factor for each sample. If \code{factor_only = FALSE} it returns a
-#' \link[SummarizedExperiment]{RangedSummarizedExperiment-class} object with
+#' @return If `factor_only = TRUE` it returns a numeric vector with the
+#' scaling factor for each sample. If `factor_only = FALSE` it returns a
+#' [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] object with
 #' the counts already scaled.
 #'
-#' @details Rail-RNA \url{http://rail.bio} uses soft clipping when aligning
-#' which is why we recommed using \code{by = 'auc'}.
+#' @details Rail-RNA <http://rail.bio> uses soft clipping when aligning
+#' which is why we recommed using `by = 'auc'`.
 #'
-#' If the reads are from a paired-end library, then the \code{avg_read_length}
+#' If the reads are from a paired-end library, then the `avg_read_length`
 #' is the average fragment length. This is taken into account when using
-#' \code{by = 'mapped_reads'}.
+#' `by = 'mapped_reads'`.
 #'
-#' @seealso \link{download_study}, \link{read_counts}
+#' @seealso [download_study], [read_counts]
 #'
 #' @importFrom methods is
 #'

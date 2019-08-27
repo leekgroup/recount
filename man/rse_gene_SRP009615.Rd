@@ -4,11 +4,11 @@
 \name{rse_gene_SRP009615}
 \alias{rse_gene_SRP009615}
 \title{RangedSummarizedExperiment at the gene level for study SRP009615}
-\format{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} as 
-created by the recount project for study with SRA id (accession number) 
+\format{A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class} as
+created by the recount project for study with SRA id (accession number)
 SRP009615.}
 \description{
-\link[SummarizedExperiment]{RangedSummarizedExperiment-class} at the gene 
+\link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class} at the gene
 level for study SRP009615. Used as an example in \link{scale_counts}.
 Matches the version2 file
 (details at \url{https://jhubiostatistics.shinyapps.io/recount/}) under the

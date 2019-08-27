@@ -8,9 +8,10 @@
 #'
 #' @details Taken from the regionReport package
 #' Updated after feedback from Marcel Ramos at
-#' \url{https://github.com/leekgroup/recount/issues/14}
+#' <https://github.com/leekgroup/recount/issues/14>
 #'
 #' @author Leonardo Collado-Torres
+#' @noRd
 #'
 
 .load_check <- function(pkg) {

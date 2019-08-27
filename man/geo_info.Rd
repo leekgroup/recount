@@ -14,19 +14,19 @@ a given sample.}
 \item{verbose}{If \code{TRUE} the \code{geoid} will be shown.}
 
 \item{sleep}{The number of seconds (or fraction) to wait before downloading
-data using \link[GEOquery]{getGEO}. This is important if you are looking over
+data using \link[GEOquery:getGEO]{getGEO}. This is important if you are looking over
 \code{geo_info()} given the constraints published at
 \url{https://www.ncbi.nlm.nih.gov/books/NBK25497/}.}
 
-\item{getGPL}{This argument is passed to \link[GEOquery]{getGEO} and is set
+\item{getGPL}{This argument is passed to \link[GEOquery:getGEO]{getGEO} and is set
 to \code{FALSE} by default to speed up the process.}
 
-\item{destdir}{This argument is passed to \link[GEOquery]{getGEO}.}
+\item{destdir}{This argument is passed to \link[GEOquery:getGEO]{getGEO}.}
 
-\item{...}{Additional arguments passed to \link[GEOquery]{getGEO}.}
+\item{...}{Additional arguments passed to \link[GEOquery:getGEO]{getGEO}.}
 }
 \value{
-Returns a \link[S4Vectors]{DataFrame-class} with the information 
+Returns a \link[S4Vectors:DataFrame-class]{DataFrame-class} with the information
 from GEO available for the given sample.
 }
 \description{

@@ -14,7 +14,7 @@ which metadata file to download.}
 being downloaded to.}
 }
 \value{
-A \link[S4Vectors]{DataFrame-class} object with the phenotype
+A \link[S4Vectors:DataFrame-class]{DataFrame-class} object with the phenotype
 metadata.
 }
 \description{
@@ -29,10 +29,12 @@ GTEx_Data_V6_Annotations_SampleAttributesDS.txt available at
 information describing these variables.
 
 For TCGA we acquired metadata information from 3 different sources:
-- GDC: via a json query
-- CGC: via json queries and a custom script to merge the tables
-- TCGAbiolinks: we used to to parse GDC's XML files
+\itemize{
+\item GDC: via a json query
+\item CGC: via json queries and a custom script to merge the tables
+\item TCGAbiolinks: we used to to parse GDC's XML files
 For more information, check \url{https://github.com/leekgroup/recount-website/tree/master/metadata/tcga_prep}.
+}
 }
 \examples{
 

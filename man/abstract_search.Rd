@@ -8,12 +8,12 @@ abstract_search(query, id_only = FALSE, ...)
 }
 \arguments{
 \item{query}{A character vector with the text to search for via
-\link[base]{grep} in the abstract info available at \link{recount_abstract}.}
+\link[base:grep]{grep} in the abstract info available at \link{recount_abstract}.}
 
 \item{id_only}{Whether to only return the project id or to return summary
 information for the project(s) that match the query.}
 
-\item{...}{Additional arguments passed to \link[base]{grep}.}
+\item{...}{Additional arguments passed to \link[base:grep]{grep}.}
 }
 \value{
 If \code{id_only = TRUE} it returns a character vector with the

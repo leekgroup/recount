@@ -7,11 +7,11 @@
 geo_characteristics(pheno)
 }
 \arguments{
-\item{pheno}{A \link[S4Vectors]{DataFrame-class} as created by
+\item{pheno}{A \link[S4Vectors:DataFrame-class]{DataFrame-class} as created by
 \link{geo_info}.}
 }
 \value{
-A 1 row data.frame with the characteristic fields as column names 
+A 1 row data.frame with the characteristic fields as column names
 and the values as the entries on the first row. If the authors of the study
 used the same names for all samples, you can then combine them using
 \link[base:cbind]{rbind}.

@@ -14,48 +14,48 @@ coverage_matrix(project, chr, regions, chunksize = 1000,
 
 \item{chr}{A character vector with the name of the chromosome.}
 
-\item{regions}{A \link[GenomicRanges]{GRanges-class} object with regions
+\item{regions}{A \link[GenomicRanges:GRanges-class]{GRanges-class} object with regions
 for \code{chr} for which to calculate the coverage matrix.}
 
 \item{chunksize}{A single integer vector defining the chunksize to use for
 computing the coverage matrix. Regions will be split into different chunks
-which can be useful when using a parallel instance as defined by 
+which can be useful when using a parallel instance as defined by
 \code{bpparam}.}
 
-\item{bpparam}{A \link[BiocParallel]{BiocParallelParam-class} instance which
-will be used to calculate the coverage matrix in parallel. By default, 
-\link[BiocParallel]{SerialParam-class} will be used.}
+\item{bpparam}{A \link[BiocParallel:BiocParallelParam-class]{BiocParallelParam-class} instance which
+will be used to calculate the coverage matrix in parallel. By default,
+\link[BiocParallel:SerialParam-class]{SerialParam-class} will be used.}
 
 \item{outdir}{The destination directory for the downloaded file(s) that were
-previously downloaded with \link{download_study}. If the files are missing, 
+previously downloaded with \link{download_study}. If the files are missing,
 but \code{outdir} is specified, they will get downloaded first. By default
 \code{outdir} is set to \code{NULL} which will use the data from the web.
 We only recommend downloading the full data if you will use it several times.}
 
-\item{chrlen}{The chromosome length in base pairs. If it's \code{NULL}, the 
+\item{chrlen}{The chromosome length in base pairs. If it's \code{NULL}, the
 chromosome length is extracted from the Rail-RNA runs GitHub repository.
 Alternatively check the \code{SciServer} section on the vignette to see
 how to access all the recount data via a R Jupyter Notebook.}
 
-\item{verbose}{If \code{TRUE} basic status updates will be printed along the 
+\item{verbose}{If \code{TRUE} basic status updates will be printed along the
 way.}
 
 \item{verboseLoad}{If \code{TRUE} basic status updates for loading the data
 will be printed.}
 
-\item{scale}{If \code{TRUE}, the coverage counts will be scaled to read 
-counts based on a library size of 40 million reads. Set \code{scale} to 
+\item{scale}{If \code{TRUE}, the coverage counts will be scaled to read
+counts based on a library size of 40 million reads. Set \code{scale} to
 \code{FALSE} if you want the raw coverage counts. The scaling method is by
 AUC, as in the default option of \link{scale_counts}.}
 
-\item{round}{If \code{TRUE}, the counts are rounded to integers. Set to 
+\item{round}{If \code{TRUE}, the counts are rounded to integers. Set to
 \code{TRUE} if you want to match the defaults of \link{scale_counts}.}
 
 \item{...}{Additional arguments passed to \link{download_study} when
 \code{outdir} is specified but the required files are missing.}
 }
 \value{
-A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 object with the counts stored in the assays slot.
 }
 \description{
@@ -95,8 +95,8 @@ if(.Platform$OS.type != 'windows') {
 
 }
 \seealso{
-\link{download_study}, \link[derfinder]{findRegions},
-\link[derfinder]{railMatrix}
+\link{download_study}, \link[derfinder:findRegions]{findRegions},
+\link[derfinder:railMatrix]{railMatrix}
 }
 \author{
 Leonardo Collado-Torres

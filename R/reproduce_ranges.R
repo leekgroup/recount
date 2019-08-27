@@ -1,33 +1,33 @@
 #' Reproduce the gene or exons used in the RangedSummarizedExperiment objects
 #'
 #' This function reproduces the gene or exon level information used for creating
-#' the \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+#' the [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class]
 #' objects provided by recount. The annotation is based on
 #' Gencode v25 with the gene-level
-#' information extracted with \code{genes()} (see
-#' \link[GenomicFeatures]{transcripts} with default arguments.
+#' information extracted with `genes()` (see
+#' [transcripts][GenomicFeatures::transcripts] with default arguments.
 #'
-#' @param level Either \code{genes} or \code{exon}. It specifies whether to
+#' @param level Either `genes` or `exon`. It specifies whether to
 #' return Gene or exon level information as a
-#' \link[GenomicRanges]{GRanges-class} or
-#' \link[GenomicRanges]{GRangesList-class} object respectively. The gene level
+#' [GRanges-class][GenomicRanges::GRanges-class] or
+#' [GRangesList-class][GenomicRanges::GRangesList-class] object respectively. The gene level
 #' information contains the width of the disjoint exons for that given gene
 #' which can be used to normalize the counts provided by recount.
-#' Can also be \code{both} in which case a 2 element list with the exon and the
+#' Can also be `both` in which case a 2 element list with the exon and the
 #' gene output is returned.
-#' @param db Either \code{Gencode.v25} (default) or
-#' \code{EnsDb.Hsapiens.v79}. The default option reproduces the annotation
+#' @param db Either `Gencode.v25` (default) or
+#' `EnsDb.Hsapiens.v79`. The default option reproduces the annotation
 #' used when creating recount. EnsDb.Hsapiens.v79 can be used
 #' for an alternative annotation as showcased in the recount vignette.
 #'
-#' @return Either a \link[GenomicRanges]{GRanges-class} object like
-#' \link{recount_genes} or a \link[GenomicRanges]{GRangesList-class} object
-#' like \link{recount_exons}.
+#' @return Either a [GRanges-class][GenomicRanges::GRanges-class] object like
+#' [recount_genes] or a [GRangesList-class][GenomicRanges::GRangesList-class] object
+#' like [recount_exons].
 #'
 #' @details
 #'
 #' For Gencode.v25, we use the comprehensive gene annotation (regions:
-#' \code{CHR}) from \url{https://www.gencodegenes.org/releases/25.html}
+#' `CHR`) from <https://www.gencodegenes.org/releases/25.html>
 #' (GRCh38.p7).
 #'
 #' @author Leonardo Collado-Torres
@@ -35,9 +35,9 @@
 #'
 #' @import GenomicRanges
 #'
-#' @seealso \link{recount_genes}, \link{recount_exons},
-#'     \url{https://github.com/nellore},
-#'     \url{https://jhubiostatistics.shinyapps.io/recount/}
+#' @seealso [recount_genes], [recount_exons],
+#'     <https://github.com/nellore>,
+#'     <https://jhubiostatistics.shinyapps.io/recount/>
 #'
 #' @examples
 #'

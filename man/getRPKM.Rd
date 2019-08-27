@@ -7,7 +7,7 @@
 getRPKM(rse, length_var = "bp_length", mapped_var = NULL)
 }
 \arguments{
-\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
+\item{rse}{A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 object as downloaded with \link{download_study}.}
 
 \item{length_var}{A length 1 character vector with the column name from

@@ -3,26 +3,26 @@
 #' For some analyses you might be interested in transforming the counts into
 #' RPKMs which you can do with this fucntion.
 #'
-#' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class} 
-#' object as downloaded with \link{download_study}.
+#' @param rse A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] 
+#' object as downloaded with [download_study].
 #' @param length_var A length 1 character vector with the column name from
-#' \code{rowData(rse)} that has the coding length. For gene level objects
-#' from recount this is \code{bp_length}. If \code{NULL}, then it will use
-#' \code{width(rowRanges(rse))} which should be used for exon RSEs.
+#' `rowData(rse)` that has the coding length. For gene level objects
+#' from recount this is `bp_length`. If `NULL`, then it will use
+#' `width(rowRanges(rse))` which should be used for exon RSEs.
 #' @param mapped_var A length 1 character vector with the column name from
-#' \code{colData(rse)} that has the number of reads mapped. For recount RSE
-#' object this would be \code{mapped_read_count}. If \code{NULL} (default)
+#' `colData(rse)` that has the number of reads mapped. For recount RSE
+#' object this would be `mapped_read_count`. If `NULL` (default)
 #' then it will use the column sums of the counts matrix. The results are
 #' different because not all mapped reads are mapped to exonic segments of the
 #' genome.
 #'
 #' @return A matrix with the RPKM values.
 #'
-#' @details For gene RSE objects, you will want to specify the \code{length_var}
+#' @details For gene RSE objects, you will want to specify the `length_var`
 #' because otherwise you will be adjusting for the total gene length instead
 #' of the total exonic sequence length of the gene.
 #'
-#' @seealso \link{scale_counts}
+#' @seealso [scale_counts]
 #'
 #' @author Andrew Jaffe, Leonardo Collado-Torres
 #' @export

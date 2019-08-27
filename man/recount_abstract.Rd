@@ -6,11 +6,11 @@
 \title{Summary information at the project level for the recount project}
 \format{A data.frame with 4 columns.
 \describe{
-    \item{number_samples }{ the number of samples in the study,}
-    \item{species }{ the species of the study,}
-    \item{abstract }{ the abstract text as provided by the SRAdb Bioconductor
-    package,}
-    \item{project }{ the SRA project id.}
+\item{number_samples }{ the number of samples in the study,}
+\item{species }{ the species of the study,}
+\item{abstract }{ the abstract text as provided by the SRAdb Bioconductor
+package,}
+\item{project }{ the SRA project id.}
 }}
 \description{
 A data.frame with summary information at the project level for the studies

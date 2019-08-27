@@ -4,7 +4,7 @@
 \name{recount_exons}
 \alias{recount_exons}
 \title{Exon annotation used in recount}
-\format{A \link[GenomicRanges]{GRangesList-class} with one element per 
+\format{A \link[GenomicRanges:GRangesList-class]{GRangesList-class} with one element per
 gene. The names match the gene Gencode v25 ids.}
 \description{
 Exon annotation extracted from Gencode v25 (GRCh38.p7) used in recount.

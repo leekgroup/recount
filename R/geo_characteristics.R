@@ -5,13 +5,13 @@
 #' names. For a given SRA project, this information can be combined for all
 #' samples as shown in the examples section.
 #'
-#' @param pheno A \link[S4Vectors]{DataFrame-class} as created by
-#' \link{geo_info}.
+#' @param pheno A [DataFrame-class][S4Vectors::DataFrame-class] as created by
+#' [geo_info].
 #'
 #' @return A 1 row data.frame with the characteristic fields as column names 
 #' and the values as the entries on the first row. If the authors of the study
 #' used the same names for all samples, you can then combine them using
-#' \link[base:cbind]{rbind}. 
+#' [rbind][base::cbind]. 
 #' 
 #' @author Leonardo Collado-Torres
 #' @export

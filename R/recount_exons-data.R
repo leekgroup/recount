@@ -5,10 +5,10 @@
 #'
 #' @name recount_exons
 #' @docType data
-#' @format A \link[GenomicRanges]{GRangesList-class} with one element per 
+#' @format A [GRangesList-class][GenomicRanges::GRangesList-class] with one element per 
 #' gene. The names match the gene Gencode v25 ids.
 #'
 #' @keywords datasets
-#' @seealso \link{reproduce_ranges}, \link{recount_genes}
-#' @references \url{https://jhubiostatistics.shinyapps.io/recount/}
+#' @seealso [reproduce_ranges], [recount_genes]
+#' @references <https://jhubiostatistics.shinyapps.io/recount/>
 NULL
