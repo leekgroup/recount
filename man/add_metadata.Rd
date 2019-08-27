@@ -43,7 +43,7 @@ Alternatively, you can explore \code{recount_brain_v2} interactively at
 
 If you use the recount_brain data please cite the Razmara et al.
 bioRxiv, 2019 \url{https://www.biorxiv.org/content/10.1101/618025v1}.
-A bib file is available via citation('recount')\link{5}.
+A bib file is available via citation('recount').
 }
 \examples{
 
