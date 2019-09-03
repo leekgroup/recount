@@ -27,7 +27,7 @@ A matrix with the RPKM values.
 }
 \description{
 For some analyses you might be interested in transforming the counts into
-RPKMs which you can do with this fucntion.
+RPKMs which you can do with this function.
 }
 \details{
 For gene RSE objects, you will want to specify the \code{length_var}
