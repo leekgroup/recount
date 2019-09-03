@@ -43,7 +43,7 @@ geodata <- do.call(rbind, sapply(geoids, geo_info))
 ## Add characteristics in a way that we can access easily later on
 geodata <- cbind(geodata, geo_characteristics(geodata))
 
-## Explore the original characteristics and the result from 
+## Explore the original characteristics and the result from
 ## geo_characteristics()
 geodata[, c('characteristics', 'cells', 'shrna.expression', 'treatment')]
 

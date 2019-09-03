@@ -1,9 +1,9 @@
 #' Compute an RPKM matrix based on a RangedSummarizedExperiment object
 #'
 #' For some analyses you might be interested in transforming the counts into
-#' RPKMs which you can do with this fucntion.
+#' RPKMs which you can do with this function.
 #'
-#' @param rse A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] 
+#' @param rse A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class]
 #' object as downloaded with [download_study].
 #' @param length_var A length 1 character vector with the column name from
 #' `rowData(rse)` that has the coding length. For gene level objects
@@ -45,11 +45,11 @@
 
 getRPKM <- function(rse, length_var = 'bp_length', mapped_var = NULL) {
     mapped <- if(!is.null(mapped_var)) colData(rse)[, mapped_var] else colSums(assays(rse)$counts)
-        
+
     bg <- matrix(mapped, ncol = ncol(rse), nrow = nrow(rse), byrow = TRUE)
-    
+
     len <- if(!is.null(length_var)) rowData(rse)[, length_var] else width(rowRanges(rse))
-    
+
     wid <- matrix(len, nrow = nrow(rse), ncol = ncol(rse), byrow = FALSE)
     assays(rse)$counts / (wid/1000) / (bg/1e6)
 }
