@@ -19,8 +19,10 @@ Get R 3.5.x from [CRAN](http://cran.r-project.org/).
 
 ```R
 ## From Bioconductor
-install.packages("BiocManager")
-BiocManager::install('recount')
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("recount")
 
 ## Suggested:
 BiocManager::install(c('derfinder', 'DESeq2'))
