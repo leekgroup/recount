@@ -38,6 +38,10 @@ information extracted with \code{genes()} (see
 For Gencode.v25, we use the comprehensive gene annotation (regions:
 \code{CHR}) from \url{https://www.gencodegenes.org/releases/25.html}
 (GRCh38.p7).
+
+Note that gene symbols have changed over time. This answer in the
+Bioconductor support forum details how to obtain the latest gene symbol
+mappings: \url{https://support.bioconductor.org/p/126148/#126173}.
 }
 \examples{
 
