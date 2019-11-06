@@ -30,6 +30,10 @@
 #' `CHR`) from <https://www.gencodegenes.org/releases/25.html>
 #' (GRCh38.p7).
 #'
+#' Note that gene symbols have changed over time. This answer in the
+#' Bioconductor support forum details how to obtain the latest gene symbol
+#' mappings: <https://support.bioconductor.org/p/126148/#126173>.
+#'
 #' @author Leonardo Collado-Torres
 #' @export
 #'

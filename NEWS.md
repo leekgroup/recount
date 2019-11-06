@@ -1,3 +1,9 @@
+# recount 1.12.1
+
+* Mention in `reproduce_ranges()` the link to
+https://support.bioconductor.org/p/126148/#126173 which shows how to update
+the gene symbols in the RSE objects in recount.
+
 # recount 1.11.14
 
 * Added a `NEWS.md` file to track changes to the package.
