@@ -140,8 +140,10 @@ jobs:
 
       - name: BiocCheck
         run: |
-          R CMD BiocCheck --no-check-R-ver --no-check-bioc-help check/*.tar.gz
-        ## For more options check http://bioconductor.org/packages/release/bioc/vignettes/BiocCheck/inst/doc/BiocCheck.html
+          ## This syntax works on Windows as well as other OS
+          BiocCheck::BiocCheck(dir('check', 'tar.gz$', full.names = TRUE), `no-check-R-ver` = TRUE, `no-check-bioc-help` = TRUE)
+          ## For more options check http://bioconductor.org/packages/release/bioc/vignettes/BiocCheck/inst/doc/BiocCheck.html
+        shell: Rscript {0}
 
       - name: Install covr
         if: github.ref == 'refs/heads/master' && env.run_covr == 'true'
