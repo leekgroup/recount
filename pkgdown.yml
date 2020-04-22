@@ -1,0 +1,8 @@
+pandoc: 2.7.3
+pkgdown: 1.5.1
+pkgdown_sha: ~
+articles:
+  SRP009615-results: fakeVignettes/SRP009615-results.html
+  recount-quickstart: recount-quickstart.html
+last_built: 2020-04-22T00:12Z
+

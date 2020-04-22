@@ -1,0 +1,13 @@
+file	md5sum	size
+counts_exon.tsv.gz	c85e4d1ae655261a5f1090f598ef139b	659
+counts_gene.tsv.gz	1bfb647874bc957bfe7fae47f5f542b6	293
+rse_exon.Rdata	a77ac5045cb59585806ac6fc0645c5e8	4196
+rse_gene.Rdata	1ddab3b08b734daf00e1b16d13c1e934	1756
+counts_jx.tsv.gz	0488e18b57102b59fef4e1c86b6cfeaf	65
+rse_jx.Rdata	75c856f45ea05139fae1dca28e50a5e3	2761
+rse_tx.RData	ad21ae6dfb6c952873a4cb9efc6402d9	13556
+DRP000366.tsv	cb793df1eb740bba28a04b99c6b9d676	10
+mean_DRP000366.bw	d1293695dd1ceeee0dcca30ccb36afbe	109533
+DRR000897.bw	29d1125a26055da6d9a8c889d824aae2	50539
+DRP000366.junction_id_with_transcripts.bed.gz	6633785ed0f8d48fddffe75a6861f0ee	2048
+DRP000366.junction_coverage.tsv.gz	0706ac5440d47ad0ebd76bf57064a690	403
