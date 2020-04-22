@@ -4,8 +4,14 @@
 \alias{geo_info}
 \title{Extract information from GEO for a given sample}
 \usage{
-geo_info(geoid, verbose = FALSE, sleep = 1/2, getGPL = FALSE,
-  destdir = tempdir(), ...)
+geo_info(
+  geoid,
+  verbose = FALSE,
+  sleep = 1/2,
+  getGPL = FALSE,
+  destdir = tempdir(),
+  ...
+)
 }
 \arguments{
 \item{geoid}{A character vector of length 1 with the GEO accession id for
@@ -34,8 +40,7 @@ This function uses GEOquery to extract information for a given sample. The
 GEO accession ids for the sample can be found in the study phenotype table.
 }
 \examples{
-geo_info('GSM836270')
-
+geo_info("GSM836270")
 }
 \author{
 Leonardo Collado-Torres, Andrew Jaffe

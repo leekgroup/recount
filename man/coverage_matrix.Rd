@@ -5,9 +5,20 @@
 \title{Given a set of regions for a chromosome, compute the coverage matrix for a
 given SRA study.}
 \usage{
-coverage_matrix(project, chr, regions, chunksize = 1000,
-  bpparam = NULL, outdir = NULL, chrlen = NULL, verbose = TRUE,
-  verboseLoad = verbose, scale = TRUE, round = FALSE, ...)
+coverage_matrix(
+  project,
+  chr,
+  regions,
+  chunksize = 1000,
+  bpparam = NULL,
+  outdir = NULL,
+  chrlen = NULL,
+  verbose = TRUE,
+  verboseLoad = verbose,
+  scale = TRUE,
+  round = FALSE,
+  ...
+)
 }
 \arguments{
 \item{project}{A character vector with one SRA study id.}
@@ -80,19 +91,20 @@ Note that you will need to run \link{scale_counts} after running
 }
 \examples{
 
-if(.Platform$OS.type != 'windows') {
-## Reading BigWig files is not supported by rtracklayer on Windows
+if (.Platform$OS.type != "windows") {
+    ## Reading BigWig files is not supported by rtracklayer on Windows
     ## Define expressed regions for study DRP002835, chrY
-    regions <- expressed_regions('DRP002835', 'chrY', cutoff = 5L, 
-        maxClusterGap = 3000L)
+    regions <- expressed_regions("DRP002835", "chrY",
+        cutoff = 5L,
+        maxClusterGap = 3000L
+    )
 
     ## Now calculate the coverage matrix for this study
-    rse <- coverage_matrix('DRP002835', 'chrY', regions)
+    rse <- coverage_matrix("DRP002835", "chrY", regions)
 
     ## One row per region
     identical(length(regions), nrow(rse))
 }
-
 }
 \seealso{
 \link{download_study}, \link[derfinder:findRegions]{findRegions},

@@ -4,8 +4,7 @@
 \alias{add_predictions}
 \title{Add predicted phenotypes to a recount rse object}
 \usage{
-add_predictions(rse, is_tcga = FALSE, version = "latest",
-  verbose = TRUE)
+add_predictions(rse, is_tcga = FALSE, version = "latest", verbose = TRUE)
 }
 \arguments{
 \item{rse}{A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
@@ -69,7 +68,6 @@ colData(rse_gene)
 
 ## Download all the latest predictions
 PredictedPhenotypes <- add_predictions()
-
 }
 \references{
 Ellis et al, bioRxiv, 2017.

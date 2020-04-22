@@ -54,22 +54,22 @@
 #' length(recount_genes)
 #' }
 #'
-
-reproduce_ranges <- function(level = 'gene', db = 'Gencode.v25') {
+reproduce_ranges <- function(level = "gene", db = "Gencode.v25") {
     ## Check input
     level <- tolower(level)
-    stopifnot(level %in% c('gene', 'exon', 'both'))
-    stopifnot(db %in% c('Gencode.v25', 'EnsDb.Hsapiens.v79'))
+    stopifnot(level %in% c("gene", "exon", "both"))
+    stopifnot(db %in% c("Gencode.v25", "EnsDb.Hsapiens.v79"))
 
 
 
     ## Load required packages
-    .load_check(c('GenomicFeatures', 'org.Hs.eg.db'))
-    if (db == 'Gencode.v25') {
-            txdb <- GenomicFeatures::makeTxDbFromGFF('ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_25/gencode.v25.annotation.gff3.gz',
-            format = 'gff3', organism = 'Homo sapiens')
-    } else if(db == 'EnsDb.Hsapiens.v79') {
-        .load_check('EnsDb.Hsapiens.v79')
+    .load_check(c("GenomicFeatures", "org.Hs.eg.db"))
+    if (db == "Gencode.v25") {
+        txdb <- GenomicFeatures::makeTxDbFromGFF("ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_25/gencode.v25.annotation.gff3.gz",
+            format = "gff3", organism = "Homo sapiens"
+        )
+    } else if (db == "EnsDb.Hsapiens.v79") {
+        .load_check("EnsDb.Hsapiens.v79")
         txdb <- EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79
     }
 
@@ -77,38 +77,42 @@ reproduce_ranges <- function(level = 'gene', db = 'Gencode.v25') {
     genes <- GenomicFeatures::genes(txdb)
 
     ## Get Exons
-    exons <- GenomicFeatures::exonsBy(txdb, by = 'gene')
+    exons <- GenomicFeatures::exonsBy(txdb, by = "gene")
 
     ## Keep only exons for gene ids that we selected previously
-    if(!all(names(exons) %in% names(genes))) {
-        warning('Dropping exons with gene ids not present in the gene list')
+    if (!all(names(exons) %in% names(genes))) {
+        warning("Dropping exons with gene ids not present in the gene list")
         exons <- exons[names(exons) %in% names(genes)]
     }
 
     ## Disjoin exons by gene so the exons won't be overlapping each other inside a gene
     exons <- GenomicRanges::disjoin(exons)
 
-    if(level == 'exon') return(exons)
+    if (level == "exon") {
+        return(exons)
+    }
 
     ## For 'gene' or 'both', continue by:
     ## * adding length of disjoint exons by gene
     genes$bp_length <- sum(GenomicRanges::width(exons))
 
     ## * adding gene symbol
-    if(db == 'Gencode.v25') {
+    if (db == "Gencode.v25") {
         gene_info <- AnnotationDbi::mapIds(org.Hs.eg.db::org.Hs.eg.db,
-            gsub('\\..*', '', names(genes)), 'SYMBOL', 'ENSEMBL',
-            multiVals = 'CharacterList')
-    } else if(db == 'EnsDb.Hsapiens.v79') {
+            gsub("\\..*", "", names(genes)), "SYMBOL", "ENSEMBL",
+            multiVals = "CharacterList"
+        )
+    } else if (db == "EnsDb.Hsapiens.v79") {
         gene_info <- AnnotationDbi::mapIds(org.Hs.eg.db::org.Hs.eg.db,
-            names(genes), 'SYMBOL', 'ENSEMBL', multiVals = 'CharacterList')
+            names(genes), "SYMBOL", "ENSEMBL",
+            multiVals = "CharacterList"
+        )
     }
     genes$symbol <- gene_info
 
-    if(level == 'gene') {
+    if (level == "gene") {
         return(genes)
-    } else if (level == 'both') {
-        return(list('exon' = exons, 'gene' = genes))
+    } else if (level == "both") {
+        return(list("exon" = exons, "gene" = genes))
     }
 }
-

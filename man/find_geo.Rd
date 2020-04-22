@@ -33,8 +33,7 @@ the information using \link{geo_info}.
 }
 \examples{
 ## Find the GEO accession id for for SRX110461
-find_geo('SRX110461')
-
+find_geo("SRX110461")
 }
 \author{
 Leonardo Collado-Torres

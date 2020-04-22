@@ -96,7 +96,7 @@ c(
         url = "https://doi.org/10.1101/618025"
     ),
     bibentry(bibtype="article",
-        title = "Recounting the FANTOM Cage Associated Transcriptome",
+        title = "Recounting the FANTOM CAGE–Associated Transcriptome",
         author = personList(
             as.person("Eddie-Luidy Imada"),
             as.person("Diego Fernando Sanchez"),
@@ -113,20 +113,19 @@ c(
             as.person("Harukazu Suzuki"),
             as.person("Takeya Kasukawa"),
             as.person("Chung Chau Hon"),
-            as.person("Michiel de Hoon"),
+            as.person("Michiel JL de Hoon"),
             as.person("Jay W Shin"),
             as.person("Piero Carninci"),
-            as.person("FANTOM-consortium"),
             as.person("Andrew E. Jaffe"),
             as.person("Jeffrey T. Leek"),
             as.person("Alexander Favorov"),
-            as.person("Gloria R Franco"),
+            as.person("Glória R Franco"),
             as.person("Ben Langmead"),
             as.person("Luigi Marchionni")
         ),
-        year = 2019,
-        journal = "bioRxiv",
-        doi = "10.1101/659490",
-        url = "https://doi.org/10.1101/659490"
+        year = 2020,
+        journal = "Genome Research",
+        doi = "10.1101/gr.254656.119",
+        url = "https://doi.org/10.1101/gr.254656.119"
     )
 )

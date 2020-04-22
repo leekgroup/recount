@@ -39,10 +39,10 @@
 #'
 #' ## Compute the TPM matrix from the raw gene-level base-pair counts.
 #' tpm <- getTPM(rse_gene_SRP009615)
-#'
-
-getTPM <- function(rse, length_var = 'bp_length', mapped_var = NULL) {
+getTPM <- function(rse, length_var = "bp_length", mapped_var = NULL) {
     # From https://support.bioconductor.org/p/124265/
     rpkm <- getRPKM(rse, length_var = length_var, mapped_var = mapped_var)
-    apply(rpkm, 2, function(x) { (x / sum(x)) * 10^6 })
+    apply(rpkm, 2, function(x) {
+        (x / sum(x)) * 10^6
+    })
 }

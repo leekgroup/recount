@@ -21,7 +21,7 @@
 #' @examples
 #'
 #' ## Load required library
-#' library('SummarizedExperiment')
+#' library("SummarizedExperiment")
 #'
 #' ## Get the GEO accession ids
 #' # geoids <- sapply(colData(rse_gene_SRP009615)$run[1:2], find_geo)
@@ -30,8 +30,13 @@
 #' ## This code makes sure that the example code runs.
 #' geoids <- tryCatch(
 #'     sapply(colData(rse_gene_SRP009615)$run[1:2], find_geo),
-#'     error = function(e) c('SRR387777' = 'GSM836270',
-#'        'SRR387778' = 'GSM836271'))
+#'     error = function(e) {
+#'         c(
+#'             "SRR387777" = "GSM836270",
+#'             "SRR387778" = "GSM836271"
+#'         )
+#'     }
+#' )
 #'
 #' ## Get the data from GEO
 #' geodata <- do.call(rbind, sapply(geoids, geo_info))
@@ -41,14 +46,12 @@
 #'
 #' ## Explore the original characteristics and the result from
 #' ## geo_characteristics()
-#' geodata[, c('characteristics', 'cells', 'shrna.expression', 'treatment')]
-#'
-
+#' geodata[, c("characteristics", "cells", "shrna.expression", "treatment")]
 geo_characteristics <- function(pheno) {
     ## Check inputs
-    stopifnot('characteristics' %in% colnames(pheno))
+    stopifnot("characteristics" %in% colnames(pheno))
 
-    if(is.character(pheno$characteristics)) {
+    if (is.character(pheno$characteristics)) {
         ## Solves https://support.bioconductor.org/p/116480/
         pheno$characteristics <- IRanges::CharacterList(
             lapply(lapply(pheno$characteristics, str2lang), eval)
@@ -57,24 +60,25 @@ geo_characteristics <- function(pheno) {
 
     ## Separate information
     result <- lapply(pheno$characteristics, function(sampleinfo) {
-         ## Check if there are colons
-        if(any(!as.vector(sapply(sampleinfo, grepl, pattern = ':')))) {
+        ## Check if there are colons
+        if (any(!as.vector(sapply(sampleinfo, grepl, pattern = ":")))) {
             res <- data.frame(
-                'characteristics' = paste(unlist(sampleinfo),
-                    collapse = ', '),
+                "characteristics" = paste(unlist(sampleinfo),
+                    collapse = ", "
+                ),
                 stringsAsFactors = FALSE
             )
             return(res)
         }
 
-        info <- strsplit(sampleinfo, ': ')
+        info <- strsplit(sampleinfo, ": ")
 
         ## Get variable names
-        varNames <- sapply(info, '[[', 1)
+        varNames <- sapply(info, "[[", 1)
         varNames <- make.names(tolower(varNames))
 
         ## Construct result
-        res <- matrix(sapply(info, '[[', 2), nrow = 1)
+        res <- matrix(sapply(info, "[[", 2), nrow = 1)
         colnames(res) <- varNames
         res <- data.frame(res, stringsAsFactors = FALSE)
 

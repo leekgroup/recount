@@ -24,10 +24,9 @@
 #'
 #' ## Download the first files_info.tsv file (version 1)
 #' download_retry(
-#'     recount_url$url[which(recount_url$file_name == 'files_info.tsv')[1]]
+#'     recount_url$url[which(recount_url$file_name == "files_info.tsv")[1]]
 #' )
-#'
-download_retry <- function(url, destfile = basename(url), mode = 'wb',
+download_retry <- function(url, destfile = basename(url), mode = "wb",
     N.TRIES = 3L, ...) {
     ## Based on http://bioconductor.org/developers/how-to/web-query/
     ## and downloader::download()
@@ -38,18 +37,22 @@ download_retry <- function(url, destfile = basename(url), mode = 'wb',
 
     while (N.TRIES > 0L) {
         result <- tryCatch(downloader::download(
-            url = url, destfile = destfile, mode = mode, ...), error=identity)
-        if (!inherits(result, "error"))
-            break
+            url = url, destfile = destfile, mode = mode, ...
+        ), error = identity)
+        if (!inherits(result, "error")) {
+              break
+          }
         ## Wait between 0 and 2 seconds between retries
         Sys.sleep(runif(n = 1, min = 2, max = 5))
         N.TRIES <- N.TRIES - 1L
     }
 
     if (N.TRIES == 0L) {
-        stop("'download_retry()' failed:",
-             "\n  URL: ", url,
-             "\n  error: ", conditionMessage(result))
+        stop(
+            "'download_retry()' failed:",
+            "\n  URL: ", url,
+            "\n  error: ", conditionMessage(result)
+        )
     }
 
     invisible(result)

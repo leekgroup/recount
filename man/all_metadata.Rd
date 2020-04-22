@@ -39,7 +39,6 @@ For more information, check \url{https://github.com/leekgroup/recount-website/tr
 \examples{
 
 metadata <- all_metadata()
-
 }
 \author{
 Leonardo Collado-Torres

@@ -4,8 +4,16 @@
 \alias{expressed_regions}
 \title{Identify expressed regions from the mean coverage for a given SRA project}
 \usage{
-expressed_regions(project, chr, cutoff, outdir = NULL,
-  maxClusterGap = 300L, chrlen = NULL, verbose = TRUE, ...)
+expressed_regions(
+  project,
+  chr,
+  cutoff,
+  outdir = NULL,
+  maxClusterGap = 300L,
+  chrlen = NULL,
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{project}{A character vector with one SRA study id.}
@@ -45,18 +53,19 @@ defined by \link[derfinder:findRegions]{findRegions}.
 }
 \examples{
 ## Define expressed regions for study SRP009615, chrY
-if(.Platform$OS.type != 'windows') {
-## Reading BigWig files is not supported by rtracklayer on Windows
-    regions <- expressed_regions('SRP009615', 'chrY', cutoff = 5L, 
-        maxClusterGap = 3000L)
+if (.Platform$OS.type != "windows") {
+    ## Reading BigWig files is not supported by rtracklayer on Windows
+    regions <- expressed_regions("SRP009615", "chrY",
+        cutoff = 5L,
+        maxClusterGap = 3000L
+    )
 }
-
 \dontrun{
 ## Define the regions for multiple chrs
-regs <- sapply(chrs, expressed_regions, project = 'SRP009615', cutoff = 5L)
+regs <- sapply(chrs, expressed_regions, project = "SRP009615", cutoff = 5L)
 
 ## You can then combine them into a single GRanges object if you want to
-library('GenomicRanges')
+library("GenomicRanges")
 single <- unlist(GRangesList(regs))
 }
 

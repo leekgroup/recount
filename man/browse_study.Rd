@@ -19,7 +19,7 @@ Given a SRA study id get the url to browse the study using the SRA website.
 }
 \examples{
 ## Find the Geuvadis consortium project
-id <- abstract_search('Geuvadis consortium', id_only = TRUE)
+id <- abstract_search("Geuvadis consortium", id_only = TRUE)
 id
 
 ## Explore the Geuvadis consortium project

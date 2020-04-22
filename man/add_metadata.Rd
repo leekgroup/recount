@@ -4,8 +4,7 @@
 \alias{add_metadata}
 \title{Add additional curated metadata to a recount rse object}
 \usage{
-add_metadata(rse, source = "recount_brain_v2", is_tcga = FALSE,
-  verbose = TRUE)
+add_metadata(rse, source = "recount_brain_v2", is_tcga = FALSE, verbose = TRUE)
 }
 \arguments{
 \item{rse}{A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
@@ -48,7 +47,7 @@ A bib file is available via citation('recount').
 \examples{
 
 ## Add the sample metadata to an example rse_gene object
-rse_gene <- add_metadata(rse_gene_SRP009615, 'recount_brain_v2')
+rse_gene <- add_metadata(rse_gene_SRP009615, "recount_brain_v2")
 
 ## Explore the metadata
 colData(rse_gene)
@@ -61,8 +60,7 @@ colData(rse_gene)
 
 ## Obtain all the recount_brain_v2 metadata if you want to
 ## explore the metadata manually
-recount_brain_v2 <- add_metadata(source = 'recount_brain_v2')
-
+recount_brain_v2 <- add_metadata(source = "recount_brain_v2")
 }
 \references{
 Razmara et al, bioRxiv, 2019.

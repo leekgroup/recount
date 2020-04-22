@@ -1,22 +1,8 @@
-#' Explore and download data from the recount project.
-#'
-#' Explore and download data from the recount project available at
-#' <https://jhubiostatistics.shinyapps.io/recount/>. Using the recount package 
-#' you can download 
-#' [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class]
-#' objects at the gene or exon level, the raw counts, the phenotype metadata 
-#' used, the urls to the sample coverage bigWig files or the mean coverage 
-#' bigWig file for a particular study. The 
-#' [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class] objects can be 
-#' used by different packages for performing differential expression analysis. 
-#' Using <http://bioconductor.org/packages/derfinder> you can perform
-#' annotation-agnostic differential expression analyses with the data from the 
-#' recount project.
-#'
-#' @name recount-package
-#' @aliases recount-package
-#' @docType package
-#' @author Leonardo Collado-Torres <lcolladotor@@gmail.com>
-#'
-#' @keywords package
+#' @keywords internal
+"_PACKAGE"
+
+# The following block is used by usethis to automatically manage
+# roxygen namespace tags. Modify with care!
+## usethis namespace: start
+## usethis namespace: end
 NULL

@@ -47,7 +47,7 @@
 #' @examples
 #'
 #' ## Add the sample metadata to an example rse_gene object
-#' rse_gene <- add_metadata(rse_gene_SRP009615, 'recount_brain_v2')
+#' rse_gene <- add_metadata(rse_gene_SRP009615, "recount_brain_v2")
 #'
 #' ## Explore the metadata
 #' colData(rse_gene)
@@ -60,21 +60,19 @@
 #'
 #' ## Obtain all the recount_brain_v2 metadata if you want to
 #' ## explore the metadata manually
-#' recount_brain_v2 <- add_metadata(source = 'recount_brain_v2')
-#'
-
-add_metadata <- function(rse, source = 'recount_brain_v2', is_tcga = FALSE,
+#' recount_brain_v2 <- add_metadata(source = "recount_brain_v2")
+add_metadata <- function(rse, source = "recount_brain_v2", is_tcga = FALSE,
     verbose = TRUE) {
-
     stopifnot(length(source) == 1)
 
     ## For a NOTE in R CMD check
     valid_sources <- data.frame(
-        name = c('recount_brain_v1', 'recount_brain_v2'),
+        name = c("recount_brain_v1", "recount_brain_v2"),
         url = c(
-            'https://github.com/LieberInstitute/recount-brain/blob/master/merged_metadata/recount_brain_v1.Rdata?raw=true', 'https://github.com/LieberInstitute/recount-brain/blob/master/cross_studies_metadata/recount_brain_v2.Rdata?raw=true'),
-        object = c('recount_brain', 'recount_brain'),
-        sample_id = c('run_s', 'run_s'),
+            "https://github.com/LieberInstitute/recount-brain/blob/master/merged_metadata/recount_brain_v1.Rdata?raw=true", "https://github.com/LieberInstitute/recount-brain/blob/master/cross_studies_metadata/recount_brain_v2.Rdata?raw=true"
+        ),
+        object = c("recount_brain", "recount_brain"),
+        sample_id = c("run_s", "run_s"),
         stringsAsFactors = FALSE
     )
 
@@ -82,14 +80,14 @@ add_metadata <- function(rse, source = 'recount_brain_v2', is_tcga = FALSE,
 
     to_use <- valid_sources[tolower(valid_sources$name) == tolower(source), ]
 
-    destfile <- file.path(tempdir(), paste0(to_use$name, '.Rdata'))
+    destfile <- file.path(tempdir(), paste0(to_use$name, ".Rdata"))
 
 
-    if(verbose)  message(paste(Sys.time(), 'downloading the', to_use$object, 'metadata to', destfile))
+    if (verbose) message(paste(Sys.time(), "downloading the", to_use$object, "metadata to", destfile))
     download_retry(
         url = to_use$url,
         destfile = destfile,
-        mode = 'wb'
+        mode = "wb"
     )
     load_meta <- function() {
         load(destfile, verbose = verbose)
@@ -97,26 +95,30 @@ add_metadata <- function(rse, source = 'recount_brain_v2', is_tcga = FALSE,
     }
     new_meta <- load_meta()
 
-    if(missing(rse)) return(new_meta)
+    if (missing(rse)) {
+        return(new_meta)
+    }
 
-    if(is_tcga) {
+    if (is_tcga) {
         map <- match(colData(rse)$gdc_file_id, new_meta[, to_use$sample_id])
     } else {
         map <- match(colData(rse)$run, new_meta[, to_use$sample_id])
     }
-    if(verbose) {
-        message(paste(Sys.time(), 'found', sum(!is.na(map)), 'out of', length(map), 'samples in the', to_use$object, 'metadata'))
+    if (verbose) {
+        message(paste(Sys.time(), "found", sum(!is.na(map)), "out of", length(map), "samples in the", to_use$object, "metadata"))
     }
 
     ## Make a dummy table with the new metadata to be added
-    dummy <- as.data.frame(matrix(NA, nrow = ncol(rse),
-        ncol = ncol(new_meta) - 1))
+    dummy <- as.data.frame(matrix(NA,
+        nrow = ncol(rse),
+        ncol = ncol(new_meta) - 1
+    ))
     cols_to_drop <- which(colnames(new_meta) == to_use$sample_id)
-    colnames(dummy) <- colnames(new_meta)[- cols_to_drop]
+    colnames(dummy) <- colnames(new_meta)[-cols_to_drop]
 
     ## In case new data is present
-    if(any(!is.na(map))){
-        dummy[!is.na(map), ] <- new_meta[map[!is.na(map)], - cols_to_drop]
+    if (any(!is.na(map))) {
+        dummy[!is.na(map), ] <- new_meta[map[!is.na(map)], -cols_to_drop]
     }
     rownames(dummy) <- NULL
 

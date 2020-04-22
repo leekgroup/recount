@@ -39,18 +39,17 @@ will return non-sensical results.
 
 ## Difference between read counts and reads downloaded by Rail-RNA
 colSums(assays(read_counts(rse_gene_SRP009615))$counts) / 1e6 -
-    colData(rse_gene_SRP009615)$reads_downloaded /1e6
+    colData(rse_gene_SRP009615)$reads_downloaded / 1e6
 
 ## Paired-end read counts vs fragment counts (single-end counts)
-download_study('DRP000499')
-load('DRP000499/rse_gene.Rdata')
+download_study("DRP000499")
+load("DRP000499/rse_gene.Rdata")
 colSums(assays(read_counts(rse_gene, use_paired_end = FALSE))$counts) /
     colSums(assays(read_counts(rse_gene))$counts)
 
 ## Difference between paired-end read counts vs paired-end reads downloaded
 colSums(assays(read_counts(rse_gene))$counts) / 1e6 -
-    colData(rse_gene)$reads_downloaded / 1e6 /2
-
+    colData(rse_gene)$reads_downloaded / 1e6 / 2
 }
 \references{
 Collado-Torres L, Nellore A and Jaffe AE. recount workflow: Accessing over

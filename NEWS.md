@@ -1,3 +1,11 @@
+# recount 1.13.2
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+* Documentation website is now available at
+http://leekgroup.github.io/recount/. It gets updated with every
+commit on the master branch (bioc-devel) using GitHub Actions and pkgdown.
+
 # recount 1.13.1
 
 * Mention in `reproduce_ranges()` the link to

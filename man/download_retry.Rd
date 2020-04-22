@@ -4,8 +4,7 @@
 \alias{download_retry}
 \title{Retry multiple times to download a file}
 \usage{
-download_retry(url, destfile = basename(url), mode = "wb",
-  N.TRIES = 3L, ...)
+download_retry(url, destfile = basename(url), mode = "wb", N.TRIES = 3L, ...)
 }
 \arguments{
 \item{url}{The URL to download. Passed to \link[downloader:download]{download}.}
@@ -37,7 +36,6 @@ build errors due to the occassional errors from our data hosting server.
 
 ## Download the first files_info.tsv file (version 1)
 download_retry(
-    recount_url$url[which(recount_url$file_name == 'files_info.tsv')[1]]
+    recount_url$url[which(recount_url$file_name == "files_info.tsv")[1]]
 )
-
 }

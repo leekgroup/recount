@@ -25,7 +25,7 @@ samples as shown in the examples section.
 \examples{
 
 ## Load required library
-library('SummarizedExperiment')
+library("SummarizedExperiment")
 
 ## Get the GEO accession ids
 # geoids <- sapply(colData(rse_gene_SRP009615)$run[1:2], find_geo)
@@ -34,8 +34,13 @@ library('SummarizedExperiment')
 ## This code makes sure that the example code runs.
 geoids <- tryCatch(
     sapply(colData(rse_gene_SRP009615)$run[1:2], find_geo),
-    error = function(e) c('SRR387777' = 'GSM836270',
-       'SRR387778' = 'GSM836271'))
+    error = function(e) {
+        c(
+            "SRR387777" = "GSM836270",
+            "SRR387778" = "GSM836271"
+        )
+    }
+)
 
 ## Get the data from GEO
 geodata <- do.call(rbind, sapply(geoids, geo_info))
@@ -45,8 +50,7 @@ geodata <- cbind(geodata, geo_characteristics(geodata))
 
 ## Explore the original characteristics and the result from
 ## geo_characteristics()
-geodata[, c('characteristics', 'cells', 'shrna.expression', 'treatment')]
-
+geodata[, c("characteristics", "cells", "shrna.expression", "treatment")]
 }
 \author{
 Leonardo Collado-Torres

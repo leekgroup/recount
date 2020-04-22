@@ -33,7 +33,7 @@ For a more powerful search use the recount project website at
 }
 \examples{
 ## Find the Geuvadis consortium project
-project_info <- abstract_search('Geuvadis consortium')
+project_info <- abstract_search("Geuvadis consortium")
 
 ## See some summary information for this project
 project_info

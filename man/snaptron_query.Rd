@@ -4,8 +4,7 @@
 \alias{snaptron_query}
 \title{Query Snaptron to get data from exon-exon junctions present in Intropolis}
 \usage{
-snaptron_query(junctions, version = "srav1", verbose = TRUE,
-  async = TRUE)
+snaptron_query(junctions, version = "srav1", verbose = TRUE, async = TRUE)
 }
 \arguments{
 \item{junctions}{A \link[GenomicRanges:GRanges-class]{GRanges-class} object with the
@@ -39,26 +38,28 @@ that are available via Intropolis as described in the vignette.
 }
 \examples{
 
-library('GenomicRanges')
+library("GenomicRanges")
 ## Define some exon-exon junctions (hg19 coordinates)
-junctions <- GRanges(seqnames = 'chr2', IRanges(
+junctions <- GRanges(seqnames = "chr2", IRanges(
     start = c(28971710:28971712, 29555081:29555083, 29754982:29754984),
-    end = c(29462417:29462419, 29923338:29923340, 29917714:29917716)))
+    end = c(29462417:29462419, 29923338:29923340, 29917714:29917716)
+))
 
 ## Check against Snaptron SRA version 1 (hg19 coordinates)
 snaptron_query(junctions)
-
 \dontrun{
-## Check another set of junctions against SRA version 2 (more data, hg38 
+## Check another set of junctions against SRA version 2 (more data, hg38
 ## coordinates)
-junctions_v2 <- GRanges(seqnames = 'chr2', IRanges(
-    start = 29532116:29532118, end = 29694848:29694850))
-snaptron_query(junctions_v2, version = 'srav2') 
+junctions_v2 <- GRanges(seqnames = "chr2", IRanges(
+    start = 29532116:29532118, end = 29694848:29694850
+))
+snaptron_query(junctions_v2, version = "srav2")
 
 ## Check these junctions in GTEx and TCGA data
-snaptron_query(junctions_v2, version = 'gtex')
-snaptron_query(junctions_v2, version = 'tcga')
+snaptron_query(junctions_v2, version = "gtex")
+snaptron_query(junctions_v2, version = "tcga")
 }
+
 }
 \references{
 Please cite \url{http://snaptron.cs.jhu.edu}

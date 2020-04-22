@@ -19,7 +19,6 @@
 #' @examples
 #'
 #' metadata <- all_metadata()
-#'
 #' @details Note that for `subset = 'gtex'`, there are more variables than
 #' the ones we have for 'sra'. This information corresponds to file
 #' GTEx_Data_V6_Annotations_SampleAttributesDS.txt available at
@@ -33,27 +32,28 @@
 #' For more information, check <https://github.com/leekgroup/recount-website/tree/master/metadata/tcga_prep>.
 #'
 
-all_metadata <- function(subset = 'sra', verbose = TRUE) {
+all_metadata <- function(subset = "sra", verbose = TRUE) {
     ## For R CMD check
     metadata_clean <- NULL
 
     ## check inputs
     subset <- tolower(subset)
-    stopifnot(subset %in% c('sra', 'gtex', 'tcga'))
+    stopifnot(subset %in% c("sra", "gtex", "tcga"))
     stopifnot(length(subset) == 1)
 
     ## Download file
-    metafile <- paste0('metadata_clean_', subset, '.Rdata')
+    metafile <- paste0("metadata_clean_", subset, ".Rdata")
     url <- paste0(
-        'https://github.com/leekgroup/recount-website/blob/master/metadata/',
-        metafile, '?raw=true')
+        "https://github.com/leekgroup/recount-website/blob/master/metadata/",
+        metafile, "?raw=true"
+    )
     destfile <- file.path(tempdir(), metafile)
 
-    if(verbose) message(paste(Sys.time(), 'downloading the metadata to', destfile))
+    if (verbose) message(paste(Sys.time(), "downloading the metadata to", destfile))
     download_retry(
         url = url,
         destfile = destfile,
-        mode = 'wb'
+        mode = "wb"
     )
     load(destfile)
     return(metadata_clean)

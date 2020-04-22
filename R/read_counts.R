@@ -40,30 +40,27 @@
 #'
 #' ## Difference between read counts and reads downloaded by Rail-RNA
 #' colSums(assays(read_counts(rse_gene_SRP009615))$counts) / 1e6 -
-#'     colData(rse_gene_SRP009615)$reads_downloaded /1e6
+#'     colData(rse_gene_SRP009615)$reads_downloaded / 1e6
 #'
 #' ## Paired-end read counts vs fragment counts (single-end counts)
-#' download_study('DRP000499')
-#' load('DRP000499/rse_gene.Rdata')
+#' download_study("DRP000499")
+#' load("DRP000499/rse_gene.Rdata")
 #' colSums(assays(read_counts(rse_gene, use_paired_end = FALSE))$counts) /
 #'     colSums(assays(read_counts(rse_gene))$counts)
 #'
 #' ## Difference between paired-end read counts vs paired-end reads downloaded
 #' colSums(assays(read_counts(rse_gene))$counts) / 1e6 -
-#'     colData(rse_gene)$reads_downloaded / 1e6 /2
-#'
-
+#'     colData(rse_gene)$reads_downloaded / 1e6 / 2
 read_counts <- function(rse, use_paired_end = TRUE, round = FALSE) {
-
-    if(use_paired_end) {
+    if (use_paired_end) {
         counts <- t(t(assays(rse)$counts) /
             (colData(rse)$auc / (colData(rse)$mapped_read_count /
                 ifelse(colData(rse)$paired_end, 2, 1))))
     } else {
         counts <- t(t(assays(rse)$counts) / (colData(rse)$auc /
-            colData(rse)$mapped_read_count ))
+            colData(rse)$mapped_read_count))
     }
-    if(round) counts <- round(counts, 0)
+    if (round) counts <- round(counts, 0)
     assays(rse)$counts <- counts
     return(rse)
 }

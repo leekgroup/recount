@@ -4,8 +4,14 @@
 \alias{download_study}
 \title{Download data for a given SRA study id from the recount project}
 \usage{
-download_study(project, type = "rse-gene", outdir = project,
-  download = TRUE, version = 2, ...)
+download_study(
+  project,
+  type = "rse-gene",
+  outdir = project,
+  download = TRUE,
+  version = 2,
+  ...
+)
 }
 \arguments{
 \item{project}{A character vector with one SRA study id.}
@@ -90,24 +96,22 @@ Sanchez, et al., bioRxiv, 2019.
 \examples{
 ## Find the URL to download the RangedSummarizedExperiment for the
 ## Geuvadis consortium study.
-url <- download_study('ERP001942', download = FALSE)
+url <- download_study("ERP001942", download = FALSE)
 
 ## See the actual URL
 url
-
 \dontrun{
 ## Download the example data included in the package for study SRP009615
 
-url2 <- download_study('SRP009615')
+url2 <- download_study("SRP009615")
 url2
 
 ## Load the data
-load(file.path('SRP009615', 'rse_gene.Rdata'))
+load(file.path("SRP009615", "rse_gene.Rdata"))
 
 ## Compare the data
-library('testthat')
+library("testthat")
 expect_equivalent(rse_gene, rse_gene_SRP009615)
-
 }
 
 }

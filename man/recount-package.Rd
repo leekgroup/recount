@@ -2,23 +2,47 @@
 % Please edit documentation in R/recount-package.R
 \docType{package}
 \name{recount-package}
+\alias{recount}
 \alias{recount-package}
-\title{Explore and download data from the recount project.}
+\title{recount: Explore and download data from the recount project}
 \description{
 Explore and download data from the recount project available at
-\url{https://jhubiostatistics.shinyapps.io/recount/}. Using the recount package
-you can download
-\link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
-objects at the gene or exon level, the raw counts, the phenotype metadata
-used, the urls to the sample coverage bigWig files or the mean coverage
-bigWig file for a particular study. The
-\link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class} objects can be
-used by different packages for performing differential expression analysis.
-Using \url{http://bioconductor.org/packages/derfinder} you can perform
-annotation-agnostic differential expression analyses with the data from the
-recount project.
+    https://jhubiostatistics.shinyapps.io/recount/. Using the recount package you can
+    download RangedSummarizedExperiment objects at the gene, exon or exon-exon junctions level,
+    the raw counts, the phenotype metadata used, the urls to the sample coverage
+    bigWig files or the mean coverage bigWig file for a particular study. The
+    RangedSummarizedExperiment objects can be used by different packages for
+    performing differential expression analysis. Using
+    http://bioconductor.org/packages/derfinder you can perform
+    annotation-agnostic differential expression analyses with the data from the
+    recount project as described at http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/leekgroup/recount}
+  \item Report bugs at \url{https://support.bioconductor.org/t/recount/}
+}
+
 }
 \author{
-Leonardo Collado-Torres \href{mailto:lcolladotor@gmail.com}{lcolladotor@gmail.com}
+\strong{Maintainer}: Leonardo Collado-Torres \email{lcolladotor@gmail.com} (\href{https://orcid.org/0000-0003-2140-308X}{ORCID})
+
+Authors:
+\itemize{
+  \item Jeffrey T. Leek \email{jtleek@gmail.com} (\href{https://orcid.org/0000-0002-2873-2671}{ORCID}) [thesis advisor]
 }
-\keyword{package}
+
+Other contributors:
+\itemize{
+  \item Abhinav Nellore \email{anellore@gmail.com} [contributor]
+  \item Andrew E. Jaffe \email{andrew.jaffe@libd.org} (\href{https://orcid.org/0000-0001-6886-1454}{ORCID}) [contributor]
+  \item Margaret A. Taub \email{mtaub@jhsph.edu} [contributor]
+  \item Kai Kammers \email{kai.kammers@gmail.com} [contributor]
+  \item Shannon E. Ellis \email{sellis18@jhmi.edu} (\href{https://orcid.org/0000-0002-9231-0481}{ORCID}) [contributor]
+  \item Kasper Daniel Hansen \email{kasperdanielhansen@gmail.com} (\href{https://orcid.org/0000-0003-0086-0687}{ORCID}) [contributor]
+  \item Ben Langmead \email{langmea@cs.jhu.edu} (\href{https://orcid.org/0000-0003-2437-1976}{ORCID}) [contributor]
+}
+
+}
+\keyword{internal}

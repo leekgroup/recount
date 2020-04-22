@@ -5,7 +5,7 @@
 #'
 #' @name recount_exons
 #' @docType data
-#' @format A [GRangesList-class][GenomicRanges::GRangesList-class] with one element per 
+#' @format A [GRangesList-class][GenomicRanges::GRangesList-class] with one element per
 #' gene. The names match the gene Gencode v25 ids.
 #'
 #' @keywords datasets

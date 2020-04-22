@@ -42,12 +42,11 @@ rpkm <- getRPKM(rse_gene_SRP009615)
 ## You can also get an RPKM matrix after running scale_counts()
 ## with similar RPKM values
 rpkm2 <- getRPKM(scale_counts(rse_gene_SRP009615))
-rpkm3 <- getRPKM(scale_counts(rse_gene_SRP009615, by = 'mapped_reads'))
+rpkm3 <- getRPKM(scale_counts(rse_gene_SRP009615, by = "mapped_reads"))
 
 summary(rpkm - rpkm2)
 summary(rpkm - rpkm3)
 summary(rpkm2 - rpkm3)
-
 }
 \seealso{
 \link{scale_counts}

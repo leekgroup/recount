@@ -4,7 +4,8 @@
 \name{recount_url}
 \alias{recount_url}
 \title{Files and URLs hosted by the recount project}
-\format{A data.frame with 6 columns.
+\format{
+A data.frame with 6 columns.
 \describe{
 \item{path }{ the original path to the file before being uploaded,}
 \item{file_name }{ the file name,}
@@ -15,7 +16,8 @@ part of version 1 (reduced exons)}.
 updated in version 2 (disjoint exons)}. Further details in the recount
 website documentation tab.
 \item{url }{ the public URL for the given file.}
-}}
+}
+}
 \description{
 Files and URLs as provided by the recount project. This information is used
 internally in \link{download_study}.

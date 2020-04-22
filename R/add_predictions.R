@@ -65,43 +65,51 @@
 #'
 #' ## Download all the latest predictions
 #' PredictedPhenotypes <- add_predictions()
-#'
-
-add_predictions <- function(rse, is_tcga = FALSE, version = 'latest',
+add_predictions <- function(rse, is_tcga = FALSE, version = "latest",
     verbose = TRUE) {
 
     ## For a NOTE in R CMD check
     PredictedPhenotypes <- NULL
-    if(version == 'latest') version <- tryCatch(suppressWarnings(readLines(
-        'https://raw.githubusercontent.com/leekgroup/recount-website/master/predictions/latestVersion.txt'))[1]
-        , error = function(e) {
+    if (version == "latest") {
+        version <- tryCatch(suppressWarnings(readLines(
+            "https://raw.githubusercontent.com/leekgroup/recount-website/master/predictions/latestVersion.txt"
+        ))[1],
+        error = function(e) {
             print(e)
-            v <- '0.0.05'
-            message(paste(Sys.time(), 'Failed to check the latest version, using version', v))
-            return(v) })
+            v <- "0.0.05"
+            message(paste(Sys.time(), "Failed to check the latest version, using version", v))
+            return(v)
+        }
+        )
+    }
 
     ## Download file
-    predfile <- paste0('PredictedPhenotypes_v', version, '.rda')
+    predfile <- paste0("PredictedPhenotypes_v", version, ".rda")
     url <- paste0(
-        'https://github.com/leekgroup/recount-website/blob/master/predictions/',
-        predfile, '?raw=true')
+        "https://github.com/leekgroup/recount-website/blob/master/predictions/",
+        predfile, "?raw=true"
+    )
     destfile <- file.path(tempdir(), predfile)
 
-    if(verbose) message(paste(Sys.time(), 'downloading the predictions to', destfile))
+    if (verbose) message(paste(Sys.time(), "downloading the predictions to", destfile))
     download_retry(
         url = url,
         destfile = destfile,
-        mode = 'wb'
+        mode = "wb"
     )
     load(destfile, verbose = verbose)
-    if(missing(rse)) return(PredictedPhenotypes)
+    if (missing(rse)) {
+        return(PredictedPhenotypes)
+    }
 
-    if(is_tcga) {
+    if (is_tcga) {
         map <- match(colData(rse)$gdc_file_id, PredictedPhenotypes$sample_id)
     } else {
         map <- match(colData(rse)$run, PredictedPhenotypes$sample_id)
     }
-    colData(rse) <- cbind(colData(rse), PredictedPhenotypes[map,
-        !colnames(PredictedPhenotypes) %in% c('sample_id', 'dataset')])
+    colData(rse) <- cbind(colData(rse), PredictedPhenotypes[
+        map,
+        !colnames(PredictedPhenotypes) %in% c("sample_id", "dataset")
+    ])
     return(rse)
 }

@@ -4,7 +4,8 @@
 \name{recount_genes}
 \alias{recount_genes}
 \title{Gene annotation used in recount}
-\format{A \link[GenomicRanges:GRanges-class]{GRanges-class} with one range per gene. The
+\format{
+A \link[GenomicRanges:GRanges-class]{GRanges-class} with one range per gene. The
 names match their Gencode v25 ids. The \link[GenomicRanges:GRanges-class]{GRanges-class}
 has three metadata columns.
 \describe{
@@ -12,7 +13,8 @@ has three metadata columns.
 \item{bp_length }{ the sum of the width of the disjoint exons for that
 given gene.}
 \item{symbol }{ a CharacterList with the corresponding gene symbols.}
-}}
+}
+}
 \description{
 Gene annotation extracted from Gencode v25 (GRCh38.p7) used in recount.
 Data extraced on October 12th, 2017. The symbols were updated compared

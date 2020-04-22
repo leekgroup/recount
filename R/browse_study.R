@@ -15,24 +15,23 @@
 #'
 #' @examples
 #' ## Find the Geuvadis consortium project
-#' id <- abstract_search('Geuvadis consortium', id_only = TRUE)
+#' id <- abstract_search("Geuvadis consortium", id_only = TRUE)
 #' id
 #'
 #' ## Explore the Geuvadis consortium project
 #' url <- browse_study(id)
-#' 
+#'
 #' ## See the actual URL
 #' url
-
 browse_study <- function(project, browse = interactive()) {
     ## Check inputs
     stopifnot(is.logical(browse) & length(browse == 1))
     stopifnot(is.character(project))
-    
+
     ## Construct url
-    url <- paste0('https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=', project)
-    
+    url <- paste0("https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=", project)
+
     ## Finish
-    if(browse) sapply(url, browseURL)
+    if (browse) sapply(url, browseURL)
     return(invisible(url))
 }

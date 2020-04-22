@@ -42,7 +42,7 @@ TPM = FPKM / (sum of FPKM over all genes/transcripts) * 10^6
 
 Arora et al mention in their code that the formula comes from
 https://doi.org/10.1093/bioinformatics/btp692; specifically
-\code{1.1.1 Comparison to RPKM estimation} where they mention an important
+\verb{1.1.1 Comparison to RPKM estimation} where they mention an important
 assumption: Under the assumption of uniformly distributed reads, we note
 that RPKM measures are estimates of ...
 
@@ -54,7 +54,6 @@ https://haroldpimentel.wordpress.com/2014/05/08/what-the-fpkm-a-review-rna-seq-e
 
 ## Compute the TPM matrix from the raw gene-level base-pair counts.
 tpm <- getTPM(rse_gene_SRP009615)
-
 }
 \references{
 https://www.biorxiv.org/content/10.1101/445601v2

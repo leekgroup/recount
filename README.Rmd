@@ -1,0 +1,91 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# recount <img src="man/figures/logo.png" align="right" width="400px" />
+
+<!-- badges: start -->
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![BioC status](http://www.bioconductor.org/shields/build/release/bioc/recount.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/recount)
+[![Codecov test coverage](https://codecov.io/gh/leekgroup/recount/branch/master/graph/badge.svg)](https://codecov.io/gh/leekgroup/recount?branch=master)
+[![R build status](https://github.com/leekgroup/recount/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/leekgroup/recount/actions)
+<!-- badges: end -->
+
+Explore and download data from the recount project available at the [recount2 website](https://jhubiostatistics.shinyapps.io/recount/). Using the `recount` package you can download _RangedSummarizedExperiment_ objects at the gene, exon or exon-exon junctions level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The _RangedSummarizedExperiment_ objects can be used by different packages for performing differential expression analysis. Using [derfinder](http://bioconductor.org/packages/derfinder) you can perform annotation-agnostic differential expression analyses with the data from the recount project. 
+
+## Documentation
+
+For more information about `recount` check the vignettes [through Bioconductor](http://bioconductor.org/packages/recount) or at the [documentation website](http://leekgroup.github.io/recount).
+
+## Installation instructions
+
+Get the latest stable `R` release from [CRAN](http://cran.r-project.org/). Then install `recount` using from [Bioconductor](http://bioconductor.org/) the following code:
+
+```{r 'install', eval = FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("recount")
+```
+
+## Citation
+
+Below is the citation output from using `citation('recount')` in R. Please 
+run this yourself to check for any updates on how to cite __recount__.
+
+```{r 'citation', eval = requireNamespace('recount')}
+print(citation('recount'), bibtex = TRUE)
+```
+
+Please note that the `recount` was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.
+
+## Code of Conduct
+  
+Please note that the recount project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+
+## Development tools
+
+* Continuous code testing is possible thanks to [GitHub actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)  through `r BiocStyle::CRANpkg('usethis')`, `r BiocStyle::CRANpkg('remotes')`, `r BiocStyle::Githubpkg('r-hub/sysreqs')` and `r BiocStyle::CRANpkg('rcmdcheck')` customized to use [Bioconductor's docker containers](https://www.bioconductor.org/help/docker/) and `r BiocStyle::Biocpkg('BiocCheck')`.
+* Code coverage assessment is possible thanks to [codecov](https://codecov.io/gh) and `r BiocStyle::CRANpkg('covr')`.
+* The [documentation website](http://leekgroup.github.io/recount) is automatically updated thanks to `r BiocStyle::CRANpkg('pkgdown')`.
+* The code is styled automatically thanks to `r BiocStyle::CRANpkg('styler')`.
+* The documentation is formatted thanks to `r BiocStyle::CRANpkg('devtools')` and `r BiocStyle::CRANpkg('roxygen2')`.
+
+For more details, check the `dev` directory.
+
+
+## Teams involved
+
+* [Jeff Leek's lab at JHBSPH Biostatistics Department](http://jtleek.com/),
+* [Ben Langmead's lab at JHU Computer Science](http://www.langmead-lab.org/),
+* [Kasper Daniel Hansen's lab at JHBSPH Biostatistics Department](https://www.hansenlab.org/),
+* [Leonardo Collado-Torres](http://lcolladotor.github.io/) and [Andrew E. Jaffe](http://aejaffe.com/) from [LIBD](https://www.libd.org/),
+* [Abhinav Nellore's lab at OHSU](http://nellore.bio/),
+* Data hosted by [SciServer at JHU](https://www.sciserver.org/).
+
+
+| | | | |
+| --- | --- | --- | --- |
+| <a href="http://www.langmead-lab.org/"><img src="http://www.langmead-lab.org/wp-content/uploads/2014/01/Screen-Shot-2014-02-02-at-5.20.13-PM-1024x199.png" width="250px"></a> | <a href="https://www.libd.org/"><img src="http://aejaffe.com/media/LIBD_logo.jpg" width="250px"></a> | <a href="http://nellore.bio/"><img src="https://seekvectorlogo.net/wp-content/uploads/2018/08/oregon-health-science-university-ohsu-vector-logo.png" width="250px"></a> | <a href="https://www.sciserver.org/"><img src="https://skyserver.sdss.org/dr14/en/images/sciserver_logo_inverted_vertical.png" width="250px"></a> |
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-78422749-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-78422749-1');
+</script>
+

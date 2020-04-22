@@ -26,26 +26,25 @@
 #'
 #' @examples
 #' ## Find the Geuvadis consortium project
-#' project_info <- abstract_search('Geuvadis consortium')
-#' 
+#' project_info <- abstract_search("Geuvadis consortium")
+#'
 #' ## See some summary information for this project
 #' project_info
-
 abstract_search <- function(query, id_only = FALSE, ...) {
     ## Check input
     stopifnot(is.character(query))
     stopifnot(is.logical(id_only))
     stopifnot(length(id_only) == 1)
-    
+
     ## Use table from the package
     abstract_table <- recount::recount_abstract
-    
+
     ## Get abstracts
     abstracts <- tolower(abstract_table$abstract)
     query <- tolower(query)
     i <- grep(query, abstracts, ...)
-    
-    if(id_only) {
+
+    if (id_only) {
         return(abstract_table$project[i])
     } else {
         return(abstract_table[i, ])

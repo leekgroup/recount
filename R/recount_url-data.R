@@ -21,4 +21,4 @@
 #' @keywords datasets
 #' @seealso [download_study]
 #' @references <https://jhubiostatistics.shinyapps.io/recount/>
-NULL 
+NULL

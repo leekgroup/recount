@@ -26,37 +26,41 @@
 #'
 #' @examples
 #' ## Find the GEO accession id for for SRX110461
-#' find_geo('SRX110461')
-#'
-
-find_geo <- function(run, verbose = FALSE, sleep = 1/2) {
+#' find_geo("SRX110461")
+find_geo <- function(run, verbose = FALSE, sleep = 1 / 2) {
     ## Check inputs
     stopifnot(is.character(run) & length(run) == 1)
-    if(run == '') return(NA)
-    
-    if(verbose) message(paste(Sys.time(), 'finding GEO accession id for SRA run', run))
+    if (run == "") {
+        return(NA)
+    }
+
+    if (verbose) message(paste(Sys.time(), "finding GEO accession id for SRA run", run))
     Sys.sleep(sleep)
-    
+
     ## Find uid first
-    uid <- rentrez::entrez_search('sra', term = run)
-    if(length(uid$ids) == 0) return(NA)
-    
+    uid <- rentrez::entrez_search("sra", term = run)
+    if (length(uid$ids) == 0) {
+        return(NA)
+    }
+
     ## Find linking ids
-    linking <- rentrez::entrez_link('sra', id = uid$ids, db = 'gds')
-    if(length(linking$links$sra_gds) == 0) return(NA)
-        
+    linking <- rentrez::entrez_link("sra", id = uid$ids, db = "gds")
+    if (length(linking$links$sra_gds) == 0) {
+        return(NA)
+    }
+
     ## Find GSM
     foundGSM <- FALSE
-    for(i in linking$links$sra_gds) {
-        gsm <- rentrez::entrez_summary(db = 'gds', i)$accession
-        if(grepl('GSM', gsm)) {
+    for (i in linking$links$sra_gds) {
+        gsm <- rentrez::entrez_summary(db = "gds", i)$accession
+        if (grepl("GSM", gsm)) {
             foundGSM <- TRUE
             break
         }
     }
-    
+
     ## Finish
-    if(foundGSM) {
+    if (foundGSM) {
         return(gsm)
     } else {
         return(NA)

@@ -21,24 +21,24 @@
     works <- sapply(pkg, requireNamespace, quietly = TRUE)
 
     ## If some failed, then give a useful error before quitting
-    if(any(!works)) {
+    if (any(!works)) {
         x <- pkg[!works]
         stop(paste0(
             Sys.time(),
-            ' Package',
-            ifelse(length(x) > 1, 's', ''),
-            ' ',
-            paste(x, collapse = ', '),
-            ' ',
-            ifelse(length(x) > 1, 'are', 'is'),
-            ' missing. Install ',
-            ifelse(length(x) > 1, 'them', 'it'),
-            ' with BiocManager::install(',
-            ifelse(length(x) > 1, 'c(', ''),
+            " Package",
+            ifelse(length(x) > 1, "s", ""),
+            " ",
+            paste(x, collapse = ", "),
+            " ",
+            ifelse(length(x) > 1, "are", "is"),
+            " missing. Install ",
+            ifelse(length(x) > 1, "them", "it"),
+            " with BiocManager::install(",
+            ifelse(length(x) > 1, "c(", ""),
             '"',
             paste(x, collapse = '", "'),
             '")',
-            ifelse(length(x) > 1, ')', '')
+            ifelse(length(x) > 1, ")", "")
         ))
     }
     return(invisible(NULL))

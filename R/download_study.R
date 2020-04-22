@@ -81,36 +81,34 @@
 #' @examples
 #' ## Find the URL to download the RangedSummarizedExperiment for the
 #' ## Geuvadis consortium study.
-#' url <- download_study('ERP001942', download = FALSE)
+#' url <- download_study("ERP001942", download = FALSE)
 #'
 #' ## See the actual URL
 #' url
-#'
 #' \dontrun{
 #' ## Download the example data included in the package for study SRP009615
 #'
-#' url2 <- download_study('SRP009615')
+#' url2 <- download_study("SRP009615")
 #' url2
 #'
 #' ## Load the data
-#' load(file.path('SRP009615', 'rse_gene.Rdata'))
+#' load(file.path("SRP009615", "rse_gene.Rdata"))
 #'
 #' ## Compare the data
-#' library('testthat')
+#' library("testthat")
 #' expect_equivalent(rse_gene, rse_gene_SRP009615)
-#'
 #' }
 #'
-
-download_study <- function(project, type = 'rse-gene', outdir = project,
+download_study <- function(project, type = "rse-gene", outdir = project,
     download = TRUE, version = 2, ...) {
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(version %in% c(1, 2))
     stopifnot(type %in% c(
-        'rse-gene', 'rse-exon', 'rse-jx', 'rse-tx',
-        'counts-gene', 'counts-exon', 'counts-jx',
-        'phenotype', 'files-info', 'samples', 'mean', 'rse-fc', 'all'))
+        "rse-gene", "rse-exon", "rse-jx", "rse-tx",
+        "counts-gene", "counts-exon", "counts-jx",
+        "phenotype", "files-info", "samples", "mean", "rse-fc", "all"
+    ))
     stopifnot(length(type) == 1)
     stopifnot(is.logical(download) & length(download) == 1)
 
@@ -118,77 +116,88 @@ download_study <- function(project, type = 'rse-gene', outdir = project,
     url_table <- recount::recount_url
 
     ## URLs default to version 2 (disjoint exons).
-    if(version == 1) url_table$url <- gsub('v2/', '', url_table$url)
+    if (version == 1) url_table$url <- gsub("v2/", "", url_table$url)
 
     ## Subset url data
     url_table <- url_table[url_table$project == project, ]
-    if(nrow(url_table) == 0) {
+    if (nrow(url_table) == 0) {
         stop("Invalid 'project' argument. There's no such 'project' in the recount_url data.frame.")
     }
 
     ## If all, download each type individually
-    if(type == 'all') {
+    if (type == "all") {
         urls <- sapply(c(
-            'rse-gene', 'rse-exon', 'rse-jx', 'rse-tx',
-            'counts-gene', 'counts-exon', 'counts-jx',
-            'phenotype', 'files-info', 'samples', 'mean'), function(file_type) {
+            "rse-gene", "rse-exon", "rse-jx", "rse-tx",
+            "counts-gene", "counts-exon", "counts-jx",
+            "phenotype", "files-info", "samples", "mean"
+        ), function(file_type) {
             Sys.sleep(runif(n = 1, min = 2, max = 5))
-            download_study(project = project, type = file_type,
-                outdir = outdir, download = download, version = version, ...)
+            download_study(
+                project = project, type = file_type,
+                outdir = outdir, download = download, version = version, ...
+            )
         })
         return(invisible(urls))
     }
 
     ## Create output directory if needed
-    if(download) {
+    if (download) {
         dir.create(outdir, showWarnings = FALSE)
-        if(type %in% c('samples', 'mean')) {
+        if (type %in% c("samples", "mean")) {
             ## Save bigwigs on their own folder
-            outdir <- file.path(outdir, 'bw')
+            outdir <- file.path(outdir, "bw")
             dir.create(outdir, showWarnings = FALSE)
         }
     }
 
     ## Select files to download and download them
-    if(type != 'samples') {
+    if (type != "samples") {
         filename <- switch(type,
-            'rse-gene' = 'rse_gene.Rdata',
-            'rse-exon' = 'rse_exon.Rdata',
-            'rse-jx' = 'rse_jx.Rdata',
-            'rse-tx' = 'rse_tx.RData',
-            'counts-gene' = 'counts_gene.tsv.gz',
-            'counts-exon' = 'counts_exon.tsv.gz',
-            'counts-jx' = 'counts_jx.tsv.gz',
-            phenotype = paste0(project, '.tsv'),
-            'files-info' = 'files_info.tsv',
-            mean = paste0('mean_', project, '.bw'),
-            'rse-fc' = paste0('rse_fc_', project, '.Rdata')
+            "rse-gene" = "rse_gene.Rdata",
+            "rse-exon" = "rse_exon.Rdata",
+            "rse-jx" = "rse_jx.Rdata",
+            "rse-tx" = "rse_tx.RData",
+            "counts-gene" = "counts_gene.tsv.gz",
+            "counts-exon" = "counts_exon.tsv.gz",
+            "counts-jx" = "counts_jx.tsv.gz",
+            phenotype = paste0(project, ".tsv"),
+            "files-info" = "files_info.tsv",
+            mean = paste0("mean_", project, ".bw"),
+            "rse-fc" = paste0("rse_fc_", project, ".Rdata")
         )
         url <- url_table$url[url_table$file_name == filename]
-        if(length(url) == 0) return(NULL)
-        if(download) {
-            message(paste(Sys.time(), 'downloading file', filename, 'to',
-                outdir))
+        if (length(url) == 0) {
+            return(NULL)
+        }
+        if (download) {
+            message(paste(
+                Sys.time(), "downloading file", filename, "to",
+                outdir
+            ))
             xx <- download_retry(
                 url = url,
                 destfile = file.path(outdir, filename),
-                mode = 'wb',
+                mode = "wb",
                 ...
             )
         }
-    } else if(type == 'samples') {
-        url_table <- url_table[url_table$file_name != paste0('mean_', project,
-            '.bw'), ]
-        sample_urls <- url_table[grep('[.]bw$', url_table$file_name), ]
+    } else if (type == "samples") {
+        url_table <- url_table[url_table$file_name != paste0(
+            "mean_", project,
+            ".bw"
+        ), ]
+        sample_urls <- url_table[grep("[.]bw$", url_table$file_name), ]
         url <- sample_urls$url
-        if(download) {
+        if (download) {
             xx <- sapply(seq_len(nrow(sample_urls)), function(i, ...) {
-                message(paste(Sys.time(), 'downloading file',
-                    sample_urls$file_name[i], 'to', outdir))
+                message(paste(
+                    Sys.time(), "downloading file",
+                    sample_urls$file_name[i], "to", outdir
+                ))
                 download_retry(
                     url = sample_urls$url[i],
                     destfile = file.path(outdir, sample_urls$file_name[i]),
-                    mode = 'wb',
+                    mode = "wb",
                     ...
                 )
             }, ...)

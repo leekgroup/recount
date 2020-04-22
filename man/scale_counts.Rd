@@ -4,8 +4,14 @@
 \alias{scale_counts}
 \title{Scale the raw counts provided by the recount project}
 \usage{
-scale_counts(rse, by = "auc", targetSize = 4e+07, L = 100,
-  factor_only = FALSE, round = TRUE)
+scale_counts(
+  rse,
+  by = "auc",
+  targetSize = 4e+07,
+  L = 100,
+  factor_only = FALSE,
+  round = TRUE
+)
 }
 \arguments{
 \item{rse}{A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
@@ -60,7 +66,7 @@ rse_gene <- rse_gene_SRP009615
 rse <- scale_counts(rse_gene)
 
 ## Find the project used as an example
-project_info <- abstract_search('GSE32465')
+project_info <- abstract_search("GSE32465")
 
 ## See some summary information for this project
 project_info
@@ -71,7 +77,7 @@ project_info
 download_study(project_info$project)
 
 ## Load file
-load(file.path(project_info$project, 'rse_gene.Rdata'))
+load(file.path(project_info$project, "rse_gene.Rdata"))
 identical(rse_gene, rse_gene_SRP009615)
 }
 
