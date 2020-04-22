@@ -1,6 +1,6 @@
 Package: recount
 Title: Explore and download data from the recount project
-Version: 1.13.2
+Version: 1.13.3
 Date: 2020-04-21
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "lcolladotor@gmail.com", comment = c(ORCID = "0000-0003-2140-308X")),
@@ -52,7 +52,8 @@ Suggests:
     regionReport (>= 1.9.4),
     rmarkdown (>= 0.9.5),
     testthat (>= 2.1.0),
-    covr
+    covr,
+    pheatmap
 VignetteBuilder: knitr
 Description: Explore and download data from the recount project available at
     https://jhubiostatistics.shinyapps.io/recount/. Using the recount package you can
