@@ -85,7 +85,7 @@ at http://lieberinstitute.github.io/recount-brain/." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.13.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.15.1</span>
       </span>
     </div>
 
@@ -204,8 +204,8 @@ A bib file is available via citation('recount').</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Add the sample metadata to an example rse_gene object</span>
-<span class='no'>rse_gene</span> <span class='kw'>&lt;-</span> <span class='fu'>add_metadata</span>(<span class='no'>rse_gene_SRP009615</span>, <span class='st'>"recount_brain_v2"</span>)</div><div class='output co'>#&gt; <span class='message'>2020-04-21 20:12:29 downloading the recount_brain metadata to /var/folders/cx/n9s558kx6fb7jf5z_pgszgb80000gn/T//Rtmpb2h0Ve/recount_brain_v2.Rdata</span></div><div class='output co'>#&gt; Loading objects:
-#&gt;   recount_brain</div><div class='output co'>#&gt; <span class='message'>2020-04-21 20:12:32 found 0 out of 12 samples in the recount_brain metadata</span></div><div class='input'>
+<span class='no'>rse_gene</span> <span class='kw'>&lt;-</span> <span class='fu'>add_metadata</span>(<span class='no'>rse_gene_SRP009615</span>, <span class='st'>"recount_brain_v2"</span>)</div><div class='output co'>#&gt; <span class='message'>2020-05-13 16:50:06 downloading the recount_brain metadata to /tmp/RtmpJ879FJ/recount_brain_v2.Rdata</span></div><div class='output co'>#&gt; Loading objects:
+#&gt;   recount_brain</div><div class='output co'>#&gt; <span class='message'>2020-05-13 16:50:08 found 0 out of 12 samples in the recount_brain metadata</span></div><div class='input'>
 <span class='co'>## Explore the metadata</span>
 <span class='fu'>colData</span>(<span class='no'>rse_gene</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 85 columns
 #&gt;               project      sample  experiment         run
@@ -220,6 +220,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081   SRP009615   SRS282373   SRX111303   SRR389081
 #&gt; SRR389082   SRP009615   SRS282374   SRX111304   SRR389082
 #&gt; SRR389083   SRP009615   SRS282375   SRX111305   SRR389083
+#&gt; SRR389084   SRP009615   SRS282376   SRX111306   SRR389084
 #&gt;           read_count_as_reported_by_sra reads_downloaded
 #&gt;                               &lt;integer&gt;        &lt;integer&gt;
 #&gt; SRR387777                      30631853         30631853
@@ -232,6 +233,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081                      23351679         23351679
 #&gt; SRR389082                      18144828         18144828
 #&gt; SRR389083                      24417368         24417368
+#&gt; SRR389084                      23060084         23060084
 #&gt;           proportion_of_reads_reported_by_sra_downloaded paired_end
 #&gt;                                                &lt;numeric&gt;  &lt;logical&gt;
 #&gt; SRR387777                                              1      FALSE
@@ -244,6 +246,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081                                              1      FALSE
 #&gt; SRR389082                                              1      FALSE
 #&gt; SRR389083                                              1      FALSE
+#&gt; SRR389084                                              1      FALSE
 #&gt;           sra_misreported_paired_end mapped_read_count        auc
 #&gt;                            &lt;logical&gt;         &lt;integer&gt;  &lt;numeric&gt;
 #&gt; SRR387777                      FALSE          28798572 1029494445
@@ -256,6 +259,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081                      FALSE          21904197  781685955
 #&gt; SRR389082                      FALSE          17199795  616048853
 #&gt; SRR389083                      FALSE          22499386  806323346
+#&gt; SRR389084                      FALSE          21957003  787795710
 #&gt;           sharq_beta_tissue sharq_beta_cell_type biosample_submission_date
 #&gt;                 &lt;character&gt;          &lt;character&gt;               &lt;character&gt;
 #&gt; SRR387777             blood                 k562   2011-12-05T15:40:03.870
@@ -268,6 +272,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081             blood                 k562   2011-12-13T11:26:05.800
 #&gt; SRR389082             blood                 k562   2011-12-13T11:26:05.817
 #&gt; SRR389083             blood                 k562   2011-12-13T11:26:05.830
+#&gt; SRR389084             blood                 k562   2011-12-13T11:26:05.847
 #&gt;           biosample_publication_date   biosample_update_date avg_read_length
 #&gt;                          &lt;character&gt;             &lt;character&gt;       &lt;integer&gt;
 #&gt; SRR387777    2011-12-07T09:29:59.890 2014-08-27T04:18:20.530              36
@@ -280,6 +285,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081    2011-12-13T11:26:06.663 2014-08-27T04:22:16.290              36
 #&gt; SRR389082    2011-12-13T11:26:06.663 2014-08-27T04:22:16.647              36
 #&gt; SRR389083    2011-12-13T11:26:06.663 2014-08-27T04:22:17.037              36
+#&gt; SRR389084    2011-12-13T11:26:06.663 2014-08-27T04:22:17.473              36
 #&gt;           geo_accession  bigwig_file
 #&gt;             &lt;character&gt;  &lt;character&gt;
 #&gt; SRR387777     GSM836270 SRR387777.bw
@@ -292,6 +298,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081     GSM847565 SRR389081.bw
 #&gt; SRR389082     GSM847566 SRR389082.bw
 #&gt; SRR389083     GSM847567 SRR389083.bw
+#&gt; SRR389084     GSM847568 SRR389084.bw
 #&gt;                                                                                                     title
 #&gt;                                                                                               &lt;character&gt;
 #&gt; SRR387777   K562 cells with shRNA targeting SRF gene cultured with no doxycycline (uninduced - UI), rep1.
@@ -304,6 +311,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081  K562 cells with shRNA targeting ATF3 gene cultured with no doxycycline (uninduced - UI), rep1.
 #&gt; SRR389082 K562 cells with shRNA targeting ATF3 gene cultured with doxycycline for 24 hours (24 hr), rep1.
 #&gt; SRR389083  K562 cells with shRNA targeting ATF3 gene cultured with no doxycycline (uninduced - UI), rep2.
+#&gt; SRR389084 K562 cells with shRNA targeting ATF3 gene cultured with doxycycline for 24 hours (24 hr), rep2.
 #&gt;                                                                                               characteristics
 #&gt;                                                                                               &lt;CharacterList&gt;
 #&gt; SRR387777                                               cells: K562,shRNA expression: no,treatment: Puromycin
@@ -316,6 +324,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081                          cell line: K562,shRNA expression: no shRNA expression,treatment: Puromycin
 #&gt; SRR389082 cell line: K562,shRNA expression: expressing shRNA targeting ATF3,treatment: Puromycin, doxycycline
 #&gt; SRR389083                          cell line: K562,shRNA expression: no shRNA expression,treatment: Puromycin
+#&gt; SRR389084 cell line: K562,shRNA expression: expressing shRNA targeting ATF3,treatment: Puromycin, doxycycline
 #&gt;                 age age_units assay_type_s avgspotlen_l bioproject_s
 #&gt;           &lt;logical&gt; &lt;logical&gt;    &lt;logical&gt;    &lt;logical&gt;    &lt;logical&gt;
 #&gt; SRR387777        NA        NA           NA           NA           NA
@@ -328,6 +337,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081        NA        NA           NA           NA           NA
 #&gt; SRR389082        NA        NA           NA           NA           NA
 #&gt; SRR389083        NA        NA           NA           NA           NA
+#&gt; SRR389084        NA        NA           NA           NA           NA
 #&gt;           biosample_s brain_bank brodmann_area cell_line center_name_s
 #&gt;             &lt;logical&gt;  &lt;logical&gt;     &lt;logical&gt; &lt;logical&gt;     &lt;logical&gt;
 #&gt; SRR387777          NA         NA            NA        NA            NA
@@ -340,6 +350,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081          NA         NA            NA        NA            NA
 #&gt; SRR389082          NA         NA            NA        NA            NA
 #&gt; SRR389083          NA         NA            NA        NA            NA
+#&gt; SRR389084          NA         NA            NA        NA            NA
 #&gt;           clinical_stage_1 clinical_stage_2 consent_s development   disease
 #&gt;                  &lt;logical&gt;        &lt;logical&gt; &lt;logical&gt;   &lt;logical&gt; &lt;logical&gt;
 #&gt; SRR387777               NA               NA        NA          NA        NA
@@ -352,6 +363,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081               NA               NA        NA          NA        NA
 #&gt; SRR389082               NA               NA        NA          NA        NA
 #&gt; SRR389083               NA               NA        NA          NA        NA
+#&gt; SRR389084               NA               NA        NA          NA        NA
 #&gt;           disease_status experiment_s hemisphere insertsize_l instrument_s
 #&gt;                &lt;logical&gt;    &lt;logical&gt;  &lt;logical&gt;    &lt;logical&gt;    &lt;logical&gt;
 #&gt; SRR387777             NA           NA         NA           NA           NA
@@ -364,6 +376,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081             NA           NA         NA           NA           NA
 #&gt; SRR389082             NA           NA         NA           NA           NA
 #&gt; SRR389083             NA           NA         NA           NA           NA
+#&gt; SRR389084             NA           NA         NA           NA           NA
 #&gt;           library_name_s librarylayout_s libraryselection_s librarysource_s
 #&gt;                &lt;logical&gt;       &lt;logical&gt;          &lt;logical&gt;       &lt;logical&gt;
 #&gt; SRR387777             NA              NA                 NA              NA
@@ -376,6 +389,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081             NA              NA                 NA              NA
 #&gt; SRR389082             NA              NA                 NA              NA
 #&gt; SRR389083             NA              NA                 NA              NA
+#&gt; SRR389084             NA              NA                 NA              NA
 #&gt;           loaddate_s  mbases_l  mbytes_l organism_s pathology platform_s
 #&gt;            &lt;logical&gt; &lt;logical&gt; &lt;logical&gt;  &lt;logical&gt; &lt;logical&gt;  &lt;logical&gt;
 #&gt; SRR387777         NA        NA        NA         NA        NA         NA
@@ -388,6 +402,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081         NA        NA        NA         NA        NA         NA
 #&gt; SRR389082         NA        NA        NA         NA        NA         NA
 #&gt; SRR389083         NA        NA        NA         NA        NA         NA
+#&gt; SRR389084         NA        NA        NA         NA        NA         NA
 #&gt;                 pmi pmi_units preparation present_in_recount      race
 #&gt;           &lt;logical&gt; &lt;logical&gt;   &lt;logical&gt;          &lt;logical&gt; &lt;logical&gt;
 #&gt; SRR387777        NA        NA          NA                 NA        NA
@@ -400,6 +415,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081        NA        NA          NA                 NA        NA
 #&gt; SRR389082        NA        NA          NA                 NA        NA
 #&gt; SRR389083        NA        NA          NA                 NA        NA
+#&gt; SRR389084        NA        NA          NA                 NA        NA
 #&gt;           releasedate_s       rin sample_name_s sample_origin       sex
 #&gt;               &lt;logical&gt; &lt;logical&gt;     &lt;logical&gt;     &lt;logical&gt; &lt;logical&gt;
 #&gt; SRR387777            NA        NA            NA            NA        NA
@@ -412,6 +428,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081            NA        NA            NA            NA        NA
 #&gt; SRR389082            NA        NA            NA            NA        NA
 #&gt; SRR389083            NA        NA            NA            NA        NA
+#&gt; SRR389084            NA        NA            NA            NA        NA
 #&gt;           sra_sample_s sra_study_s tissue_site_1 tissue_site_2 tissue_site_3
 #&gt;              &lt;logical&gt;   &lt;logical&gt;     &lt;logical&gt;     &lt;logical&gt;     &lt;logical&gt;
 #&gt; SRR387777           NA          NA            NA            NA            NA
@@ -424,6 +441,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081           NA          NA            NA            NA            NA
 #&gt; SRR389082           NA          NA            NA            NA            NA
 #&gt; SRR389083           NA          NA            NA            NA            NA
+#&gt; SRR389084           NA          NA            NA            NA            NA
 #&gt;           tumor_type viability Study_full drugName_full drug_info_full
 #&gt;            &lt;logical&gt; &lt;logical&gt;  &lt;logical&gt;     &lt;logical&gt;      &lt;logical&gt;
 #&gt; SRR387777         NA        NA         NA            NA             NA
@@ -436,6 +454,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081         NA        NA         NA            NA             NA
 #&gt; SRR389082         NA        NA         NA            NA             NA
 #&gt; SRR389083         NA        NA         NA            NA             NA
+#&gt; SRR389084         NA        NA         NA            NA             NA
 #&gt;           drug_type_full full_260_280 count_file_identifier   Dataset
 #&gt;                &lt;logical&gt;    &lt;logical&gt;             &lt;logical&gt; &lt;logical&gt;
 #&gt; SRR387777             NA           NA                    NA        NA
@@ -448,6 +467,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081             NA           NA                    NA        NA
 #&gt; SRR389082             NA           NA                    NA        NA
 #&gt; SRR389083             NA           NA                    NA        NA
+#&gt; SRR389084             NA           NA                    NA        NA
 #&gt;           brodmann_ontology brodmann_synonyms brodmann_parents
 #&gt;                   &lt;logical&gt;         &lt;logical&gt;        &lt;logical&gt;
 #&gt; SRR387777                NA                NA               NA
@@ -460,6 +480,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081                NA                NA               NA
 #&gt; SRR389082                NA                NA               NA
 #&gt; SRR389083                NA                NA               NA
+#&gt; SRR389084                NA                NA               NA
 #&gt;           brodmann_parents_label disease_ontology    tissue tissue_ontology
 #&gt;                        &lt;logical&gt;        &lt;logical&gt; &lt;logical&gt;       &lt;logical&gt;
 #&gt; SRR387777                     NA               NA        NA              NA
@@ -472,6 +493,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081                     NA               NA        NA              NA
 #&gt; SRR389082                     NA               NA        NA              NA
 #&gt; SRR389083                     NA               NA        NA              NA
+#&gt; SRR389084                     NA               NA        NA              NA
 #&gt;           tissue_synonyms tissue_parents tissue_parents_label
 #&gt;                 &lt;logical&gt;      &lt;logical&gt;            &lt;logical&gt;
 #&gt; SRR387777              NA             NA                   NA
@@ -484,7 +506,7 @@ A bib file is available via citation('recount').</p>
 #&gt; SRR389081              NA             NA                   NA
 #&gt; SRR389082              NA             NA                   NA
 #&gt; SRR389083              NA             NA                   NA
-#&gt;  [ reached getOption("max.print") -- omitted 1 row ]</div><div class='input'>
+#&gt; SRR389084              NA             NA                   NA</div><div class='input'>
 <span class='co'>## For a list of studies present in recount_brain check</span>
 <span class='co'>## http://lieberinstitute.github.io/recount-brain/.</span>
 <span class='co'>## recount_brain_v2 includes GTEx and TCGA brain samples in addition to the</span>
@@ -493,7 +515,7 @@ A bib file is available via citation('recount').</p>
 
 <span class='co'>## Obtain all the recount_brain_v2 metadata if you want to</span>
 <span class='co'>## explore the metadata manually</span>
-<span class='no'>recount_brain_v2</span> <span class='kw'>&lt;-</span> <span class='fu'>add_metadata</span>(<span class='kw'>source</span> <span class='kw'>=</span> <span class='st'>"recount_brain_v2"</span>)</div><div class='output co'>#&gt; <span class='message'>2020-04-21 20:12:32 downloading the recount_brain metadata to /var/folders/cx/n9s558kx6fb7jf5z_pgszgb80000gn/T//Rtmpb2h0Ve/recount_brain_v2.Rdata</span></div><div class='output co'>#&gt; Loading objects:
+<span class='no'>recount_brain_v2</span> <span class='kw'>&lt;-</span> <span class='fu'>add_metadata</span>(<span class='kw'>source</span> <span class='kw'>=</span> <span class='st'>"recount_brain_v2"</span>)</div><div class='output co'>#&gt; <span class='message'>2020-05-13 16:50:09 downloading the recount_brain metadata to /tmp/RtmpJ879FJ/recount_brain_v2.Rdata</span></div><div class='output co'>#&gt; Loading objects:
 #&gt;   recount_brain</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -510,7 +532,7 @@ A bib file is available via citation('recount').</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

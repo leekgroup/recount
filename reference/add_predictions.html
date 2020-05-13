@@ -84,7 +84,7 @@ to the colData() slot." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.13.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.15.1</span>
       </span>
     </div>
 
@@ -186,14 +186,14 @@ predictions file is being downloaded to.</p></td>
 
     <p>A <a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>RangedSummarizedExperiment-class</a>
 object with the prediction columns appended to the <code>colData()</code> slot.
-The predicted phenotypes are:</p><dl'>
+The predicted phenotypes are:</p><dl>
 <dt>sex </dt><dd><p>male or female,</p></dd>
 <dt>samplesource </dt><dd><p>cell_line or tissue,</p></dd>
 <dt>tissue </dt><dd><p>tissue predicted based off of 30 tissues in GTEx,</p></dd>
 <dt>sequencingstrategy </dt><dd><p>single or paired end sequencing.</p></dd>
 
 </dl><p>For each of the predicted phenotypes there are several columns as described
-next:</p><dl'>
+next:</p><dl>
 <dt>reported_phenotype </dt><dd><p><code>NA</code> when not available,</p></dd>
 <dt>predicted_phenotype </dt><dd><p><code>NA</code> when we did not predict, "Unassigned"
 when prediction was ambiguous,</p></dd>
@@ -218,7 +218,7 @@ https://www.biorxiv.org/content/early/2017/06/03/145656</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Add the predictions to an example rse_gene object</span>
-<span class='no'>rse_gene</span> <span class='kw'>&lt;-</span> <span class='fu'>add_predictions</span>(<span class='no'>rse_gene_SRP009615</span>)</div><div class='output co'>#&gt; <span class='message'>2020-04-21 20:12:34 downloading the predictions to /var/folders/cx/n9s558kx6fb7jf5z_pgszgb80000gn/T//Rtmpb2h0Ve/PredictedPhenotypes_v0.0.06.rda</span></div><div class='output co'>#&gt; Loading objects:
+<span class='no'>rse_gene</span> <span class='kw'>&lt;-</span> <span class='fu'>add_predictions</span>(<span class='no'>rse_gene_SRP009615</span>)</div><div class='output co'>#&gt; <span class='message'>2020-05-13 16:50:10 downloading the predictions to /tmp/RtmpJ879FJ/PredictedPhenotypes_v0.0.06.rda</span></div><div class='output co'>#&gt; Loading objects:
 #&gt;   PredictedPhenotypes</div><div class='input'>
 <span class='co'>## Explore the predictions</span>
 <span class='fu'>colData</span>(<span class='no'>rse_gene</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 33 columns
@@ -392,7 +392,7 @@ https://www.biorxiv.org/content/early/2017/06/03/145656</p>
 #&gt; SRR389083                       SINGLE                    0.908575
 #&gt; SRR389084                       SINGLE                    0.908575</div><div class='input'>
 <span class='co'>## Download all the latest predictions</span>
-<span class='no'>PredictedPhenotypes</span> <span class='kw'>&lt;-</span> <span class='fu'>add_predictions</span>()</div><div class='output co'>#&gt; <span class='message'>2020-04-21 20:12:35 downloading the predictions to /var/folders/cx/n9s558kx6fb7jf5z_pgszgb80000gn/T//Rtmpb2h0Ve/PredictedPhenotypes_v0.0.06.rda</span></div><div class='output co'>#&gt; Loading objects:
+<span class='no'>PredictedPhenotypes</span> <span class='kw'>&lt;-</span> <span class='fu'>add_predictions</span>()</div><div class='output co'>#&gt; <span class='message'>2020-05-13 16:50:11 downloading the predictions to /tmp/RtmpJ879FJ/PredictedPhenotypes_v0.0.06.rda</span></div><div class='output co'>#&gt; Loading objects:
 #&gt;   PredictedPhenotypes</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -409,7 +409,7 @@ https://www.biorxiv.org/content/early/2017/06/03/145656</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
