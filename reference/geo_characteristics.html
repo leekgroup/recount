@@ -189,21 +189,21 @@ used the same names for all samples, you can then combine them using
 )
 
 <span class='co'>## Get the data from GEO</span>
-<span class='no'>geodata</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/do.call.html'>do.call</a></span>(<span class='no'>rbind</span>, <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span>(<span class='no'>geoids</span>, <span class='no'>geo_info</span>))</div><div class='output co'>#&gt; <span class='message'>File stored at: </span></div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpJ879FJ/GSM836270.soft</span></div><div class='output co'>#&gt; <span class='message'>File stored at: </span></div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpJ879FJ/GSM836271.soft</span></div><div class='input'>
+<span class='no'>geodata</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/do.call.html'>do.call</a></span>(<span class='no'>rbind</span>, <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span>(<span class='no'>geoids</span>, <span class='no'>geo_info</span>))</div><div class='output co'>#&gt; <span class='message'>File stored at: </span></div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpboEAeZ/GSM836270.soft</span></div><div class='output co'>#&gt; <span class='message'>File stored at: </span></div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpboEAeZ/GSM836271.soft</span></div><div class='input'>
 <span class='co'>## Add characteristics in a way that we can access easily later on</span>
 <span class='no'>geodata</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='no'>geodata</span>, <span class='fu'>geo_characteristics</span>(<span class='no'>geodata</span>))
 
 <span class='co'>## Explore the original characteristics and the result from</span>
 <span class='co'>## geo_characteristics()</span>
 <span class='no'>geodata</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"characteristics"</span>, <span class='st'>"cells"</span>, <span class='st'>"shrna.expression"</span>, <span class='st'>"treatment"</span>)]</div><div class='output co'>#&gt; DataFrame with 2 rows and 4 columns
-#&gt;                                                                      characteristics
-#&gt;                                                                      &lt;CharacterList&gt;
-#&gt; 1                              cells: K562,shRNA expression: no,treatment: Puromycin
-#&gt; 2 cells: K562,shRNA expression: yes, targeting SRF,treatment: Puromycin, doxycycline
-#&gt;         cells   shrna.expression              treatment
-#&gt;   &lt;character&gt;        &lt;character&gt;            &lt;character&gt;
-#&gt; 1        K562                 no              Puromycin
-#&gt; 2        K562 yes, targeting SRF Puromycin, doxycycline</div></pre>
+#&gt;                                             characteristics       cells
+#&gt;                                             &lt;CharacterList&gt; &lt;character&gt;
+#&gt; 1     cells: K562,shRNA expression: no,treatment: Puromycin        K562
+#&gt; 2 cells: K562,shRNA expression: ye..,treatment: Puromycin..        K562
+#&gt;     shrna.expression              treatment
+#&gt;          &lt;character&gt;            &lt;character&gt;
+#&gt; 1                 no              Puromycin
+#&gt; 2 yes, targeting SRF Puromycin, doxycycline</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

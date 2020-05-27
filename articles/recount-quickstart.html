@@ -98,7 +98,7 @@
       Lieber Institute for Brain Development, Johns Hopkins Medical Campus<br><a class="author_email" href="mailto:#"></a><a href="mailto:lcolladotor@gmail.com" class="email">lcolladotor@gmail.com</a>
       </address>
                   
-            <h4 class="date">13 May 2020</h4>
+            <h4 class="date">27 May 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/leekgroup/recount/blob/master/vignettes/recount-quickstart.Rmd"><code>vignettes/recount-quickstart.Rmd</code></a></small>
       <div class="hidden name"><code>recount-quickstart.Rmd</code></div>
@@ -370,7 +370,7 @@
 <p>Now that we have a study that we are interested in, we can download the <em>RangedSummarizedExperiment</em> object (see <em><a href="https://bioconductor.org/packages/3.12/SummarizedExperiment">SummarizedExperiment</a></em>) with the data summarized at the gene level. The function <code><a href="../reference/download_study.html">download_study()</a></code> helps us do this. If you are interested on how the annotation was defined, check <code><a href="../reference/reproduce_ranges.html">reproduce_ranges()</a></code> described in the <em>Annotation</em> section further down.</p>
 <div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="co">## Download the gene-level RangedSummarizedExperiment data</span>
 <span class="fu"><a href="../reference/download_study.html">download_study</a></span>(<span class="no">project_info</span>$<span class="no">project</span>)</pre></body></html></div>
-<pre><code>## 2020-05-13 16:51:29 downloading file rse_gene.Rdata to SRP009615</code></pre>
+<pre><code>## 2020-05-27 05:58:40 downloading file rse_gene.Rdata to SRP009615</code></pre>
 <div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="co">## Load the data</span>
 <span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="no">project_info</span>$<span class="no">project</span>, <span class="st">"rse_gene.Rdata"</span>))
 
@@ -444,69 +444,56 @@
 ## SRR389084                      FALSE          21957003  787795710
 ##           sharq_beta_tissue sharq_beta_cell_type biosample_submission_date
 ##                 &lt;character&gt;          &lt;character&gt;               &lt;character&gt;
-## SRR387777             blood                 k562   2011-12-05T15:40:03.870
-## SRR387778             blood                 k562   2011-12-05T15:40:03.897
-## SRR387779             blood                 k562   2011-12-05T15:40:03.910
-## SRR387780             blood                 k562   2011-12-05T15:40:03.923
-## SRR389077             blood                 k562   2011-12-13T11:26:05.720
+## SRR387777             blood                 k562    2011-12-05T15:40:03...
+## SRR387778             blood                 k562    2011-12-05T15:40:03...
+## SRR387779             blood                 k562    2011-12-05T15:40:03...
+## SRR387780             blood                 k562    2011-12-05T15:40:03...
+## SRR389077             blood                 k562    2011-12-13T11:26:05...
 ## ...                     ...                  ...                       ...
-## SRR389080             blood                 k562   2011-12-13T11:26:05.787
-## SRR389081             blood                 k562   2011-12-13T11:26:05.800
-## SRR389082             blood                 k562   2011-12-13T11:26:05.817
-## SRR389083             blood                 k562   2011-12-13T11:26:05.830
-## SRR389084             blood                 k562   2011-12-13T11:26:05.847
-##           biosample_publication_date   biosample_update_date avg_read_length
-##                          &lt;character&gt;             &lt;character&gt;       &lt;integer&gt;
-## SRR387777    2011-12-07T09:29:59.890 2014-08-27T04:18:20.530              36
-## SRR387778    2011-12-07T09:29:59.890 2014-08-27T04:18:21.053              36
-## SRR387779    2011-12-07T09:29:59.890 2014-08-27T04:18:21.800              36
-## SRR387780    2011-12-07T09:29:59.890 2014-08-27T04:18:22.320              36
-## SRR389077    2011-12-13T11:26:06.663 2014-08-27T04:22:14.857              36
-## ...                              ...                     ...             ...
-## SRR389080    2011-12-13T11:26:06.663 2014-08-27T04:22:15.933              36
-## SRR389081    2011-12-13T11:26:06.663 2014-08-27T04:22:16.290              36
-## SRR389082    2011-12-13T11:26:06.663 2014-08-27T04:22:16.647              36
-## SRR389083    2011-12-13T11:26:06.663 2014-08-27T04:22:17.037              36
-## SRR389084    2011-12-13T11:26:06.663 2014-08-27T04:22:17.473              36
-##           geo_accession  bigwig_file
-##             &lt;character&gt;  &lt;character&gt;
-## SRR387777     GSM836270 SRR387777.bw
-## SRR387778     GSM836271 SRR387778.bw
-## SRR387779     GSM836272 SRR387779.bw
-## SRR387780     GSM836273 SRR387780.bw
-## SRR389077     GSM847561 SRR389077.bw
-## ...                 ...          ...
-## SRR389080     GSM847564 SRR389080.bw
-## SRR389081     GSM847565 SRR389081.bw
-## SRR389082     GSM847566 SRR389082.bw
-## SRR389083     GSM847567 SRR389083.bw
-## SRR389084     GSM847568 SRR389084.bw
-##                                                                                                     title
-##                                                                                               &lt;character&gt;
-## SRR387777   K562 cells with shRNA targeting SRF gene cultured with no doxycycline (uninduced - UI), rep1.
-## SRR387778  K562 cells with shRNA targeting SRF gene cultured with doxycycline for 48 hours (48 hr), rep1.
-## SRR387779   K562 cells with shRNA targeting SRF gene cultured with no doxycycline (uninduced - UI), rep2.
-## SRR387780  K562 cells with shRNA targeting SRF gene cultured with doxycycline for 48 hours (48 hr), rep2.
-## SRR389077  K562 cells with shRNA targeting EGR1 gene cultured with no doxycycline (uninduced - UI), rep1.
-## ...                                                                                                   ...
-## SRR389080 K562 cells with shRNA targeting EGR1 gene cultured with doxycycline for 72 hours (72 hr), rep2.
-## SRR389081  K562 cells with shRNA targeting ATF3 gene cultured with no doxycycline (uninduced - UI), rep1.
-## SRR389082 K562 cells with shRNA targeting ATF3 gene cultured with doxycycline for 24 hours (24 hr), rep1.
-## SRR389083  K562 cells with shRNA targeting ATF3 gene cultured with no doxycycline (uninduced - UI), rep2.
-## SRR389084 K562 cells with shRNA targeting ATF3 gene cultured with doxycycline for 24 hours (24 hr), rep2.
-##                                                                                               characteristics
-##                                                                                               &lt;CharacterList&gt;
-## SRR387777                                               cells: K562,shRNA expression: no,treatment: Puromycin
-## SRR387778                  cells: K562,shRNA expression: yes, targeting SRF,treatment: Puromycin, doxycycline
-## SRR387779                                               cells: K562,shRNA expression: no,treatment: Puromycin
-## SRR387780                   cells: K562,shRNA expression: yes targeting SRF,treatment: Puromycin, doxycycline
-## SRR389077                          cell line: K562,shRNA expression: no shRNA expression,treatment: Puromycin
-## ...                                                                                                       ...
-## SRR389080 cell line: K562,shRNA expression: expressing shRNA targeting EGR1,treatment: Puromycin, doxycycline
-## SRR389081                          cell line: K562,shRNA expression: no shRNA expression,treatment: Puromycin
-## SRR389082 cell line: K562,shRNA expression: expressing shRNA targeting ATF3,treatment: Puromycin, doxycycline
-## SRR389083                          cell line: K562,shRNA expression: no shRNA expression,treatment: Puromycin
-## SRR389084 cell line: K562,shRNA expression: expressing shRNA targeting ATF3,treatment: Puromycin, doxycycline</code></pre>
+## SRR389080             blood                 k562    2011-12-13T11:26:05...
+## SRR389081             blood                 k562    2011-12-13T11:26:05...
+## SRR389082             blood                 k562    2011-12-13T11:26:05...
+## SRR389083             blood                 k562    2011-12-13T11:26:05...
+## SRR389084             blood                 k562    2011-12-13T11:26:05...
+##           biosample_publication_date  biosample_update_date avg_read_length
+##                          &lt;character&gt;            &lt;character&gt;       &lt;integer&gt;
+## SRR387777     2011-12-07T09:29:59... 2014-08-27T04:18:20...              36
+## SRR387778     2011-12-07T09:29:59... 2014-08-27T04:18:21...              36
+## SRR387779     2011-12-07T09:29:59... 2014-08-27T04:18:21...              36
+## SRR387780     2011-12-07T09:29:59... 2014-08-27T04:18:22...              36
+## SRR389077     2011-12-13T11:26:06... 2014-08-27T04:22:14...              36
+## ...                              ...                    ...             ...
+## SRR389080     2011-12-13T11:26:06... 2014-08-27T04:22:15...              36
+## SRR389081     2011-12-13T11:26:06... 2014-08-27T04:22:16...              36
+## SRR389082     2011-12-13T11:26:06... 2014-08-27T04:22:16...              36
+## SRR389083     2011-12-13T11:26:06... 2014-08-27T04:22:17...              36
+## SRR389084     2011-12-13T11:26:06... 2014-08-27T04:22:17...              36
+##           geo_accession  bigwig_file                  title
+##             &lt;character&gt;  &lt;character&gt;            &lt;character&gt;
+## SRR387777     GSM836270 SRR387777.bw K562 cells with shRN..
+## SRR387778     GSM836271 SRR387778.bw K562 cells with shRN..
+## SRR387779     GSM836272 SRR387779.bw K562 cells with shRN..
+## SRR387780     GSM836273 SRR387780.bw K562 cells with shRN..
+## SRR389077     GSM847561 SRR389077.bw K562 cells with shRN..
+## ...                 ...          ...                    ...
+## SRR389080     GSM847564 SRR389080.bw K562 cells with shRN..
+## SRR389081     GSM847565 SRR389081.bw K562 cells with shRN..
+## SRR389082     GSM847566 SRR389082.bw K562 cells with shRN..
+## SRR389083     GSM847567 SRR389083.bw K562 cells with shRN..
+## SRR389084     GSM847568 SRR389084.bw K562 cells with shRN..
+##                                                         characteristics
+##                                                         &lt;CharacterList&gt;
+## SRR387777         cells: K562,shRNA expression: no,treatment: Puromycin
+## SRR387778     cells: K562,shRNA expression: ye..,treatment: Puromycin..
+## SRR387779         cells: K562,shRNA expression: no,treatment: Puromycin
+## SRR387780     cells: K562,shRNA expression: ye..,treatment: Puromycin..
+## SRR389077   cell line: K562,shRNA expression: no..,treatment: Puromycin
+## ...                                                                 ...
+## SRR389080 cell line: K562,shRNA expression: ex..,treatment: Puromycin..
+## SRR389081   cell line: K562,shRNA expression: no..,treatment: Puromycin
+## SRR389082 cell line: K562,shRNA expression: ex..,treatment: Puromycin..
+## SRR389083   cell line: K562,shRNA expression: no..,treatment: Puromycin
+## SRR389084 cell line: K562,shRNA expression: ex..,treatment: Puromycin..</code></pre>
 <div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="co">## At the gene level, the row data includes the gene Gencode ids, the gene</span>
 <span class="co">## symbols and the sum of the disjoint exons widths, which can be used for</span>
 <span class="co">## taking into account the gene length.</span>
@@ -525,8 +512,8 @@
 ## ENSG00000283697.1   ENSG00000283697.1      1184           HSFX3
 ## ENSG00000283698.1   ENSG00000283698.1       940              NA
 ## ENSG00000283699.1   ENSG00000283699.1        60         MIR4481</code></pre>
-<div class="sourceCode" id="cb19"><html><body><pre class="r">## At the exon level, you can get the gene Gencode ids from the names of:
-# rowRanges(rse_exon)</pre></body></html></div>
+<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="co">## At the exon level, you can get the gene Gencode ids from the names of:</span>
+<span class="co"># rowRanges(rse_exon)</span></pre></body></html></div>
 </div>
 <div id="finding-phenotype-information" class="section level2">
 <h2 class="hasAnchor">
@@ -596,7 +583,7 @@
 ##  -8.839994 -12.892541  -7.536284  -6.497571 -13.239233 -15.816168 -14.775568 
 ##  SRR389080  SRR389081  SRR389082  SRR389083  SRR389084 
 ##  -6.274001  -5.054220  -2.328694  -5.265160  -4.421728</code></pre>
-<div class="sourceCode" id="cb28"><html><body><pre class="r">## Check the help page for read_counts() for more details</pre></body></html></div>
+<div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="co">## Check the help page for read_counts() for more details</span></pre></body></html></div>
 <p>We are almost ready to perform our differential expression analysis. Lets just add the information we recovered <a href="http://www.ncbi.nlm.nih.gov/geo/">GEO</a> about these samples.</p>
 <div class="sourceCode" id="cb29"><html><body><pre class="r"><span class="co">## Add sample information for DE analysis</span>
 <span class="fu">colData</span>(<span class="no">rse</span>)$<span class="no">group</span> <span class="kw">&lt;-</span> <span class="no">sample_info</span>$<span class="no">group</span>
@@ -694,14 +681,14 @@ MA plot for group differences adjusted by gene target for SRP009615 using gene-l
     <span class="kw">cutoff</span> <span class="kw">=</span> <span class="fl">5L</span>,
     <span class="kw">maxClusterGap</span> <span class="kw">=</span> <span class="fl">3000L</span>
 )</pre></body></html></div>
-<pre><code>## 2020-05-13 16:52:26 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:28 loadCoverage: applying the cutoff to the merged data</code></pre>
-<pre><code>## 2020-05-13 16:52:28 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</code></pre>
-<pre><code>## 2020-05-13 16:52:28 findRegions: identifying potential segments</code></pre>
-<pre><code>## 2020-05-13 16:52:28 findRegions: segmenting information</code></pre>
-<pre><code>## 2020-05-13 16:52:28 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
-<pre><code>## 2020-05-13 16:52:29 findRegions: identifying candidate regions</code></pre>
-<pre><code>## 2020-05-13 16:52:30 findRegions: identifying region clusters</code></pre>
+<pre><code>## 2020-05-27 05:59:33 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:35 loadCoverage: applying the cutoff to the merged data</code></pre>
+<pre><code>## 2020-05-27 05:59:35 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</code></pre>
+<pre><code>## 2020-05-27 05:59:35 findRegions: identifying potential segments</code></pre>
+<pre><code>## 2020-05-27 05:59:35 findRegions: segmenting information</code></pre>
+<pre><code>## 2020-05-27 05:59:35 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
+<pre><code>## 2020-05-27 05:59:35 findRegions: identifying candidate regions</code></pre>
+<pre><code>## 2020-05-27 05:59:35 findRegions: identifying region clusters</code></pre>
 <div class="sourceCode" id="cb63"><html><body><pre class="r"><span class="co">## Briefly explore the resulting regions</span>
 <span class="no">regions</span></pre></body></html></div>
 <pre><code>## GRanges object with 808 ranges and 6 metadata columns:
@@ -728,21 +715,21 @@ MA plot for group differences adjusted by gene target for SRP009615 using gene-l
 <p>Having defined the expressed regions, we can now compute a coverage matrix for these regions. We can do so using the function <code><a href="../reference/coverage_matrix.html">coverage_matrix()</a></code> from <em><a href="https://bioconductor.org/packages/3.12/recount">recount</a></em> as shown below. It returns a <em>RangedSummarizedExperiment</em> object.</p>
 <div class="sourceCode" id="cb65"><html><body><pre class="r"><span class="co">## Compute coverage matrix for study SRP009615, only for chromosome Y</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span>(<span class="no">rse_ER</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/coverage_matrix.html">coverage_matrix</a></span>(<span class="st">"SRP009615"</span>, <span class="st">"chrY"</span>, <span class="no">regions</span>))</pre></body></html></div>
-<pre><code>## 2020-05-13 16:52:32 railMatrix: processing regions 1 to 808</code></pre>
-<pre><code>## 2020-05-13 16:52:32 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:33 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:34 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:35 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:36 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:37 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:38 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:39 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:39 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:40 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:41 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
-<pre><code>## 2020-05-13 16:52:42 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:37 railMatrix: processing regions 1 to 808</code></pre>
+<pre><code>## 2020-05-27 05:59:37 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:39 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:40 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:41 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:42 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:43 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:44 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:45 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:46 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:46 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:47 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
+<pre><code>## 2020-05-27 05:59:48 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
 <pre><code>##    user  system elapsed 
-##   2.208   0.202  10.988</code></pre>
+##   1.917   0.215  12.673</code></pre>
 <div class="sourceCode" id="cb80"><html><body><pre class="r"><span class="co">## Explore the RSE a bit</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">rse_ER</span>)</pre></body></html></div>
 <pre><code>## [1] 808  12</code></pre>
@@ -792,44 +779,28 @@ MA plot for group differences adjusted by gene target for SRP009615 using gene-l
 ## SRR389078                                              1      FALSE                      FALSE          28190059
 ##                  auc sharq_beta_tissue sharq_beta_cell_type biosample_submission_date biosample_publication_date
 ##            &lt;integer&gt;       &lt;character&gt;          &lt;character&gt;               &lt;character&gt;                &lt;character&gt;
-## SRR387777 1029494445             blood                 k562   2011-12-05T15:40:03.870    2011-12-07T09:29:59.890
-## SRR387778 1184877985             blood                 k562   2011-12-05T15:40:03.897    2011-12-07T09:29:59.890
-## SRR387779 1336528969             blood                 k562   2011-12-05T15:40:03.910    2011-12-07T09:29:59.890
-## SRR387780 1073178116             blood                 k562   2011-12-05T15:40:03.923    2011-12-07T09:29:59.890
-## SRR389077  893978355             blood                 k562   2011-12-13T11:26:05.720    2011-12-13T11:26:06.663
-## SRR389078 1009216922             blood                 k562   2011-12-13T11:26:05.760    2011-12-13T11:26:06.663
-##             biosample_update_date avg_read_length geo_accession  bigwig_file
-##                       &lt;character&gt;       &lt;integer&gt;   &lt;character&gt;  &lt;character&gt;
-## SRR387777 2014-08-27T04:18:20.530              36     GSM836270 SRR387777.bw
-## SRR387778 2014-08-27T04:18:21.053              36     GSM836271 SRR387778.bw
-## SRR387779 2014-08-27T04:18:21.800              36     GSM836272 SRR387779.bw
-## SRR387780 2014-08-27T04:18:22.320              36     GSM836273 SRR387780.bw
-## SRR389077 2014-08-27T04:22:14.857              36     GSM847561 SRR389077.bw
-## SRR389078 2014-08-27T04:22:15.227              36     GSM847562 SRR389078.bw
-##                                                                                                     title
-##                                                                                               &lt;character&gt;
-## SRR387777   K562 cells with shRNA targeting SRF gene cultured with no doxycycline (uninduced - UI), rep1.
-## SRR387778  K562 cells with shRNA targeting SRF gene cultured with doxycycline for 48 hours (48 hr), rep1.
-## SRR387779   K562 cells with shRNA targeting SRF gene cultured with no doxycycline (uninduced - UI), rep2.
-## SRR387780  K562 cells with shRNA targeting SRF gene cultured with doxycycline for 48 hours (48 hr), rep2.
-## SRR389077  K562 cells with shRNA targeting EGR1 gene cultured with no doxycycline (uninduced - UI), rep1.
-## SRR389078 K562 cells with shRNA targeting EGR1 gene cultured with doxycycline for 72 hours (72 hr), rep1.
-##                                                                                                          characteristics
-##                                                                                                              &lt;character&gt;
-## SRR387777                                               c("cells: K562", "shRNA expression: no", "treatment: Puromycin")
-## SRR387778                  c("cells: K562", "shRNA expression: yes, targeting SRF", "treatment: Puromycin, doxycycline")
-## SRR387779                                               c("cells: K562", "shRNA expression: no", "treatment: Puromycin")
-## SRR387780                   c("cells: K562", "shRNA expression: yes targeting SRF", "treatment: Puromycin, doxycycline")
-## SRR389077                          c("cell line: K562", "shRNA expression: no shRNA expression", "treatment: Puromycin")
-## SRR389078 c("cell line: K562", "shRNA expression: expressing shRNA targeting EGR1", "treatment: Puromycin, doxycycline")
-##                 group gene_target
-##           &lt;character&gt; &lt;character&gt;
-## SRR387777   uninduced         SRF
-## SRR387778     induced         SRF
-## SRR387779   uninduced         SRF
-## SRR387780     induced         SRF
-## SRR389077   uninduced        EGR1
-## SRR389078     induced        EGR1</code></pre>
+## SRR387777 1029494445             blood                 k562    2011-12-05T15:40:03...     2011-12-07T09:29:59...
+## SRR387778 1184877985             blood                 k562    2011-12-05T15:40:03...     2011-12-07T09:29:59...
+## SRR387779 1336528969             blood                 k562    2011-12-05T15:40:03...     2011-12-07T09:29:59...
+## SRR387780 1073178116             blood                 k562    2011-12-05T15:40:03...     2011-12-07T09:29:59...
+## SRR389077  893978355             blood                 k562    2011-12-13T11:26:05...     2011-12-13T11:26:06...
+## SRR389078 1009216922             blood                 k562    2011-12-13T11:26:05...     2011-12-13T11:26:06...
+##            biosample_update_date avg_read_length geo_accession  bigwig_file                  title
+##                      &lt;character&gt;       &lt;integer&gt;   &lt;character&gt;  &lt;character&gt;            &lt;character&gt;
+## SRR387777 2014-08-27T04:18:20...              36     GSM836270 SRR387777.bw K562 cells with shRN..
+## SRR387778 2014-08-27T04:18:21...              36     GSM836271 SRR387778.bw K562 cells with shRN..
+## SRR387779 2014-08-27T04:18:21...              36     GSM836272 SRR387779.bw K562 cells with shRN..
+## SRR387780 2014-08-27T04:18:22...              36     GSM836273 SRR387780.bw K562 cells with shRN..
+## SRR389077 2014-08-27T04:22:14...              36     GSM847561 SRR389077.bw K562 cells with shRN..
+## SRR389078 2014-08-27T04:22:15...              36     GSM847562 SRR389078.bw K562 cells with shRN..
+##                  characteristics       group gene_target
+##                      &lt;character&gt; &lt;character&gt; &lt;character&gt;
+## SRR387777 c("cells: K562", "sh..   uninduced         SRF
+## SRR387778 c("cells: K562", "sh..     induced         SRF
+## SRR387779 c("cells: K562", "sh..   uninduced         SRF
+## SRR387780 c("cells: K562", "sh..     induced         SRF
+## SRR389077 c("cell line: K562",..   uninduced        EGR1
+## SRR389078 c("cell line: K562",..     induced        EGR1</code></pre>
 <p>Now that we have the necessary data, we can construct a <code>DESeqDataSet</code> object using the function <code><a href="https://rdrr.io/pkg/DESeq2/man/DESeqDataSet.html">DESeqDataSetFromMatrix()</a></code> from <em><a href="https://bioconductor.org/packages/3.12/DESeq2">DESeq2</a></em>.</p>
 <div class="sourceCode" id="cb87"><html><body><pre class="r"><span class="co">## Build a DESeqDataSet</span>
 <span class="no">dds_ers</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeqDataSet.html">DESeqDataSetFromMatrix</a></span>(
@@ -916,7 +887,7 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 <p>For an <code>rse_exon</code> object, the <code><a href="https://rdrr.io/r/base/colnames.html">rownames()</a></code> correspond to the Gencode <code>gene_id</code>. You can add a <code>gene_id</code> column if you are interested in subsetting the whole <code>rse_exon</code> object.</p>
 <div class="sourceCode" id="cb104"><html><body><pre class="r"><span class="co">## Get the rse_exon object for study SRP009615</span>
 <span class="fu"><a href="../reference/download_study.html">download_study</a></span>(<span class="st">"SRP009615"</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"rse-exon"</span>)</pre></body></html></div>
-<pre><code>## 2020-05-13 16:52:46 downloading file rse_exon.Rdata to SRP009615</code></pre>
+<pre><code>## 2020-05-27 05:59:52 downloading file rse_exon.Rdata to SRP009615</code></pre>
 <div class="sourceCode" id="cb106"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="st">"SRP009615"</span>, <span class="st">"rse_exon.Rdata"</span>))
 
 <span class="co">## Delete it if you don't need it anymore</span>
@@ -982,19 +953,19 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 <span class="no">exonRSE</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/coverage_matrix.html">coverage_matrix</a></span>(<span class="st">"SRP009615"</span>, <span class="st">"chrY"</span>, <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span>(<span class="no">exons_chrY</span>),
     <span class="kw">chunksize</span> <span class="kw">=</span> <span class="fl">3000</span>
 )</pre></body></html></div>
-<pre><code>## 2020-05-13 16:53:03 railMatrix: processing regions 1 to 2562</code></pre>
-<pre><code>## 2020-05-13 16:53:03 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
-<pre><code>## 2020-05-13 16:53:04 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
-<pre><code>## 2020-05-13 16:53:05 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
-<pre><code>## 2020-05-13 16:53:06 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
-<pre><code>## 2020-05-13 16:53:08 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
-<pre><code>## 2020-05-13 16:53:09 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
-<pre><code>## 2020-05-13 16:53:10 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
-<pre><code>## 2020-05-13 16:53:11 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
-<pre><code>## 2020-05-13 16:53:12 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
-<pre><code>## 2020-05-13 16:53:13 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
-<pre><code>## 2020-05-13 16:53:14 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
-<pre><code>## 2020-05-13 16:53:14 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:08 railMatrix: processing regions 1 to 2562</code></pre>
+<pre><code>## 2020-05-27 06:00:08 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:09 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:10 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:11 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:12 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:13 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:14 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:15 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:16 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:17 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:18 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
+<pre><code>## 2020-05-27 06:00:19 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
 <div class="sourceCode" id="cb125"><html><body><pre class="r"><span class="no">exonMatrix</span> <span class="kw">&lt;-</span> <span class="fu">assays</span>(<span class="no">exonRSE</span>)$<span class="no">counts</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">exonMatrix</span>)</pre></body></html></div>
 <pre><code>## [1] 2562   12</code></pre>
@@ -1048,7 +1019,7 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 
 <span class="co">## Download and load RSE object for SRP009615 study</span>
 <span class="fu"><a href="../reference/download_study.html">download_study</a></span>(<span class="st">"SRP009615"</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"rse-jx"</span>)</pre></body></html></div>
-<pre><code>## 2020-05-13 16:53:16 downloading file rse_jx.Rdata to SRP009615</code></pre>
+<pre><code>## 2020-05-27 06:00:21 downloading file rse_jx.Rdata to SRP009615</code></pre>
 <div class="sourceCode" id="cb135"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="st">"SRP009615"</span>, <span class="st">"rse_jx.Rdata"</span>))
 
 <span class="co">## Delete it if you don't need it anymore</span>
@@ -1086,9 +1057,9 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 ))
 
 <span class="fu"><a href="../reference/snaptron_query.html">snaptron_query</a></span>(<span class="no">junctions</span>)</pre></body></html></div>
-<pre><code>## 2020-05-13 16:53:17 querying Snaptron</code></pre>
-<pre><code>## 2020-05-13 16:53:18 processing results</code></pre>
-<pre><code>## 2020-05-13 16:53:18 extracting information</code></pre>
+<pre><code>## 2020-05-27 06:00:23 querying Snaptron</code></pre>
+<pre><code>## 2020-05-27 06:00:23 processing results</code></pre>
+<pre><code>## 2020-05-27 06:00:23 extracting information</code></pre>
 <pre><code>## GRanges object with 3 ranges and 14 metadata columns:
 ##       seqnames            ranges strand |     type snaptron_id       annotated  left_motif right_motif
 ##          &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;factor&gt;   &lt;integer&gt; &lt;CharacterList&gt; &lt;character&gt; &lt;character&gt;
@@ -1242,9 +1213,9 @@ recount files are available locally so remmeber to use the local data when worki
 <li>
 <em><a href="https://bioconductor.org/packages/3.12/derfinder">derfinder</a></em> (<a href="http://nar.oxfordjournals.org/content/early/2016/09/29/nar.gkw852">Collado-Torres, Nellore, Frazee, Wilks, et al., 2017</a>)</li>
 <li>
-<em><a href="https://CRAN.R-project.org/package=sessioninfo">sessioninfo</a></em> <a id="cite-Csardi_2018"></a>(<a href="https://CRAN.R-project.org/package=sessioninfo">Csárdi, core, Wickham, Chang, et al., 2018</a>)</li>
+<em><a href="https://CRAN.R-project.org/package=sessioninfo">sessioninfo</a></em> <a id="cite-Csardi_2018"></a>(<a href="https://github.com/r-lib/sessioninfo#readme">Csárdi, core, Wickham, Chang, et al., 2018</a>)</li>
 <li>
-<em><a href="https://CRAN.R-project.org/package=downloader">downloader</a></em> <a id="cite-Chang_2015"></a>(<a href="https://CRAN.R-project.org/package=downloader">Chang, 2015</a>)</li>
+<em><a href="https://CRAN.R-project.org/package=downloader">downloader</a></em> <a id="cite-Chang_2015"></a>(<a href="https://github.com/wch/downloader">Chang, 2015</a>)</li>
 <li>
 <em><a href="https://bioconductor.org/packages/3.12/EnsDb.Hsapiens.v79">EnsDb.Hsapiens.v79</a></em> <a id="cite-Rainer_2017"></a>(<a href="#bib-Rainer_2017">Rainer, 2017</a>)</li>
 <li>
@@ -1256,13 +1227,13 @@ recount files are available locally so remmeber to use the local data when worki
 <li>
 <em><a href="https://bioconductor.org/packages/3.12/GenomicRanges">GenomicRanges</a></em> <a id="cite-Lawrence_2013a"></a>(<a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118">Lawrence, Huber, Pagès, Aboyoun, et al., 2013</a>)</li>
 <li>
-<em><a href="https://CRAN.R-project.org/package=knitcitations">knitcitations</a></em> (<a href="https://CRAN.R-project.org/package=knitcitations">Boettiger, 2019</a>)</li>
+<em><a href="https://CRAN.R-project.org/package=knitcitations">knitcitations</a></em> (<a href="https://github.com/cboettig/knitcitations">Boettiger, 2019</a>)</li>
 <li>
 <em><a href="https://CRAN.R-project.org/package=knitr">knitr</a></em> (<a href="http://www.crcpress.com/product/isbn/9781466561595">Xie, 2014</a>)</li>
 <li>
 <em><a href="https://bioconductor.org/packages/3.12/org.Hs.eg.db">org.Hs.eg.db</a></em> <a id="cite-Carlson_2020"></a>(<a href="#bib-Carlson_2020">Carlson, 2020</a>)</li>
 <li>
-<em><a href="https://CRAN.R-project.org/package=RCurl">RCurl</a></em> <a id="cite-Temple_Lang_2020"></a>(<a href="https://CRAN.R-project.org/package=RCurl">Temple Lang, 2020</a>)</li>
+<em><a href="https://CRAN.R-project.org/package=RCurl">RCurl</a></em> <a id="cite-Temple_Lang_2020"></a>(<a href="#bib-Temple_Lang_2020">Temple Lang, 2020</a>)</li>
 <li>
 <em><a href="https://CRAN.R-project.org/package=rentrez">rentrez</a></em> <a id="cite-Winter_2017"></a>(<a href="#bib-Winter_2017">Winter, 2017</a>)</li>
 <li>
@@ -1288,33 +1259,33 @@ recount files are available locally so remmeber to use the local data when worki
 <span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span>(<span class="st">"quickstartRef.bib"</span>)</pre></body></html></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Date the vignette was generated.</p>
-<pre><code>## [1] "2020-05-13 16:53:19 UTC"</code></pre>
+<pre><code>## [1] "2020-05-27 06:00:24 UTC"</code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code>## Time difference of 2.078 mins</code></pre>
+<pre><code>## Time difference of 1.935 mins</code></pre>
 <p><code>R</code> session information.</p>
 <pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
-##  setting  value                                      
-##  version  R version 4.0.0 Patched (2020-05-07 r78385)
-##  os       Ubuntu 18.04.4 LTS                         
-##  system   x86_64, linux-gnu                          
-##  ui       X11                                        
-##  language (EN)                                       
-##  collate  en_US.UTF-8                                
-##  ctype    en_US.UTF-8                                
-##  tz       UTC                                        
-##  date     2020-05-13                                 
+##  setting  value                       
+##  version  R version 4.0.0 (2020-04-24)
+##  os       Ubuntu 18.04.4 LTS          
+##  system   x86_64, linux-gnu           
+##  ui       X11                         
+##  language (EN)                        
+##  collate  en_US.UTF-8                 
+##  ctype    en_US.UTF-8                 
+##  tz       UTC                         
+##  date     2020-05-27                  
 ## 
 ## ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  package              * version    date       lib source                        
-##  acepack                1.4.1      2016-10-29 [1] CRAN (R 4.0.0)                
+##  acepack                1.4.1      2016-10-29 [1] RSPM (R 4.0.0)                
 ##  annotate               1.67.0     2020-04-27 [1] Bioconductor                  
 ##  AnnotationDbi        * 1.51.0     2020-04-27 [1] Bioconductor                  
 ##  AnnotationFilter       1.13.0     2020-04-27 [1] Bioconductor                  
-##  askpass                1.1        2019-01-13 [2] CRAN (R 4.0.0)                
-##  assertthat             0.2.1      2019-03-21 [2] CRAN (R 4.0.0)                
-##  backports              1.1.6      2020-04-05 [2] CRAN (R 4.0.0)                
-##  base64enc              0.1-3      2015-07-28 [1] CRAN (R 4.0.0)                
-##  bibtex                 0.4.2.2    2020-01-02 [1] CRAN (R 4.0.0)                
+##  askpass                1.1        2019-01-13 [2] RSPM (R 4.0.0)                
+##  assertthat             0.2.1      2019-03-21 [2] RSPM (R 4.0.0)                
+##  backports              1.1.7      2020-05-13 [2] RSPM (R 4.0.0)                
+##  base64enc              0.1-3      2015-07-28 [1] RSPM (R 4.0.0)                
+##  bibtex                 0.4.2.2    2020-01-02 [1] RSPM (R 4.0.0)                
 ##  Biobase              * 2.49.0     2020-04-27 [1] Bioconductor                  
 ##  BiocFileCache          1.13.0     2020-04-27 [1] Bioconductor                  
 ##  BiocGenerics         * 0.35.2     2020-05-06 [1] Bioconductor                  
@@ -1322,143 +1293,143 @@ recount files are available locally so remmeber to use the local data when worki
 ##  BiocParallel           1.23.0     2020-04-27 [1] Bioconductor                  
 ##  BiocStyle            * 2.17.0     2020-04-27 [1] Bioconductor                  
 ##  biomaRt                2.45.0     2020-04-27 [1] Bioconductor                  
-##  Biostrings             2.57.0     2020-04-27 [1] Bioconductor                  
-##  bit                    1.1-15.2   2020-02-10 [1] CRAN (R 4.0.0)                
-##  bit64                  0.9-7      2017-05-08 [1] CRAN (R 4.0.0)                
-##  bitops                 1.0-6      2013-08-17 [1] CRAN (R 4.0.0)                
-##  blob                   1.2.1      2020-01-20 [1] CRAN (R 4.0.0)                
-##  bookdown               0.18       2020-03-05 [1] CRAN (R 4.0.0)                
+##  Biostrings             2.57.1     2020-05-21 [1] Bioconductor                  
+##  bit                    1.1-15.2   2020-02-10 [1] RSPM (R 4.0.0)                
+##  bit64                  0.9-7      2017-05-08 [1] RSPM (R 4.0.0)                
+##  bitops                 1.0-6      2013-08-17 [1] RSPM (R 4.0.0)                
+##  blob                   1.2.1      2020-01-20 [1] RSPM (R 4.0.0)                
+##  bookdown               0.19       2020-05-15 [1] RSPM (R 4.0.0)                
 ##  BSgenome               1.57.0     2020-04-27 [1] Bioconductor                  
 ##  bumphunter             1.31.0     2020-04-28 [1] Bioconductor                  
-##  checkmate              2.0.0      2020-02-06 [1] CRAN (R 4.0.0)                
-##  cli                    2.0.2      2020-02-28 [2] CRAN (R 4.0.0)                
+##  checkmate              2.0.0      2020-02-06 [1] RSPM (R 4.0.0)                
+##  cli                    2.0.2      2020-02-28 [2] RSPM (R 4.0.0)                
 ##  cluster                2.1.0      2019-06-19 [3] CRAN (R 4.0.0)                
 ##  codetools              0.2-16     2018-12-24 [3] CRAN (R 4.0.0)                
-##  colorspace             1.4-1      2019-03-18 [1] CRAN (R 4.0.0)                
-##  crayon                 1.3.4      2017-09-16 [2] CRAN (R 4.0.0)                
-##  crosstalk              1.1.0.1    2020-03-13 [2] CRAN (R 4.0.0)                
-##  curl                   4.3        2019-12-02 [2] CRAN (R 4.0.0)                
-##  data.table             1.12.8     2019-12-09 [1] CRAN (R 4.0.0)                
-##  DBI                    1.1.0      2019-12-15 [1] CRAN (R 4.0.0)                
-##  dbplyr                 1.4.3      2020-04-19 [1] CRAN (R 4.0.0)                
+##  colorspace             1.4-1      2019-03-18 [1] RSPM (R 4.0.0)                
+##  crayon                 1.3.4      2017-09-16 [2] RSPM (R 4.0.0)                
+##  crosstalk              1.1.0.1    2020-03-13 [2] RSPM (R 4.0.0)                
+##  curl                   4.3        2019-12-02 [2] RSPM (R 4.0.0)                
+##  data.table             1.12.8     2019-12-09 [1] RSPM (R 4.0.0)                
+##  DBI                    1.1.0      2019-12-15 [1] RSPM (R 4.0.0)                
+##  dbplyr                 1.4.3      2020-04-19 [1] RSPM (R 4.0.0)                
 ##  DEFormats              1.17.0     2020-04-27 [1] Bioconductor                  
 ##  DelayedArray         * 0.15.1     2020-05-01 [1] Bioconductor                  
 ##  derfinder              1.23.1     2020-05-10 [1] Bioconductor                  
 ##  derfinderHelper        1.23.1     2020-05-10 [1] Bioconductor                  
-##  desc                   1.2.0      2018-05-01 [2] CRAN (R 4.0.0)                
-##  DESeq2               * 1.29.0     2020-04-27 [1] Bioconductor                  
-##  digest                 0.6.25     2020-02-23 [2] CRAN (R 4.0.0)                
-##  doRNG                  1.8.2      2020-01-27 [1] CRAN (R 4.0.0)                
-##  downloader             0.4        2015-07-09 [1] CRAN (R 4.0.0)                
-##  dplyr                  0.8.5      2020-03-07 [1] CRAN (R 4.0.0)                
-##  DT                   * 0.13       2020-03-23 [2] CRAN (R 4.0.0)                
+##  desc                   1.2.0      2018-05-01 [2] RSPM (R 4.0.0)                
+##  DESeq2               * 1.29.4     2020-05-16 [1] Bioconductor                  
+##  digest                 0.6.25     2020-02-23 [2] RSPM (R 4.0.0)                
+##  doRNG                  1.8.2      2020-01-27 [1] RSPM (R 4.0.0)                
+##  downloader             0.4        2015-07-09 [1] RSPM (R 4.0.0)                
+##  dplyr                  0.8.5      2020-03-07 [1] RSPM (R 4.0.0)                
+##  DT                   * 0.13       2020-03-23 [2] RSPM (R 4.0.0)                
 ##  edgeR                  3.31.0     2020-04-27 [1] Bioconductor                  
-##  ellipsis               0.3.0      2019-09-20 [2] CRAN (R 4.0.0)                
-##  EnsDb.Hsapiens.v79     2.99.0     2020-05-13 [1] Bioconductor                  
+##  ellipsis               0.3.1      2020-05-15 [2] RSPM (R 4.0.0)                
+##  EnsDb.Hsapiens.v79     2.99.0     2020-05-27 [1] Bioconductor                  
 ##  ensembldb              2.13.1     2020-05-06 [1] Bioconductor                  
-##  evaluate               0.14       2019-05-28 [2] CRAN (R 4.0.0)                
-##  fansi                  0.4.1      2020-01-08 [2] CRAN (R 4.0.0)                
-##  farver                 2.0.3      2020-01-16 [1] CRAN (R 4.0.0)                
-##  foreach                1.5.0      2020-03-30 [1] CRAN (R 4.0.0)                
-##  foreign                0.8-79     2020-04-26 [3] CRAN (R 4.0.0)                
-##  Formula                1.2-3      2018-05-03 [1] CRAN (R 4.0.0)                
-##  fs                     1.4.1      2020-04-04 [2] CRAN (R 4.0.0)                
+##  evaluate               0.14       2019-05-28 [2] RSPM (R 4.0.0)                
+##  fansi                  0.4.1      2020-01-08 [2] RSPM (R 4.0.0)                
+##  farver                 2.0.3      2020-01-16 [1] RSPM (R 4.0.0)                
+##  foreach                1.5.0      2020-03-30 [1] RSPM (R 4.0.0)                
+##  foreign                0.8-78     2020-04-13 [3] CRAN (R 4.0.0)                
+##  Formula                1.2-3      2018-05-03 [1] RSPM (R 4.0.0)                
+##  fs                     1.4.1      2020-04-04 [2] RSPM (R 4.0.0)                
 ##  genefilter             1.71.0     2020-04-27 [1] Bioconductor                  
 ##  geneplotter            1.67.0     2020-04-27 [1] Bioconductor                  
-##  generics               0.0.2      2018-11-29 [1] CRAN (R 4.0.0)                
+##  generics               0.0.2      2018-11-29 [1] RSPM (R 4.0.0)                
 ##  GenomeInfoDb         * 1.25.0     2020-04-27 [1] Bioconductor                  
-##  GenomeInfoDbData       1.2.3      2020-05-13 [1] Bioconductor                  
-##  GenomicAlignments      1.25.0     2020-04-27 [1] Bioconductor                  
+##  GenomeInfoDbData       1.2.3      2020-05-27 [1] Bioconductor                  
+##  GenomicAlignments      1.25.1     2020-05-21 [1] Bioconductor                  
 ##  GenomicFeatures        1.41.0     2020-04-27 [1] Bioconductor                  
 ##  GenomicFiles           1.25.0     2020-04-27 [1] Bioconductor                  
 ##  GenomicRanges        * 1.41.1     2020-05-02 [1] Bioconductor                  
 ##  GEOquery               2.57.0     2020-04-27 [1] Bioconductor                  
-##  ggplot2              * 3.3.0      2020-03-05 [1] CRAN (R 4.0.0)                
-##  glue                   1.4.1      2020-05-13 [1] CRAN (R 4.0.0)                
-##  gridExtra              2.3        2017-09-09 [1] CRAN (R 4.0.0)                
-##  gtable                 0.3.0      2019-03-25 [1] CRAN (R 4.0.0)                
-##  highr                  0.8        2019-03-20 [2] CRAN (R 4.0.0)                
-##  Hmisc                  4.4-0      2020-03-23 [1] CRAN (R 4.0.0)                
-##  hms                    0.5.3      2020-01-08 [1] CRAN (R 4.0.0)                
-##  htmlTable              1.13.3     2019-12-04 [1] CRAN (R 4.0.0)                
-##  htmltools              0.4.0      2019-10-04 [2] CRAN (R 4.0.0)                
-##  htmlwidgets            1.5.1      2019-10-08 [2] CRAN (R 4.0.0)                
-##  httr                   1.4.1      2019-08-05 [2] CRAN (R 4.0.0)                
-##  IRanges              * 2.23.4     2020-05-03 [1] Bioconductor                  
-##  iterators              1.0.12     2019-07-26 [1] CRAN (R 4.0.0)                
-##  jpeg                   0.1-8.1    2019-10-24 [1] CRAN (R 4.0.0)                
-##  jsonlite               1.6.1      2020-02-02 [2] CRAN (R 4.0.0)                
-##  knitcitations        * 1.0.10     2019-09-15 [1] CRAN (R 4.0.0)                
-##  knitr                * 1.28       2020-02-06 [2] CRAN (R 4.0.0)                
-##  knitrBootstrap         1.0.2      2018-05-24 [1] CRAN (R 4.0.0)                
-##  labeling               0.3        2014-08-23 [1] CRAN (R 4.0.0)                
+##  ggplot2              * 3.3.0      2020-03-05 [1] RSPM (R 4.0.0)                
+##  glue                   1.4.1      2020-05-13 [2] RSPM (R 4.0.0)                
+##  gridExtra              2.3        2017-09-09 [1] RSPM (R 4.0.0)                
+##  gtable                 0.3.0      2019-03-25 [1] RSPM (R 4.0.0)                
+##  highr                  0.8        2019-03-20 [2] RSPM (R 4.0.0)                
+##  Hmisc                  4.4-0      2020-03-23 [1] RSPM (R 4.0.0)                
+##  hms                    0.5.3      2020-01-08 [1] RSPM (R 4.0.0)                
+##  htmlTable              1.13.3     2019-12-04 [1] RSPM (R 4.0.0)                
+##  htmltools              0.4.0      2019-10-04 [2] RSPM (R 4.0.0)                
+##  htmlwidgets            1.5.1      2019-10-08 [2] RSPM (R 4.0.0)                
+##  httr                   1.4.1      2019-08-05 [2] RSPM (R 4.0.0)                
+##  IRanges              * 2.23.5     2020-05-21 [1] Bioconductor                  
+##  iterators              1.0.12     2019-07-26 [1] RSPM (R 4.0.0)                
+##  jpeg                   0.1-8.1    2019-10-24 [1] RSPM (R 4.0.0)                
+##  jsonlite               1.6.1      2020-02-02 [2] RSPM (R 4.0.0)                
+##  knitcitations        * 1.0.10     2019-09-15 [1] RSPM (R 4.0.0)                
+##  knitr                * 1.28       2020-02-06 [2] RSPM (R 4.0.0)                
+##  knitrBootstrap         1.0.2      2018-05-24 [1] RSPM (R 4.0.0)                
+##  labeling               0.3        2014-08-23 [1] RSPM (R 4.0.0)                
 ##  lattice                0.20-41    2020-04-02 [3] CRAN (R 4.0.0)                
-##  latticeExtra           0.6-29     2019-12-19 [1] CRAN (R 4.0.0)                
-##  lazyeval               0.2.2      2019-03-15 [2] CRAN (R 4.0.0)                
-##  lifecycle              0.2.0      2020-03-06 [2] CRAN (R 4.0.0)                
+##  latticeExtra           0.6-29     2019-12-19 [1] RSPM (R 4.0.0)                
+##  lazyeval               0.2.2      2019-03-15 [2] RSPM (R 4.0.0)                
+##  lifecycle              0.2.0      2020-03-06 [2] RSPM (R 4.0.0)                
 ##  limma                  3.45.0     2020-04-27 [1] Bioconductor                  
-##  locfit                 1.5-9.4    2020-03-25 [1] CRAN (R 4.0.0)                
-##  lubridate              1.7.8      2020-04-06 [1] CRAN (R 4.0.0)                
-##  magrittr               1.5        2014-11-22 [2] CRAN (R 4.0.0)                
-##  markdown               1.1        2019-08-07 [2] CRAN (R 4.0.0)                
-##  MASS                   7.3-51.6   2020-04-26 [3] CRAN (R 4.0.0)                
+##  locfit                 1.5-9.4    2020-03-25 [1] RSPM (R 4.0.0)                
+##  lubridate              1.7.8      2020-04-06 [1] RSPM (R 4.0.0)                
+##  magrittr               1.5        2014-11-22 [2] RSPM (R 4.0.0)                
+##  markdown               1.1        2019-08-07 [2] RSPM (R 4.0.0)                
+##  MASS                   7.3-51.5   2019-12-20 [3] CRAN (R 4.0.0)                
 ##  Matrix                 1.2-18     2019-11-27 [3] CRAN (R 4.0.0)                
-##  matrixStats          * 0.56.0     2020-03-13 [1] CRAN (R 4.0.0)                
-##  memoise                1.1.0      2017-04-21 [2] CRAN (R 4.0.0)                
-##  munsell                0.5.0      2018-06-12 [1] CRAN (R 4.0.0)                
-##  nnet                   7.3-14     2020-04-26 [3] CRAN (R 4.0.0)                
-##  openssl                1.4.1      2019-07-18 [2] CRAN (R 4.0.0)                
-##  org.Hs.eg.db         * 3.11.1     2020-05-13 [1] Bioconductor                  
-##  pheatmap             * 1.0.12     2019-01-04 [1] CRAN (R 4.0.0)                
-##  pillar                 1.4.4      2020-05-05 [2] CRAN (R 4.0.0)                
-##  pkgconfig              2.0.3      2019-09-22 [2] CRAN (R 4.0.0)                
-##  pkgdown                1.5.1.9000 2020-05-13 [1] Github (r-lib/pkgdown@c181e5c)
-##  plyr                   1.8.6      2020-03-03 [1] CRAN (R 4.0.0)                
-##  png                    0.1-7      2013-12-03 [1] CRAN (R 4.0.0)                
-##  prettyunits            1.1.1      2020-01-24 [2] CRAN (R 4.0.0)                
-##  progress               1.2.2      2019-05-16 [1] CRAN (R 4.0.0)                
+##  matrixStats          * 0.56.0     2020-03-13 [1] RSPM (R 4.0.0)                
+##  memoise                1.1.0      2017-04-21 [2] RSPM (R 4.0.0)                
+##  munsell                0.5.0      2018-06-12 [1] RSPM (R 4.0.0)                
+##  nnet                   7.3-13     2020-02-25 [3] CRAN (R 4.0.0)                
+##  openssl                1.4.1      2019-07-18 [2] RSPM (R 4.0.0)                
+##  org.Hs.eg.db         * 3.11.4     2020-05-27 [1] Bioconductor                  
+##  pheatmap             * 1.0.12     2019-01-04 [1] RSPM (R 4.0.0)                
+##  pillar                 1.4.4      2020-05-05 [2] RSPM (R 4.0.0)                
+##  pkgconfig              2.0.3      2019-09-22 [2] RSPM (R 4.0.0)                
+##  pkgdown                1.5.1.9000 2020-05-27 [1] Github (r-lib/pkgdown@ac78596)
+##  plyr                   1.8.6      2020-03-03 [1] RSPM (R 4.0.0)                
+##  png                    0.1-7      2013-12-03 [1] RSPM (R 4.0.0)                
+##  prettyunits            1.1.1      2020-01-24 [2] RSPM (R 4.0.0)                
+##  progress               1.2.2      2019-05-16 [1] RSPM (R 4.0.0)                
 ##  ProtGenerics           1.21.0     2020-04-27 [1] Bioconductor                  
-##  purrr                  0.3.4      2020-04-17 [2] CRAN (R 4.0.0)                
+##  purrr                  0.3.4      2020-04-17 [2] RSPM (R 4.0.0)                
 ##  qvalue                 2.21.0     2020-04-27 [1] Bioconductor                  
-##  R6                     2.4.1      2019-11-12 [2] CRAN (R 4.0.0)                
-##  rappdirs               0.3.1      2016-03-28 [1] CRAN (R 4.0.0)                
-##  RColorBrewer         * 1.1-2      2014-12-07 [1] CRAN (R 4.0.0)                
-##  Rcpp                   1.0.4.6    2020-04-09 [2] CRAN (R 4.0.0)                
-##  RCurl                  1.98-1.2   2020-04-18 [1] CRAN (R 4.0.0)                
-##  readr                  1.3.1      2018-12-21 [1] CRAN (R 4.0.0)                
-##  recount              * 1.15.1     2020-05-13 [1] Bioconductor                  
-##  RefManageR             1.2.12     2019-04-03 [1] CRAN (R 4.0.0)                
+##  R6                     2.4.1      2019-11-12 [2] RSPM (R 4.0.0)                
+##  rappdirs               0.3.1      2016-03-28 [1] RSPM (R 4.0.0)                
+##  RColorBrewer         * 1.1-2      2014-12-07 [1] RSPM (R 4.0.0)                
+##  Rcpp                   1.0.4.6    2020-04-09 [2] RSPM (R 4.0.0)                
+##  RCurl                  1.98-1.2   2020-04-18 [1] RSPM (R 4.0.0)                
+##  readr                  1.3.1      2018-12-21 [1] RSPM (R 4.0.0)                
+##  recount              * 1.15.1     2020-05-27 [1] Bioconductor                  
+##  RefManageR             1.2.12     2019-04-03 [1] RSPM (R 4.0.0)                
 ##  regionReport         * 1.23.2     2020-05-10 [1] Bioconductor                  
-##  rentrez                1.2.2      2019-05-02 [1] CRAN (R 4.0.0)                
-##  reshape2               1.4.4      2020-04-09 [1] CRAN (R 4.0.0)                
-##  rlang                  0.4.6      2020-05-02 [2] CRAN (R 4.0.0)                
-##  rmarkdown              2.1        2020-01-20 [1] CRAN (R 4.0.0)                
-##  rngtools               1.5        2020-01-23 [1] CRAN (R 4.0.0)                
+##  rentrez                1.2.2      2019-05-02 [1] RSPM (R 4.0.0)                
+##  reshape2               1.4.4      2020-04-09 [1] RSPM (R 4.0.0)                
+##  rlang                  0.4.6      2020-05-02 [2] RSPM (R 4.0.0)                
+##  rmarkdown              2.1        2020-01-20 [1] RSPM (R 4.0.0)                
+##  rngtools               1.5        2020-01-23 [1] RSPM (R 4.0.0)                
 ##  rpart                  4.1-15     2019-04-12 [3] CRAN (R 4.0.0)                
-##  rprojroot              1.3-2      2018-01-03 [2] CRAN (R 4.0.0)                
-##  Rsamtools              2.5.0      2020-04-27 [1] Bioconductor                  
-##  RSQLite                2.2.0      2020-01-07 [1] CRAN (R 4.0.0)                
-##  rstudioapi             0.11       2020-02-07 [2] CRAN (R 4.0.0)                
-##  rtracklayer            1.49.1     2020-05-02 [1] Bioconductor                  
-##  S4Vectors            * 0.27.5     2020-05-06 [1] Bioconductor                  
-##  scales                 1.1.1      2020-05-11 [1] CRAN (R 4.0.0)                
-##  sessioninfo          * 1.1.1      2018-11-05 [2] CRAN (R 4.0.0)                
-##  stringi                1.4.6      2020-02-17 [2] CRAN (R 4.0.0)                
-##  stringr                1.4.0      2019-02-10 [2] CRAN (R 4.0.0)                
-##  SummarizedExperiment * 1.19.2     2020-05-01 [1] Bioconductor                  
+##  rprojroot              1.3-2      2018-01-03 [2] RSPM (R 4.0.0)                
+##  Rsamtools              2.5.1      2020-05-21 [1] Bioconductor                  
+##  RSQLite                2.2.0      2020-01-07 [1] RSPM (R 4.0.0)                
+##  rstudioapi             0.11       2020-02-07 [2] RSPM (R 4.0.0)                
+##  rtracklayer            1.49.2     2020-05-21 [1] Bioconductor                  
+##  S4Vectors            * 0.27.8     2020-05-24 [1] Bioconductor                  
+##  scales                 1.1.1      2020-05-11 [1] RSPM (R 4.0.0)                
+##  sessioninfo          * 1.1.1      2018-11-05 [2] RSPM (R 4.0.0)                
+##  stringi                1.4.6      2020-02-17 [2] RSPM (R 4.0.0)                
+##  stringr                1.4.0      2019-02-10 [2] RSPM (R 4.0.0)                
+##  SummarizedExperiment * 1.19.4     2020-05-17 [1] Bioconductor                  
 ##  survival               3.1-12     2020-04-10 [3] CRAN (R 4.0.0)                
-##  tibble                 3.0.1      2020-04-20 [2] CRAN (R 4.0.0)                
-##  tidyr                  1.0.3      2020-05-07 [1] CRAN (R 4.0.0)                
-##  tidyselect             1.1.0      2020-05-11 [1] CRAN (R 4.0.0)                
+##  tibble                 3.0.1      2020-04-20 [2] RSPM (R 4.0.0)                
+##  tidyr                  1.1.0      2020-05-20 [1] RSPM (R 4.0.0)                
+##  tidyselect             1.1.0      2020-05-11 [1] RSPM (R 4.0.0)                
 ##  VariantAnnotation      1.35.0     2020-04-27 [1] Bioconductor                  
-##  vctrs                  0.3.0      2020-05-11 [1] CRAN (R 4.0.0)                
-##  withr                  2.2.0      2020-04-20 [2] CRAN (R 4.0.0)                
-##  xfun                   0.13       2020-04-13 [2] CRAN (R 4.0.0)                
-##  XML                    3.99-0.3   2020-01-20 [1] CRAN (R 4.0.0)                
-##  xml2                   1.3.2      2020-04-23 [2] CRAN (R 4.0.0)                
-##  xtable                 1.8-4      2019-04-21 [1] CRAN (R 4.0.0)                
-##  XVector                0.29.0     2020-04-27 [1] Bioconductor                  
-##  yaml                   2.2.1      2020-02-01 [2] CRAN (R 4.0.0)                
+##  vctrs                  0.3.0      2020-05-11 [2] RSPM (R 4.0.0)                
+##  withr                  2.2.0      2020-04-20 [2] RSPM (R 4.0.0)                
+##  xfun                   0.14       2020-05-20 [2] RSPM (R 4.0.0)                
+##  XML                    3.99-0.3   2020-01-20 [1] RSPM (R 4.0.0)                
+##  xml2                   1.3.2      2020-04-23 [2] RSPM (R 4.0.0)                
+##  xtable                 1.8-4      2019-04-21 [1] RSPM (R 4.0.0)                
+##  XVector                0.29.1     2020-05-21 [1] Bioconductor                  
+##  yaml                   2.2.1      2020-02-01 [2] RSPM (R 4.0.0)                
 ##  zlibbioc               1.35.0     2020-04-27 [1] Bioconductor                  
 ## 
 ## [1] /usr/local/lib/R/host-site-library
@@ -1469,18 +1440,18 @@ recount files are available locally so remmeber to use the local data when worki
 <h1 class="hasAnchor">
 <a href="#bibliography" class="anchor"></a>Bibliography</h1>
 <p>This vignette was generated using <em><a href="https://bioconductor.org/packages/3.12/BiocStyle">BiocStyle</a></em> (<a href="https://github.com/Bioconductor/BiocStyle">Oleś, Morgan, and Huber, 2020</a>) with <em><a href="https://CRAN.R-project.org/package=knitr">knitr</a></em> (<a href="http://www.crcpress.com/product/isbn/9781466561595">Xie, 2014</a>) and <em><a href="https://CRAN.R-project.org/package=rmarkdown">rmarkdown</a></em> (<a href="https://github.com/rstudio/rmarkdown">Allaire, Xie, McPherson, Luraschi, et al., 2020</a>) running behind the scenes.</p>
-<p>Citations made with <em><a href="https://CRAN.R-project.org/package=knitcitations">knitcitations</a></em> (<a href="https://CRAN.R-project.org/package=knitcitations">Boettiger, 2019</a>).</p>
+<p>Citations made with <em><a href="https://CRAN.R-project.org/package=knitcitations">knitcitations</a></em> (<a href="https://github.com/cboettig/knitcitations">Boettiger, 2019</a>).</p>
 <p>[1] J. Allaire, Y. Xie, J. McPherson, J. Luraschi, et al. <em>rmarkdown: Dynamic Documents for R</em>. R package version 2.1. 2020. &lt;URL: <a href="https://github.com/rstudio/rmarkdown" class="uri">https://github.com/rstudio/rmarkdown</a>&gt;.</p>
 <p>[2] S. Arora, M. Morgan, M. Carlson, and H. Pagès. <em>GenomeInfoDb: Utilities for manipulating chromosome and other ‘seqname’ identifiers</em>. 2017. DOI: 10.18129/B9.bioc.GenomeInfoDb.</p>
-<p>[3] C. Boettiger. <em>knitcitations: Citations for ‘Knitr’ Markdown Files</em>. R package version 1.0.10. 2019. &lt;URL: <a href="https://CRAN.R-project.org/package=knitcitations" class="uri">https://CRAN.R-project.org/package=knitcitations</a>&gt;.</p>
-<p>[4] M. Carlson. <em>org.Hs.eg.db: Genome wide annotation for Human</em>. R package version 3.11.1. 2020.</p>
-<p>[5] W. Chang. <em>downloader: Download Files over HTTP and HTTPS</em>. R package version 0.4. 2015. &lt;URL: <a href="https://CRAN.R-project.org/package=downloader" class="uri">https://CRAN.R-project.org/package=downloader</a>&gt;.</p>
+<p>[3] C. Boettiger. <em>knitcitations: Citations for ‘Knitr’ Markdown Files</em>. R package version 1.0.10. 2019. &lt;URL: <a href="https://github.com/cboettig/knitcitations" class="uri">https://github.com/cboettig/knitcitations</a>&gt;.</p>
+<p>[4] M. Carlson. <em>org.Hs.eg.db: Genome wide annotation for Human</em>. R package version 3.11.4. 2020.</p>
+<p>[5] W. Chang. <em>downloader: Download Files over HTTP and HTTPS</em>. R package version 0.4. 2015. &lt;URL: <a href="https://github.com/wch/downloader" class="uri">https://github.com/wch/downloader</a>&gt;.</p>
 <p>[6] L. Collado-Torres, A. E. Jaffe, and J. T. Leek. “regionReport: Interactive reports for region-level and feature-level genomic analyses [version2; referees: 2 approved, 1 approved with reservations]”. In: <em>F1000Research</em> 4 (2016), p. 105. DOI: 10.12688/f1000research.6379.2. &lt;URL: <a href="http://f1000research.com/articles/4-105/v2" class="uri">http://f1000research.com/articles/4-105/v2</a>&gt;.</p>
 <p>[7] L. Collado-Torres, A. Nellore, A. C. Frazee, C. Wilks, et al. “Flexible expressed region analysis for RNA-seq with derfinder”. In: <em>Nucl. Acids Res.</em> (2017). DOI: 10.1093/nar/gkw852. &lt;URL: <a href="http://nar.oxfordjournals.org/content/early/2016/09/29/nar.gkw852" class="uri">http://nar.oxfordjournals.org/content/early/2016/09/29/nar.gkw852</a>&gt;.</p>
 <p>[8] L. Collado-Torres, A. Nellore, K. Kammers, S. E. Ellis, et al. “Reproducible RNA-seq analysis using recount2”. In: <em>Nature Biotechnology</em> (2017). DOI: 10.1038/nbt.3838. &lt;URL: <a href="http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html" class="uri">http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html</a>&gt;.</p>
-<p>[9] G. Csárdi, R. core, H. Wickham, W. Chang, et al. <em>sessioninfo: R Session Information</em>. R package version 1.1.1. 2018. &lt;URL: <a href="https://CRAN.R-project.org/package=sessioninfo" class="uri">https://CRAN.R-project.org/package=sessioninfo</a>&gt;.</p>
+<p>[9] G. Csárdi, R. core, H. Wickham, W. Chang, et al. <em>sessioninfo: R Session Information</em>. R package version 1.1.1. 2018. &lt;URL: <a href="https://github.com/r-lib/sessioninfo#readme" class="uri">https://github.com/r-lib/sessioninfo#readme</a>&gt;.</p>
 <p>[10] S. Davis and P. Meltzer. “GEOquery: a bridge between the Gene Expression Omnibus (GEO) and BioConductor”. In: <em>Bioinformatics</em> 14 (2007), pp. 1846-1847.</p>
-<p>[11] R. Kolde. <em>pheatmap: Pretty Heatmaps</em>. R package version 1.0.12. 2019. &lt;URL: <a href="https://CRAN.R-project.org/package=pheatmap" class="uri">https://CRAN.R-project.org/package=pheatmap</a>&gt;.</p>
+<p>[11] R. Kolde. <em>pheatmap: Pretty Heatmaps</em>. R package version 1.0.12. 2019.</p>
 <p>[12] M. Lawrence, R. Gentleman, and V. Carey. “rtracklayer: an R package for interfacing with genome browsers”. In: <em>Bioinformatics</em> 25 (2009), pp. 1841-1842. DOI: 10.1093/bioinformatics/btp328. &lt;URL: <a href="http://bioinformatics.oxfordjournals.org/content/25/14/1841.abstract" class="uri">http://bioinformatics.oxfordjournals.org/content/25/14/1841.abstract</a>&gt;.</p>
 <p>[13] M. Lawrence, W. Huber, H. Pagès, P. Aboyoun, et al. “Software for Computing and Annotating Genomic Ranges”. In: <em>PLoS Computational Biology</em> 9 (8 2013). DOI: 10.1371/journal.pcbi.1003118. &lt;URL: <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118" class="uri">http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118</a>}.&gt;</p>
 <p>[14] M. Lawrence, W. Huber, H. Pagès, P. Aboyoun, et al. “Software for Computing and Annotating Genomic Ranges”. In: <em>PLoS Computational Biology</em> 9 (8 2013). DOI: 10.1371/journal.pcbi.1003118. &lt;URL: <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118" class="uri">http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118</a>}.&gt;</p>
@@ -1492,12 +1463,12 @@ recount files are available locally so remmeber to use the local data when worki
 <p>[20] H. Pagès, M. Lawrence, and P. Aboyoun. <em>S4Vectors: S4 implementation of vector-like and list-like objects</em>. 2017. DOI: 10.18129/B9.bioc.S4Vectors.</p>
 <p>[21] R Core Team. <em>R: A Language and Environment for Statistical Computing</em>. R Foundation for Statistical Computing. Vienna, Austria, 2020. &lt;URL: <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>&gt;.</p>
 <p>[22] J. Rainer. <em>EnsDb.Hsapiens.v79: Ensembl based annotation package</em>. R package version 2.99.0. 2017.</p>
-<p>[23] D. Temple Lang. <em>RCurl: General Network (HTTP/FTP/…) Client Interface for R</em>. R package version 1.98-1.2. 2020. &lt;URL: <a href="https://CRAN.R-project.org/package=RCurl" class="uri">https://CRAN.R-project.org/package=RCurl</a>&gt;.</p>
+<p>[23] D. Temple Lang. <em>RCurl: General Network (HTTP/FTP/…) Client Interface for R</em>. R package version 1.98-1.2. 2020.</p>
 <p>[24] H. Wickham. <em>ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York, 2016. ISBN: 978-3-319-24277-4. &lt;URL: <a href="https://ggplot2.tidyverse.org" class="uri">https://ggplot2.tidyverse.org</a>&gt;.</p>
 <p>[25] H. Wickham. “testthat: Get Started with Testing”. In: <em>The R Journal</em> 3 (2011), pp. 5-10. &lt;URL: <a href="https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf" class="uri">https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf</a>&gt;.</p>
 <p>[26] D. J. Winter. “rentrez: an R package for the NCBI eUtils API”. In: <em>The R Journal</em> 9 (2 2017), pp. 520-526.</p>
 <p>[27] Y. Xie. “knitr: A Comprehensive Tool for Reproducible Research in R”. In: <em>Implementing Reproducible Computational Research</em>. Ed. by V. Stodden, F. Leisch and R. D. Peng. ISBN 978-1466561595. Chapman and Hall/CRC, 2014. &lt;URL: <a href="http://www.crcpress.com/product/isbn/9781466561595" class="uri">http://www.crcpress.com/product/isbn/9781466561595</a>&gt;.</p>
-<p>[28] Y. Xie, J. Cheng, and X. Tan. <em>DT: A Wrapper of the JavaScript Library ‘DataTables’</em>. R package version 0.13. 2020. &lt;URL: <a href="https://CRAN.R-project.org/package=DT" class="uri">https://CRAN.R-project.org/package=DT</a>&gt;.</p>
+<p>[28] Y. Xie, J. Cheng, and X. Tan. <em>DT: A Wrapper of the JavaScript Library ‘DataTables’</em>. R package version 0.13. 2020. &lt;URL: <a href="https://github.com/rstudio/DT" class="uri">https://github.com/rstudio/DT</a>&gt;.</p>
 </div>
   </div>
 

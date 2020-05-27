@@ -218,7 +218,7 @@ https://www.biorxiv.org/content/early/2017/06/03/145656</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Add the predictions to an example rse_gene object</span>
-<span class='no'>rse_gene</span> <span class='kw'>&lt;-</span> <span class='fu'>add_predictions</span>(<span class='no'>rse_gene_SRP009615</span>)</div><div class='output co'>#&gt; <span class='message'>2020-05-13 16:50:10 downloading the predictions to /tmp/RtmpJ879FJ/PredictedPhenotypes_v0.0.06.rda</span></div><div class='output co'>#&gt; Loading objects:
+<span class='no'>rse_gene</span> <span class='kw'>&lt;-</span> <span class='fu'>add_predictions</span>(<span class='no'>rse_gene_SRP009615</span>)</div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:15 downloading the predictions to /tmp/RtmpboEAeZ/PredictedPhenotypes_v0.0.06.rda</span></div><div class='output co'>#&gt; Loading objects:
 #&gt;   PredictedPhenotypes</div><div class='input'>
 <span class='co'>## Explore the predictions</span>
 <span class='fu'>colData</span>(<span class='no'>rse_gene</span>)</div><div class='output co'>#&gt; DataFrame with 12 rows and 33 columns
@@ -276,69 +276,56 @@ https://www.biorxiv.org/content/early/2017/06/03/145656</p>
 #&gt; SRR389084                      FALSE          21957003  787795710
 #&gt;           sharq_beta_tissue sharq_beta_cell_type biosample_submission_date
 #&gt;                 &lt;character&gt;          &lt;character&gt;               &lt;character&gt;
-#&gt; SRR387777             blood                 k562   2011-12-05T15:40:03.870
-#&gt; SRR387778             blood                 k562   2011-12-05T15:40:03.897
-#&gt; SRR387779             blood                 k562   2011-12-05T15:40:03.910
-#&gt; SRR387780             blood                 k562   2011-12-05T15:40:03.923
-#&gt; SRR389077             blood                 k562   2011-12-13T11:26:05.720
+#&gt; SRR387777             blood                 k562    2011-12-05T15:40:03...
+#&gt; SRR387778             blood                 k562    2011-12-05T15:40:03...
+#&gt; SRR387779             blood                 k562    2011-12-05T15:40:03...
+#&gt; SRR387780             blood                 k562    2011-12-05T15:40:03...
+#&gt; SRR389077             blood                 k562    2011-12-13T11:26:05...
 #&gt; ...                     ...                  ...                       ...
-#&gt; SRR389080             blood                 k562   2011-12-13T11:26:05.787
-#&gt; SRR389081             blood                 k562   2011-12-13T11:26:05.800
-#&gt; SRR389082             blood                 k562   2011-12-13T11:26:05.817
-#&gt; SRR389083             blood                 k562   2011-12-13T11:26:05.830
-#&gt; SRR389084             blood                 k562   2011-12-13T11:26:05.847
-#&gt;           biosample_publication_date   biosample_update_date avg_read_length
-#&gt;                          &lt;character&gt;             &lt;character&gt;       &lt;integer&gt;
-#&gt; SRR387777    2011-12-07T09:29:59.890 2014-08-27T04:18:20.530              36
-#&gt; SRR387778    2011-12-07T09:29:59.890 2014-08-27T04:18:21.053              36
-#&gt; SRR387779    2011-12-07T09:29:59.890 2014-08-27T04:18:21.800              36
-#&gt; SRR387780    2011-12-07T09:29:59.890 2014-08-27T04:18:22.320              36
-#&gt; SRR389077    2011-12-13T11:26:06.663 2014-08-27T04:22:14.857              36
-#&gt; ...                              ...                     ...             ...
-#&gt; SRR389080    2011-12-13T11:26:06.663 2014-08-27T04:22:15.933              36
-#&gt; SRR389081    2011-12-13T11:26:06.663 2014-08-27T04:22:16.290              36
-#&gt; SRR389082    2011-12-13T11:26:06.663 2014-08-27T04:22:16.647              36
-#&gt; SRR389083    2011-12-13T11:26:06.663 2014-08-27T04:22:17.037              36
-#&gt; SRR389084    2011-12-13T11:26:06.663 2014-08-27T04:22:17.473              36
-#&gt;           geo_accession  bigwig_file
-#&gt;             &lt;character&gt;  &lt;character&gt;
-#&gt; SRR387777     GSM836270 SRR387777.bw
-#&gt; SRR387778     GSM836271 SRR387778.bw
-#&gt; SRR387779     GSM836272 SRR387779.bw
-#&gt; SRR387780     GSM836273 SRR387780.bw
-#&gt; SRR389077     GSM847561 SRR389077.bw
-#&gt; ...                 ...          ...
-#&gt; SRR389080     GSM847564 SRR389080.bw
-#&gt; SRR389081     GSM847565 SRR389081.bw
-#&gt; SRR389082     GSM847566 SRR389082.bw
-#&gt; SRR389083     GSM847567 SRR389083.bw
-#&gt; SRR389084     GSM847568 SRR389084.bw
-#&gt;                                                                                                     title
-#&gt;                                                                                               &lt;character&gt;
-#&gt; SRR387777   K562 cells with shRNA targeting SRF gene cultured with no doxycycline (uninduced - UI), rep1.
-#&gt; SRR387778  K562 cells with shRNA targeting SRF gene cultured with doxycycline for 48 hours (48 hr), rep1.
-#&gt; SRR387779   K562 cells with shRNA targeting SRF gene cultured with no doxycycline (uninduced - UI), rep2.
-#&gt; SRR387780  K562 cells with shRNA targeting SRF gene cultured with doxycycline for 48 hours (48 hr), rep2.
-#&gt; SRR389077  K562 cells with shRNA targeting EGR1 gene cultured with no doxycycline (uninduced - UI), rep1.
-#&gt; ...                                                                                                   ...
-#&gt; SRR389080 K562 cells with shRNA targeting EGR1 gene cultured with doxycycline for 72 hours (72 hr), rep2.
-#&gt; SRR389081  K562 cells with shRNA targeting ATF3 gene cultured with no doxycycline (uninduced - UI), rep1.
-#&gt; SRR389082 K562 cells with shRNA targeting ATF3 gene cultured with doxycycline for 24 hours (24 hr), rep1.
-#&gt; SRR389083  K562 cells with shRNA targeting ATF3 gene cultured with no doxycycline (uninduced - UI), rep2.
-#&gt; SRR389084 K562 cells with shRNA targeting ATF3 gene cultured with doxycycline for 24 hours (24 hr), rep2.
-#&gt;                                                                                               characteristics
-#&gt;                                                                                               &lt;CharacterList&gt;
-#&gt; SRR387777                                               cells: K562,shRNA expression: no,treatment: Puromycin
-#&gt; SRR387778                  cells: K562,shRNA expression: yes, targeting SRF,treatment: Puromycin, doxycycline
-#&gt; SRR387779                                               cells: K562,shRNA expression: no,treatment: Puromycin
-#&gt; SRR387780                   cells: K562,shRNA expression: yes targeting SRF,treatment: Puromycin, doxycycline
-#&gt; SRR389077                          cell line: K562,shRNA expression: no shRNA expression,treatment: Puromycin
-#&gt; ...                                                                                                       ...
-#&gt; SRR389080 cell line: K562,shRNA expression: expressing shRNA targeting EGR1,treatment: Puromycin, doxycycline
-#&gt; SRR389081                          cell line: K562,shRNA expression: no shRNA expression,treatment: Puromycin
-#&gt; SRR389082 cell line: K562,shRNA expression: expressing shRNA targeting ATF3,treatment: Puromycin, doxycycline
-#&gt; SRR389083                          cell line: K562,shRNA expression: no shRNA expression,treatment: Puromycin
-#&gt; SRR389084 cell line: K562,shRNA expression: expressing shRNA targeting ATF3,treatment: Puromycin, doxycycline
+#&gt; SRR389080             blood                 k562    2011-12-13T11:26:05...
+#&gt; SRR389081             blood                 k562    2011-12-13T11:26:05...
+#&gt; SRR389082             blood                 k562    2011-12-13T11:26:05...
+#&gt; SRR389083             blood                 k562    2011-12-13T11:26:05...
+#&gt; SRR389084             blood                 k562    2011-12-13T11:26:05...
+#&gt;           biosample_publication_date  biosample_update_date avg_read_length
+#&gt;                          &lt;character&gt;            &lt;character&gt;       &lt;integer&gt;
+#&gt; SRR387777     2011-12-07T09:29:59... 2014-08-27T04:18:20...              36
+#&gt; SRR387778     2011-12-07T09:29:59... 2014-08-27T04:18:21...              36
+#&gt; SRR387779     2011-12-07T09:29:59... 2014-08-27T04:18:21...              36
+#&gt; SRR387780     2011-12-07T09:29:59... 2014-08-27T04:18:22...              36
+#&gt; SRR389077     2011-12-13T11:26:06... 2014-08-27T04:22:14...              36
+#&gt; ...                              ...                    ...             ...
+#&gt; SRR389080     2011-12-13T11:26:06... 2014-08-27T04:22:15...              36
+#&gt; SRR389081     2011-12-13T11:26:06... 2014-08-27T04:22:16...              36
+#&gt; SRR389082     2011-12-13T11:26:06... 2014-08-27T04:22:16...              36
+#&gt; SRR389083     2011-12-13T11:26:06... 2014-08-27T04:22:17...              36
+#&gt; SRR389084     2011-12-13T11:26:06... 2014-08-27T04:22:17...              36
+#&gt;           geo_accession  bigwig_file                  title
+#&gt;             &lt;character&gt;  &lt;character&gt;            &lt;character&gt;
+#&gt; SRR387777     GSM836270 SRR387777.bw K562 cells with shRN..
+#&gt; SRR387778     GSM836271 SRR387778.bw K562 cells with shRN..
+#&gt; SRR387779     GSM836272 SRR387779.bw K562 cells with shRN..
+#&gt; SRR387780     GSM836273 SRR387780.bw K562 cells with shRN..
+#&gt; SRR389077     GSM847561 SRR389077.bw K562 cells with shRN..
+#&gt; ...                 ...          ...                    ...
+#&gt; SRR389080     GSM847564 SRR389080.bw K562 cells with shRN..
+#&gt; SRR389081     GSM847565 SRR389081.bw K562 cells with shRN..
+#&gt; SRR389082     GSM847566 SRR389082.bw K562 cells with shRN..
+#&gt; SRR389083     GSM847567 SRR389083.bw K562 cells with shRN..
+#&gt; SRR389084     GSM847568 SRR389084.bw K562 cells with shRN..
+#&gt;                                                         characteristics
+#&gt;                                                         &lt;CharacterList&gt;
+#&gt; SRR387777         cells: K562,shRNA expression: no,treatment: Puromycin
+#&gt; SRR387778     cells: K562,shRNA expression: ye..,treatment: Puromycin..
+#&gt; SRR387779         cells: K562,shRNA expression: no,treatment: Puromycin
+#&gt; SRR387780     cells: K562,shRNA expression: ye..,treatment: Puromycin..
+#&gt; SRR389077   cell line: K562,shRNA expression: no..,treatment: Puromycin
+#&gt; ...                                                                 ...
+#&gt; SRR389080 cell line: K562,shRNA expression: ex..,treatment: Puromycin..
+#&gt; SRR389081   cell line: K562,shRNA expression: no..,treatment: Puromycin
+#&gt; SRR389082 cell line: K562,shRNA expression: ex..,treatment: Puromycin..
+#&gt; SRR389083   cell line: K562,shRNA expression: no..,treatment: Puromycin
+#&gt; SRR389084 cell line: K562,shRNA expression: ex..,treatment: Puromycin..
 #&gt;           reported_sex predicted_sex accuracy_sex reported_samplesource
 #&gt;               &lt;factor&gt;      &lt;factor&gt;    &lt;numeric&gt;              &lt;factor&gt;
 #&gt; SRR387777           NA        female     0.862637             NA       
@@ -392,7 +379,7 @@ https://www.biorxiv.org/content/early/2017/06/03/145656</p>
 #&gt; SRR389083                       SINGLE                    0.908575
 #&gt; SRR389084                       SINGLE                    0.908575</div><div class='input'>
 <span class='co'>## Download all the latest predictions</span>
-<span class='no'>PredictedPhenotypes</span> <span class='kw'>&lt;-</span> <span class='fu'>add_predictions</span>()</div><div class='output co'>#&gt; <span class='message'>2020-05-13 16:50:11 downloading the predictions to /tmp/RtmpJ879FJ/PredictedPhenotypes_v0.0.06.rda</span></div><div class='output co'>#&gt; Loading objects:
+<span class='no'>PredictedPhenotypes</span> <span class='kw'>&lt;-</span> <span class='fu'>add_predictions</span>()</div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:16 downloading the predictions to /tmp/RtmpboEAeZ/PredictedPhenotypes_v0.0.06.rda</span></div><div class='output co'>#&gt; Loading objects:
 #&gt;   PredictedPhenotypes</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
