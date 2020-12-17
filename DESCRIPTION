@@ -1,7 +1,7 @@
 Package: recount
 Title: Explore and download data from the recount project
-Version: 1.17.0
-Date: 2020-05-10
+Version: 1.17.1
+Date: 2020-12-17
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "lcolladotor@gmail.com", comment = c(ORCID = "0000-0003-2140-308X")),
     person("Abhinav", "Nellore", role = "ctb",
@@ -45,7 +45,6 @@ Suggests:
     sessioninfo,
     EnsDb.Hsapiens.v79,
     GenomicFeatures,
-    knitcitations,
     knitr (>= 1.6),
     org.Hs.eg.db,
     RefManageR,
@@ -72,5 +71,5 @@ URL: https://github.com/leekgroup/recount
 BugReports: https://support.bioconductor.org/t/recount/
 biocViews: Coverage, DifferentialExpression, GeneExpression, RNASeq, Sequencing,
     Software, DataImport, ImmunoOncology
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)

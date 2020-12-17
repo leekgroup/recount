@@ -1,37 +1,68 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-recount <img src="man/figures/logo.png" align="right" width="400px" />
-======================================================================
+
+# recount <img src="man/figures/logo.png" align="right" width="400px" />
 
 <!-- badges: start -->
-[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable) [![BioC status](http://www.bioconductor.org/shields/build/release/bioc/recount.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/recount) [![BioC dev status](http://www.bioconductor.org/shields/build/devel/bioc/recount.svg)](https://bioconductor.org/checkResults/devel/bioc-LATEST/recount) [![Codecov test coverage](https://codecov.io/gh/leekgroup/recount/branch/master/graph/badge.svg)](https://codecov.io/gh/leekgroup/recount?branch=master) [![R build status](https://github.com/leekgroup/recount/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/leekgroup/recount/actions) [![Support site activity, last 6 months: tagged questions/avg. answers per question/avg. comments per question/accepted answers, or 0 if no tagged posts.](http://www.bioconductor.org/shields/posts/recount.svg)](https://support.bioconductor.org/t/recount/) [![GitHub issues](https://img.shields.io/github/issues/leekgroup/recount)](https://github.com/leekgroup/recount/issues) <!-- badges: end -->
 
-Explore and download data from the recount project available at the [recount2 website](https://jhubiostatistics.shinyapps.io/recount/). Using the `recount` package you can download *RangedSummarizedExperiment* objects at the gene, exon or exon-exon junctions level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The *RangedSummarizedExperiment* objects can be used by different packages for performing differential expression analysis. Using [derfinder](http://bioconductor.org/packages/derfinder) you can perform annotation-agnostic differential expression analyses with the data from the recount project.
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![BioC
+status](http://www.bioconductor.org/shields/build/release/bioc/recount.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/recount)
+[![BioC dev
+status](http://www.bioconductor.org/shields/build/devel/bioc/recount.svg)](https://bioconductor.org/checkResults/devel/bioc-LATEST/recount)
+[![Codecov test
+coverage](https://codecov.io/gh/leekgroup/recount/branch/master/graph/badge.svg)](https://codecov.io/gh/leekgroup/recount?branch=master)
+[![R build
+status](https://github.com/leekgroup/recount/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/leekgroup/recount/actions)
+[![Support site activity, last 6 months: tagged questions/avg. answers
+per question/avg. comments per question/accepted answers, or 0 if no
+tagged
+posts.](http://www.bioconductor.org/shields/posts/recount.svg)](https://support.bioconductor.org/t/recount/)
+[![GitHub
+issues](https://img.shields.io/github/issues/leekgroup/recount)](https://github.com/leekgroup/recount/issues)
+<!-- badges: end -->
 
-Documentation
--------------
+Explore and download data from the recount project available at the
+[recount2 website](https://jhubiostatistics.shinyapps.io/recount/).
+Using the `recount` package you can download
+*RangedSummarizedExperiment* objects at the gene, exon or exon-exon
+junctions level, the raw counts, the phenotype metadata used, the urls
+to the sample coverage bigWig files or the mean coverage bigWig file for
+a particular study. The *RangedSummarizedExperiment* objects can be used
+by different packages for performing differential expression analysis.
+Using [derfinder](http://bioconductor.org/packages/derfinder) you can
+perform annotation-agnostic differential expression analyses with the
+data from the recount project.
 
-For more information about `recount` check the vignettes [through Bioconductor](http://bioconductor.org/packages/recount) or at the [documentation website](http://leekgroup.github.io/recount).
+## Documentation
 
-Installation instructions
--------------------------
+For more information about `recount` check the vignettes [through
+Bioconductor](http://bioconductor.org/packages/recount) or at the
+[documentation website](http://leekgroup.github.io/recount).
 
-Get the latest stable `R` release from [CRAN](http://cran.r-project.org/). Then install `recount` using from [Bioconductor](http://bioconductor.org/) the following code:
+## Installation instructions
+
+Get the latest stable `R` release from
+[CRAN](http://cran.r-project.org/). Then install `recount` using from
+[Bioconductor](http://bioconductor.org/) the following code:
 
 ``` r
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+      install.packages("BiocManager")
+  }
 
 BiocManager::install("recount")
 ```
 
-Citation
---------
+## Citation
 
-Below is the citation output from using `citation('recount')` in R. Please run this yourself to check for any updates on how to cite **recount**.
+Below is the citation output from using `citation('recount')` in R.
+Please run this yourself to check for any updates on how to cite
+**recount**.
 
 ``` r
-print(citation('recount'), bibtex = TRUE)
+print(citation("recount"), bibtex = TRUE)
 #> 
 #> Collado-Torres L, Nellore A, Kammers K, Ellis SE, Taub MA, Hansen KD,
 #> Jaffe AE, Langmead B, Leek JT (2017). "Reproducible RNA-seq analysis
@@ -89,7 +120,7 @@ print(citation('recount'), bibtex = TRUE)
 #> Jaffe AE, Langmead B, Leek JT (2020). _Explore and download data from
 #> the recount project_. doi: 10.18129/B9.bioc.recount (URL:
 #> https://doi.org/10.18129/B9.bioc.recount),
-#> https://github.com/leekgroup/recount - R package version 1.15.1, <URL:
+#> https://github.com/leekgroup/recount - R package version 1.17.1, <URL:
 #> http://www.bioconductor.org/packages/recount>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -99,7 +130,7 @@ print(citation('recount'), bibtex = TRUE)
 #>     author = {Leonardo Collado-Torres and Abhinav Nellore and Kai Kammers and Shannon E. Ellis and Margaret A. Taub and Kasper D. Hansen and Andrew E. Jaffe and Ben Langmead and Jeffrey T. Leek},
 #>     year = {2020},
 #>     url = {http://www.bioconductor.org/packages/recount},
-#>     note = {https://github.com/leekgroup/recount - R package version 1.15.1},
+#>     note = {https://github.com/leekgroup/recount - R package version 1.17.1},
 #>     doi = {10.18129/B9.bioc.recount},
 #>   }
 #> 
@@ -157,37 +188,62 @@ print(citation('recount'), bibtex = TRUE)
 #>   }
 ```
 
-Please note that the `recount` was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.
+Please note that the `recount` was only made possible thanks to many
+other R and bioinformatics software authors, which are cited either in
+the vignettes and/or the paper(s) describing this package.
 
-Code of Conduct
----------------
+## Code of Conduct
 
-Please note that the recount project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the recount project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
 
-Development tools
------------------
+## Development tools
 
--   Continuous code testing is possible thanks to [GitHub actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/) through *[usethis](https://CRAN.R-project.org/package=usethis)*, *[remotes](https://CRAN.R-project.org/package=remotes)*, *[sysreqs](https://github.com/r-hub/sysreqs)* and *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)* customized to use [Bioconductor's docker containers](https://www.bioconductor.org/help/docker/) and *[BiocCheck](https://bioconductor.org/packages/3.11/BiocCheck)*.
--   Code coverage assessment is possible thanks to [codecov](https://codecov.io/gh) and *[covr](https://CRAN.R-project.org/package=covr)*.
--   The [documentation website](http://leekgroup.github.io/recount) is automatically updated thanks to *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
--   The code is styled automatically thanks to *[styler](https://CRAN.R-project.org/package=styler)*.
--   The documentation is formatted thanks to *[devtools](https://CRAN.R-project.org/package=devtools)* and *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
+-   Continuous code testing is possible thanks to [GitHub
+    actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
+    through *[usethis](https://CRAN.R-project.org/package=usethis)*,
+    *[remotes](https://CRAN.R-project.org/package=remotes)*,
+    *[sysreqs](https://github.com/r-hub/sysreqs)* and
+    *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)*
+    customized to use [Bioconductor’s docker
+    containers](https://www.bioconductor.org/help/docker/) and
+    *[BiocCheck](https://bioconductor.org/packages/3.12/BiocCheck)*.
+-   Code coverage assessment is possible thanks to
+    [codecov](https://codecov.io/gh) and
+    *[covr](https://CRAN.R-project.org/package=covr)*.
+-   The [documentation website](http://leekgroup.github.io/recount) is
+    automatically updated thanks to
+    *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
+-   The code is styled automatically thanks to
+    *[styler](https://CRAN.R-project.org/package=styler)*.
+-   The documentation is formatted thanks to
+    *[devtools](https://CRAN.R-project.org/package=devtools)* and
+    *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
 
 For more details, check the `dev` directory.
 
-Teams involved
---------------
+This package was developed using
+*[biocthis](https://bioconductor.org/packages/3.12/biocthis)*.
 
--   [Jeff Leek's lab at JHBSPH Biostatistics Department](http://jtleek.com/),
--   [Ben Langmead's lab at JHU Computer Science](http://www.langmead-lab.org/),
--   [Kasper Daniel Hansen's lab at JHBSPH Biostatistics Department](https://www.hansenlab.org/),
--   [Leonardo Collado-Torres](http://lcolladotor.github.io/) and [Andrew E. Jaffe](http://aejaffe.com/) from [LIBD](https://www.libd.org/),
--   [Abhinav Nellore's lab at OHSU](http://nellore.bio/),
+## Teams involved
+
+-   [Jeff Leek’s lab at JHBSPH Biostatistics
+    Department](http://jtleek.com/),
+-   [Ben Langmead’s lab at JHU Computer
+    Science](http://www.langmead-lab.org/),
+-   [Kasper Daniel Hansen’s lab at JHBSPH Biostatistics
+    Department](https://www.hansenlab.org/),
+-   [Leonardo Collado-Torres](http://lcolladotor.github.io/) and
+    [Andrew E. Jaffe](http://aejaffe.com/) from
+    [LIBD](https://www.libd.org/),
+-   [Abhinav Nellore’s lab at OHSU](http://nellore.bio/),
 -   Data hosted by [SciServer at JHU](https://www.sciserver.org/).
 
-|                                                                                                                                                                               |                                                                                                      |                                                                                                                                                                         |                                                                                                                                                   |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| <a href="http://www.langmead-lab.org/"><img src="http://www.langmead-lab.org/wp-content/uploads/2014/01/Screen-Shot-2014-02-02-at-5.20.13-PM-1024x199.png" width="250px"></a> | <a href="https://www.libd.org/"><img src="http://aejaffe.com/media/LIBD_logo.jpg" width="250px"></a> | <a href="http://nellore.bio/"><img src="https://seekvectorlogo.net/wp-content/uploads/2018/08/oregon-health-science-university-ohsu-vector-logo.png" width="250px"></a> | <a href="https://www.sciserver.org/"><img src="https://skyserver.sdss.org/dr14/en/images/sciserver_logo_inverted_vertical.png" width="250px"></a> |
+|                                                                                                                                                                               |                                                                                                              |                                                                                                                                                                         |                                                                                                                                                   |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| <a href="http://www.langmead-lab.org/"><img src="http://www.langmead-lab.org/wp-content/uploads/2014/01/Screen-Shot-2014-02-02-at-5.20.13-PM-1024x199.png" width="250px"></a> | <a href="https://www.libd.org/"><img src="http://lcolladotor.github.io/img/LIBD_logo.jpg" width="250px"></a> | <a href="http://nellore.bio/"><img src="https://seekvectorlogo.net/wp-content/uploads/2018/08/oregon-health-science-university-ohsu-vector-logo.png" width="250px"></a> | <a href="https://www.sciserver.org/"><img src="https://skyserver.sdss.org/dr14/en/images/sciserver_logo_inverted_vertical.png" width="250px"></a> |
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78422749-1"></script>
