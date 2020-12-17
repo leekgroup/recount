@@ -25,5 +25,5 @@ Basic DESeq2 results exploration
 =================================
 
 ```{r}
-library('recount')
+library("recount")
 ```
