@@ -81,7 +81,7 @@ RPKMs which you can do with this function." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.15.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.17.1</span>
       </span>
     </div>
 
@@ -89,7 +89,7 @@ RPKMs which you can do with this function." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -118,7 +118,7 @@ RPKMs which you can do with this function." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/leekgroup/recount/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -145,7 +145,7 @@ RPKMs which you can do with this function." />
 RPKMs which you can do with this function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>getRPKM</span>(<span class='no'>rse</span>, <span class='kw'>length_var</span> <span class='kw'>=</span> <span class='st'>"bp_length"</span>, <span class='kw'>mapped_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>getRPKM</span><span class='op'>(</span><span class='va'>rse</span>, length_var <span class='op'>=</span> <span class='st'>"bp_length"</span>, mapped_var <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,14 +158,14 @@ object as downloaded with <a href='download_study.html'>download_study</a>.</p><
     <tr>
       <th>length_var</th>
       <td><p>A length 1 character vector with the column name from
-<code>rowData(rse)</code> that has the coding length. For gene level objects
+<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData(rse)</a></code> that has the coding length. For gene level objects
 from recount this is <code>bp_length</code>. If <code>NULL</code>, then it will use
 <code>width(rowRanges(rse))</code> which should be used for exon RSEs.</p></td>
     </tr>
     <tr>
       <th>mapped_var</th>
       <td><p>A length 1 character vector with the column name from
-<code>colData(rse)</code> that has the number of reads mapped. For recount RSE
+<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData(rse)</a></code> that has the number of reads mapped. For recount RSE
 object this would be <code>mapped_read_count</code>. If <code>NULL</code> (default)
 then it will use the column sums of the counts matrix. The results are
 different because not all mapped reads are mapped to exonic segments of the
@@ -184,18 +184,22 @@ of the total exonic sequence length of the gene.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='scale_counts.html'>scale_counts</a></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Andrew Jaffe, Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## get RPKM matrix</span>
-<span class='no'>rpkm</span> <span class='kw'>&lt;-</span> <span class='fu'>getRPKM</span>(<span class='no'>rse_gene_SRP009615</span>)
+<span class='va'>rpkm</span> <span class='op'>&lt;-</span> <span class='fu'>getRPKM</span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span>
 
 <span class='co'>## You can also get an RPKM matrix after running scale_counts()</span>
 <span class='co'>## with similar RPKM values</span>
-<span class='no'>rpkm2</span> <span class='kw'>&lt;-</span> <span class='fu'>getRPKM</span>(<span class='fu'><a href='scale_counts.html'>scale_counts</a></span>(<span class='no'>rse_gene_SRP009615</span>))
-<span class='no'>rpkm3</span> <span class='kw'>&lt;-</span> <span class='fu'>getRPKM</span>(<span class='fu'><a href='scale_counts.html'>scale_counts</a></span>(<span class='no'>rse_gene_SRP009615</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"mapped_reads"</span>))
+<span class='va'>rpkm2</span> <span class='op'>&lt;-</span> <span class='fu'>getRPKM</span><span class='op'>(</span><span class='fu'><a href='scale_counts.html'>scale_counts</a></span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>rpkm3</span> <span class='op'>&lt;-</span> <span class='fu'>getRPKM</span><span class='op'>(</span><span class='fu'><a href='scale_counts.html'>scale_counts</a></span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span>, by <span class='op'>=</span> <span class='st'>"mapped_reads"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>rpkm</span> - <span class='no'>rpkm2</span>)</div><div class='output co'>#&gt;    SRR387777           SRR387778           SRR387779         
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>rpkm</span> <span class='op'>-</span> <span class='va'>rpkm2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    SRR387777           SRR387778           SRR387779         
 #&gt;  Min.   :-0.538140   Min.   :-0.496618   Min.   :-0.2782572  
 #&gt;  1st Qu.:-0.001367   1st Qu.:-0.001441   1st Qu.:-0.0007156  
 #&gt;  Median : 0.000000   Median : 0.000000   Median : 0.0000000  
@@ -222,7 +226,8 @@ of the total exonic sequence length of the gene.</p>
 #&gt;  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  
 #&gt;  Mean   : 0.0005996   Mean   :-0.0006126   Mean   :-0.0003374  
 #&gt;  3rd Qu.: 0.0007402   3rd Qu.: 0.0006283   3rd Qu.: 0.0004121  
-#&gt;  Max.   : 0.2488342   Max.   : 0.4275825   Max.   : 0.3975724  </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>rpkm</span> - <span class='no'>rpkm3</span>)</div><div class='output co'>#&gt;    SRR387777            SRR387778            SRR387779         
+#&gt;  Max.   : 0.2488342   Max.   : 0.4275825   Max.   : 0.3975724  </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>rpkm</span> <span class='op'>-</span> <span class='va'>rpkm3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    SRR387777            SRR387778            SRR387779         
 #&gt;  Min.   :-0.2136981   Min.   :-0.1968742   Min.   :-2.885e-01  
 #&gt;  1st Qu.:-0.0006772   1st Qu.:-0.0005507   1st Qu.:-4.843e-04  
 #&gt;  Median : 0.0000000   Median : 0.0000000   Median : 0.000e+00  
@@ -249,7 +254,8 @@ of the total exonic sequence length of the gene.</p>
 #&gt;  Median : 0.0000000   Median : 0.000e+00   Median : 0.000e+00  
 #&gt;  Mean   : 0.0003452   Mean   :-1.422e-04   Mean   : 1.435e-04  
 #&gt;  3rd Qu.: 0.0002462   3rd Qu.: 9.928e-05   3rd Qu.: 3.646e-04  
-#&gt;  Max.   : 0.1086730   Max.   : 9.926e-02   Max.   : 9.869e-02  </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>rpkm2</span> - <span class='no'>rpkm3</span>)</div><div class='output co'>#&gt;    SRR387777           SRR387778           SRR387779         
+#&gt;  Max.   : 0.1086730   Max.   : 9.926e-02   Max.   : 9.869e-02  </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>rpkm2</span> <span class='op'>-</span> <span class='va'>rpkm3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    SRR387777           SRR387778           SRR387779         
 #&gt;  Min.   :-0.507532   Min.   :-0.445699   Min.   :-0.8523319  
 #&gt;  1st Qu.:-0.001622   1st Qu.:-0.002041   1st Qu.:-0.0014352  
 #&gt;  Median : 0.000000   Median : 0.000000   Median : 0.0000000  
@@ -292,7 +298,7 @@ of the total exonic sequence length of the gene.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

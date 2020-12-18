@@ -82,7 +82,7 @@ package." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.15.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.17.1</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@ package." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -119,7 +119,7 @@ package." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/leekgroup/recount/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -147,7 +147,7 @@ contain the text in their abstract as provided by the SRAdb Bioconductor
 package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>abstract_search</span>(<span class='no'>query</span>, <span class='kw'>id_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>abstract_search</span><span class='op'>(</span><span class='va'>query</span>, id_only <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,13 +181,17 @@ subset of <a href='recount_abstract.html'>recount_abstract</a> for the abstracts
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='browse_study.html'>browse_study</a>, <a href='recount_abstract.html'>recount_abstract</a></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Find the Geuvadis consortium project</span>
-<span class='no'>project_info</span> <span class='kw'>&lt;-</span> <span class='fu'>abstract_search</span>(<span class='st'>"Geuvadis consortium"</span>)
+<span class='va'>project_info</span> <span class='op'>&lt;-</span> <span class='fu'>abstract_search</span><span class='op'>(</span><span class='st'>"Geuvadis consortium"</span><span class='op'>)</span>
 
 <span class='co'>## See some summary information for this project</span>
-<span class='no'>project_info</span></div><div class='output co'>#&gt;    number_samples species
+<span class='va'>project_info</span>
+</div><div class='output co'>#&gt;    number_samples species
 #&gt; 50            667   human
 #&gt;                                                                                                                                                                                                                                                                                                abstract
 #&gt; 50 The data is under embargo until the first publication by the investigators in early 2013. This RNA sequencing data set of 465 human lymphoblastoid cell line samples from the CEU, FIN, GBR, TSI and YRI populations from the 1000 Genomes sample collection was created by the Geuvadis consortium.
@@ -208,7 +212,7 @@ subset of <a href='recount_abstract.html'>recount_abstract</a> for the abstracts
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

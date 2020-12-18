@@ -84,7 +84,7 @@ reads for a given SRA study." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.15.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.17.1</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@ reads for a given SRA study." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -121,7 +121,7 @@ reads for a given SRA study." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/leekgroup/recount/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -150,20 +150,20 @@ function computes the coverage matrix for a library size of 40 million 100 bp
 reads for a given SRA study.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>coverage_matrix</span>(
-  <span class='no'>project</span>,
-  <span class='no'>chr</span>,
-  <span class='no'>regions</span>,
-  <span class='kw'>chunksize</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
-  <span class='kw'>bpparam</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>outdir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>chrlen</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>verboseLoad</span> <span class='kw'>=</span> <span class='no'>verbose</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>round</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>coverage_matrix</span><span class='op'>(</span>
+  <span class='va'>project</span>,
+  <span class='va'>chr</span>,
+  <span class='va'>regions</span>,
+  chunksize <span class='op'>=</span> <span class='fl'>1000</span>,
+  bpparam <span class='op'>=</span> <span class='cn'>NULL</span>,
+  outdir <span class='op'>=</span> <span class='cn'>NULL</span>,
+  chrlen <span class='op'>=</span> <span class='cn'>NULL</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  verboseLoad <span class='op'>=</span> <span class='va'>verbose</span>,
+  scale <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  round <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -260,23 +260,27 @@ Note that you will need to run <a href='scale_counts.html'>scale_counts</a> afte
 
     <div class='dont-index'><p><a href='download_study.html'>download_study</a>, <a href='https://rdrr.io/pkg/derfinder/man/findRegions.html'>findRegions</a>,
 <a href='https://rdrr.io/pkg/derfinder/man/railMatrix.html'>railMatrix</a></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='no'>.Platform</span>$<span class='no'>OS.type</span> <span class='kw'>!=</span> <span class='st'>"windows"</span>) {
+<span class='kw'>if</span> <span class='op'>(</span><span class='va'>.Platform</span><span class='op'>$</span><span class='va'>OS.type</span> <span class='op'>!=</span> <span class='st'>"windows"</span><span class='op'>)</span> <span class='op'>{</span>
     <span class='co'>## Reading BigWig files is not supported by rtracklayer on Windows</span>
     <span class='co'>## Define expressed regions for study DRP002835, chrY</span>
-    <span class='no'>regions</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='expressed_regions.html'>expressed_regions</a></span>(<span class='st'>"DRP002835"</span>, <span class='st'>"chrY"</span>,
-        <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>5L</span>,
-        <span class='kw'>maxClusterGap</span> <span class='kw'>=</span> <span class='fl'>3000L</span>
-    )
+    <span class='va'>regions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='expressed_regions.html'>expressed_regions</a></span><span class='op'>(</span><span class='st'>"DRP002835"</span>, <span class='st'>"chrY"</span>,
+        cutoff <span class='op'>=</span> <span class='fl'>5L</span>,
+        maxClusterGap <span class='op'>=</span> <span class='fl'>3000L</span>
+    <span class='op'>)</span>
 
     <span class='co'>## Now calculate the coverage matrix for this study</span>
-    <span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='fu'>coverage_matrix</span>(<span class='st'>"DRP002835"</span>, <span class='st'>"chrY"</span>, <span class='no'>regions</span>)
+    <span class='va'>rse</span> <span class='op'>&lt;-</span> <span class='fu'>coverage_matrix</span><span class='op'>(</span><span class='st'>"DRP002835"</span>, <span class='st'>"chrY"</span>, <span class='va'>regions</span><span class='op'>)</span>
 
     <span class='co'>## One row per region</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>regions</span>), <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>rse</span>))
-}</div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:25 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/DRP002835/bw/mean_DRP002835.bw</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:26 loadCoverage: applying the cutoff to the merged data</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:26 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:26 findRegions: identifying potential segments</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:26 findRegions: segmenting information</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:26 .getSegmentsRle: segmenting with cutoff(s) 5</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:26 findRegions: identifying candidate regions</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:27 findRegions: identifying region clusters</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:28 railMatrix: processing regions 1 to 372</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:28 railMatrix: processing file http://duffel.rail.bio/recount/DRP002835/bw/DRR028129.bw</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:57:29 railMatrix: processing file http://duffel.rail.bio/recount/DRP002835/bw/DRR028130.bw</span></div><div class='output co'>#&gt; [1] TRUE</div></pre>
+    <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>regions</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>rse</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:22 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/DRP002835/bw/mean_DRP002835.bw</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:23 loadCoverage: applying the cutoff to the merged data</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:23 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:23 findRegions: identifying potential segments</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:23 findRegions: segmenting information</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:23 .getSegmentsRle: segmenting with cutoff(s) 5</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:23 findRegions: identifying candidate regions</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:24 findRegions: identifying region clusters</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:25 railMatrix: processing regions 1 to 372</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:25 railMatrix: processing file http://duffel.rail.bio/recount/DRP002835/bw/DRR028129.bw</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:26 railMatrix: processing file http://duffel.rail.bio/recount/DRP002835/bw/DRR028130.bw</span></div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -292,7 +296,7 @@ Note that you will need to run <a href='scale_counts.html'>scale_counts</a> afte
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

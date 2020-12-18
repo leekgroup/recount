@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.15.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.17.1</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -117,7 +117,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/leekgroup/recount/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -143,7 +143,7 @@
     <p>Given a SRA study id get the url to browse the study using the SRA website.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>browse_study</span>(<span class='no'>project</span>, <span class='kw'>browse</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>())</pre>
+    <pre class="usage"><span class='fu'>browse_study</span><span class='op'>(</span><span class='va'>project</span>, browse <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,16 +164,21 @@
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='abstract_search.html'>abstract_search</a></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Find the Geuvadis consortium project</span>
-<span class='no'>id</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='abstract_search.html'>abstract_search</a></span>(<span class='st'>"Geuvadis consortium"</span>, <span class='kw'>id_only</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>id</span></div><div class='output co'>#&gt; [1] "ERP001942"</div><div class='input'>
+<span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='abstract_search.html'>abstract_search</a></span><span class='op'>(</span><span class='st'>"Geuvadis consortium"</span>, id_only <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>id</span>
+</div><div class='output co'>#&gt; [1] "ERP001942"</div><div class='input'>
 <span class='co'>## Explore the Geuvadis consortium project</span>
-<span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>browse_study</span>(<span class='no'>id</span>)
+<span class='va'>url</span> <span class='op'>&lt;-</span> <span class='fu'>browse_study</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span>
 
 <span class='co'>## See the actual URL</span>
-<span class='no'>url</span></div><div class='output co'>#&gt; [1] "https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=ERP001942"</div></pre>
+<span class='va'>url</span>
+</div><div class='output co'>#&gt; [1] "https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=ERP001942"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -189,7 +194,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -81,7 +81,7 @@ GEO accession ids for the sample can be found in the study phenotype table." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.15.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.17.1</span>
       </span>
     </div>
 
@@ -89,7 +89,7 @@ GEO accession ids for the sample can be found in the study phenotype table." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -118,7 +118,7 @@ GEO accession ids for the sample can be found in the study phenotype table." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/leekgroup/recount/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -145,14 +145,14 @@ GEO accession ids for the sample can be found in the study phenotype table." />
 GEO accession ids for the sample can be found in the study phenotype table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geo_info</span>(
-  <span class='no'>geoid</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>sleep</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>2</span>,
-  <span class='kw'>getGPL</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>destdir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(),
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>geo_info</span><span class='op'>(</span>
+  <span class='va'>geoid</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sleep <span class='op'>=</span> <span class='fl'>1</span><span class='op'>/</span><span class='fl'>2</span>,
+  getGPL <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  destdir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -192,10 +192,14 @@ to <code>FALSE</code> by default to speed up the process.</p></td>
 
     <p>Returns a <a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame-class</a> with the information
 from GEO available for the given sample.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Leonardo Collado-Torres, Andrew Jaffe</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>geo_info</span>(<span class='st'>"GSM836270"</span>)</div><div class='output co'>#&gt; <span class='message'>Using locally cached version of GSM836270 found here:</span>
-#&gt; <span class='message'>/tmp/RtmpboEAeZ/GSM836270.soft </span></div><div class='output co'>#&gt; DataFrame with 1 row and 25 columns
+    <pre class="examples"><div class='input'><span class='fu'>geo_info</span><span class='op'>(</span><span class='st'>"GSM836270"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Using locally cached version of GSM836270 found here:</span>
+#&gt; <span class='message'>/tmp/Rtmpe4b79v/GSM836270.soft </span></div><div class='output co'>#&gt; DataFrame with 1 row and 25 columns
 #&gt;   channel_count data_row_count            description geo_accession
 #&gt;     &lt;character&gt;    &lt;character&gt;            &lt;character&gt;   &lt;character&gt;
 #&gt; 1             1              0 Uninduced K562-shSRF..     GSM836270
@@ -241,7 +245,7 @@ from GEO available for the given sample.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

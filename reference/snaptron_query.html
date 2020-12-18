@@ -81,7 +81,7 @@ that are available via Intropolis as described in the vignette." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.15.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.17.1</span>
       </span>
     </div>
 
@@ -89,7 +89,7 @@ that are available via Intropolis as described in the vignette." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -118,7 +118,7 @@ that are available via Intropolis as described in the vignette." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/leekgroup/recount/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -145,7 +145,7 @@ that are available via Intropolis as described in the vignette." />
 that are available via Intropolis as described in the vignette.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>snaptron_query</span>(<span class='no'>junctions</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"srav1"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>async</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions</span>, version <span class='op'>=</span> <span class='st'>"srav1"</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span>, async <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -190,27 +190,31 @@ the Snaptron query. For information on the different columns please see
     <p>Please cite <a href='http://snaptron.cs.jhu.edu'>http://snaptron.cs.jhu.edu</a>
 if you use this function as Snaptron is a separate project from recount.
 Thank you!</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"GenomicRanges"</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://bioconductor.org/packages/GenomicRanges'>"GenomicRanges"</a></span><span class='op'>)</span>
 <span class='co'>## Define some exon-exon junctions (hg19 coordinates)</span>
-<span class='no'>junctions</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html'>GRanges</a></span>(<span class='kw'>seqnames</span> <span class='kw'>=</span> <span class='st'>"chr2"</span>, <span class='fu'>IRanges</span>(
-    <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>28971710</span>:<span class='fl'>28971712</span>, <span class='fl'>29555081</span>:<span class='fl'>29555083</span>, <span class='fl'>29754982</span>:<span class='fl'>29754984</span>),
-    <span class='kw'>end</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>29462417</span>:<span class='fl'>29462419</span>, <span class='fl'>29923338</span>:<span class='fl'>29923340</span>, <span class='fl'>29917714</span>:<span class='fl'>29917716</span>)
-))
+<span class='va'>junctions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html'>GRanges</a></span><span class='op'>(</span>seqnames <span class='op'>=</span> <span class='st'>"chr2"</span>, <span class='fu'>IRanges</span><span class='op'>(</span>
+    start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>28971710</span><span class='op'>:</span><span class='fl'>28971712</span>, <span class='fl'>29555081</span><span class='op'>:</span><span class='fl'>29555083</span>, <span class='fl'>29754982</span><span class='op'>:</span><span class='fl'>29754984</span><span class='op'>)</span>,
+    end <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>29462417</span><span class='op'>:</span><span class='fl'>29462419</span>, <span class='fl'>29923338</span><span class='op'>:</span><span class='fl'>29923340</span>, <span class='fl'>29917714</span><span class='op'>:</span><span class='fl'>29917716</span><span class='op'>)</span>
+<span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'>## Check against Snaptron SRA version 1 (hg19 coordinates)</span>
-<span class='fu'>snaptron_query</span>(<span class='no'>junctions</span>)</div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:58:01 querying Snaptron</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:58:14 processing results</span></div><div class='output co'>#&gt; <span class='message'>2020-05-27 05:58:14 extracting information</span></div><div class='output co'>#&gt; GRanges object with 3 ranges and 14 metadata columns:
+<span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:44 querying Snaptron</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:57 processing results</span></div><div class='output co'>#&gt; <span class='message'>2020-12-18 18:16:57 extracting information</span></div><div class='output co'>#&gt; GRanges object with 3 ranges and 14 metadata columns:
 #&gt;       seqnames            ranges strand |     type snaptron_id       annotated
 #&gt;          &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;factor&gt;   &lt;integer&gt; &lt;CharacterList&gt;
-#&gt;   [1]     chr2 28971711-29462418      - |  SRAv1:I    22314441              NA
-#&gt;   [2]     chr2 29555082-29923339      + |  SRAv1:I    22328842              NA
+#&gt;   [1]     chr2 28971711-29462418      - |  SRAv1:I    22314441            &lt;NA&gt;
+#&gt;   [2]     chr2 29555082-29923339      + |  SRAv1:I    22328842            &lt;NA&gt;
 #&gt;   [3]     chr2 29754983-29917715      - |  SRAv1:I    22329293               1
 #&gt;        left_motif right_motif     left_annotated    right_annotated
 #&gt;       &lt;character&gt; &lt;character&gt;    &lt;CharacterList&gt;    &lt;CharacterList&gt;
-#&gt;   [1]          AT          AC                 NA                 NA
-#&gt;   [2]          GC          AG                 NA                 NA
+#&gt;   [1]          AT          AC               &lt;NA&gt;               &lt;NA&gt;
+#&gt;   [2]          GC          AG               &lt;NA&gt;               &lt;NA&gt;
 #&gt;   [3]          GT          AG aC19,cG19,cG38,... aC19,cG19,cG38,...
 #&gt;                  samples read_coverage_by_sample samples_count coverage_sum
 #&gt;            &lt;IntegerList&gt;           &lt;IntegerList&gt;     &lt;integer&gt;    &lt;integer&gt;
@@ -223,18 +227,20 @@ Thank you!</p>
 #&gt;   [2]        1.000               1                 0
 #&gt;   [3]        3.311               1                 0
 #&gt;   -------
-#&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+#&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'>## Check another set of junctions against SRA version 2 (more data, hg38</span>
 <span class='co'>## coordinates)</span>
-<span class='no'>junctions_v2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html'>GRanges</a></span>(<span class='kw'>seqnames</span> <span class='kw'>=</span> <span class='st'>"chr2"</span>, <span class='fu'>IRanges</span>(
-    <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>29532116</span>:<span class='fl'>29532118</span>, <span class='kw'>end</span> <span class='kw'>=</span> <span class='fl'>29694848</span>:<span class='fl'>29694850</span>
-))
-<span class='fu'>snaptron_query</span>(<span class='no'>junctions_v2</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"srav2"</span>)
+<span class='va'>junctions_v2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html'>GRanges</a></span><span class='op'>(</span>seqnames <span class='op'>=</span> <span class='st'>"chr2"</span>, <span class='fu'>IRanges</span><span class='op'>(</span>
+    start <span class='op'>=</span> <span class='fl'>29532116</span><span class='op'>:</span><span class='fl'>29532118</span>, end <span class='op'>=</span> <span class='fl'>29694848</span><span class='op'>:</span><span class='fl'>29694850</span>
+<span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions_v2</span>, version <span class='op'>=</span> <span class='st'>"srav2"</span><span class='op'>)</span>
 
 <span class='co'>## Check these junctions in GTEx and TCGA data</span>
-<span class='fu'>snaptron_query</span>(<span class='no'>junctions_v2</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"gtex"</span>)
-<span class='fu'>snaptron_query</span>(<span class='no'>junctions_v2</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"tcga"</span>)
-}</div></pre>
+<span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions_v2</span>, version <span class='op'>=</span> <span class='st'>"gtex"</span><span class='op'>)</span>
+<span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions_v2</span>, version <span class='op'>=</span> <span class='st'>"tcga"</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -250,7 +256,7 @@ Thank you!</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

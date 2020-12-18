@@ -86,7 +86,7 @@ without scaling check the function read_counts." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.15.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.17.1</span>
       </span>
     </div>
 
@@ -94,7 +94,7 @@ without scaling check the function read_counts." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -123,7 +123,7 @@ without scaling check the function read_counts." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/leekgroup/recount/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -155,14 +155,14 @@ into account the gene or exon lengths. If you prefer to calculate read counts
 without scaling check the function <a href='read_counts.html'>read_counts</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>scale_counts</span>(
-  <span class='no'>rse</span>,
-  <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"auc"</span>,
-  <span class='kw'>targetSize</span> <span class='kw'>=</span> <span class='fl'>4e+07</span>,
-  <span class='kw'>L</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>factor_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>round</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>scale_counts</span><span class='op'>(</span>
+  <span class='va'>rse</span>,
+  by <span class='op'>=</span> <span class='st'>"auc"</span>,
+  targetSize <span class='op'>=</span> <span class='fl'>4e+07</span>,
+  L <span class='op'>=</span> <span class='fl'>100</span>,
+  factor_only <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  round <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -218,33 +218,39 @@ is the average fragment length. This is taken into account when using
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='download_study.html'>download_study</a>, <a href='read_counts.html'>read_counts</a></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Load an example rse_gene object</span>
-<span class='no'>rse_gene</span> <span class='kw'>&lt;-</span> <span class='no'>rse_gene_SRP009615</span>
+<span class='va'>rse_gene</span> <span class='op'>&lt;-</span> <span class='va'>rse_gene_SRP009615</span>
 
 <span class='co'>## Scale counts</span>
-<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='fu'>scale_counts</span>(<span class='no'>rse_gene</span>)
+<span class='va'>rse</span> <span class='op'>&lt;-</span> <span class='fu'>scale_counts</span><span class='op'>(</span><span class='va'>rse_gene</span><span class='op'>)</span>
 
 <span class='co'>## Find the project used as an example</span>
-<span class='no'>project_info</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='abstract_search.html'>abstract_search</a></span>(<span class='st'>"GSE32465"</span>)
+<span class='va'>project_info</span> <span class='op'>&lt;-</span> <span class='fu'><a href='abstract_search.html'>abstract_search</a></span><span class='op'>(</span><span class='st'>"GSE32465"</span><span class='op'>)</span>
 
 <span class='co'>## See some summary information for this project</span>
-<span class='no'>project_info</span></div><div class='output co'>#&gt;     number_samples species
+<span class='va'>project_info</span>
+</div><div class='output co'>#&gt;     number_samples species
 #&gt; 340             12   human
 #&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               abstract
 #&gt; 340 Summary: K562-shX cells are made in an effort to validate TFBS data and ChIP-seq antibodies in Myers lab (GSE32465). K562 cells are transduced with lentiviral vector having Tet-inducible shRNA targeting a transcription factor gene. Cells with stable integration of shRNA constructs are selected using puromycin in growth media. Doxycycline is added to the growth media to induce the expression of shRNA and a red fluorescent protein marker.  A successful shRNA cell line shows at least a 70% reduction in expression of the target transcription factor as measured by qPCR. For identification, we designated these cell lines as K562-shX, where X is the transcription factor targeted by shRNA and K562 denotes the parent cell line.  For example, K562-shATF3 cells are K562 derived cells selected for stable integration of shRNA targeting the transcription factor ATF3 gene and showed at least a 70% reduction in the expression of ATF3 gene when measured by qPCR. Cells growing without doxycycline (uninduced) are used as a control to measure the change in expression of target transcription factor gene after induction of shRNA using doxycycline. For detailed growth and culturing protocols for these cells please refer to http://hudsonalpha.org/myers-lab/protocols . To identify the potential downstream targets of the candidate transcription factor, analyze the mRNA expression profile of the uninduced and induced K562-shX using RNA-seq.    For data usage terms and conditions, please refer to http://www.genome.gov/27528022 and http://www.genome.gov/Pages/Research/ENCODE/ENCODEDataReleasePolicyFinal2008.pdf    Overall Design: Make K562-shX cells as described in the http://hudsonalpha.org/myers-lab/protocols . Measure the mRNA expression levels in uninduced K562-shX and induced K562-shX cells in two biological replicates using RNA-seq. Identify the potential downstream targets of the candidate transcription factor.
 #&gt;       project
 #&gt; 340 SRP009615</div><div class='input'>
 <span class='co'>## Use the following code to re-download this file</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'>## Download</span>
-<span class='fu'><a href='download_study.html'>download_study</a></span>(<span class='no'>project_info</span>$<span class='no'>project</span>)
+<span class='fu'><a href='download_study.html'>download_study</a></span><span class='op'>(</span><span class='va'>project_info</span><span class='op'>$</span><span class='va'>project</span><span class='op'>)</span>
 
 <span class='co'>## Load file</span>
-<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>project_info</span>$<span class='no'>project</span>, <span class='st'>"rse_gene.Rdata"</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>rse_gene</span>, <span class='no'>rse_gene_SRP009615</span>)
-}</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>project_info</span><span class='op'>$</span><span class='va'>project</span>, <span class='st'>"rse_gene.Rdata"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>rse_gene</span>, <span class='va'>rse_gene_SRP009615</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -260,7 +266,7 @@ is the average fragment length. This is taken into account when using
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
