@@ -193,7 +193,7 @@ used the same names for all samples, you can then combine them using
 
 <span class='co'>## Get the data from GEO</span>
 <span class='va'>geodata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/do.call.html'>do.call</a></span><span class='op'>(</span><span class='va'>rbind</span>, <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>geoids</span>, <span class='va'>geo_info</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>File stored at: </span></div><div class='output co'>#&gt; <span class='message'>/tmp/Rtmpe4b79v/GSM836270.soft</span></div><div class='output co'>#&gt; <span class='message'>File stored at: </span></div><div class='output co'>#&gt; <span class='message'>/tmp/Rtmpe4b79v/GSM836271.soft</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'>File stored at: </span></div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpjobSl7/GSM836270.soft</span></div><div class='output co'>#&gt; <span class='message'>File stored at: </span></div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpjobSl7/GSM836271.soft</span></div><div class='input'>
 <span class='co'>## Add characteristics in a way that we can access easily later on</span>
 <span class='va'>geodata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>geodata</span>, <span class='fu'>geo_characteristics</span><span class='op'>(</span><span class='va'>geodata</span><span class='op'>)</span><span class='op'>)</span>
 

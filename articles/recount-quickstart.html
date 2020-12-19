@@ -98,7 +98,7 @@
       Lieber Institute for Brain Development, Johns Hopkins Medical Campus<br><a class="author_email" href="mailto:#"></a><a href="mailto:lcolladotor@gmail.com" class="email">lcolladotor@gmail.com</a>
       </address>
                   
-            <h4 class="date">18 December 2020</h4>
+            <h4 class="date">19 December 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/leekgroup/recount/blob/master/vignettes/recount-quickstart.Rmd"><code>vignettes/recount-quickstart.Rmd</code></a></small>
       <div class="hidden name"><code>recount-quickstart.Rmd</code></div>
@@ -378,7 +378,7 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Download the gene-level RangedSummarizedExperiment data</span>
 <span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="va">project_info</span><span class="op">$</span><span class="va">project</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2020-12-18 18:17:31 downloading file rse_gene.Rdata to SRP009615</code></pre>
+<pre><code>## 2020-12-19 01:26:52 downloading file rse_gene.Rdata to SRP009615</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Load the data</span>
 <span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">project_info</span><span class="op">$</span><span class="va">project</span>, <span class="st">"rse_gene.Rdata"</span><span class="op">)</span><span class="op">)</span>
@@ -711,14 +711,14 @@ MA plot for group differences adjusted by gene target for SRP009615 using gene-l
     cutoff <span class="op">=</span> <span class="fl">5L</span>,
     maxClusterGap <span class="op">=</span> <span class="fl">3000L</span>
 <span class="op">)</span></code></pre></div>
-<pre><code>## 2020-12-18 18:18:29 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:30 loadCoverage: applying the cutoff to the merged data</code></pre>
-<pre><code>## 2020-12-18 18:18:31 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</code></pre>
-<pre><code>## 2020-12-18 18:18:31 findRegions: identifying potential segments</code></pre>
-<pre><code>## 2020-12-18 18:18:31 findRegions: segmenting information</code></pre>
-<pre><code>## 2020-12-18 18:18:31 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
-<pre><code>## 2020-12-18 18:18:31 findRegions: identifying candidate regions</code></pre>
-<pre><code>## 2020-12-18 18:18:32 findRegions: identifying region clusters</code></pre>
+<pre><code>## 2020-12-19 01:27:53 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</code></pre>
+<pre><code>## 2020-12-19 01:27:56 loadCoverage: applying the cutoff to the merged data</code></pre>
+<pre><code>## 2020-12-19 01:27:56 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</code></pre>
+<pre><code>## 2020-12-19 01:27:56 findRegions: identifying potential segments</code></pre>
+<pre><code>## 2020-12-19 01:27:56 findRegions: segmenting information</code></pre>
+<pre><code>## 2020-12-19 01:27:56 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
+<pre><code>## 2020-12-19 01:27:56 findRegions: identifying candidate regions</code></pre>
+<pre><code>## 2020-12-19 01:27:58 findRegions: identifying region clusters</code></pre>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Briefly explore the resulting regions</span>
 <span class="va">regions</span></code></pre></div>
@@ -747,21 +747,21 @@ MA plot for group differences adjusted by gene target for SRP009615 using gene-l
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Compute coverage matrix for study SRP009615, only for chromosome Y</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">rse_ER</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/coverage_matrix.html">coverage_matrix</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, <span class="st">"chrY"</span>, <span class="va">regions</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2020-12-18 18:18:34 railMatrix: processing regions 1 to 808</code></pre>
-<pre><code>## 2020-12-18 18:18:34 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:35 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:36 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:37 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:38 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:39 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:40 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:41 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:42 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:43 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:44 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
-<pre><code>## 2020-12-18 18:18:45 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:00 railMatrix: processing regions 1 to 808</code></pre>
+<pre><code>## 2020-12-19 01:28:00 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:03 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:05 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:07 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:09 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:11 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:13 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:15 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:16 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:18 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:20 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:22 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
 <pre><code>##    user  system elapsed 
-##   3.038   0.242  12.044</code></pre>
+##   2.937   0.236  24.621</code></pre>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Explore the RSE a bit</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">rse_ER</span><span class="op">)</span></code></pre></div>
@@ -931,7 +931,7 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 <div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Get the rse_exon object for study SRP009615</span>
 <span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, type <span class="op">=</span> <span class="st">"rse-exon"</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2020-12-18 18:18:49 downloading file rse_exon.Rdata to SRP009615</code></pre>
+<pre><code>## 2020-12-19 01:28:28 downloading file rse_exon.Rdata to SRP009615</code></pre>
 <div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, <span class="st">"rse_exon.Rdata"</span><span class="op">)</span><span class="op">)</span>
 
@@ -1000,19 +1000,19 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 <span class="va">exonRSE</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/coverage_matrix.html">coverage_matrix</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, <span class="st">"chrY"</span>, <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">exons_chrY</span><span class="op">)</span>,
     chunksize <span class="op">=</span> <span class="fl">3000</span>
 <span class="op">)</span></code></pre></div>
-<pre><code>## 2020-12-18 18:19:10 railMatrix: processing regions 1 to 2562</code></pre>
-<pre><code>## 2020-12-18 18:19:10 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
-<pre><code>## 2020-12-18 18:19:11 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
-<pre><code>## 2020-12-18 18:19:12 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
-<pre><code>## 2020-12-18 18:19:13 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
-<pre><code>## 2020-12-18 18:19:14 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
-<pre><code>## 2020-12-18 18:19:15 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
-<pre><code>## 2020-12-18 18:19:16 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
-<pre><code>## 2020-12-18 18:19:17 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
-<pre><code>## 2020-12-18 18:19:18 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
-<pre><code>## 2020-12-18 18:19:19 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
-<pre><code>## 2020-12-18 18:19:20 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
-<pre><code>## 2020-12-18 18:19:22 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:57 railMatrix: processing regions 1 to 2562</code></pre>
+<pre><code>## 2020-12-19 01:28:57 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
+<pre><code>## 2020-12-19 01:28:59 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
+<pre><code>## 2020-12-19 01:29:01 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
+<pre><code>## 2020-12-19 01:29:04 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
+<pre><code>## 2020-12-19 01:29:06 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
+<pre><code>## 2020-12-19 01:29:08 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
+<pre><code>## 2020-12-19 01:29:10 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
+<pre><code>## 2020-12-19 01:29:12 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
+<pre><code>## 2020-12-19 01:29:14 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
+<pre><code>## 2020-12-19 01:29:16 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
+<pre><code>## 2020-12-19 01:29:18 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
+<pre><code>## 2020-12-19 01:29:21 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">exonMatrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">assays</a></span><span class="op">(</span><span class="va">exonRSE</span><span class="op">)</span><span class="op">$</span><span class="va">counts</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">exonMatrix</span><span class="op">)</span></code></pre></div>
@@ -1071,7 +1071,7 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 
 <span class="co">## Download and load RSE object for SRP009615 study</span>
 <span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, type <span class="op">=</span> <span class="st">"rse-jx"</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2020-12-18 18:19:23 downloading file rse_jx.Rdata to SRP009615</code></pre>
+<pre><code>## 2020-12-19 01:29:23 downloading file rse_jx.Rdata to SRP009615</code></pre>
 <div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, <span class="st">"rse_jx.Rdata"</span><span class="op">)</span><span class="op">)</span>
 
@@ -1113,9 +1113,9 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 <span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/snaptron_query.html">snaptron_query</a></span><span class="op">(</span><span class="va">junctions</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2020-12-18 18:19:26 querying Snaptron</code></pre>
-<pre><code>## 2020-12-18 18:19:26 processing results</code></pre>
-<pre><code>## 2020-12-18 18:19:26 extracting information</code></pre>
+<pre><code>## 2020-12-19 01:29:30 querying Snaptron</code></pre>
+<pre><code>## 2020-12-19 01:29:32 processing results</code></pre>
+<pre><code>## 2020-12-19 01:29:32 extracting information</code></pre>
 <pre><code>## GRanges object with 3 ranges and 14 metadata columns:
 ##       seqnames            ranges strand |     type snaptron_id       annotated  left_motif right_motif
 ##          &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;factor&gt;   &lt;integer&gt; &lt;CharacterList&gt; &lt;character&gt; &lt;character&gt;
@@ -1319,9 +1319,9 @@ recount files are available locally so remmeber to use the local data when worki
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/">"knitr"</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html">knit</a></span><span class="op">(</span><span class="st">"recount-quickstart.Rmd"</span>, tangle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Date the vignette was generated.</p>
-<pre><code>## [1] "2020-12-18 18:19:28 UTC"</code></pre>
+<pre><code>## [1] "2020-12-19 01:29:34 UTC"</code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code>## Time difference of 2.233 mins</code></pre>
+<pre><code>## Time difference of 2.994 mins</code></pre>
 <p><code>R</code> session information.</p>
 <pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
@@ -1333,7 +1333,7 @@ recount files are available locally so remmeber to use the local data when worki
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       Etc/UTC                     
-##  date     2020-12-18                  
+##  date     2020-12-19                  
 ## 
 ## ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  package              * version  date       lib source                                 
@@ -1455,9 +1455,9 @@ recount files are available locally so remmeber to use the local data when worki
 ##  Rcpp                   1.0.5    2020-07-06 [2] RSPM (R 4.0.2)                         
 ##  RCurl                  1.98-1.2 2020-04-18 [1] RSPM (R 4.0.0)                         
 ##  readr                  1.4.0    2020-10-05 [1] RSPM (R 4.0.3)                         
-##  recount              * 1.17.1   2020-12-18 [1] Bioconductor                           
+##  recount              * 1.17.1   2020-12-19 [1] Bioconductor                           
 ##  RefManageR           * 1.3.0    2020-11-13 [1] RSPM (R 4.0.3)                         
-##  regionReport         * 1.25.1   2020-12-18 [1] Github (leekgroup/regionReport@c6c82ac)
+##  regionReport         * 1.25.2   2020-12-19 [1] Github (leekgroup/regionReport@6ca98e9)
 ##  rentrez                1.2.3    2020-11-10 [1] RSPM (R 4.0.3)                         
 ##  reshape2               1.4.4    2020-04-09 [1] RSPM (R 4.0.2)                         
 ##  rlang                  0.4.9    2020-11-26 [2] RSPM (R 4.0.3)                         
