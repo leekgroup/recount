@@ -92,8 +92,8 @@ bib <- c(
 
 ```{r 'installDer', eval = FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
-      install.packages("BiocManager")
-  }
+    install.packages("BiocManager")
+}
 
 BiocManager::install("recount")
 
@@ -455,6 +455,12 @@ report <- DESeq2Report(dds,
 
 ```{r 'make_report_real', echo = FALSE, results = 'hide'}
 library("regionReport")
+
+## Load some packages used by regionReport
+library("DT")
+library("edgeR")
+library("ggplot2")
+library("RColorBrewer")
 
 ## Make it so that the report will be available as a vignette
 original <- readLines(system.file("DESeq2Exploration", "DESeq2Exploration.Rmd",

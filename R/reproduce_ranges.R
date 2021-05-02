@@ -44,7 +44,6 @@
 #'     <https://jhubiostatistics.shinyapps.io/recount/>
 #'
 #' @examples
-#'
 #' \dontrun{
 #' ## Reproduce gene level information
 #' genes <- reproduce_ranges()
@@ -65,7 +64,17 @@ reproduce_ranges <- function(level = "gene", db = "Gencode.v25") {
     ## Load required packages
     .load_check(c("GenomicFeatures", "org.Hs.eg.db"))
     if (db == "Gencode.v25") {
-        txdb <- GenomicFeatures::makeTxDbFromGFF("ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_25/gencode.v25.annotation.gff3.gz",
+        temp_gencode <- download_retry(
+            url = paste0(
+                "ftp://ftp.ebi.ac.uk/pub/databases/gencode/",
+                "Gencode_human/release_25/gencode.v25.annotation.gff3.gz"
+            ),
+            destfile = file.path(
+                tempdir(),
+                "gencode.v25.annotation.gff3.gz"
+            )
+        )
+        txdb <- GenomicFeatures::makeTxDbFromGFF(temp_gencode,
             format = "gff3", organism = "Homo sapiens"
         )
     } else if (db == "EnsDb.Hsapiens.v79") {

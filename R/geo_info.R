@@ -66,8 +66,8 @@ geo_info <- function(geoid, verbose = FALSE, sleep = 1 / 2, getGPL = FALSE,
             }
         )
         if (!inherits(geo, "error")) {
-              break
-          }
+            break
+        }
         Sys.sleep(runif(n = 1, min = 2, max = 5))
         N.TRIES <- N.TRIES - 1L
     }
