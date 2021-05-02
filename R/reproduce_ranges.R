@@ -64,15 +64,16 @@ reproduce_ranges <- function(level = "gene", db = "Gencode.v25") {
     ## Load required packages
     .load_check(c("GenomicFeatures", "org.Hs.eg.db"))
     if (db == "Gencode.v25") {
-        temp_gencode <- download_retry(
+        temp_gencode <- file.path(
+                tempdir(),
+                "gencode.v25.annotation.gff3.gz"
+            )
+        xx <- download_retry(
             url = paste0(
                 "ftp://ftp.ebi.ac.uk/pub/databases/gencode/",
                 "Gencode_human/release_25/gencode.v25.annotation.gff3.gz"
             ),
-            destfile = file.path(
-                tempdir(),
-                "gencode.v25.annotation.gff3.gz"
-            )
+            destfile = temp_gencode
         )
         txdb <- GenomicFeatures::makeTxDbFromGFF(temp_gencode,
             format = "gff3", organism = "Homo sapiens"
