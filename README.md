@@ -44,8 +44,8 @@ Bioconductor](http://bioconductor.org/packages/recount) or at the
 ## Installation instructions
 
 Get the latest stable `R` release from
-[CRAN](http://cran.r-project.org/). Then install `recount` using from
-[Bioconductor](http://bioconductor.org/) the following code:
+[CRAN](http://cran.r-project.org/). Then install `recount` from
+[Bioconductor](http://bioconductor.org/) using the following code:
 
 ``` r
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
