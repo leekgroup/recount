@@ -255,7 +255,8 @@ jobs:
               `no-check-bioc-help` = TRUE,
               `no-check-pkg-size` = TRUE,
               `no-check-version-num` = TRUE,
-              `no-check-vignettes` = TRUE
+              `no-check-vignettes` = TRUE,
+              `no-check-coding-practices` = TRUE
           )
         shell: Rscript {0}
 
