@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.2</span>
       </span>
     </div>
 
@@ -178,7 +178,7 @@
 ## Jaffe AE, Langmead B, Leek JT (2021). _Explore and download data from
 ## the recount project_. doi: 10.18129/B9.bioc.recount (URL:
 ## https://doi.org/10.18129/B9.bioc.recount),
-## https://github.com/leekgroup/recount - R package version 1.19.1, &lt;URL:
+## https://github.com/leekgroup/recount - R package version 1.19.2, &lt;URL:
 ## http://www.bioconductor.org/packages/recount&gt;.
 ## 
 ## Frazee AC, Langmead B, Leek JT (2011). "ReCount: A multi-experiment
@@ -374,7 +374,7 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Download the gene-level RangedSummarizedExperiment data</span>
 <span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="va">project_info</span><span class="op">$</span><span class="va">project</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-08-10 01:10:25 downloading file rse_gene.Rdata to SRP009615</code></pre>
+<pre><code>## 2021-08-10 05:18:09 downloading file rse_gene.Rdata to SRP009615</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Load the data</span>
 <span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">project_info</span><span class="op">$</span><span class="va">project</span>, <span class="st">"rse_gene.Rdata"</span><span class="op">)</span><span class="op">)</span>
@@ -749,14 +749,14 @@ MA plot for group differences adjusted by gene target for SRP009615 using gene-l
     cutoff <span class="op">=</span> <span class="fl">5L</span>,
     maxClusterGap <span class="op">=</span> <span class="fl">3000L</span>
 <span class="op">)</span></code></pre></div>
-<pre><code>## 2021-08-10 01:17:17 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:18 loadCoverage: applying the cutoff to the merged data</code></pre>
-<pre><code>## 2021-08-10 01:17:19 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</code></pre>
-<pre><code>## 2021-08-10 01:17:19 findRegions: identifying potential segments</code></pre>
-<pre><code>## 2021-08-10 01:17:19 findRegions: segmenting information</code></pre>
-<pre><code>## 2021-08-10 01:17:19 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
-<pre><code>## 2021-08-10 01:17:19 findRegions: identifying candidate regions</code></pre>
-<pre><code>## 2021-08-10 01:17:20 findRegions: identifying region clusters</code></pre>
+<pre><code>## 2021-08-10 05:24:25 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:26 loadCoverage: applying the cutoff to the merged data</code></pre>
+<pre><code>## 2021-08-10 05:24:27 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</code></pre>
+<pre><code>## 2021-08-10 05:24:27 findRegions: identifying potential segments</code></pre>
+<pre><code>## 2021-08-10 05:24:27 findRegions: segmenting information</code></pre>
+<pre><code>## 2021-08-10 05:24:27 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
+<pre><code>## 2021-08-10 05:24:27 findRegions: identifying candidate regions</code></pre>
+<pre><code>## 2021-08-10 05:24:28 findRegions: identifying region clusters</code></pre>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Briefly explore the resulting regions</span>
 <span class="va">regions</span></code></pre></div>
@@ -785,21 +785,21 @@ MA plot for group differences adjusted by gene target for SRP009615 using gene-l
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Compute coverage matrix for study SRP009615, only for chromosome Y</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span><span class="va">rse_ER</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/coverage_matrix.html">coverage_matrix</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, <span class="st">"chrY"</span>, <span class="va">regions</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-08-10 01:17:22 railMatrix: processing regions 1 to 808</code></pre>
-<pre><code>## 2021-08-10 01:17:22 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:23 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:23 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:24 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:25 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:26 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:26 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:27 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:28 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:29 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:29 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
-<pre><code>## 2021-08-10 01:17:30 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:30 railMatrix: processing regions 1 to 808</code></pre>
+<pre><code>## 2021-08-10 05:24:30 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:31 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:32 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:32 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:33 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:34 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:35 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:36 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:36 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:37 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:38 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
+<pre><code>## 2021-08-10 05:24:39 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
 <pre><code>##    user  system elapsed 
-##   3.644   0.281   9.558</code></pre>
+##   3.500   0.224  10.065</code></pre>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Explore the RSE a bit</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">rse_ER</span><span class="op">)</span></code></pre></div>
@@ -969,7 +969,7 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Get the rse_exon object for study SRP009615</span>
 <span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, type <span class="op">=</span> <span class="st">"rse-exon"</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-08-10 01:17:43 downloading file rse_exon.Rdata to SRP009615</code></pre>
+<pre><code>## 2021-08-10 05:24:51 downloading file rse_exon.Rdata to SRP009615</code></pre>
 <div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, <span class="st">"rse_exon.Rdata"</span><span class="op">)</span><span class="op">)</span>
 
@@ -1039,19 +1039,19 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 <span class="va">exonRSE</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/coverage_matrix.html">coverage_matrix</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, <span class="st">"chrY"</span>, <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">exons_chrY</span><span class="op">)</span>,
     chunksize <span class="op">=</span> <span class="fl">3000</span>
 <span class="op">)</span></code></pre></div>
-<pre><code>## 2021-08-10 01:18:03 railMatrix: processing regions 1 to 2562</code></pre>
-<pre><code>## 2021-08-10 01:18:03 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
-<pre><code>## 2021-08-10 01:18:04 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
-<pre><code>## 2021-08-10 01:18:05 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
-<pre><code>## 2021-08-10 01:18:06 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
-<pre><code>## 2021-08-10 01:18:07 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
-<pre><code>## 2021-08-10 01:18:08 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
-<pre><code>## 2021-08-10 01:18:09 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
-<pre><code>## 2021-08-10 01:18:10 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
-<pre><code>## 2021-08-10 01:18:11 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
-<pre><code>## 2021-08-10 01:18:11 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
-<pre><code>## 2021-08-10 01:18:12 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
-<pre><code>## 2021-08-10 01:18:13 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:10 railMatrix: processing regions 1 to 2562</code></pre>
+<pre><code>## 2021-08-10 05:25:10 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387777.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:11 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387778.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:12 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387779.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:13 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR387780.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:14 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389077.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:15 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389078.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:16 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389079.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:17 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389080.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:18 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389081.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:19 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389082.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:20 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389083.bw</code></pre>
+<pre><code>## 2021-08-10 05:25:21 railMatrix: processing file http://duffel.rail.bio/recount/SRP009615/bw/SRR389084.bw</code></pre>
 <div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">exonMatrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assays</a></span><span class="op">(</span><span class="va">exonRSE</span><span class="op">)</span><span class="op">$</span><span class="va">counts</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">exonMatrix</span><span class="op">)</span></code></pre></div>
@@ -1110,7 +1110,7 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 
 <span class="co">## Download and load RSE object for SRP009615 study</span>
 <span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, type <span class="op">=</span> <span class="st">"rse-jx"</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-08-10 01:18:15 downloading file rse_jx.Rdata to SRP009615</code></pre>
+<pre><code>## 2021-08-10 05:25:22 downloading file rse_jx.Rdata to SRP009615</code></pre>
 <div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="st">"SRP009615"</span>, <span class="st">"rse_jx.Rdata"</span><span class="op">)</span><span class="op">)</span>
 
@@ -1152,9 +1152,9 @@ MA plot for group differences adjusted by gene target for SRP009615 using ER-lev
 <span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/snaptron_query.html">snaptron_query</a></span><span class="op">(</span><span class="va">junctions</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-08-10 01:18:17 querying Snaptron</code></pre>
-<pre><code>## 2021-08-10 01:18:18 processing results</code></pre>
-<pre><code>## 2021-08-10 01:18:18 extracting information</code></pre>
+<pre><code>## 2021-08-10 05:25:24 querying Snaptron</code></pre>
+<pre><code>## 2021-08-10 05:25:25 processing results</code></pre>
+<pre><code>## 2021-08-10 05:25:25 extracting information</code></pre>
 <pre><code>## GRanges object with 3 ranges and 14 metadata columns:
 ##       seqnames            ranges strand |     type snaptron_id       annotated  left_motif right_motif
 ##          &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;factor&gt;   &lt;integer&gt; &lt;CharacterList&gt; &lt;character&gt; &lt;character&gt;
@@ -1358,9 +1358,9 @@ recount files are available locally so remmeber to use the local data when worki
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/" class="external-link">"knitr"</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knit</a></span><span class="op">(</span><span class="st">"recount-quickstart.Rmd"</span>, tangle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Date the vignette was generated.</p>
-<pre><code>## [1] "2021-08-10 01:18:20 UTC"</code></pre>
+<pre><code>## [1] "2021-08-10 05:25:27 UTC"</code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code>## Time difference of 8.169 mins</code></pre>
+<pre><code>## Time difference of 7.552 mins</code></pre>
 <p><code>R</code> session information.</p>
 <pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
@@ -1499,7 +1499,7 @@ recount files are available locally so remmeber to use the local data when worki
 ##  Rcpp                   1.0.7      2021-07-07 [2] RSPM (R 4.1.0)                
 ##  RCurl                  1.98-1.3   2021-03-16 [1] RSPM (R 4.1.0)                
 ##  readr                  2.0.0      2021-07-20 [1] RSPM (R 4.1.0)                
-##  recount              * 1.19.1     2021-08-10 [1] Bioconductor                  
+##  recount              * 1.19.2     2021-08-10 [1] Bioconductor                  
 ##  RefManageR           * 1.3.0      2020-11-13 [1] RSPM (R 4.1.0)                
 ##  regionReport         * 1.27.1     2021-08-05 [1] Bioconductor                  
 ##  rentrez                1.2.3      2020-11-10 [1] RSPM (R 4.1.0)                

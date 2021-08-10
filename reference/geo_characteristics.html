@@ -91,7 +91,7 @@ samples as shown in the examples section." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.2</span>
       </span>
     </div>
 
@@ -196,9 +196,9 @@ used the same names for all samples, you can then combine them using
 <span class='r-in'><span class='co'>## Get the data from GEO</span></span>
 <span class='r-in'><span class='va'>geodata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/do.call.html'>do.call</a></span><span class='op'>(</span><span class='va'>rbind</span>, <span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>geoids</span>, <span class='va'>geo_info</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span> File stored at: </span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> /tmp/RtmpnzuJD1/GSM836270.soft</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> /tmp/RtmpdDrhUe/GSM836270.soft</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span> File stored at: </span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> /tmp/RtmpnzuJD1/GSM836271.soft</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> /tmp/RtmpdDrhUe/GSM836271.soft</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'>## Add characteristics in a way that we can access easily later on</span></span>
 <span class='r-in'><span class='va'>geodata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>geodata</span>, <span class='fu'>geo_characteristics</span><span class='op'>(</span><span class='va'>geodata</span><span class='op'>)</span><span class='op'>)</span></span>
