@@ -54,6 +54,8 @@ that are available via Intropolis as described in the vignette." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -65,9 +67,15 @@ that are available via Intropolis as described in the vignette." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -81,19 +89,13 @@ that are available via Intropolis as described in the vignette." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -145,7 +147,7 @@ that are available via Intropolis as described in the vignette." />
 that are available via Intropolis as described in the vignette.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions</span>, version <span class='op'>=</span> <span class='st'>"srav1"</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span>, async <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions</span>, version <span class='op'>=</span> <span class='st'>"srav1"</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span>, async <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -195,52 +197,56 @@ Thank you!</p>
     <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://bioconductor.org/packages/GenomicRanges'>"GenomicRanges"</a></span><span class='op'>)</span>
-<span class='co'>## Define some exon-exon junctions (hg19 coordinates)</span>
-<span class='va'>junctions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html'>GRanges</a></span><span class='op'>(</span>seqnames <span class='op'>=</span> <span class='st'>"chr2"</span>, <span class='fu'>IRanges</span><span class='op'>(</span>
-    start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>28971710</span><span class='op'>:</span><span class='fl'>28971712</span>, <span class='fl'>29555081</span><span class='op'>:</span><span class='fl'>29555083</span>, <span class='fl'>29754982</span><span class='op'>:</span><span class='fl'>29754984</span><span class='op'>)</span>,
-    end <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>29462417</span><span class='op'>:</span><span class='fl'>29462419</span>, <span class='fl'>29923338</span><span class='op'>:</span><span class='fl'>29923340</span>, <span class='fl'>29917714</span><span class='op'>:</span><span class='fl'>29917716</span><span class='op'>)</span>
-<span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'>## Check against Snaptron SRA version 1 (hg19 coordinates)</span>
-<span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2021-05-24 15:46:41 querying Snaptron</span></div><div class='output co'>#&gt; <span class='message'>2021-05-24 15:46:53 processing results</span></div><div class='output co'>#&gt; <span class='message'>2021-05-24 15:46:53 extracting information</span></div><div class='output co'>#&gt; GRanges object with 3 ranges and 14 metadata columns:
-#&gt;       seqnames            ranges strand |     type snaptron_id       annotated
-#&gt;          &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;factor&gt;   &lt;integer&gt; &lt;CharacterList&gt;
-#&gt;   [1]     chr2 28971711-29462418      - |  SRAv1:I    22314441            &lt;NA&gt;
-#&gt;   [2]     chr2 29555082-29923339      + |  SRAv1:I    22328842            &lt;NA&gt;
-#&gt;   [3]     chr2 29754983-29917715      - |  SRAv1:I    22329293               1
-#&gt;        left_motif right_motif     left_annotated    right_annotated
-#&gt;       &lt;character&gt; &lt;character&gt;    &lt;CharacterList&gt;    &lt;CharacterList&gt;
-#&gt;   [1]          AT          AC               &lt;NA&gt;               &lt;NA&gt;
-#&gt;   [2]          GC          AG               &lt;NA&gt;               &lt;NA&gt;
-#&gt;   [3]          GT          AG aC19,cG19,cG38,... aC19,cG19,cG38,...
-#&gt;                  samples read_coverage_by_sample samples_count coverage_sum
-#&gt;            &lt;IntegerList&gt;           &lt;IntegerList&gt;     &lt;integer&gt;    &lt;integer&gt;
-#&gt;   [1]               3481                       1             1            1
-#&gt;   [2] 2643,4867,4945,...               1,1,1,...            13           13
-#&gt;   [3]         3,5,13,...               1,1,1,...          1625         5380
-#&gt;       coverage_avg coverage_median source_dataset_id
-#&gt;          &lt;numeric&gt;       &lt;numeric&gt;         &lt;integer&gt;
-#&gt;   [1]        1.000               1                 0
-#&gt;   [2]        1.000               1                 0
-#&gt;   [3]        3.311               1                 0
-#&gt;   -------
-#&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'>## Check another set of junctions against SRA version 2 (more data, hg38</span>
-<span class='co'>## coordinates)</span>
-<span class='va'>junctions_v2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html'>GRanges</a></span><span class='op'>(</span>seqnames <span class='op'>=</span> <span class='st'>"chr2"</span>, <span class='fu'>IRanges</span><span class='op'>(</span>
-    start <span class='op'>=</span> <span class='fl'>29532116</span><span class='op'>:</span><span class='fl'>29532118</span>, end <span class='op'>=</span> <span class='fl'>29694848</span><span class='op'>:</span><span class='fl'>29694850</span>
-<span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions_v2</span>, version <span class='op'>=</span> <span class='st'>"srav2"</span><span class='op'>)</span>
-
-<span class='co'>## Check these junctions in GTEx and TCGA data</span>
-<span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions_v2</span>, version <span class='op'>=</span> <span class='st'>"gtex"</span><span class='op'>)</span>
-<span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions_v2</span>, version <span class='op'>=</span> <span class='st'>"tcga"</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://bioconductor.org/packages/GenomicRanges'>"GenomicRanges"</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>## Define some exon-exon junctions (hg19 coordinates)</span></span>
+<span class='r-in'><span class='va'>junctions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html'>GRanges</a></span><span class='op'>(</span>seqnames <span class='op'>=</span> <span class='st'>"chr2"</span>, <span class='fu'><a href='https://rdrr.io/pkg/IRanges/man/IRanges-constructor.html'>IRanges</a></span><span class='op'>(</span></span>
+<span class='r-in'>    start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/Vector-class.html'>c</a></span><span class='op'>(</span><span class='fl'>28971710</span><span class='op'>:</span><span class='fl'>28971712</span>, <span class='fl'>29555081</span><span class='op'>:</span><span class='fl'>29555083</span>, <span class='fl'>29754982</span><span class='op'>:</span><span class='fl'>29754984</span><span class='op'>)</span>,</span>
+<span class='r-in'>    end <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/Vector-class.html'>c</a></span><span class='op'>(</span><span class='fl'>29462417</span><span class='op'>:</span><span class='fl'>29462419</span>, <span class='fl'>29923338</span><span class='op'>:</span><span class='fl'>29923340</span>, <span class='fl'>29917714</span><span class='op'>:</span><span class='fl'>29917716</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Check against Snaptron SRA version 1 (hg19 coordinates)</span></span>
+<span class='r-in'><span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 01:09:39 querying Snaptron</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 01:09:52 processing results</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 01:09:52 extracting information</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> GRanges object with 3 ranges and 14 metadata columns:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       seqnames            ranges strand |     type snaptron_id       annotated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;factor&gt;   &lt;integer&gt; &lt;CharacterList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [1]     chr2 28971711-29462418      - |  SRAv1:I    22314441            &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [2]     chr2 29555082-29923339      + |  SRAv1:I    22328842            &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [3]     chr2 29754983-29917715      - |  SRAv1:I    22329293               1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        left_motif right_motif     left_annotated    right_annotated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       &lt;character&gt; &lt;character&gt;    &lt;CharacterList&gt;    &lt;CharacterList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [1]          AT          AC               &lt;NA&gt;               &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [2]          GC          AG               &lt;NA&gt;               &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [3]          GT          AG aC19,cG19,cG38,... aC19,cG19,cG38,...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                  samples read_coverage_by_sample samples_count coverage_sum</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            &lt;IntegerList&gt;           &lt;IntegerList&gt;     &lt;integer&gt;    &lt;integer&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [1]               3481                       1             1            1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [2] 2643,4867,4945,...               1,1,1,...            13           13</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [3]         3,5,13,...               1,1,1,...          1625         5380</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       coverage_avg coverage_median source_dataset_id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          &lt;numeric&gt;       &lt;numeric&gt;         &lt;integer&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [1]        1.000               1                 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [2]        1.000               1                 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [3]        3.311               1                 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   -------</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   seqinfo: 1 sequence from an unspecified genome; no seqlengths</span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'>## Check another set of junctions against SRA version 2 (more data, hg38</span></span>
+<span class='r-in'><span class='co'>## coordinates)</span></span>
+<span class='r-in'><span class='va'>junctions_v2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html'>GRanges</a></span><span class='op'>(</span>seqnames <span class='op'>=</span> <span class='st'>"chr2"</span>, <span class='fu'><a href='https://rdrr.io/pkg/IRanges/man/IRanges-constructor.html'>IRanges</a></span><span class='op'>(</span></span>
+<span class='r-in'>    start <span class='op'>=</span> <span class='fl'>29532116</span><span class='op'>:</span><span class='fl'>29532118</span>, end <span class='op'>=</span> <span class='fl'>29694848</span><span class='op'>:</span><span class='fl'>29694850</span></span>
+<span class='r-in'><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions_v2</span>, version <span class='op'>=</span> <span class='st'>"srav2"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Check these junctions in GTEx and TCGA data</span></span>
+<span class='r-in'><span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions_v2</span>, version <span class='op'>=</span> <span class='st'>"gtex"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>snaptron_query</span><span class='op'>(</span><span class='va'>junctions_v2</span>, version <span class='op'>=</span> <span class='st'>"tcga"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -252,11 +258,11 @@ Thank you!</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
+  <p><p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -264,6 +270,8 @@ Thank you!</p>
 
   
 
+
+  
 
   </body>
 </html>

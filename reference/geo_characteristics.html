@@ -56,6 +56,8 @@ samples as shown in the examples section." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -67,9 +69,15 @@ samples as shown in the examples section." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -83,19 +91,13 @@ samples as shown in the examples section." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -149,7 +151,7 @@ names. For a given SRA project, this information can be combined for all
 samples as shown in the examples section.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geo_characteristics</span><span class='op'>(</span><span class='va'>pheno</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>geo_characteristics</span><span class='op'>(</span><span class='va'>pheno</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -172,43 +174,48 @@ used the same names for all samples, you can then combine them using
     <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>## Load required library</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://bioconductor.org/packages/SummarizedExperiment'>"SummarizedExperiment"</a></span><span class='op'>)</span>
-
-<span class='co'>## Get the GEO accession ids</span>
-<span class='co'># geoids &lt;- sapply(colData(rse_gene_SRP009615)$run[1:2], find_geo)</span>
-<span class='co'>## The previous example code works nearly all the time but it</span>
-<span class='co'>## can occassionally fail depending on how rentrez is doing.</span>
-<span class='co'>## This code makes sure that the example code runs.</span>
-<span class='va'>geoids</span> <span class='op'>&lt;-</span> <span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span><span class='op'>$</span><span class='va'>run</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span>, <span class='va'>find_geo</span><span class='op'>)</span>,
-    error <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span> <span class='op'>{</span>
-        <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-            <span class='st'>"SRR387777"</span> <span class='op'>=</span> <span class='st'>"GSM836270"</span>,
-            <span class='st'>"SRR387778"</span> <span class='op'>=</span> <span class='st'>"GSM836271"</span>
-        <span class='op'>)</span>
-    <span class='op'>}</span>
-<span class='op'>)</span>
-
-<span class='co'>## Get the data from GEO</span>
-<span class='va'>geodata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/do.call.html'>do.call</a></span><span class='op'>(</span><span class='va'>rbind</span>, <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>geoids</span>, <span class='va'>geo_info</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>File stored at: </span></div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpcUvCRN/GSM836270.soft</span></div><div class='output co'>#&gt; <span class='message'>File stored at: </span></div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpcUvCRN/GSM836271.soft</span></div><div class='input'>
-<span class='co'>## Add characteristics in a way that we can access easily later on</span>
-<span class='va'>geodata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>geodata</span>, <span class='fu'>geo_characteristics</span><span class='op'>(</span><span class='va'>geodata</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'>## Explore the original characteristics and the result from</span>
-<span class='co'>## geo_characteristics()</span>
-<span class='va'>geodata</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"characteristics"</span>, <span class='st'>"cells"</span>, <span class='st'>"shrna.expression"</span>, <span class='st'>"treatment"</span><span class='op'>)</span><span class='op'>]</span>
-</div><div class='output co'>#&gt; DataFrame with 2 rows and 4 columns
-#&gt;                                             characteristics       cells
-#&gt;                                             &lt;CharacterList&gt; &lt;character&gt;
-#&gt; 1     cells: K562,shRNA expression: no,treatment: Puromycin        K562
-#&gt; 2 cells: K562,shRNA expression: ye..,treatment: Puromycin..        K562
-#&gt;     shrna.expression              treatment
-#&gt;          &lt;character&gt;            &lt;character&gt;
-#&gt; 1                 no              Puromycin
-#&gt; 2 yes, targeting SRF Puromycin, doxycycline</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'></span>
+<span class='r-in'><span class='co'>## Load required library</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://bioconductor.org/packages/SummarizedExperiment'>"SummarizedExperiment"</a></span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Get the GEO accession ids</span></span>
+<span class='r-in'><span class='co'># geoids &lt;- sapply(colData(rse_gene_SRP009615)$run[1:2], find_geo)</span></span>
+<span class='r-in'><span class='co'>## The previous example code works nearly all the time but it</span></span>
+<span class='r-in'><span class='co'>## can occassionally fail depending on how rentrez is doing.</span></span>
+<span class='r-in'><span class='co'>## This code makes sure that the example code runs.</span></span>
+<span class='r-in'><span class='va'>geoids</span> <span class='op'>&lt;-</span> <span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/lapply.html'>sapply</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span><span class='op'>$</span><span class='va'>run</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span>, <span class='va'>find_geo</span><span class='op'>)</span>,</span>
+<span class='r-in'>    error <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>        <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/Vector-class.html'>c</a></span><span class='op'>(</span></span>
+<span class='r-in'>            <span class='st'>"SRR387777"</span> <span class='op'>=</span> <span class='st'>"GSM836270"</span>,</span>
+<span class='r-in'>            <span class='st'>"SRR387778"</span> <span class='op'>=</span> <span class='st'>"GSM836271"</span></span>
+<span class='r-in'>        <span class='op'>)</span></span>
+<span class='r-in'>    <span class='op'>}</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Get the data from GEO</span></span>
+<span class='r-in'><span class='va'>geodata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/do.call.html'>do.call</a></span><span class='op'>(</span><span class='va'>rbind</span>, <span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>geoids</span>, <span class='va'>geo_info</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> File stored at: </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> /tmp/RtmpnzuJD1/GSM836270.soft</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> File stored at: </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> /tmp/RtmpnzuJD1/GSM836271.soft</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Add characteristics in a way that we can access easily later on</span></span>
+<span class='r-in'><span class='va'>geodata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>geodata</span>, <span class='fu'>geo_characteristics</span><span class='op'>(</span><span class='va'>geodata</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Explore the original characteristics and the result from</span></span>
+<span class='r-in'><span class='co'>## geo_characteristics()</span></span>
+<span class='r-in'><span class='va'>geodata</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/pkg/S4Vectors/man/Vector-class.html'>c</a></span><span class='op'>(</span><span class='st'>"characteristics"</span>, <span class='st'>"cells"</span>, <span class='st'>"shrna.expression"</span>, <span class='st'>"treatment"</span><span class='op'>)</span><span class='op'>]</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> DataFrame with 2 rows and 4 columns</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                             characteristics       cells</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                             &lt;CharacterList&gt; &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1     cells: K562,shRNA expression: no,treatment: Puromycin        K562</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 cells: K562,shRNA expression: ye..,treatment: Puromycin..        K562</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     shrna.expression              treatment</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          &lt;character&gt;            &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1                 no              Puromycin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 yes, targeting SRF Puromycin, doxycycline</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -220,11 +227,11 @@ used the same names for all samples, you can then combine them using
 
       <footer>
       <div class="copyright">
-  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
+  <p><p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -232,6 +239,8 @@ used the same names for all samples, you can then combine them using
 
   
 
+
+  
 
   </body>
 </html>

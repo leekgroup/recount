@@ -56,6 +56,8 @@ We use the AUC because Rail-RNA soft clips some reads." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -67,9 +69,15 @@ We use the AUC because Rail-RNA soft clips some reads." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -83,19 +91,13 @@ We use the AUC because Rail-RNA soft clips some reads." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -149,7 +151,7 @@ or compute the read counts using the area under coverage information (AUC).
 We use the AUC because Rail-RNA soft clips some reads.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_counts</span><span class='op'>(</span><span class='va'>rse</span>, use_paired_end <span class='op'>=</span> <span class='cn'>TRUE</span>, round <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>read_counts</span><span class='op'>(</span><span class='va'>rse</span>, use_paired_end <span class='op'>=</span> <span class='cn'>TRUE</span>, round <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -198,36 +200,40 @@ doi: 10.12688/f1000research.12223.1.</p>
     <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>## Difference between read counts and reads downloaded by Rail-RNA</span>
-<span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays</a></span><span class='op'>(</span><span class='fu'>read_counts</span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>counts</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>1e6</span> <span class='op'>-</span>
-    <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span><span class='op'>$</span><span class='va'>reads_downloaded</span> <span class='op'>/</span> <span class='fl'>1e6</span>
-</div><div class='output co'>#&gt;  SRR387777  SRR387778  SRR387779  SRR387780  SRR389077  SRR389078  SRR389079 
-#&gt;  -8.839994 -12.892541  -7.536284  -6.497571 -13.239233 -15.816168 -14.775568 
-#&gt;  SRR389080  SRR389081  SRR389082  SRR389083  SRR389084 
-#&gt;  -6.274001  -5.054220  -2.328694  -5.265160  -4.421728 </div><div class='input'>
-<span class='co'>## Paired-end read counts vs fragment counts (single-end counts)</span>
-<span class='fu'><a href='download_study.html'>download_study</a></span><span class='op'>(</span><span class='st'>"DRP000499"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2021-05-24 15:46:39 downloading file rse_gene.Rdata to DRP000499</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='st'>"DRP000499/rse_gene.Rdata"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays</a></span><span class='op'>(</span><span class='fu'>read_counts</span><span class='op'>(</span><span class='va'>rse_gene</span>, use_paired_end <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>counts</span><span class='op'>)</span> <span class='op'>/</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays</a></span><span class='op'>(</span><span class='fu'>read_counts</span><span class='op'>(</span><span class='va'>rse_gene</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>counts</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; DRR001622 DRR001625 DRR001628 DRR001631 DRR001634 DRR001637 DRR001623 DRR001626 
-#&gt;         2         2         2         2         2         2         2         2 
-#&gt; DRR001629 DRR001632 DRR001635 DRR001638 DRR001642 DRR001624 DRR001627 DRR001630 
-#&gt;         2         2         2         2         2         2         2         2 
-#&gt; DRR001633 DRR001636 DRR001639 DRR001640 DRR001641 
-#&gt;         2         2         2         2         2 </div><div class='input'>
-<span class='co'>## Difference between paired-end read counts vs paired-end reads downloaded</span>
-<span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays</a></span><span class='op'>(</span><span class='fu'>read_counts</span><span class='op'>(</span><span class='va'>rse_gene</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>counts</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>1e6</span> <span class='op'>-</span>
-    <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span><span class='op'>(</span><span class='va'>rse_gene</span><span class='op'>)</span><span class='op'>$</span><span class='va'>reads_downloaded</span> <span class='op'>/</span> <span class='fl'>1e6</span> <span class='op'>/</span> <span class='fl'>2</span>
-</div><div class='output co'>#&gt;   DRR001622   DRR001625   DRR001628   DRR001631   DRR001634   DRR001637 
-#&gt;  -2.0348249  -0.6138274 -53.1563756  -9.8438273  -8.4707991  -7.3001527 
-#&gt;   DRR001623   DRR001626   DRR001629   DRR001632   DRR001635   DRR001638 
-#&gt;  -1.0163589  -0.9350952 -54.8523133 -15.8955635  -8.8314352  -8.0629589 
-#&gt;   DRR001642   DRR001624   DRR001627   DRR001630   DRR001633   DRR001636 
-#&gt;  -7.8494200  -1.5618029  -1.2820004 -16.5891652  -8.5003669 -12.5271479 
-#&gt;   DRR001639   DRR001640   DRR001641 
-#&gt; -15.3775958  -9.8064514  -7.3778134 </div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'></span>
+<span class='r-in'><span class='co'>## Difference between read counts and reads downloaded by Rail-RNA</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/colSums.html'>colSums</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays</a></span><span class='op'>(</span><span class='fu'>read_counts</span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>counts</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>1e6</span> <span class='op'>-</span></span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span><span class='op'>$</span><span class='va'>reads_downloaded</span> <span class='op'>/</span> <span class='fl'>1e6</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  SRR387777  SRR387778  SRR387779  SRR387780  SRR389077  SRR389078  SRR389079 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  -8.839994 -12.892541  -7.536284  -6.497571 -13.239233 -15.816168 -14.775568 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  SRR389080  SRR389081  SRR389082  SRR389083  SRR389084 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  -6.274001  -5.054220  -2.328694  -5.265160  -4.421728 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Paired-end read counts vs fragment counts (single-end counts)</span></span>
+<span class='r-in'><span class='fu'><a href='download_study.html'>download_study</a></span><span class='op'>(</span><span class='st'>"DRP000499"</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 01:09:27 downloading file rse_gene.Rdata to DRP000499</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='st'>"DRP000499/rse_gene.Rdata"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/colSums.html'>colSums</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays</a></span><span class='op'>(</span><span class='fu'>read_counts</span><span class='op'>(</span><span class='va'>rse_gene</span>, use_paired_end <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>counts</span><span class='op'>)</span> <span class='op'>/</span></span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/colSums.html'>colSums</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays</a></span><span class='op'>(</span><span class='fu'>read_counts</span><span class='op'>(</span><span class='va'>rse_gene</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>counts</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> DRR001622 DRR001625 DRR001628 DRR001631 DRR001634 DRR001637 DRR001623 DRR001626 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         2         2         2         2         2         2         2         2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> DRR001629 DRR001632 DRR001635 DRR001638 DRR001642 DRR001624 DRR001627 DRR001630 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         2         2         2         2         2         2         2         2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> DRR001633 DRR001636 DRR001639 DRR001640 DRR001641 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         2         2         2         2         2 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Difference between paired-end read counts vs paired-end reads downloaded</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/colSums.html'>colSums</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays</a></span><span class='op'>(</span><span class='fu'>read_counts</span><span class='op'>(</span><span class='va'>rse_gene</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>counts</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>1e6</span> <span class='op'>-</span></span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span><span class='op'>(</span><span class='va'>rse_gene</span><span class='op'>)</span><span class='op'>$</span><span class='va'>reads_downloaded</span> <span class='op'>/</span> <span class='fl'>1e6</span> <span class='op'>/</span> <span class='fl'>2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   DRR001622   DRR001625   DRR001628   DRR001631   DRR001634   DRR001637 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  -2.0348249  -0.6138274 -53.1563756  -9.8438273  -8.4707991  -7.3001527 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   DRR001623   DRR001626   DRR001629   DRR001632   DRR001635   DRR001638 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  -1.0163589  -0.9350952 -54.8523133 -15.8955635  -8.8314352  -8.0629589 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   DRR001642   DRR001624   DRR001627   DRR001630   DRR001633   DRR001636 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  -7.8494200  -1.5618029  -1.2820004 -16.5891652  -8.5003669 -12.5271479 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   DRR001639   DRR001640   DRR001641 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -15.3775958  -9.8064514  -7.3778134 </span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -239,11 +245,11 @@ doi: 10.12688/f1000research.12223.1.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
+  <p><p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -251,6 +257,8 @@ doi: 10.12688/f1000research.12223.1.</p>
 
   
 
+
+  
 
   </body>
 </html>

@@ -55,6 +55,8 @@ package." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -66,9 +68,15 @@ package." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -82,19 +90,13 @@ package." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -147,7 +149,7 @@ contain the text in their abstract as provided by the SRAdb Bioconductor
 package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>abstract_search</span><span class='op'>(</span><span class='va'>query</span>, id_only <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>abstract_search</span><span class='op'>(</span><span class='va'>query</span>, id_only <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,17 +188,18 @@ subset of <a href='recount_abstract.html'>recount_abstract</a> for the abstracts
     <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Find the Geuvadis consortium project</span>
-<span class='va'>project_info</span> <span class='op'>&lt;-</span> <span class='fu'>abstract_search</span><span class='op'>(</span><span class='st'>"Geuvadis consortium"</span><span class='op'>)</span>
-
-<span class='co'>## See some summary information for this project</span>
-<span class='va'>project_info</span>
-</div><div class='output co'>#&gt;    number_samples species
-#&gt; 50            667   human
-#&gt;                                                                                                                                                                                                                                                                                                abstract
-#&gt; 50 The data is under embargo until the first publication by the investigators in early 2013. This RNA sequencing data set of 465 human lymphoblastoid cell line samples from the CEU, FIN, GBR, TSI and YRI populations from the 1000 Genomes sample collection was created by the Geuvadis consortium.
-#&gt;      project
-#&gt; 50 ERP001942</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Find the Geuvadis consortium project</span></span>
+<span class='r-in'><span class='va'>project_info</span> <span class='op'>&lt;-</span> <span class='fu'>abstract_search</span><span class='op'>(</span><span class='st'>"Geuvadis consortium"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## See some summary information for this project</span></span>
+<span class='r-in'><span class='va'>project_info</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    number_samples species</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50            667   human</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                                                                                                                                                                                                                                                                abstract</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50 The data is under embargo until the first publication by the investigators in early 2013. This RNA sequencing data set of 465 human lymphoblastoid cell line samples from the CEU, FIN, GBR, TSI and YRI populations from the 1000 Genomes sample collection was created by the Geuvadis consortium.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      project</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50 ERP001942</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -208,11 +211,11 @@ subset of <a href='recount_abstract.html'>recount_abstract</a> for the abstracts
 
       <footer>
       <div class="copyright">
-  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
+  <p><p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -220,6 +223,8 @@ subset of <a href='recount_abstract.html'>recount_abstract</a> for the abstracts
 
   
 
+
+  
 
   </body>
 </html>

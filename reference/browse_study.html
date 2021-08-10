@@ -53,6 +53,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -64,9 +66,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,19 +88,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -143,7 +145,7 @@
     <p>Given a SRA study id get the url to browse the study using the SRA website.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>browse_study</span><span class='op'>(</span><span class='va'>project</span>, browse <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>browse_study</span><span class='op'>(</span><span class='va'>project</span>, browse <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,16 +171,18 @@
     <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Find the Geuvadis consortium project</span>
-<span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='abstract_search.html'>abstract_search</a></span><span class='op'>(</span><span class='st'>"Geuvadis consortium"</span>, id_only <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='va'>id</span>
-</div><div class='output co'>#&gt; [1] "ERP001942"</div><div class='input'>
-<span class='co'>## Explore the Geuvadis consortium project</span>
-<span class='va'>url</span> <span class='op'>&lt;-</span> <span class='fu'>browse_study</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span>
-
-<span class='co'>## See the actual URL</span>
-<span class='va'>url</span>
-</div><div class='output co'>#&gt; [1] "https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=ERP001942"</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Find the Geuvadis consortium project</span></span>
+<span class='r-in'><span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='abstract_search.html'>abstract_search</a></span><span class='op'>(</span><span class='st'>"Geuvadis consortium"</span>, id_only <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>id</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "ERP001942"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Explore the Geuvadis consortium project</span></span>
+<span class='r-in'><span class='va'>url</span> <span class='op'>&lt;-</span> <span class='fu'>browse_study</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## See the actual URL</span></span>
+<span class='r-in'><span class='va'>url</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=ERP001942"</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -190,11 +194,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
+  <p><p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -202,6 +206,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -54,6 +54,8 @@ GEO accession ids for the sample can be found in the study phenotype table." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -65,9 +67,15 @@ GEO accession ids for the sample can be found in the study phenotype table." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -81,19 +89,13 @@ GEO accession ids for the sample can be found in the study phenotype table." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -145,14 +147,14 @@ GEO accession ids for the sample can be found in the study phenotype table." />
 GEO accession ids for the sample can be found in the study phenotype table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geo_info</span><span class='op'>(</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>geo_info</span><span class='op'>(</span>
   <span class='va'>geoid</span>,
   verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
   sleep <span class='op'>=</span> <span class='fl'>1</span><span class='op'>/</span><span class='fl'>2</span>,
   getGPL <span class='op'>=</span> <span class='cn'>FALSE</span>,
   destdir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>,
   <span class='va'>...</span>
-<span class='op'>)</span></pre>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -197,39 +199,41 @@ from GEO available for the given sample.</p>
     <p>Leonardo Collado-Torres, Andrew Jaffe</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>geo_info</span><span class='op'>(</span><span class='st'>"GSM836270"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Using locally cached version of GSM836270 found here:</span>
-#&gt; <span class='message'>/tmp/RtmpcUvCRN/GSM836270.soft </span></div><div class='output co'>#&gt; DataFrame with 1 row and 25 columns
-#&gt;   channel_count data_row_count            description geo_accession
-#&gt;     &lt;character&gt;    &lt;character&gt;            &lt;character&gt;   &lt;character&gt;
-#&gt; 1             1              0 Uninduced K562-shSRF..     GSM836270
-#&gt;      growth_protocol_ch1       instrument_model last_update_date molecule_ch1
-#&gt;              &lt;character&gt;            &lt;character&gt;      &lt;character&gt;  &lt;character&gt;
-#&gt; 1 Refer to http://huds.. Illumina Genome Anal..      May 15 2019    total RNA
-#&gt;   organism_ch1 platform_id source_name_ch1                status
-#&gt;    &lt;character&gt; &lt;character&gt;     &lt;character&gt;           &lt;character&gt;
-#&gt; 1 Homo sapiens    GPL10999          SL2933 Public on Dec 01 2011
-#&gt;   submission_date   taxid_ch1                  title treatment_protocol_ch1
-#&gt;       &lt;character&gt; &lt;character&gt;            &lt;character&gt;            &lt;character&gt;
-#&gt; 1     Nov 18 2011        9606 K562 cells with shRN.. Refer to http://huds..
-#&gt;          type                                       characteristics
-#&gt;   &lt;character&gt;                                       &lt;CharacterList&gt;
-#&gt; 1         SRA cells: K562,shRNA expression: no,treatment: Puromycin
-#&gt;     data_processing                           contact                extract
-#&gt;     &lt;CharacterList&gt;                   &lt;CharacterList&gt;        &lt;CharacterList&gt;
-#&gt; 1 Bowtie, Cufflinks 601 Genome Way,Huntsville,USA,... Standard Illumina RN..
-#&gt;                       library
-#&gt;               &lt;CharacterList&gt;
-#&gt; 1 cDNA,transcriptomic,RNA-Seq
-#&gt;                                                               relation
-#&gt;                                                        &lt;CharacterList&gt;
-#&gt; 1 SRA: https://www.ncb..,BioSample: https://w..,Named Annotation: NA..
-#&gt;            series
-#&gt;   &lt;CharacterList&gt;
-#&gt; 1        GSE33816
-#&gt;                                                     supplementary_file
-#&gt;                                                        &lt;CharacterList&gt;
-#&gt; 1 ftp://ftp.ncbi.nlm.n..,ftp://ftp.ncbi.nlm.n..,ftp://ftp.ncbi.nlm.n..</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>geo_info</span><span class='op'>(</span><span class='st'>"GSM836270"</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Using locally cached version of GSM836270 found here:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> /tmp/RtmpnzuJD1/GSM836270.soft </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> DataFrame with 1 row and 25 columns</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   channel_count data_row_count            description geo_accession</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     &lt;character&gt;    &lt;character&gt;            &lt;character&gt;   &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1             1              0 Uninduced K562-shSRF..     GSM836270</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      growth_protocol_ch1       instrument_model last_update_date molecule_ch1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>              &lt;character&gt;            &lt;character&gt;      &lt;character&gt;  &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 Refer to http://huds.. Illumina Genome Anal..      May 15 2019    total RNA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   organism_ch1 platform_id source_name_ch1                status</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    &lt;character&gt; &lt;character&gt;     &lt;character&gt;           &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 Homo sapiens    GPL10999          SL2933 Public on Dec 01 2011</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   submission_date   taxid_ch1                  title treatment_protocol_ch1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       &lt;character&gt; &lt;character&gt;            &lt;character&gt;            &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1     Nov 18 2011        9606 K562 cells with shRN.. Refer to http://huds..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          type                                       characteristics</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   &lt;character&gt;                                       &lt;CharacterList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1         SRA cells: K562,shRNA expression: no,treatment: Puromycin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     data_processing                           contact                extract</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     &lt;CharacterList&gt;                   &lt;CharacterList&gt;        &lt;CharacterList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 Bowtie, Cufflinks 601 Genome Way,Huntsville,USA,... Standard Illumina RN..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                       library</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>               &lt;CharacterList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 cDNA,transcriptomic,RNA-Seq</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                               relation</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                        &lt;CharacterList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 SRA: https://www.ncb..,BioSample: https://w..,Named Annotation: NA..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            series</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   &lt;CharacterList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1        GSE33816</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                     supplementary_file</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                        &lt;CharacterList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 ftp://ftp.ncbi.nlm.n..,ftp://ftp.ncbi.nlm.n..,ftp://ftp.ncbi.nlm.n..</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -241,11 +245,11 @@ from GEO available for the given sample.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
+  <p><p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -253,6 +257,8 @@ from GEO available for the given sample.</p>
 
   
 
+
+  
 
   </body>
 </html>

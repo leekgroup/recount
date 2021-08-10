@@ -54,6 +54,8 @@ RPKMs which you can do with this function." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -65,9 +67,15 @@ RPKMs which you can do with this function." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -81,19 +89,13 @@ RPKMs which you can do with this function." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -145,7 +147,7 @@ RPKMs which you can do with this function." />
 RPKMs which you can do with this function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>getRPKM</span><span class='op'>(</span><span class='va'>rse</span>, length_var <span class='op'>=</span> <span class='st'>"bp_length"</span>, mapped_var <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>getRPKM</span><span class='op'>(</span><span class='va'>rse</span>, length_var <span class='op'>=</span> <span class='st'>"bp_length"</span>, mapped_var <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,14 +160,14 @@ object as downloaded with <a href='download_study.html'>download_study</a>.</p><
     <tr>
       <th>length_var</th>
       <td><p>A length 1 character vector with the column name from
-<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData(rse)</a></code> that has the coding length. For gene level objects
+<code>rowData(rse)</code> that has the coding length. For gene level objects
 from recount this is <code>bp_length</code>. If <code>NULL</code>, then it will use
 <code>width(rowRanges(rse))</code> which should be used for exon RSEs.</p></td>
     </tr>
     <tr>
       <th>mapped_var</th>
       <td><p>A length 1 character vector with the column name from
-<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData(rse)</a></code> that has the number of reads mapped. For recount RSE
+<code>colData(rse)</code> that has the number of reads mapped. For recount RSE
 object this would be <code>mapped_read_count</code>. If <code>NULL</code> (default)
 then it will use the column sums of the counts matrix. The results are
 different because not all mapped reads are mapped to exonic segments of the
@@ -189,100 +191,103 @@ of the total exonic sequence length of the gene.</p>
     <p>Andrew Jaffe, Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>## get RPKM matrix</span>
-<span class='va'>rpkm</span> <span class='op'>&lt;-</span> <span class='fu'>getRPKM</span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span>
-
-<span class='co'>## You can also get an RPKM matrix after running scale_counts()</span>
-<span class='co'>## with similar RPKM values</span>
-<span class='va'>rpkm2</span> <span class='op'>&lt;-</span> <span class='fu'>getRPKM</span><span class='op'>(</span><span class='fu'><a href='scale_counts.html'>scale_counts</a></span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>rpkm3</span> <span class='op'>&lt;-</span> <span class='fu'>getRPKM</span><span class='op'>(</span><span class='fu'><a href='scale_counts.html'>scale_counts</a></span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span>, by <span class='op'>=</span> <span class='st'>"mapped_reads"</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>rpkm</span> <span class='op'>-</span> <span class='va'>rpkm2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    SRR387777           SRR387778           SRR387779         
-#&gt;  Min.   :-0.538140   Min.   :-0.496618   Min.   :-0.2782572  
-#&gt;  1st Qu.:-0.001367   1st Qu.:-0.001441   1st Qu.:-0.0007156  
-#&gt;  Median : 0.000000   Median : 0.000000   Median : 0.0000000  
-#&gt;  Mean   : 0.001328   Mean   : 0.001216   Mean   : 0.0005080  
-#&gt;  3rd Qu.: 0.001639   3rd Qu.: 0.002102   3rd Qu.: 0.0014124  
-#&gt;  Max.   : 0.459320   Max.   : 0.412033   Max.   : 0.5638757  
-#&gt;    SRR387780           SRR389077            SRR389078        
-#&gt;  Min.   :-0.275124   Min.   :-0.3686954   Min.   :-1.762821  
-#&gt;  1st Qu.:-0.001091   1st Qu.:-0.0017073   1st Qu.:-0.001882  
-#&gt;  Median : 0.000000   Median : 0.0000000   Median : 0.000000  
-#&gt;  Mean   : 0.000969   Mean   :-0.0009294   Mean   : 0.001999  
-#&gt;  3rd Qu.: 0.001363   3rd Qu.: 0.0014684   3rd Qu.: 0.002319  
-#&gt;  Max.   : 0.352192   Max.   : 0.8665052   Max.   : 0.640973  
-#&gt;    SRR389079            SRR389080            SRR389081         
-#&gt;  Min.   :-0.3599736   Min.   :-0.3056064   Min.   :-0.4041139  
-#&gt;  1st Qu.:-0.0021947   1st Qu.:-0.0007341   1st Qu.:-0.0014252  
-#&gt;  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  
-#&gt;  Mean   :-0.0006854   Mean   : 0.0008586   Mean   :-0.0006136  
-#&gt;  3rd Qu.: 0.0015759   3rd Qu.: 0.0010928   3rd Qu.: 0.0007495  
-#&gt;  Max.   : 0.3829134   Max.   : 0.2733806   Max.   : 0.3281689  
-#&gt;    SRR389082            SRR389083            SRR389084         
-#&gt;  Min.   :-0.2330620   Min.   :-0.3047474   Min.   :-0.3486800  
-#&gt;  1st Qu.:-0.0004445   1st Qu.:-0.0010143   1st Qu.:-0.0009503  
-#&gt;  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  
-#&gt;  Mean   : 0.0005996   Mean   :-0.0006126   Mean   :-0.0003374  
-#&gt;  3rd Qu.: 0.0007402   3rd Qu.: 0.0006283   3rd Qu.: 0.0004121  
-#&gt;  Max.   : 0.2488342   Max.   : 0.4275825   Max.   : 0.3975724  </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>rpkm</span> <span class='op'>-</span> <span class='va'>rpkm3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    SRR387777            SRR387778            SRR387779         
-#&gt;  Min.   :-0.2136981   Min.   :-0.1968742   Min.   :-2.885e-01  
-#&gt;  1st Qu.:-0.0006772   1st Qu.:-0.0005507   1st Qu.:-4.843e-04  
-#&gt;  Median : 0.0000000   Median : 0.0000000   Median : 0.000e+00  
-#&gt;  Mean   :-0.0002927   Mean   : 0.0004231   Mean   :-9.456e-05  
-#&gt;  3rd Qu.: 0.0004006   3rd Qu.: 0.0007176   3rd Qu.: 1.540e-04  
-#&gt;  Max.   : 0.1130460   Max.   : 0.1770789   Max.   : 1.006e-01  
-#&gt;    SRR387780            SRR389077            SRR389078         
-#&gt;  Min.   :-0.1577897   Min.   :-0.5299857   Min.   :-0.1891372  
-#&gt;  1st Qu.:-0.0004845   1st Qu.:-0.0005405   1st Qu.:-0.0009724  
-#&gt;  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  
-#&gt;  Mean   :-0.0001782   Mean   : 0.0007128   Mean   :-0.0002439  
-#&gt;  3rd Qu.: 0.0004263   3rd Qu.: 0.0006473   3rd Qu.: 0.0004048  
-#&gt;  Max.   : 0.1376846   Max.   : 0.2552746   Max.   : 0.3569628  
-#&gt;    SRR389079            SRR389080            SRR389081         
-#&gt;  Min.   :-0.1176256   Min.   :-0.1430089   Min.   :-0.1853069  
-#&gt;  1st Qu.:-0.0006174   1st Qu.:-0.0002933   1st Qu.:-0.0002045  
-#&gt;  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  
-#&gt;  Mean   : 0.0002104   Mean   : 0.0003596   Mean   : 0.0001303  
-#&gt;  3rd Qu.: 0.0007492   3rd Qu.: 0.0003547   3rd Qu.: 0.0004992  
-#&gt;  Max.   : 0.1201767   Max.   : 0.1114920   Max.   : 0.1054893  
-#&gt;    SRR389082            SRR389083            SRR389084         
-#&gt;  Min.   :-0.1564435   Min.   :-1.436e-01   Min.   :-1.010e-01  
-#&gt;  1st Qu.:-0.0002348   1st Qu.:-4.315e-04   1st Qu.:-3.699e-05  
-#&gt;  Median : 0.0000000   Median : 0.000e+00   Median : 0.000e+00  
-#&gt;  Mean   : 0.0003452   Mean   :-1.422e-04   Mean   : 1.435e-04  
-#&gt;  3rd Qu.: 0.0002462   3rd Qu.: 9.928e-05   3rd Qu.: 3.646e-04  
-#&gt;  Max.   : 0.1086730   Max.   : 9.926e-02   Max.   : 9.869e-02  </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>rpkm2</span> <span class='op'>-</span> <span class='va'>rpkm3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    SRR387777           SRR387778           SRR387779         
-#&gt;  Min.   :-0.507532   Min.   :-0.445699   Min.   :-0.8523319  
-#&gt;  1st Qu.:-0.001622   1st Qu.:-0.002041   1st Qu.:-0.0014352  
-#&gt;  Median : 0.000000   Median : 0.000000   Median : 0.0000000  
-#&gt;  Mean   :-0.001621   Mean   :-0.000793   Mean   :-0.0006026  
-#&gt;  3rd Qu.: 0.001416   3rd Qu.: 0.001372   3rd Qu.: 0.0007158  
-#&gt;  Max.   : 0.422133   Max.   : 0.673697   Max.   : 0.3589322  
-#&gt;    SRR387780           SRR389077           SRR389078        
-#&gt;  Min.   :-0.461343   Min.   :-1.388253   Min.   :-0.491700  
-#&gt;  1st Qu.:-0.001245   1st Qu.:-0.001551   1st Qu.:-0.002401  
-#&gt;  Median : 0.000000   Median : 0.000000   Median : 0.000000  
-#&gt;  Mean   :-0.001147   Mean   : 0.001642   Mean   :-0.002243  
-#&gt;  3rd Qu.: 0.001177   3rd Qu.: 0.001683   3rd Qu.: 0.001885  
-#&gt;  Max.   : 0.305930   Max.   : 0.505786   Max.   : 2.119784  
-#&gt;    SRR389079            SRR389080            SRR389081         
-#&gt;  Min.   :-0.3710228   Min.   :-0.3038938   Min.   :-0.4838542  
-#&gt;  1st Qu.:-0.0016096   1st Qu.:-0.0010920   1st Qu.:-0.0007814  
-#&gt;  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  
-#&gt;  Mean   : 0.0008958   Mean   :-0.0004991   Mean   : 0.0007439  
-#&gt;  3rd Qu.: 0.0022193   3rd Qu.: 0.0006149   3rd Qu.: 0.0014597  
-#&gt;  Max.   : 0.4049808   Max.   : 0.3143154   Max.   : 0.4810074  
-#&gt;    SRR389082            SRR389083            SRR389084         
-#&gt;  Min.   :-0.3190688   Min.   :-0.4729762   Min.   :-0.3743508  
-#&gt;  1st Qu.:-0.0007932   1st Qu.:-0.0006477   1st Qu.:-0.0004526  
-#&gt;  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  
-#&gt;  Mean   :-0.0002543   Mean   : 0.0004705   Mean   : 0.0004809  
-#&gt;  3rd Qu.: 0.0005059   3rd Qu.: 0.0010338   3rd Qu.: 0.0009586  
-#&gt;  Max.   : 0.3414912   Max.   : 0.2808215   Max.   : 0.3405986  </div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'></span>
+<span class='r-in'><span class='co'>## get RPKM matrix</span></span>
+<span class='r-in'><span class='va'>rpkm</span> <span class='op'>&lt;-</span> <span class='fu'>getRPKM</span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## You can also get an RPKM matrix after running scale_counts()</span></span>
+<span class='r-in'><span class='co'>## with similar RPKM values</span></span>
+<span class='r-in'><span class='va'>rpkm2</span> <span class='op'>&lt;-</span> <span class='fu'>getRPKM</span><span class='op'>(</span><span class='fu'><a href='scale_counts.html'>scale_counts</a></span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>rpkm3</span> <span class='op'>&lt;-</span> <span class='fu'>getRPKM</span><span class='op'>(</span><span class='fu'><a href='scale_counts.html'>scale_counts</a></span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span>, by <span class='op'>=</span> <span class='st'>"mapped_reads"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>rpkm</span> <span class='op'>-</span> <span class='va'>rpkm2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR387777           SRR387778           SRR387779         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.538140   Min.   :-0.496618   Min.   :-0.2782572  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.001367   1st Qu.:-0.001441   1st Qu.:-0.0007156  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.000000   Median : 0.000000   Median : 0.0000000  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   : 0.001328   Mean   : 0.001216   Mean   : 0.0005080  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.001639   3rd Qu.: 0.002102   3rd Qu.: 0.0014124  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.459320   Max.   : 0.412033   Max.   : 0.5638757  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR387780           SRR389077            SRR389078        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.275124   Min.   :-0.3686954   Min.   :-1.762821  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.001091   1st Qu.:-0.0017073   1st Qu.:-0.001882  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.000000   Median : 0.0000000   Median : 0.000000  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   : 0.000969   Mean   :-0.0009294   Mean   : 0.001999  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.001363   3rd Qu.: 0.0014684   3rd Qu.: 0.002319  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.352192   Max.   : 0.8665052   Max.   : 0.640973  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR389079            SRR389080            SRR389081         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.3599736   Min.   :-0.3056064   Min.   :-0.4041139  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.0021947   1st Qu.:-0.0007341   1st Qu.:-0.0014252  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   :-0.0006854   Mean   : 0.0008586   Mean   :-0.0006136  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.0015759   3rd Qu.: 0.0010928   3rd Qu.: 0.0007495  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.3829134   Max.   : 0.2733806   Max.   : 0.3281689  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR389082            SRR389083            SRR389084         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.2330620   Min.   :-0.3047474   Min.   :-0.3486800  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.0004445   1st Qu.:-0.0010143   1st Qu.:-0.0009503  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   : 0.0005996   Mean   :-0.0006126   Mean   :-0.0003374  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.0007402   3rd Qu.: 0.0006283   3rd Qu.: 0.0004121  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.2488342   Max.   : 0.4275825   Max.   : 0.3975724  </span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>rpkm</span> <span class='op'>-</span> <span class='va'>rpkm3</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR387777            SRR387778            SRR387779         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.2136981   Min.   :-0.1968742   Min.   :-2.885e-01  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.0006772   1st Qu.:-0.0005507   1st Qu.:-4.843e-04  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.0000000   Median : 0.0000000   Median : 0.000e+00  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   :-0.0002927   Mean   : 0.0004231   Mean   :-9.456e-05  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.0004006   3rd Qu.: 0.0007176   3rd Qu.: 1.540e-04  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.1130460   Max.   : 0.1770789   Max.   : 1.006e-01  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR387780            SRR389077            SRR389078         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.1577897   Min.   :-0.5299857   Min.   :-0.1891372  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.0004845   1st Qu.:-0.0005405   1st Qu.:-0.0009724  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   :-0.0001782   Mean   : 0.0007128   Mean   :-0.0002439  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.0004263   3rd Qu.: 0.0006473   3rd Qu.: 0.0004048  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.1376846   Max.   : 0.2552746   Max.   : 0.3569628  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR389079            SRR389080            SRR389081         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.1176256   Min.   :-0.1430089   Min.   :-0.1853069  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.0006174   1st Qu.:-0.0002933   1st Qu.:-0.0002045  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   : 0.0002104   Mean   : 0.0003596   Mean   : 0.0001303  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.0007492   3rd Qu.: 0.0003547   3rd Qu.: 0.0004992  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.1201767   Max.   : 0.1114920   Max.   : 0.1054893  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR389082            SRR389083            SRR389084         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.1564435   Min.   :-1.436e-01   Min.   :-1.010e-01  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.0002348   1st Qu.:-4.315e-04   1st Qu.:-3.699e-05  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.0000000   Median : 0.000e+00   Median : 0.000e+00  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   : 0.0003452   Mean   :-1.422e-04   Mean   : 1.435e-04  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.0002462   3rd Qu.: 9.928e-05   3rd Qu.: 3.646e-04  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.1086730   Max.   : 9.926e-02   Max.   : 9.869e-02  </span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>rpkm2</span> <span class='op'>-</span> <span class='va'>rpkm3</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR387777           SRR387778           SRR387779         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.507532   Min.   :-0.445699   Min.   :-0.8523319  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.001622   1st Qu.:-0.002041   1st Qu.:-0.0014352  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.000000   Median : 0.000000   Median : 0.0000000  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   :-0.001621   Mean   :-0.000793   Mean   :-0.0006026  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.001416   3rd Qu.: 0.001372   3rd Qu.: 0.0007158  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.422133   Max.   : 0.673697   Max.   : 0.3589322  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR387780           SRR389077           SRR389078        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.461343   Min.   :-1.388253   Min.   :-0.491700  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.001245   1st Qu.:-0.001551   1st Qu.:-0.002401  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.000000   Median : 0.000000   Median : 0.000000  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   :-0.001147   Mean   : 0.001642   Mean   :-0.002243  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.001177   3rd Qu.: 0.001683   3rd Qu.: 0.001885  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.305930   Max.   : 0.505786   Max.   : 2.119784  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR389079            SRR389080            SRR389081         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.3710228   Min.   :-0.3038938   Min.   :-0.4838542  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.0016096   1st Qu.:-0.0010920   1st Qu.:-0.0007814  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   : 0.0008958   Mean   :-0.0004991   Mean   : 0.0007439  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.0022193   3rd Qu.: 0.0006149   3rd Qu.: 0.0014597  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.4049808   Max.   : 0.3143154   Max.   : 0.4810074  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    SRR389082            SRR389083            SRR389084         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Min.   :-0.3190688   Min.   :-0.4729762   Min.   :-0.3743508  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1st Qu.:-0.0007932   1st Qu.:-0.0006477   1st Qu.:-0.0004526  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Median : 0.0000000   Median : 0.0000000   Median : 0.0000000  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   :-0.0002543   Mean   : 0.0004705   Mean   : 0.0004809  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.0005059   3rd Qu.: 0.0010338   3rd Qu.: 0.0009586  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.3414912   Max.   : 0.2808215   Max.   : 0.3405986  </span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -294,11 +299,11 @@ of the total exonic sequence length of the gene.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
+  <p><p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -306,6 +311,8 @@ of the total exonic sequence length of the gene.</p>
 
   
 
+
+  
 
   </body>
 </html>

@@ -57,6 +57,8 @@ to the colData() slot." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -68,9 +70,15 @@ to the colData() slot." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -84,19 +92,13 @@ to the colData() slot." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -151,7 +153,7 @@ predictions to a
 to the <code>colData()</code> slot.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_predictions</span><span class='op'>(</span><span class='va'>rse</span>, is_tcga <span class='op'>=</span> <span class='cn'>FALSE</span>, version <span class='op'>=</span> <span class='st'>"latest"</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>add_predictions</span><span class='op'>(</span><span class='va'>rse</span>, is_tcga <span class='op'>=</span> <span class='cn'>FALSE</span>, version <span class='op'>=</span> <span class='st'>"latest"</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -219,174 +221,179 @@ https://www.biorxiv.org/content/early/2017/06/03/145656</p>
     <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>## Add the predictions to an example rse_gene object</span>
-<span class='va'>rse_gene</span> <span class='op'>&lt;-</span> <span class='fu'>add_predictions</span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2021-05-24 15:46:15 downloading the predictions to /tmp/RtmpcUvCRN/PredictedPhenotypes_v0.0.06.rda</span></div><div class='output co'>#&gt; Loading objects:
-#&gt;   PredictedPhenotypes</div><div class='input'>
-<span class='co'>## Explore the predictions</span>
-<span class='fu'>colData</span><span class='op'>(</span><span class='va'>rse_gene</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; DataFrame with 12 rows and 33 columns
-#&gt;               project      sample  experiment         run
-#&gt;           &lt;character&gt; &lt;character&gt; &lt;character&gt; &lt;character&gt;
-#&gt; SRR387777   SRP009615   SRS281685   SRX110461   SRR387777
-#&gt; SRR387778   SRP009615   SRS281686   SRX110462   SRR387778
-#&gt; SRR387779   SRP009615   SRS281687   SRX110463   SRR387779
-#&gt; SRR387780   SRP009615   SRS281688   SRX110464   SRR387780
-#&gt; SRR389077   SRP009615   SRS282369   SRX111299   SRR389077
-#&gt; ...               ...         ...         ...         ...
-#&gt; SRR389080   SRP009615   SRS282372   SRX111302   SRR389080
-#&gt; SRR389081   SRP009615   SRS282373   SRX111303   SRR389081
-#&gt; SRR389082   SRP009615   SRS282374   SRX111304   SRR389082
-#&gt; SRR389083   SRP009615   SRS282375   SRX111305   SRR389083
-#&gt; SRR389084   SRP009615   SRS282376   SRX111306   SRR389084
-#&gt;           read_count_as_reported_by_sra reads_downloaded
-#&gt;                               &lt;integer&gt;        &lt;integer&gt;
-#&gt; SRR387777                      30631853         30631853
-#&gt; SRR387778                      37001306         37001306
-#&gt; SRR387779                      40552001         40552001
-#&gt; SRR387780                      32466352         32466352
-#&gt; SRR389077                      27819603         27819603
-#&gt; ...                                 ...              ...
-#&gt; SRR389080                      34856203         34856203
-#&gt; SRR389081                      23351679         23351679
-#&gt; SRR389082                      18144828         18144828
-#&gt; SRR389083                      24417368         24417368
-#&gt; SRR389084                      23060084         23060084
-#&gt;           proportion_of_reads_reported_by_sra_downloaded paired_end
-#&gt;                                                &lt;numeric&gt;  &lt;logical&gt;
-#&gt; SRR387777                                              1      FALSE
-#&gt; SRR387778                                              1      FALSE
-#&gt; SRR387779                                              1      FALSE
-#&gt; SRR387780                                              1      FALSE
-#&gt; SRR389077                                              1      FALSE
-#&gt; ...                                                  ...        ...
-#&gt; SRR389080                                              1      FALSE
-#&gt; SRR389081                                              1      FALSE
-#&gt; SRR389082                                              1      FALSE
-#&gt; SRR389083                                              1      FALSE
-#&gt; SRR389084                                              1      FALSE
-#&gt;           sra_misreported_paired_end mapped_read_count        auc
-#&gt;                            &lt;logical&gt;         &lt;integer&gt;  &lt;numeric&gt;
-#&gt; SRR387777                      FALSE          28798572 1029494445
-#&gt; SRR387778                      FALSE          33170281 1184877985
-#&gt; SRR387779                      FALSE          37322762 1336528969
-#&gt; SRR387780                      FALSE          29970735 1073178116
-#&gt; SRR389077                      FALSE          24966859  893978355
-#&gt; ...                              ...               ...        ...
-#&gt; SRR389080                      FALSE          32469994 1163527939
-#&gt; SRR389081                      FALSE          21904197  781685955
-#&gt; SRR389082                      FALSE          17199795  616048853
-#&gt; SRR389083                      FALSE          22499386  806323346
-#&gt; SRR389084                      FALSE          21957003  787795710
-#&gt;           sharq_beta_tissue sharq_beta_cell_type biosample_submission_date
-#&gt;                 &lt;character&gt;          &lt;character&gt;               &lt;character&gt;
-#&gt; SRR387777             blood                 k562    2011-12-05T15:40:03...
-#&gt; SRR387778             blood                 k562    2011-12-05T15:40:03...
-#&gt; SRR387779             blood                 k562    2011-12-05T15:40:03...
-#&gt; SRR387780             blood                 k562    2011-12-05T15:40:03...
-#&gt; SRR389077             blood                 k562    2011-12-13T11:26:05...
-#&gt; ...                     ...                  ...                       ...
-#&gt; SRR389080             blood                 k562    2011-12-13T11:26:05...
-#&gt; SRR389081             blood                 k562    2011-12-13T11:26:05...
-#&gt; SRR389082             blood                 k562    2011-12-13T11:26:05...
-#&gt; SRR389083             blood                 k562    2011-12-13T11:26:05...
-#&gt; SRR389084             blood                 k562    2011-12-13T11:26:05...
-#&gt;           biosample_publication_date  biosample_update_date avg_read_length
-#&gt;                          &lt;character&gt;            &lt;character&gt;       &lt;integer&gt;
-#&gt; SRR387777     2011-12-07T09:29:59... 2014-08-27T04:18:20...              36
-#&gt; SRR387778     2011-12-07T09:29:59... 2014-08-27T04:18:21...              36
-#&gt; SRR387779     2011-12-07T09:29:59... 2014-08-27T04:18:21...              36
-#&gt; SRR387780     2011-12-07T09:29:59... 2014-08-27T04:18:22...              36
-#&gt; SRR389077     2011-12-13T11:26:06... 2014-08-27T04:22:14...              36
-#&gt; ...                              ...                    ...             ...
-#&gt; SRR389080     2011-12-13T11:26:06... 2014-08-27T04:22:15...              36
-#&gt; SRR389081     2011-12-13T11:26:06... 2014-08-27T04:22:16...              36
-#&gt; SRR389082     2011-12-13T11:26:06... 2014-08-27T04:22:16...              36
-#&gt; SRR389083     2011-12-13T11:26:06... 2014-08-27T04:22:17...              36
-#&gt; SRR389084     2011-12-13T11:26:06... 2014-08-27T04:22:17...              36
-#&gt;           geo_accession  bigwig_file                  title
-#&gt;             &lt;character&gt;  &lt;character&gt;            &lt;character&gt;
-#&gt; SRR387777     GSM836270 SRR387777.bw K562 cells with shRN..
-#&gt; SRR387778     GSM836271 SRR387778.bw K562 cells with shRN..
-#&gt; SRR387779     GSM836272 SRR387779.bw K562 cells with shRN..
-#&gt; SRR387780     GSM836273 SRR387780.bw K562 cells with shRN..
-#&gt; SRR389077     GSM847561 SRR389077.bw K562 cells with shRN..
-#&gt; ...                 ...          ...                    ...
-#&gt; SRR389080     GSM847564 SRR389080.bw K562 cells with shRN..
-#&gt; SRR389081     GSM847565 SRR389081.bw K562 cells with shRN..
-#&gt; SRR389082     GSM847566 SRR389082.bw K562 cells with shRN..
-#&gt; SRR389083     GSM847567 SRR389083.bw K562 cells with shRN..
-#&gt; SRR389084     GSM847568 SRR389084.bw K562 cells with shRN..
-#&gt;                                                         characteristics
-#&gt;                                                         &lt;CharacterList&gt;
-#&gt; SRR387777         cells: K562,shRNA expression: no,treatment: Puromycin
-#&gt; SRR387778     cells: K562,shRNA expression: ye..,treatment: Puromycin..
-#&gt; SRR387779         cells: K562,shRNA expression: no,treatment: Puromycin
-#&gt; SRR387780     cells: K562,shRNA expression: ye..,treatment: Puromycin..
-#&gt; SRR389077   cell line: K562,shRNA expression: no..,treatment: Puromycin
-#&gt; ...                                                                 ...
-#&gt; SRR389080 cell line: K562,shRNA expression: ex..,treatment: Puromycin..
-#&gt; SRR389081   cell line: K562,shRNA expression: no..,treatment: Puromycin
-#&gt; SRR389082 cell line: K562,shRNA expression: ex..,treatment: Puromycin..
-#&gt; SRR389083   cell line: K562,shRNA expression: no..,treatment: Puromycin
-#&gt; SRR389084 cell line: K562,shRNA expression: ex..,treatment: Puromycin..
-#&gt;           reported_sex predicted_sex accuracy_sex reported_samplesource
-#&gt;               &lt;factor&gt;      &lt;factor&gt;    &lt;numeric&gt;              &lt;factor&gt;
-#&gt; SRR387777           NA        female     0.862637             NA       
-#&gt; SRR387778           NA        female     0.862637             NA       
-#&gt; SRR387779           NA        female     0.862637             NA       
-#&gt; SRR387780           NA        female     0.862637             NA       
-#&gt; SRR389077           NA        female     0.862637             cell_line
-#&gt; ...                ...           ...          ...                   ...
-#&gt; SRR389080           NA        female     0.862637             cell_line
-#&gt; SRR389081           NA        female     0.862637             cell_line
-#&gt; SRR389082           NA        female     0.862637             cell_line
-#&gt; SRR389083           NA        female     0.862637             cell_line
-#&gt; SRR389084           NA        female     0.862637             cell_line
-#&gt;           predicted_samplesource accuracy_samplesource reported_tissue
-#&gt;                         &lt;factor&gt;             &lt;numeric&gt;        &lt;factor&gt;
-#&gt; SRR387777              tissue                       NA           Blood
-#&gt; SRR387778              tissue                       NA           Blood
-#&gt; SRR387779              tissue                       NA           Blood
-#&gt; SRR387780              cell_line               0.89235           Blood
-#&gt; SRR389077              cell_line               0.89235           Blood
-#&gt; ...                          ...                   ...             ...
-#&gt; SRR389080              cell_line               0.89235           Blood
-#&gt; SRR389081              cell_line               0.89235           Blood
-#&gt; SRR389082              cell_line               0.89235           Blood
-#&gt; SRR389083              cell_line               0.89235           Blood
-#&gt; SRR389084              cell_line               0.89235           Blood
-#&gt;           predicted_tissue accuracy_tissue reported_sequencingstrategy
-#&gt;                   &lt;factor&gt;       &lt;numeric&gt;                    &lt;factor&gt;
-#&gt; SRR387777   Uterus                0.518825                      SINGLE
-#&gt; SRR387778   Blood                 0.518825                      SINGLE
-#&gt; SRR387779   Salivary Gland        0.518825                      SINGLE
-#&gt; SRR387780   Uterus                0.518825                      SINGLE
-#&gt; SRR389077   Uterus                0.518825                      SINGLE
-#&gt; ...                    ...             ...                         ...
-#&gt; SRR389080   Salivary Gland        0.518825                      SINGLE
-#&gt; SRR389081   Blood                 0.518825                      SINGLE
-#&gt; SRR389082   Blood                 0.518825                      SINGLE
-#&gt; SRR389083   Blood                 0.518825                      SINGLE
-#&gt; SRR389084   Blood                 0.518825                      SINGLE
-#&gt;           predicted_sequencingstrategy accuracy_sequencingstrategy
-#&gt;                               &lt;factor&gt;                   &lt;numeric&gt;
-#&gt; SRR387777                       SINGLE                    0.908575
-#&gt; SRR387778                       SINGLE                    0.908575
-#&gt; SRR387779                       SINGLE                    0.908575
-#&gt; SRR387780                       SINGLE                    0.908575
-#&gt; SRR389077                       SINGLE                    0.908575
-#&gt; ...                                ...                         ...
-#&gt; SRR389080                       SINGLE                    0.908575
-#&gt; SRR389081                       SINGLE                    0.908575
-#&gt; SRR389082                       SINGLE                    0.908575
-#&gt; SRR389083                       SINGLE                    0.908575
-#&gt; SRR389084                       SINGLE                    0.908575</div><div class='input'>
-<span class='co'>## Download all the latest predictions</span>
-<span class='va'>PredictedPhenotypes</span> <span class='op'>&lt;-</span> <span class='fu'>add_predictions</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2021-05-24 15:46:16 downloading the predictions to /tmp/RtmpcUvCRN/PredictedPhenotypes_v0.0.06.rda</span></div><div class='output co'>#&gt; Loading objects:
-#&gt;   PredictedPhenotypes</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'></span>
+<span class='r-in'><span class='co'>## Add the predictions to an example rse_gene object</span></span>
+<span class='r-in'><span class='va'>rse_gene</span> <span class='op'>&lt;-</span> <span class='fu'>add_predictions</span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 01:08:48 downloading the predictions to /tmp/RtmpnzuJD1/PredictedPhenotypes_v0.0.06.rda</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Loading objects:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   PredictedPhenotypes</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Explore the predictions</span></span>
+<span class='r-in'><span class='fu'>colData</span><span class='op'>(</span><span class='va'>rse_gene</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> DataFrame with 12 rows and 33 columns</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>               project      sample  experiment         run</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           &lt;character&gt; &lt;character&gt; &lt;character&gt; &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777   SRP009615   SRS281685   SRX110461   SRR387777</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778   SRP009615   SRS281686   SRX110462   SRR387778</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779   SRP009615   SRS281687   SRX110463   SRR387779</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780   SRP009615   SRS281688   SRX110464   SRR387780</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077   SRP009615   SRS282369   SRX111299   SRR389077</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...               ...         ...         ...         ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080   SRP009615   SRS282372   SRX111302   SRR389080</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081   SRP009615   SRS282373   SRX111303   SRR389081</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082   SRP009615   SRS282374   SRX111304   SRR389082</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083   SRP009615   SRS282375   SRX111305   SRR389083</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084   SRP009615   SRS282376   SRX111306   SRR389084</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           read_count_as_reported_by_sra reads_downloaded</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                               &lt;integer&gt;        &lt;integer&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777                      30631853         30631853</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778                      37001306         37001306</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779                      40552001         40552001</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780                      32466352         32466352</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077                      27819603         27819603</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...                                 ...              ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080                      34856203         34856203</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081                      23351679         23351679</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082                      18144828         18144828</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083                      24417368         24417368</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084                      23060084         23060084</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           proportion_of_reads_reported_by_sra_downloaded paired_end</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                &lt;numeric&gt;  &lt;logical&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777                                              1      FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778                                              1      FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779                                              1      FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780                                              1      FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077                                              1      FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...                                                  ...        ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080                                              1      FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081                                              1      FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082                                              1      FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083                                              1      FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084                                              1      FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           sra_misreported_paired_end mapped_read_count        auc</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                            &lt;logical&gt;         &lt;integer&gt;  &lt;numeric&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777                      FALSE          28798572 1029494445</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778                      FALSE          33170281 1184877985</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779                      FALSE          37322762 1336528969</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780                      FALSE          29970735 1073178116</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077                      FALSE          24966859  893978355</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...                              ...               ...        ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080                      FALSE          32469994 1163527939</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081                      FALSE          21904197  781685955</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082                      FALSE          17199795  616048853</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083                      FALSE          22499386  806323346</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084                      FALSE          21957003  787795710</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           sharq_beta_tissue sharq_beta_cell_type biosample_submission_date</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                 &lt;character&gt;          &lt;character&gt;               &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777             blood                 k562    2011-12-05T15:40:03...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778             blood                 k562    2011-12-05T15:40:03...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779             blood                 k562    2011-12-05T15:40:03...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780             blood                 k562    2011-12-05T15:40:03...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077             blood                 k562    2011-12-13T11:26:05...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...                     ...                  ...                       ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080             blood                 k562    2011-12-13T11:26:05...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081             blood                 k562    2011-12-13T11:26:05...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082             blood                 k562    2011-12-13T11:26:05...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083             blood                 k562    2011-12-13T11:26:05...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084             blood                 k562    2011-12-13T11:26:05...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           biosample_publication_date  biosample_update_date avg_read_length</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                          &lt;character&gt;            &lt;character&gt;       &lt;integer&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777     2011-12-07T09:29:59... 2014-08-27T04:18:20...              36</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778     2011-12-07T09:29:59... 2014-08-27T04:18:21...              36</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779     2011-12-07T09:29:59... 2014-08-27T04:18:21...              36</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780     2011-12-07T09:29:59... 2014-08-27T04:18:22...              36</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077     2011-12-13T11:26:06... 2014-08-27T04:22:14...              36</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...                              ...                    ...             ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080     2011-12-13T11:26:06... 2014-08-27T04:22:15...              36</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081     2011-12-13T11:26:06... 2014-08-27T04:22:16...              36</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082     2011-12-13T11:26:06... 2014-08-27T04:22:16...              36</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083     2011-12-13T11:26:06... 2014-08-27T04:22:17...              36</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084     2011-12-13T11:26:06... 2014-08-27T04:22:17...              36</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           geo_accession  bigwig_file                  title</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>             &lt;character&gt;  &lt;character&gt;            &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777     GSM836270 SRR387777.bw K562 cells with shRN..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778     GSM836271 SRR387778.bw K562 cells with shRN..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779     GSM836272 SRR387779.bw K562 cells with shRN..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780     GSM836273 SRR387780.bw K562 cells with shRN..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077     GSM847561 SRR389077.bw K562 cells with shRN..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...                 ...          ...                    ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080     GSM847564 SRR389080.bw K562 cells with shRN..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081     GSM847565 SRR389081.bw K562 cells with shRN..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082     GSM847566 SRR389082.bw K562 cells with shRN..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083     GSM847567 SRR389083.bw K562 cells with shRN..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084     GSM847568 SRR389084.bw K562 cells with shRN..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                         characteristics</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                         &lt;CharacterList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777         cells: K562,shRNA expression: no,treatment: Puromycin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778     cells: K562,shRNA expression: ye..,treatment: Puromycin..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779         cells: K562,shRNA expression: no,treatment: Puromycin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780     cells: K562,shRNA expression: ye..,treatment: Puromycin..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077   cell line: K562,shRNA expression: no..,treatment: Puromycin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...                                                                 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080 cell line: K562,shRNA expression: ex..,treatment: Puromycin..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081   cell line: K562,shRNA expression: no..,treatment: Puromycin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082 cell line: K562,shRNA expression: ex..,treatment: Puromycin..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083   cell line: K562,shRNA expression: no..,treatment: Puromycin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084 cell line: K562,shRNA expression: ex..,treatment: Puromycin..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           reported_sex predicted_sex accuracy_sex reported_samplesource</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>               &lt;factor&gt;      &lt;factor&gt;    &lt;numeric&gt;              &lt;factor&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777           NA        female     0.862637             NA       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778           NA        female     0.862637             NA       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779           NA        female     0.862637             NA       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780           NA        female     0.862637             NA       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077           NA        female     0.862637             cell_line</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...                ...           ...          ...                   ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080           NA        female     0.862637             cell_line</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081           NA        female     0.862637             cell_line</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082           NA        female     0.862637             cell_line</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083           NA        female     0.862637             cell_line</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084           NA        female     0.862637             cell_line</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           predicted_samplesource accuracy_samplesource reported_tissue</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                         &lt;factor&gt;             &lt;numeric&gt;        &lt;factor&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777              tissue                       NA           Blood</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778              tissue                       NA           Blood</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779              tissue                       NA           Blood</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780              cell_line               0.89235           Blood</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077              cell_line               0.89235           Blood</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...                          ...                   ...             ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080              cell_line               0.89235           Blood</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081              cell_line               0.89235           Blood</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082              cell_line               0.89235           Blood</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083              cell_line               0.89235           Blood</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084              cell_line               0.89235           Blood</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           predicted_tissue accuracy_tissue reported_sequencingstrategy</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                   &lt;factor&gt;       &lt;numeric&gt;                    &lt;factor&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777   Uterus                0.518825                      SINGLE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778   Blood                 0.518825                      SINGLE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779   Salivary Gland        0.518825                      SINGLE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780   Uterus                0.518825                      SINGLE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077   Uterus                0.518825                      SINGLE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...                    ...             ...                         ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080   Salivary Gland        0.518825                      SINGLE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081   Blood                 0.518825                      SINGLE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082   Blood                 0.518825                      SINGLE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083   Blood                 0.518825                      SINGLE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084   Blood                 0.518825                      SINGLE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           predicted_sequencingstrategy accuracy_sequencingstrategy</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                               &lt;factor&gt;                   &lt;numeric&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387777                       SINGLE                    0.908575</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387778                       SINGLE                    0.908575</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387779                       SINGLE                    0.908575</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR387780                       SINGLE                    0.908575</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389077                       SINGLE                    0.908575</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ...                                ...                         ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389080                       SINGLE                    0.908575</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389081                       SINGLE                    0.908575</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389082                       SINGLE                    0.908575</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389083                       SINGLE                    0.908575</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SRR389084                       SINGLE                    0.908575</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Download all the latest predictions</span></span>
+<span class='r-in'><span class='va'>PredictedPhenotypes</span> <span class='op'>&lt;-</span> <span class='fu'>add_predictions</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 01:08:49 downloading the predictions to /tmp/RtmpnzuJD1/PredictedPhenotypes_v0.0.06.rda</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Loading objects:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   PredictedPhenotypes</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -398,11 +405,11 @@ https://www.biorxiv.org/content/early/2017/06/03/145656</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
+  <p><p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -410,6 +417,8 @@ https://www.biorxiv.org/content/early/2017/06/03/145656</p>
 
   
 
+
+  
 
   </body>
 </html>

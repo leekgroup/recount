@@ -52,6 +52,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -63,9 +65,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -79,19 +87,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -139,422 +141,321 @@
 
     <div id="recount-1132" class="section level1">
 <h1 class="page-header" data-toc-text="1.13.2">
-<a href="#recount-1132" class="anchor"></a>recount 1.13.2</h1>
+<a href="#recount-1132" class="anchor" aria-hidden="true"></a>recount 1.13.2</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>Documentation website is now available at <a href="http://leekgroup.github.io/recount/" class="uri">http://leekgroup.github.io/recount/</a>. It gets updated with every commit on the master branch (bioc-devel) using GitHub Actions and pkgdown.</li>
-</ul>
-</div>
+<ul><li>Documentation website is now available at <a href="http://leekgroup.github.io/recount/" class="external-link uri">http://leekgroup.github.io/recount/</a>. It gets updated with every commit on the master branch (bioc-devel) using GitHub Actions and pkgdown.</li>
+</ul></div>
     <div id="recount-1131" class="section level1">
 <h1 class="page-header" data-toc-text="1.13.1">
-<a href="#recount-1131" class="anchor"></a>recount 1.13.1</h1>
-<ul>
-<li>Mention in <code><a href="../reference/reproduce_ranges.html">reproduce_ranges()</a></code> the link to <a href="https://support.bioconductor.org/p/126148/<a href='https://github.com/leekgroup/recount/issues/126173'>#126173</a>" class="uri">https://support.bioconductor.org/p/126148/<a href='https://github.com/leekgroup/recount/issues/126173'>#126173</a></a> which shows how to update the gene symbols in the RSE objects in recount.</li>
-</ul>
-</div>
+<a href="#recount-1131" class="anchor" aria-hidden="true"></a>recount 1.13.1</h1>
+<ul><li>Mention in <code><a href="../reference/reproduce_ranges.html">reproduce_ranges()</a></code> the link to <a href="https://support.bioconductor.org/p/126148/#126173" class="external-link uri">https://support.bioconductor.org/p/126148/#126173</a> which shows how to update the gene symbols in the RSE objects in recount.</li>
+</ul></div>
     <div id="recount-11114" class="section level1">
 <h1 class="page-header" data-toc-text="1.11.14">
-<a href="#recount-11114" class="anchor"></a>recount 1.11.14</h1>
-<ul>
-<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-</ul>
-</div>
+<a href="#recount-11114" class="anchor" aria-hidden="true"></a>recount 1.11.14</h1>
+<ul><li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
+</ul></div>
     <div id="recount-11113" class="section level1">
 <h1 class="page-header" data-toc-text="1.11.13">
-<a href="#recount-11113" class="anchor"></a>recount 1.11.13</h1>
+<a href="#recount-11113" class="anchor" aria-hidden="true"></a>recount 1.11.13</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>Added the function <code><a href="../reference/getTPM.html">getTPM()</a></code> as discussed in <a href="https://support.bioconductor.org/p/124265" class="uri">https://support.bioconductor.org/p/124265</a> and based on Sonali Arora et al <a href="https://www.biorxiv.org/content/10.1101/445601v2" class="uri">https://www.biorxiv.org/content/10.1101/445601v2</a>.</li>
-</ul>
-</div>
+<ul><li>Added the function <code><a href="../reference/getTPM.html">getTPM()</a></code> as discussed in <a href="https://support.bioconductor.org/p/124265" class="external-link uri">https://support.bioconductor.org/p/124265</a> and based on Sonali Arora et al <a href="https://www.biorxiv.org/content/10.1101/445601v2" class="external-link uri">https://www.biorxiv.org/content/10.1101/445601v2</a>.</li>
+</ul></div>
     <div id="recount-11112" class="section level1">
 <h1 class="page-header" data-toc-text="1.11.12">
-<a href="#recount-11112" class="anchor"></a>recount 1.11.12</h1>
+<a href="#recount-11112" class="anchor" aria-hidden="true"></a>recount 1.11.12</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>Now <code><a href="../reference/geo_characteristics.html">geo_characteristics()</a></code> can deal with the scenario reported at <a href="https://support.bioconductor.org/p/116480/" class="uri">https://support.bioconductor.org/p/116480/</a> by <a href='https://github.com/Jacques'>@Jacques</a>.van-Helden.</li>
-</ul>
-</div>
+<ul><li>Now <code><a href="../reference/geo_characteristics.html">geo_characteristics()</a></code> can deal with the scenario reported at <a href="https://support.bioconductor.org/p/116480/" class="external-link uri">https://support.bioconductor.org/p/116480/</a> by <a href='https://github.com/Jacques'>@Jacques</a>.van-Helden.</li>
+</ul></div>
     <div id="recount-1117" class="section level1">
 <h1 class="page-header" data-toc-text="1.11.7">
-<a href="#recount-1117" class="anchor"></a>recount 1.11.7</h1>
+<a href="#recount-1117" class="anchor" aria-hidden="true"></a>recount 1.11.7</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>Renamed <code>.load_install()</code> as <code>.load_check()</code> as this function now only checks that the package(s) was installed and returns an error if missing. The error shows the user how to install the package(s) they are missing instead of installing them automatically. This complies with Marcel Ramos’ request at <a href="https://github.com/leekgroup/recount/issues/14" class="uri">https://github.com/leekgroup/recount/issues/14</a>.</li>
-</ul>
-</div>
+<ul><li>Renamed <code>.load_install()</code> as <code>.load_check()</code> as this function now only checks that the package(s) was installed and returns an error if missing. The error shows the user how to install the package(s) they are missing instead of installing them automatically. This complies with Marcel Ramos’ request at <a href="https://github.com/leekgroup/recount/issues/14" class="external-link uri">https://github.com/leekgroup/recount/issues/14</a>.</li>
+</ul></div>
     <div id="recount-1114" class="section level1">
 <h1 class="page-header" data-toc-text="1.11.4">
-<a href="#recount-1114" class="anchor"></a>recount 1.11.4</h1>
+<a href="#recount-1114" class="anchor" aria-hidden="true"></a>recount 1.11.4</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>Added the function <code><a href="../reference/download_retry.html">download_retry()</a></code> based on <a href="http://bioconductor.org/developers/how-to/web-query/" class="uri">http://bioconductor.org/developers/how-to/web-query/</a> such that <code>download_file()</code> and other recount functions will re-try to download a file 3 times before giving up. This should help reduce the number of occasional failed Bioconductor nightly checks.</li>
-</ul>
-</div>
+<ul><li>Added the function <code><a href="../reference/download_retry.html">download_retry()</a></code> based on <a href="http://bioconductor.org/developers/how-to/web-query/" class="external-link uri">http://bioconductor.org/developers/how-to/web-query/</a> such that <code>download_file()</code> and other recount functions will re-try to download a file 3 times before giving up. This should help reduce the number of occasional failed Bioconductor nightly checks.</li>
+</ul></div>
     <div id="recount-197" class="section level1">
 <h1 class="page-header" data-toc-text="1.9.7">
-<a href="#recount-197" class="anchor"></a>recount 1.9.7</h1>
+<a href="#recount-197" class="anchor" aria-hidden="true"></a>recount 1.9.7</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>Cleaned up the documentation of <code><a href="../reference/add_metadata.html">add_metadata()</a></code> and changed the default <code>source</code> from <code>recount_brain_v1</code> to <code>recount_brain_v2</code>.</li>
-</ul>
-</div>
+<ul><li>Cleaned up the documentation of <code><a href="../reference/add_metadata.html">add_metadata()</a></code> and changed the default <code>source</code> from <code>recount_brain_v1</code> to <code>recount_brain_v2</code>.</li>
+</ul></div>
     <div id="recount-196" class="section level1">
 <h1 class="page-header" data-toc-text="1.9.6">
-<a href="#recount-196" class="anchor"></a>recount 1.9.6</h1>
+<a href="#recount-196" class="anchor" aria-hidden="true"></a>recount 1.9.6</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>
+<ul><li>
 <code>citation('recount')[5]</code> now lists the <code>recount-brain</code> bioRxiv pre-print citation information.</li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-195" class="section level1">
 <h1 class="page-header" data-toc-text="1.9.5">
-<a href="#recount-195" class="anchor"></a>recount 1.9.5</h1>
+<a href="#recount-195" class="anchor" aria-hidden="true"></a>recount 1.9.5</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>We have now released the FANTOM-CAT/recount2 RSE files which you can access now through <code><a href="../reference/download_study.html">download_study(type = 'rse-fc')</a></code>. See Imada EL, Sanchez DF, et al, bioRxiv, 2019 <a href="https://www.biorxiv.org/content/10.1101/659490v1" class="uri">https://www.biorxiv.org/content/10.1101/659490v1</a> for more information.</li>
-</ul>
-</div>
+<ul><li>We have now released the FANTOM-CAT/recount2 RSE files which you can access now through <code>download_study(type = 'rse-fc')</code>. See Imada EL, Sanchez DF, et al, bioRxiv, 2019 <a href="https://www.biorxiv.org/content/10.1101/659490v1" class="external-link uri">https://www.biorxiv.org/content/10.1101/659490v1</a> for more information.</li>
+</ul></div>
     <div id="recount-194" class="section level1">
 <h1 class="page-header" data-toc-text="1.9.4">
-<a href="#recount-194" class="anchor"></a>recount 1.9.4</h1>
+<a href="#recount-194" class="anchor" aria-hidden="true"></a>recount 1.9.4</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>I made the example code for <code><a href="../reference/geo_characteristics.html">geo_characteristics()</a></code> more robust since currently <code>rentrez</code> can occasionally fails.</li>
-</ul>
-</div>
+<ul><li>I made the example code for <code><a href="../reference/geo_characteristics.html">geo_characteristics()</a></code> more robust since currently <code>rentrez</code> can occasionally fails.</li>
+</ul></div>
     <div id="recount-193" class="section level1">
 <h1 class="page-header" data-toc-text="1.9.3">
-<a href="#recount-193" class="anchor"></a>recount 1.9.3</h1>
+<a href="#recount-193" class="anchor" aria-hidden="true"></a>recount 1.9.3</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>Add ORCID’s following changes at <a href="http://bioconductor.org/developers/package-guidelines/#description" class="uri">http://bioconductor.org/developers/package-guidelines/#description</a>
+<ul><li>Add ORCID’s following changes at <a href="http://bioconductor.org/developers/package-guidelines/#description" class="external-link uri">http://bioconductor.org/developers/package-guidelines/#description</a>
 </li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-192" class="section level1">
 <h1 class="page-header" data-toc-text="1.9.2">
-<a href="#recount-192" class="anchor"></a>recount 1.9.2</h1>
+<a href="#recount-192" class="anchor" aria-hidden="true"></a>recount 1.9.2</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>Added the argument <code>async</code> to <code><a href="../reference/snaptron_query.html">snaptron_query()</a></code> which can be set to <code>FALSE</code> to address the issue reported at <a href="https://github.com/ChristopherWilks/snaptron/issues/11" class="uri">https://github.com/ChristopherWilks/snaptron/issues/11</a>
+<ul><li>Added the argument <code>async</code> to <code><a href="../reference/snaptron_query.html">snaptron_query()</a></code> which can be set to <code>FALSE</code> to address the issue reported at <a href="https://github.com/ChristopherWilks/snaptron/issues/11" class="external-link uri">https://github.com/ChristopherWilks/snaptron/issues/11</a>
 </li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-177" class="section level1">
 <h1 class="page-header" data-toc-text="1.7.7">
-<a href="#recount-177" class="anchor"></a>recount 1.7.7</h1>
+<a href="#recount-177" class="anchor" aria-hidden="true"></a>recount 1.7.7</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>Updated <code><a href="../reference/reproduce_ranges.html">reproduce_ranges()</a></code> to match the <code>URL</code> change in Gencode from <a href="ftp://ftp.sanger.ac.uk" class="uri">ftp://ftp.sanger.ac.uk</a> to <a href="ftp://ftp.ebi.ac.uk" class="uri">ftp://ftp.ebi.ac.uk</a>
+<ul><li>Updated <code><a href="../reference/reproduce_ranges.html">reproduce_ranges()</a></code> to match the <code>URL</code> change in Gencode from <a href="ftp://ftp.sanger.ac.uk" class="uri">ftp://ftp.sanger.ac.uk</a> to <a href="ftp://ftp.ebi.ac.uk" class="uri">ftp://ftp.ebi.ac.uk</a>
 </li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-175" class="section level1">
 <h1 class="page-header" data-toc-text="1.7.5">
-<a href="#recount-175" class="anchor"></a>recount 1.7.5</h1>
+<a href="#recount-175" class="anchor" aria-hidden="true"></a>recount 1.7.5</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>
+<ul><li>
 <code><a href="../reference/add_metadata.html">add_metadata()</a></code> can now download the <code>recount_brain_v2</code> data.</li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-174" class="section level1">
 <h1 class="page-header" data-toc-text="1.7.4">
-<a href="#recount-174" class="anchor"></a>recount 1.7.4</h1>
+<a href="#recount-174" class="anchor" aria-hidden="true"></a>recount 1.7.4</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>Fix a <code>NOTE</code> about <code>RefManageR</code>.</li>
-</ul>
-</div>
+<ul><li>Fix a <code>NOTE</code> about <code>RefManageR</code>.</li>
+</ul></div>
     <div id="recount-173" class="section level1">
 <h1 class="page-header" data-toc-text="1.7.3">
-<a href="#recount-173" class="anchor"></a>recount 1.7.3</h1>
+<a href="#recount-173" class="anchor" aria-hidden="true"></a>recount 1.7.3</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>Use <code>BiocManager</code>
+<ul><li>Use <code>BiocManager</code>
 </li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-172" class="section level1">
 <h1 class="page-header" data-toc-text="1.7.2">
-<a href="#recount-172" class="anchor"></a>recount 1.7.2</h1>
+<a href="#recount-172" class="anchor" aria-hidden="true"></a>recount 1.7.2</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>Fix a unit test.</li>
-</ul>
-</div>
+<ul><li>Fix a unit test.</li>
+</ul></div>
     <div id="recount-171" class="section level1">
 <h1 class="page-header" data-toc-text="1.7.1">
-<a href="#recount-171" class="anchor"></a>recount 1.7.1</h1>
+<a href="#recount-171" class="anchor" aria-hidden="true"></a>recount 1.7.1</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>
+<ul><li>
 <code>rse_tx</code> URLs now point to v2 to reflect recent changes by Fu et al.</li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-1511" class="section level1">
 <h1 class="page-header" data-toc-text="1.5.11">
-<a href="#recount-1511" class="anchor"></a>recount 1.5.11</h1>
+<a href="#recount-1511" class="anchor" aria-hidden="true"></a>recount 1.5.11</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>Change some examples to dontrun and improve the code that cleans up after the tests. This should reduce the size of files left in tmp although they didn’t seem too big to begin with.</li>
-</ul>
-</div>
+<ul><li>Change some examples to dontrun and improve the code that cleans up after the tests. This should reduce the size of files left in tmp although they didn’t seem too big to begin with.</li>
+</ul></div>
     <div id="recount-159" class="section level1">
 <h1 class="page-header" data-toc-text="1.5.9">
-<a href="#recount-159" class="anchor"></a>recount 1.5.9</h1>
+<a href="#recount-159" class="anchor" aria-hidden="true"></a>recount 1.5.9</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>The functions <code><a href="../reference/add_metadata.html">add_metadata()</a></code> and <code><a href="../reference/add_predictions.html">add_predictions()</a></code> now return the sample metadata or predictions when the <code>rse</code> argument is missing.</li>
-</ul>
-</div>
+<ul><li>The functions <code><a href="../reference/add_metadata.html">add_metadata()</a></code> and <code><a href="../reference/add_predictions.html">add_predictions()</a></code> now return the sample metadata or predictions when the <code>rse</code> argument is missing.</li>
+</ul></div>
     <div id="recount-156" class="section level1">
 <h1 class="page-header" data-toc-text="1.5.6">
-<a href="#recount-156" class="anchor"></a>recount 1.5.6</h1>
+<a href="#recount-156" class="anchor" aria-hidden="true"></a>recount 1.5.6</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>Added the function <code><a href="../reference/add_metadata.html">add_metadata()</a></code> which can be used to append curated metadata to a recount rse object. Currently, <code><a href="../reference/add_metadata.html">add_metadata()</a></code> only supports the <code>recount_brain_v1</code> data available at <a href="http://lieberinstitute.github.io/recount-brain/" class="uri">http://lieberinstitute.github.io/recount-brain/</a> and to be further described in Razmara et al, in prep, 2018.</li>
-</ul>
-</div>
+<ul><li>Added the function <code><a href="../reference/add_metadata.html">add_metadata()</a></code> which can be used to append curated metadata to a recount rse object. Currently, <code><a href="../reference/add_metadata.html">add_metadata()</a></code> only supports the <code>recount_brain_v1</code> data available at <a href="http://lieberinstitute.github.io/recount-brain/" class="external-link uri">http://lieberinstitute.github.io/recount-brain/</a> and to be further described in Razmara et al, in prep, 2018.</li>
+</ul></div>
     <div id="recount-155" class="section level1">
 <h1 class="page-header" data-toc-text="1.5.5">
-<a href="#recount-155" class="anchor"></a>recount 1.5.5</h1>
+<a href="#recount-155" class="anchor" aria-hidden="true"></a>recount 1.5.5</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>Fix doc link in <code><a href="../reference/geo_characteristics.html">geo_characteristics()</a></code> which affected the Windows build machines.</li>
-</ul>
-</div>
+<ul><li>Fix doc link in <code><a href="../reference/geo_characteristics.html">geo_characteristics()</a></code> which affected the Windows build machines.</li>
+</ul></div>
     <div id="recount-154" class="section level1">
 <h1 class="page-header" data-toc-text="1.5.4">
-<a href="#recount-154" class="anchor"></a>recount 1.5.4</h1>
+<a href="#recount-154" class="anchor" aria-hidden="true"></a>recount 1.5.4</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>Fix a unit test for <code><a href="../reference/download_study.html">download_study()</a></code>, add another test for the versions, and fix a <code>NOTE</code> in <code>R CMD check</code>.</li>
-</ul>
-</div>
+<ul><li>Fix a unit test for <code><a href="../reference/download_study.html">download_study()</a></code>, add another test for the versions, and fix a <code>NOTE</code> in <code>R CMD check</code>.</li>
+</ul></div>
     <div id="recount-153" class="section level1">
 <h1 class="page-header" data-toc-text="1.5.3">
-<a href="#recount-153" class="anchor"></a>recount 1.5.3</h1>
+<a href="#recount-153" class="anchor" aria-hidden="true"></a>recount 1.5.3</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>
+<ul><li>
 <code><a href="../reference/download_study.html">download_study()</a></code> can now download the transcript counts (<code>rse_tx.RData</code>) files. The transcript estimation is described in Fu et al, 2018.</li>
-</ul>
-<p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>
-<code><a href="../reference/download_study.html">download_study()</a></code> now has a version parameter (defaults to 2). This argument controls which version of the files to download based on the change on how exons were defined. Version 1 are reduced exons while version 2 are disjoint exons as described in further detail in the documentation tab of the recount website <a href="https://jhubiostatistics.shinyapps.io/recount/" class="uri">https://jhubiostatistics.shinyapps.io/recount/</a>.</li>
+</ul><p>SIGNIFICANT USER-VISIBLE CHANGES</p>
+<ul><li>
+<code><a href="../reference/download_study.html">download_study()</a></code> now has a version parameter (defaults to 2). This argument controls which version of the files to download based on the change on how exons were defined. Version 1 are reduced exons while version 2 are disjoint exons as described in further detail in the documentation tab of the recount website <a href="https://jhubiostatistics.shinyapps.io/recount/" class="external-link uri">https://jhubiostatistics.shinyapps.io/recount/</a>.</li>
 <li>
 <code>recount_url</code> and the example <code>rse_gene_SRP009615</code> have been updated to match the changes in version 2.</li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-1313" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.13">
-<a href="#recount-1313" class="anchor"></a>recount 1.3.13</h1>
+<a href="#recount-1313" class="anchor" aria-hidden="true"></a>recount 1.3.13</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>Changed <code><a href="../reference/reproduce_ranges.html">reproduce_ranges()</a></code> since disjoint exons are more useful than reduced exons for downstream analyses.</li>
-</ul>
-</div>
+<ul><li>Changed <code><a href="../reference/reproduce_ranges.html">reproduce_ranges()</a></code> since disjoint exons are more useful than reduced exons for downstream analyses.</li>
+</ul></div>
     <div id="recount-1312" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.12">
-<a href="#recount-1312" class="anchor"></a>recount 1.3.12</h1>
+<a href="#recount-1312" class="anchor" aria-hidden="true"></a>recount 1.3.12</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>Added the function <code><a href="../reference/read_counts.html">read_counts()</a></code>.</li>
-</ul>
-</div>
+<ul><li>Added the function <code><a href="../reference/read_counts.html">read_counts()</a></code>.</li>
+</ul></div>
     <div id="recount-139" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.9">
-<a href="#recount-139" class="anchor"></a>recount 1.3.9</h1>
+<a href="#recount-139" class="anchor" aria-hidden="true"></a>recount 1.3.9</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>Added citations for <a href="https://www.biorxiv.org/content/early/2017/06/03/145656" class="uri">https://www.biorxiv.org/content/early/2017/06/03/145656</a> and <a href="https://f1000research.com/articles/6-1558/v1" class="uri">https://f1000research.com/articles/6-1558/v1</a> as well as mentions to them in the vignette.</li>
-</ul>
-</div>
+<ul><li>Added citations for <a href="https://www.biorxiv.org/content/early/2017/06/03/145656" class="external-link uri">https://www.biorxiv.org/content/early/2017/06/03/145656</a> and <a href="https://f1000research.com/articles/6-1558/v1" class="external-link uri">https://f1000research.com/articles/6-1558/v1</a> as well as mentions to them in the vignette.</li>
+</ul></div>
     <div id="recount-137" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.7">
-<a href="#recount-137" class="anchor"></a>recount 1.3.7</h1>
+<a href="#recount-137" class="anchor" aria-hidden="true"></a>recount 1.3.7</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>
+<ul><li>
 <code><a href="../reference/add_predictions.html">add_predictions()</a></code> was bumped to version 0.0.05</li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-135" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.5">
-<a href="#recount-135" class="anchor"></a>recount 1.3.5</h1>
+<a href="#recount-135" class="anchor" aria-hidden="true"></a>recount 1.3.5</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>Vignette now uses the new <code><a href="https://rdrr.io/pkg/BiocStyle/man/html_document.html">BiocStyle::html_document</a></code> that was recently released.</li>
-</ul>
-</div>
+<ul><li>Vignette now uses the new <code><a href="https://rdrr.io/pkg/BiocStyle/man/html_document.html" class="external-link">BiocStyle::html_document</a></code> that was recently released.</li>
+</ul></div>
     <div id="recount-132" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.2">
-<a href="#recount-132" class="anchor"></a>recount 1.3.2</h1>
+<a href="#recount-132" class="anchor" aria-hidden="true"></a>recount 1.3.2</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>
+<ul><li>
 <code><a href="../reference/coverage_matrix.html">coverage_matrix()</a></code> now has two new arguments: <code>scale</code> and <code>round</code>. Use <code>scale = FALSE</code> to get raw coverage counts, which you can then scale with <code><a href="../reference/scale_counts.html">scale_counts()</a></code>. <code>scale</code> is set to <code>TRUE</code> by default, so the counts are scaled to a library size of 40 million reads. <code>round</code> is set to <code>FALSE</code> by default, but can be set to <code>TRUE</code> if you want to get integer counts, just as in the default of <code><a href="../reference/scale_counts.html">scale_counts()</a></code>.</li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-131" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.1">
-<a href="#recount-131" class="anchor"></a>recount 1.3.1</h1>
+<a href="#recount-131" class="anchor" aria-hidden="true"></a>recount 1.3.1</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>Changed the default version argument of <code><a href="../reference/add_predictions.html">add_predictions()</a></code> to <code>latest</code>. Internally, that’s still 0.0.03.</li>
-</ul>
-</div>
+<ul><li>Changed the default version argument of <code><a href="../reference/add_predictions.html">add_predictions()</a></code> to <code>latest</code>. Internally, that’s still 0.0.03.</li>
+</ul></div>
     <div id="recount-1127" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.27">
-<a href="#recount-1127" class="anchor"></a>recount 1.1.27</h1>
+<a href="#recount-1127" class="anchor" aria-hidden="true"></a>recount 1.1.27</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>Added the <code><a href="../reference/add_predictions.html">add_predictions()</a></code> function which appends the predicted phenotypes to a RSE object downloaded with recount. The phenotypes were predicted by Shannon Ellis et al, 2017 (citation coming up soon!).</li>
-</ul>
-</div>
+<ul><li>Added the <code><a href="../reference/add_predictions.html">add_predictions()</a></code> function which appends the predicted phenotypes to a RSE object downloaded with recount. The phenotypes were predicted by Shannon Ellis et al, 2017 (citation coming up soon!).</li>
+</ul></div>
     <div id="recount-1126" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.26">
-<a href="#recount-1126" class="anchor"></a>recount 1.1.26</h1>
+<a href="#recount-1126" class="anchor" aria-hidden="true"></a>recount 1.1.26</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>Changed the citation now that the recount2 paper has been published at <a href="http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html" class="uri">http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html</a>.</li>
-</ul>
-</div>
+<ul><li>Changed the citation now that the recount2 paper has been published at <a href="http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html" class="external-link uri">http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html</a>.</li>
+</ul></div>
     <div id="recount-1125" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.25">
-<a href="#recount-1125" class="anchor"></a>recount 1.1.25</h1>
+<a href="#recount-1125" class="anchor" aria-hidden="true"></a>recount 1.1.25</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>Added the function <code><a href="../reference/getRPKM.html">getRPKM()</a></code> which can be used with <code>RangedSummarizedExperiment</code> objects from <code>recount</code> and from other sources.</li>
-</ul>
-</div>
+<ul><li>Added the function <code><a href="../reference/getRPKM.html">getRPKM()</a></code> which can be used with <code>RangedSummarizedExperiment</code> objects from <code>recount</code> and from other sources.</li>
+</ul></div>
     <div id="recount-1124" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.24">
-<a href="#recount-1124" class="anchor"></a>recount 1.1.24</h1>
+<a href="#recount-1124" class="anchor" aria-hidden="true"></a>recount 1.1.24</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>
+<ul><li>
 <code>recount_url</code> now includes the URLs for the GTEx bigWig files.</li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-1119" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.19">
-<a href="#recount-1119" class="anchor"></a>recount 1.1.19</h1>
+<a href="#recount-1119" class="anchor" aria-hidden="true"></a>recount 1.1.19</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>
+<ul><li>
 <code><a href="../reference/coverage_matrix.html">coverage_matrix()</a></code> now returns a RangedSummarizedExperiment object. This matches the behavior of <code>recount.bwtool::coverage_matrix_bwtool()</code> and is more consistent with the use of RSE objects in recount.</li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-1118" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.18">
-<a href="#recount-1118" class="anchor"></a>recount 1.1.18</h1>
+<a href="#recount-1118" class="anchor" aria-hidden="true"></a>recount 1.1.18</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>
+<ul><li>
 <code><a href="../reference/coverage_matrix.html">coverage_matrix()</a></code>’s helper function <code>.read_pheno()</code> was failing for some projects.</li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-1116" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.16">
-<a href="#recount-1116" class="anchor"></a>recount 1.1.16</h1>
+<a href="#recount-1116" class="anchor" aria-hidden="true"></a>recount 1.1.16</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>Fixed a bug in the counts in <code><a href="../reference/coverage_matrix.html">coverage_matrix()</a></code>. They were being incorrectly multiplied by 100.</li>
-</ul>
-</div>
+<ul><li>Fixed a bug in the counts in <code><a href="../reference/coverage_matrix.html">coverage_matrix()</a></code>. They were being incorrectly multiplied by 100.</li>
+</ul></div>
     <div id="recount-1114-1" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.14">
-<a href="#recount-1114-1" class="anchor"></a>recount 1.1.14</h1>
+<a href="#recount-1114-1" class="anchor" aria-hidden="true"></a>recount 1.1.14</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>Completed the change to Gencode v25 annotation for exon and gene counts.</li>
-</ul>
-</div>
+<ul><li>Completed the change to Gencode v25 annotation for exon and gene counts.</li>
+</ul></div>
     <div id="recount-1113" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.13">
-<a href="#recount-1113" class="anchor"></a>recount 1.1.13</h1>
+<a href="#recount-1113" class="anchor" aria-hidden="true"></a>recount 1.1.13</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>We dropped <code>TxDb.Hsapiens.UCSC.hg38.knownGene</code> completely from <code>recount</code> and will be using Gencode v25 instead.</li>
-</ul>
-</div>
+<ul><li>We dropped <code>TxDb.Hsapiens.UCSC.hg38.knownGene</code> completely from <code>recount</code> and will be using Gencode v25 instead.</li>
+</ul></div>
     <div id="recount-1112" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.12">
-<a href="#recount-1112" class="anchor"></a>recount 1.1.12</h1>
+<a href="#recount-1112" class="anchor" aria-hidden="true"></a>recount 1.1.12</h1>
 <p>BUG FIXES</p>
-<ul>
-<li>Updated <code><a href="../reference/snaptron_query.html">snaptron_query()</a></code> to comply with recent changes in Snaptron.</li>
-</ul>
-</div>
+<ul><li>Updated <code><a href="../reference/snaptron_query.html">snaptron_query()</a></code> to comply with recent changes in Snaptron.</li>
+</ul></div>
     <div id="recount-118" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.8">
-<a href="#recount-118" class="anchor"></a>recount 1.1.8</h1>
+<a href="#recount-118" class="anchor" aria-hidden="true"></a>recount 1.1.8</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>Updated the package so you can now access TCGA data. Now there’s over 8 terabytes of data available in the <code>recount</code> project!</li>
-</ul>
-</div>
+<ul><li>Updated the package so you can now access TCGA data. Now there’s over 8 terabytes of data available in the <code>recount</code> project!</li>
+</ul></div>
     <div id="recount-116" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.6">
-<a href="#recount-116" class="anchor"></a>recount 1.1.6</h1>
+<a href="#recount-116" class="anchor" aria-hidden="true"></a>recount 1.1.6</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>
+<ul><li>
 <code><a href="../reference/snaptron_query.html">snaptron_query()</a></code> can now access GTEx and TCGA data.</li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-115" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.5">
-<a href="#recount-115" class="anchor"></a>recount 1.1.5</h1>
+<a href="#recount-115" class="anchor" aria-hidden="true"></a>recount 1.1.5</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>Snaptron changed from stingray.cs.jhu.edu:8090 to snaptron.cs.jhu.edu so <code><a href="../reference/snaptron_query.html">snaptron_query()</a></code> has been changed accordingly.</li>
-</ul>
-</div>
+<ul><li>Snaptron changed from stingray.cs.jhu.edu:8090 to snaptron.cs.jhu.edu so <code><a href="../reference/snaptron_query.html">snaptron_query()</a></code> has been changed accordingly.</li>
+</ul></div>
     <div id="recount-112" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.2">
-<a href="#recount-112" class="anchor"></a>recount 1.1.2</h1>
+<a href="#recount-112" class="anchor" aria-hidden="true"></a>recount 1.1.2</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>The function <code><a href="../reference/reproduce_ranges.html">reproduce_ranges()</a></code> now has the <code>db</code> argument. By default it’s set to <code>TxDb.Hsapiens.UCSC.hg38.knownGene</code> to reproduce the actual information used in <code>recount</code>. But it can also be used with <code>EnsDb.Hsapiens.v79</code> to use the ENSEMBL annotation. Then with <code><a href="../reference/coverage_matrix.html">coverage_matrix()</a></code> you can get the counts for either an updated <code>TxDb.Hsapiens.UCSC.hg38.knownGene</code> or for <code>EnsDb.Hsapiens.v79</code> at the exon and/or gene levels as shown in the vignette.</li>
-</ul>
-</div>
+<ul><li>The function <code><a href="../reference/reproduce_ranges.html">reproduce_ranges()</a></code> now has the <code>db</code> argument. By default it’s set to <code>TxDb.Hsapiens.UCSC.hg38.knownGene</code> to reproduce the actual information used in <code>recount</code>. But it can also be used with <code>EnsDb.Hsapiens.v79</code> to use the ENSEMBL annotation. Then with <code><a href="../reference/coverage_matrix.html">coverage_matrix()</a></code> you can get the counts for either an updated <code>TxDb.Hsapiens.UCSC.hg38.knownGene</code> or for <code>EnsDb.Hsapiens.v79</code> at the exon and/or gene levels as shown in the vignette.</li>
+</ul></div>
     <div id="recount-111" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.1">
-<a href="#recount-111" class="anchor"></a>recount 1.1.1</h1>
+<a href="#recount-111" class="anchor" aria-hidden="true"></a>recount 1.1.1</h1>
 <p>SIGNIFICANT USER-VISIBLE CHANGES</p>
-<ul>
-<li>The vignette now describes how to download all the data, how to check exon-exon junctions by class, and how to use <code>SciServer</code> compute to access all the <code>recount</code> data (over 6 TB) via <a href="http://www.sciserver.org/" class="uri">http://www.sciserver.org/</a>
+<ul><li>The vignette now describes how to download all the data, how to check exon-exon junctions by class, and how to use <code>SciServer</code> compute to access all the <code>recount</code> data (over 6 TB) via <a href="http://www.sciserver.org/" class="external-link uri">http://www.sciserver.org/</a>
 </li>
-</ul>
-</div>
+</ul></div>
     <div id="recount-09930" class="section level1">
 <h1 class="page-header" data-toc-text="0.99.30">
-<a href="#recount-09930" class="anchor"></a>recount 0.99.30</h1>
+<a href="#recount-09930" class="anchor" aria-hidden="true"></a>recount 0.99.30</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>Added the function <code><a href="../reference/snaptron_query.html">snaptron_query()</a></code> which queries Intropolis via Snaptron to find if an exon-exon junction is present in the data.</li>
-</ul>
-</div>
+<ul><li>Added the function <code><a href="../reference/snaptron_query.html">snaptron_query()</a></code> which queries Intropolis via Snaptron to find if an exon-exon junction is present in the data.</li>
+</ul></div>
     <div id="recount-09929" class="section level1">
 <h1 class="page-header" data-toc-text="0.99.29">
-<a href="#recount-09929" class="anchor"></a>recount 0.99.29</h1>
+<a href="#recount-09929" class="anchor" aria-hidden="true"></a>recount 0.99.29</h1>
 <p>BUF FIXES</p>
-<ul>
-<li>Fixed an bug in the vignette. Thanks to Michael Love for noticing it!</li>
-</ul>
-</div>
+<ul><li>Fixed an bug in the vignette. Thanks to Michael Love for noticing it!</li>
+</ul></div>
     <div id="recount-0990" class="section level1">
 <h1 class="page-header" data-toc-text="0.99.0">
-<a href="#recount-0990" class="anchor"></a>recount 0.99.0</h1>
+<a href="#recount-0990" class="anchor" aria-hidden="true"></a>recount 0.99.0</h1>
 <p>NEW FEATURES</p>
-<ul>
-<li>Created the package skeleton for <code>recount</code>
+<ul><li>Created the package skeleton for <code>recount</code>
 </li>
 <li>Added the function <code><a href="../reference/reproduce_ranges.html">reproduce_ranges()</a></code> for re-creating the gene or exon level information used in the <code>recount</code> project.</li>
 <li>Added the function <code><a href="../reference/abstract_search.html">abstract_search()</a></code> for identifying SRA projects of interest by searching the abstracts.</li>
@@ -565,10 +466,9 @@
 <li>Added the function <code><a href="../reference/coverage_matrix.html">coverage_matrix()</a></code> for computing the coverage matrix based on the regions of interest for a given SRA study.</li>
 <li>Added the function <code><a href="../reference/geo_info.html">geo_info()</a></code> for obtaining sample information from GEO.</li>
 <li>Added the function <code><a href="../reference/find_geo.html">find_geo()</a></code> for finding the GEO accession id given a SRA run accession (<code>id</code>). This function will be useful for SRA projects that did not have GEO entries at the time <code>recount</code>’s data was created.</li>
-<li>Added the function <code><a href="../reference/geo_characteristics.html">geo_characteristics()</a></code> for building a <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> from <code><a href="../reference/geo_info.html">geo_info()</a></code>’s results for the characteristics.</li>
+<li>Added the function <code><a href="../reference/geo_characteristics.html">geo_characteristics()</a></code> for building a <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame()</a></code> from <code><a href="../reference/geo_info.html">geo_info()</a></code>’s results for the characteristics.</li>
 <li>Added the function <code><a href="../reference/all_metadata.html">all_metadata()</a></code> which downloads all the phenotype data for all projects. This function can be useful for identifying projects and/or samples of interests.</li>
-</ul>
-</div>
+</ul></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -582,11 +482,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
+  <p><p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -594,6 +494,8 @@
 
   
 
+
+  
 
   </body>
 </html>
