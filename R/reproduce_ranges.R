@@ -65,9 +65,9 @@ reproduce_ranges <- function(level = "gene", db = "Gencode.v25") {
     .load_check(c("GenomicFeatures", "org.Hs.eg.db"))
     if (db == "Gencode.v25") {
         temp_gencode <- file.path(
-                tempdir(),
-                "gencode.v25.annotation.gff3.gz"
-            )
+            tempdir(),
+            "gencode.v25.annotation.gff3.gz"
+        )
         xx <- download_retry(
             url = paste0(
                 "ftp://ftp.ebi.ac.uk/pub/databases/gencode/",

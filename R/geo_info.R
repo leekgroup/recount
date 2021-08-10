@@ -80,6 +80,11 @@ geo_info <- function(geoid, verbose = FALSE, sleep = 1 / 2, getGPL = FALSE,
     ## Extract the header information
     result <- geo@header
 
+    ## Remove trailing \r on Windows
+    if (.Platform$OS.type == "windows") {
+        result <- lapply(result, function(x) gsub("\r", "", x))
+    }
+
     ## Function for cleaning
     clean_geo <- function(pattern, varname, res) {
         charIndex <- grep(pattern, names(res))
@@ -112,11 +117,6 @@ geo_info <- function(geoid, verbose = FALSE, sleep = 1 / 2, getGPL = FALSE,
             df$pattern[i],
             df$varname[i], result
         )
-    }
-
-    ## Make sure they are all length 1
-    if (any(S4Vectors::elementNROWS(result) > 1)) {
-        for (i in which(S4Vectors::elementNROWS(result) > 1)) result[i] <- IRanges::CharacterList(unlist(unname(result[i])))
     }
 
     ## Finish
