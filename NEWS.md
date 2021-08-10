@@ -1,3 +1,13 @@
+# recount 1.18.1
+
+BUG FIXES
+
+* Fix a bug in `geo_info()` for reading files on Windows where a trailing
+`\r` was added to all variables.
+* Avoid the `implicit list embedding of S4 objects is deprecated` warning
+that was noted at 
+https://github.com/leekgroup/recount/runs/3286046827?check_suite_focus=true#step:20:1417.
+
 # recount 1.13.2
 
 SIGNIFICANT USER-VISIBLE CHANGES
