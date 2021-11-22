@@ -52,9 +52,11 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { os: ubuntu-latest, r: '4.2', bioc: '3.15', cont: "bioconductor/bioconductor_docker:devel", rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest" }
-          - { os: macOS-latest, r: '4.2', bioc: '3.15'}
-          - { os: windows-latest, r: '4.2', bioc: '3.15'}
+          - { os: ubuntu-latest, r: 'devel', bioc: '3.15', cont: "bioconductor/bioconductor_docker:devel", rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest" }
+          - { os: macOS-latest, r: 'devel', bioc: '3.15'}
+          - { os: windows-latest, r: 'devel', bioc: '3.15'}
+          ## Check https://github.com/r-lib/actions/tree/master/examples
+          ## for examples using the http-user-agent
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
@@ -85,6 +87,7 @@ jobs:
         uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
 
       ## pandoc is already included in the Bioconductor docker images
       - name: Setup pandoc from r-lib
@@ -97,21 +100,21 @@ jobs:
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
         shell: Rscript {0}
 
-      - name: Cache R packages
+      - name: Restore R package cache
         if: "!contains(github.event.head_commit.message, '/nocache') && runner.os != 'Linux'"
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.1-
+          key: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-devel-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-devel-
 
       - name: Cache R packages on Linux
         if: "!contains(github.event.head_commit.message, '/nocache') && runner.os == 'Linux' "
         uses: actions/cache@v2
         with:
           path: /home/runner/work/_temp/Library
-          key: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.1-
+          key: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-devel-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-devel-
 
       - name: Install Linux system dependencies
         if: runner.os == 'Linux'
@@ -173,7 +176,7 @@ jobs:
           gha_repos <- if(
               .Platform$OS.type == "unix" && Sys.info()["sysname"] != "Darwin"
           ) c(
-              "AnVIL" = "https://bioconductordocker.blob.core.windows.net/packages/3.14/bioc",
+              "AnVIL" = "https://bioconductordocker.blob.core.windows.net/packages/3.15/bioc",
               BiocManager::repositories()
               ) else BiocManager::repositories()
 
@@ -209,7 +212,7 @@ jobs:
       - name: Install covr
         if: github.ref == 'refs/heads/master' && env.run_covr == 'true' && runner.os == 'Linux'
         run: |
-          remotes::install_github("r-lib/covr")
+          remotes::install_cran("covr")
         shell: Rscript {0}
 
       - name: Install pkgdown
@@ -230,9 +233,10 @@ jobs:
           _R_CHECK_CRAN_INCOMING_: false
           DISPLAY: 99.0
         run: |
+          options(crayon.enabled = TRUE)
           rcmdcheck::rcmdcheck(
-              args = c("--no-build-vignettes", "--no-manual", "--timings"),
-              build_args = c("--no-manual", "--no-resave-data"),
+              args = c("--no-manual", "--no-vignettes", "--timings"),
+              build_args = c("--no-manual", "--keep-empty-dirs", "--no-resave-data"),
               error_on = "warning",
               check_dir = "check"
           )
@@ -275,11 +279,11 @@ jobs:
         if: github.ref == 'refs/heads/master' && env.run_pkgdown == 'true' && runner.os == 'Linux'
         run: R CMD INSTALL .
 
-      - name: Deploy package
+      - name: Build and deploy pkgdown site
         if: github.ref == 'refs/heads/master' && env.run_pkgdown == 'true' && runner.os == 'Linux'
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           Rscript -e "pkgdown::deploy_to_branch(new_process = FALSE)"
         shell: bash {0}
         ## Note that you need to run pkgdown::deploy_to_branch(new_process = FALSE)
@@ -291,7 +295,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: ${{ runner.os }}-biocversion-devel-r-4.1-results
+          name: ${{ runner.os }}-biocversion-devel-r-devel-results
           path: check
 
       - uses: docker/build-push-action@v1
