@@ -54,8 +54,6 @@ RPKMs which you can do with this function." />
 
 
 
-
-
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -67,15 +65,9 @@ RPKMs which you can do with this function." />
 
 
 
-  
-
-  
-
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -89,13 +81,19 @@ RPKMs which you can do with this function." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.21.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -147,7 +145,7 @@ RPKMs which you can do with this function." />
 RPKMs which you can do with this function.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>getRPKM</span><span class='op'>(</span><span class='va'>rse</span>, length_var <span class='op'>=</span> <span class='st'>"bp_length"</span>, mapped_var <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></code></pre></div>
+    <pre class="usage"><span class='fu'>getRPKM</span><span class='op'>(</span><span class='va'>rse</span>, length_var <span class='op'>=</span> <span class='st'>"bp_length"</span>, mapped_var <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,7 +189,7 @@ of the total exonic sequence length of the gene.</p>
     <p>Andrew Jaffe, Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'></span>
+    <pre class="examples"><span class='r-in'></span>
 <span class='r-in'><span class='co'>## get RPKM matrix</span></span>
 <span class='r-in'><span class='va'>rpkm</span> <span class='op'>&lt;-</span> <span class='fu'>getRPKM</span><span class='op'>(</span><span class='va'>rse_gene_SRP009615</span><span class='op'>)</span></span>
 <span class='r-in'></span>
@@ -287,7 +285,7 @@ of the total exonic sequence length of the gene.</p>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  Mean   :-0.0002543   Mean   : 0.0004705   Mean   : 0.0004809  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  3rd Qu.: 0.0005059   3rd Qu.: 0.0010338   3rd Qu.: 0.0009586  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  Max.   : 0.3414912   Max.   : 0.2808215   Max.   : 0.3405986  </span>
-</code></pre></div>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -299,11 +297,11 @@ of the total exonic sequence length of the gene.</p>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p></p>
+  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -311,8 +309,6 @@ of the total exonic sequence length of the gene.</p>
 
   
 
-
-  
 
   </body>
 </html>

@@ -1,8 +1,8 @@
-pandoc: 2.11.4
-pkgdown: 1.6.1.9001
-pkgdown_sha: ce9781a15c7ea07df9fb17a11295ba4abec0b54b
+pandoc: 2.14.0.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
 articles:
-  SRP009615-results: fakeVignettes/SRP009615-results.html
+  fakeVignettes/SRP009615-results: SRP009615-results.html
   recount-quickstart: recount-quickstart.html
-last_built: 2021-08-10T05:16Z
+last_built: 2021-11-23T01:57Z
 

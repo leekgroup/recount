@@ -56,8 +56,6 @@ defined by findRegions." />
 
 
 
-
-
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -69,15 +67,9 @@ defined by findRegions." />
 
 
 
-  
-
-  
-
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -91,13 +83,19 @@ defined by findRegions." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.21.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -151,7 +149,7 @@ identify the expressed regions (ERs) for a given chromosome. It returns a
 defined by <a href='https://rdrr.io/pkg/derfinder/man/findRegions.html'>findRegions</a>.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>expressed_regions</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>expressed_regions</span><span class='op'>(</span>
   <span class='va'>project</span>,
   <span class='va'>chr</span>,
   <span class='va'>cutoff</span>,
@@ -160,7 +158,7 @@ defined by <a href='https://rdrr.io/pkg/derfinder/man/findRegions.html'>findRegi
   chrlen <span class='op'>=</span> <span class='cn'>NULL</span>,
   verbose <span class='op'>=</span> <span class='cn'>TRUE</span>,
   <span class='va'>...</span>
-<span class='op'>)</span></code></pre></div>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -221,7 +219,7 @@ way.</p></td>
     <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Define expressed regions for study SRP009615, chrY</span></span>
+    <pre class="examples"><span class='r-in'><span class='co'>## Define expressed regions for study SRP009615, chrY</span></span>
 <span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='va'>.Platform</span><span class='op'>$</span><span class='va'>OS.type</span> <span class='op'>!=</span> <span class='st'>"windows"</span><span class='op'>)</span> <span class='op'>{</span></span>
 <span class='r-in'>    <span class='co'>## Reading BigWig files is not supported by rtracklayer on Windows</span></span>
 <span class='r-in'>    <span class='va'>regions</span> <span class='op'>&lt;-</span> <span class='fu'>expressed_regions</span><span class='op'>(</span><span class='st'>"SRP009615"</span>, <span class='st'>"chrY"</span>,</span>
@@ -229,14 +227,14 @@ way.</p></td>
 <span class='r-in'>        maxClusterGap <span class='op'>=</span> <span class='fl'>3000L</span></span>
 <span class='r-in'>    <span class='op'>)</span></span>
 <span class='r-in'><span class='op'>}</span></span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 05:16:47 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 05:16:48 loadCoverage: applying the cutoff to the merged data</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 05:16:48 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 05:16:48 findRegions: identifying potential segments</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 05:16:48 findRegions: segmenting information</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 05:16:48 .getSegmentsRle: segmenting with cutoff(s) 5</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 05:16:48 findRegions: identifying candidate regions</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-10 05:16:50 findRegions: identifying region clusters</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-11-23 01:58:33 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-11-23 01:58:35 loadCoverage: applying the cutoff to the merged data</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-11-23 01:58:35 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-11-23 01:58:35 findRegions: identifying potential segments</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-11-23 01:58:35 findRegions: segmenting information</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-11-23 01:58:35 .getSegmentsRle: segmenting with cutoff(s) 5</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-11-23 01:58:35 findRegions: identifying candidate regions</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-11-23 01:58:36 findRegions: identifying region clusters</span>
 <span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
 <span class='r-in'><span class='co'>## Define the regions for multiple chrs</span></span>
 <span class='r-in'><span class='va'>regs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>chrs</span>, <span class='va'>expressed_regions</span>, project <span class='op'>=</span> <span class='st'>"SRP009615"</span>, cutoff <span class='op'>=</span> <span class='fl'>5L</span><span class='op'>)</span></span>
@@ -246,7 +244,7 @@ way.</p></td>
 <span class='r-in'><span class='va'>single</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/BiocGenerics/man/unlist.html'>unlist</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/GenomicRanges/man/GRangesList-class.html'>GRangesList</a></span><span class='op'>(</span><span class='va'>regs</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>}</span></span>
 <span class='r-in'></span>
-</code></pre></div>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -258,11 +256,11 @@ way.</p></td>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p></p>
+  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -270,8 +268,6 @@ way.</p></td>
 
   
 
-
-  
 
   </body>
 </html>

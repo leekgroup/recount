@@ -35,8 +35,6 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -49,12 +47,18 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.19.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.21.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
+<li>
+  <a href="index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -98,33 +102,33 @@
   <div class="contents col-md-9">
 <div id="recount-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#recount-" class="anchor" aria-hidden="true"></a>recount <img src="reference/figures/logo.png" align="right" width="400px">
+<a href="#recount-" class="anchor"></a>recount <img src="reference/figures/logo.png" align="right" width="400px">
 </h1></div>
 <!-- badges: start -->
 
-<p>Explore and download data from the recount project available at the <a href="https://jhubiostatistics.shinyapps.io/recount/" class="external-link">recount2 website</a>. Using the <code>recount</code> package you can download <em>RangedSummarizedExperiment</em> objects at the gene, exon or exon-exon junctions level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The <em>RangedSummarizedExperiment</em> objects can be used by different packages for performing differential expression analysis. Using <a href="http://bioconductor.org/packages/derfinder" class="external-link">derfinder</a> you can perform annotation-agnostic differential expression analyses with the data from the recount project.</p>
+<p>Explore and download data from the recount project available at the <a href="https://jhubiostatistics.shinyapps.io/recount/">recount2 website</a>. Using the <code>recount</code> package you can download <em>RangedSummarizedExperiment</em> objects at the gene, exon or exon-exon junctions level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The <em>RangedSummarizedExperiment</em> objects can be used by different packages for performing differential expression analysis. Using <a href="http://bioconductor.org/packages/derfinder">derfinder</a> you can perform annotation-agnostic differential expression analyses with the data from the recount project.</p>
 <div id="documentation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#documentation" class="anchor" aria-hidden="true"></a>Documentation</h2>
-<p>For more information about <code>recount</code> check the vignettes <a href="http://bioconductor.org/packages/recount" class="external-link">through Bioconductor</a> or at the <a href="http://leekgroup.github.io/recount" class="external-link">documentation website</a>.</p>
+<a href="#documentation" class="anchor"></a>Documentation</h2>
+<p>For more information about <code>recount</code> check the vignettes <a href="http://bioconductor.org/packages/recount">through Bioconductor</a> or at the <a href="http://leekgroup.github.io/recount">documentation website</a>.</p>
 </div>
 <div id="installation-instructions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation-instructions" class="anchor" aria-hidden="true"></a>Installation instructions</h2>
-<p>Get the latest stable <code>R</code> release from <a href="http://cran.r-project.org/" class="external-link">CRAN</a>. Then install <code>recount</code> from <a href="http://bioconductor.org/" class="external-link">Bioconductor</a> using the following code:</p>
+<a href="#installation-instructions" class="anchor"></a>Installation instructions</h2>
+<p>Get the latest stable <code>R</code> release from <a href="http://cran.r-project.org/">CRAN</a>. Then install <code>recount</code> from <a href="http://bioconductor.org/">Bioconductor</a> using the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-      <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span>
   <span class="op">}</span>
 
-<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"recount"</span><span class="op">)</span></code></pre></div>
+<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"recount"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="citation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#citation" class="anchor" aria-hidden="true"></a>Citation</h2>
+<a href="#citation" class="anchor"></a>Citation</h2>
 <p>Below is the citation output from using <code>citation('recount')</code> in R. Please run this yourself to check for any updates on how to cite <strong>recount</strong>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"recount"</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"recount"</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Collado-Torres L, Nellore A, Kammers K, Ellis SE, Taub MA, Hansen KD,</span>
 <span class="co">#&gt; Jaffe AE, Langmead B, Leek JT (2017). "Reproducible RNA-seq analysis</span>
@@ -252,43 +256,43 @@
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor" aria-hidden="true"></a>Code of Conduct</h2>
-<p>Please note that the recount project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
+<p>Please note that the recount project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 <div id="development-tools" class="section level2">
 <h2 class="hasAnchor">
-<a href="#development-tools" class="anchor" aria-hidden="true"></a>Development tools</h2>
+<a href="#development-tools" class="anchor"></a>Development tools</h2>
 <ul>
-<li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/" class="external-link">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis" class="external-link">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes" class="external-link">remotes</a></em>, <em><a href="https://github.com/r-hub/sysreqs" class="external-link">sysreqs</a></em> and <em><a href="https://CRAN.R-project.org/package=rcmdcheck" class="external-link">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/" class="external-link">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.12/BiocCheck" class="external-link">BiocCheck</a></em>.</li>
-<li>Code coverage assessment is possible thanks to <a href="https://codecov.io/gh" class="external-link">codecov</a> and <em><a href="https://CRAN.R-project.org/package=covr" class="external-link">covr</a></em>.</li>
-<li>The <a href="http://leekgroup.github.io/recount" class="external-link">documentation website</a> is automatically updated thanks to <em><a href="https://CRAN.R-project.org/package=pkgdown" class="external-link">pkgdown</a></em>.</li>
-<li>The code is styled automatically thanks to <em><a href="https://CRAN.R-project.org/package=styler" class="external-link">styler</a></em>.</li>
-<li>The documentation is formatted thanks to <em><a href="https://CRAN.R-project.org/package=devtools" class="external-link">devtools</a></em> and <em><a href="https://CRAN.R-project.org/package=roxygen2" class="external-link">roxygen2</a></em>.</li>
+<li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes">remotes</a></em>, <em><a href="https://github.com/r-hub/sysreqs">sysreqs</a></em> and <em><a href="https://CRAN.R-project.org/package=rcmdcheck">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.12/BiocCheck">BiocCheck</a></em>.</li>
+<li>Code coverage assessment is possible thanks to <a href="https://codecov.io/gh">codecov</a> and <em><a href="https://CRAN.R-project.org/package=covr">covr</a></em>.</li>
+<li>The <a href="http://leekgroup.github.io/recount">documentation website</a> is automatically updated thanks to <em><a href="https://CRAN.R-project.org/package=pkgdown">pkgdown</a></em>.</li>
+<li>The code is styled automatically thanks to <em><a href="https://CRAN.R-project.org/package=styler">styler</a></em>.</li>
+<li>The documentation is formatted thanks to <em><a href="https://CRAN.R-project.org/package=devtools">devtools</a></em> and <em><a href="https://CRAN.R-project.org/package=roxygen2">roxygen2</a></em>.</li>
 </ul>
 <p>For more details, check the <code>dev</code> directory.</p>
-<p>This package was developed using <em><a href="https://bioconductor.org/packages/3.12/biocthis" class="external-link">biocthis</a></em>.</p>
+<p>This package was developed using <em><a href="https://bioconductor.org/packages/3.12/biocthis">biocthis</a></em>.</p>
 </div>
 <div id="teams-involved" class="section level2">
 <h2 class="hasAnchor">
-<a href="#teams-involved" class="anchor" aria-hidden="true"></a>Teams involved</h2>
+<a href="#teams-involved" class="anchor"></a>Teams involved</h2>
 <ul>
 <li>
-<a href="http://jtleek.com/" class="external-link">Jeff Leek’s lab at JHBSPH Biostatistics Department</a>,</li>
+<a href="http://jtleek.com/">Jeff Leek’s lab at JHBSPH Biostatistics Department</a>,</li>
 <li>
-<a href="http://www.langmead-lab.org/" class="external-link">Ben Langmead’s lab at JHU Computer Science</a>,</li>
+<a href="http://www.langmead-lab.org/">Ben Langmead’s lab at JHU Computer Science</a>,</li>
 <li>
-<a href="https://www.hansenlab.org/" class="external-link">Kasper Daniel Hansen’s lab at JHBSPH Biostatistics Department</a>,</li>
+<a href="https://www.hansenlab.org/">Kasper Daniel Hansen’s lab at JHBSPH Biostatistics Department</a>,</li>
 <li>
-<a href="http://lcolladotor.github.io/" class="external-link">Leonardo Collado-Torres</a> and <a href="http://aejaffe.com/" class="external-link">Andrew E. Jaffe</a> from <a href="https://www.libd.org/" class="external-link">LIBD</a>,</li>
+<a href="http://lcolladotor.github.io/">Leonardo Collado-Torres</a> and <a href="http://aejaffe.com/">Andrew E. Jaffe</a> from <a href="https://www.libd.org/">LIBD</a>,</li>
 <li>
-<a href="http://nellore.bio/" class="external-link">Abhinav Nellore’s lab at OHSU</a>,</li>
-<li>Data hosted by <a href="https://www.sciserver.org/" class="external-link">SciServer at JHU</a>.</li>
+<a href="http://nellore.bio/">Abhinav Nellore’s lab at OHSU</a>,</li>
+<li>Data hosted by <a href="https://www.sciserver.org/">SciServer at JHU</a>.</li>
 </ul>
 <table class="table"><tbody><tr class="odd">
-<td><a href="http://www.langmead-lab.org/" class="external-link"><img src="http://www.langmead-lab.org/wp-content/uploads/2014/01/Screen-Shot-2014-02-02-at-5.20.13-PM-1024x199.png" width="250px"></a></td>
-<td><a href="https://www.libd.org/" class="external-link"><img src="http://lcolladotor.github.io/img/LIBD_logo.jpg" width="250px"></a></td>
-<td><a href="http://nellore.bio/" class="external-link"><img src="https://seekvectorlogo.net/wp-content/uploads/2018/08/oregon-health-science-university-ohsu-vector-logo.png" width="250px"></a></td>
-<td><a href="https://www.sciserver.org/" class="external-link"><img src="https://skyserver.sdss.org/dr14/en/images/sciserver_logo_inverted_vertical.png" width="250px"></a></td>
+<td><a href="http://www.langmead-lab.org/"><img src="http://www.langmead-lab.org/wp-content/uploads/2014/01/Screen-Shot-2014-02-02-at-5.20.13-PM-1024x199.png" width="250px"></a></td>
+<td><a href="https://www.libd.org/"><img src="http://lcolladotor.github.io/img/LIBD_logo.jpg" width="250px"></a></td>
+<td><a href="http://nellore.bio/"><img src="https://seekvectorlogo.net/wp-content/uploads/2018/08/oregon-health-science-university-ohsu-vector-logo.png" width="250px"></a></td>
+<td><a href="https://www.sciserver.org/"><img src="https://skyserver.sdss.org/dr14/en/images/sciserver_logo_inverted_vertical.png" width="250px"></a></td>
 </tr></tbody></table>
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-78422749-1"></script><script>
   window.dataLayer = window.dataLayer || [];
@@ -303,7 +307,7 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2 data-toc-skip>Links</h2>
+<h2>Links</h2>
 <ul class="list-unstyled">
 <li>Download from BIOC at <br><a href="https://www.bioconductor.org/packages/recount">https://​www.bioconductor.org/​packages/​recount</a>
 </li>
@@ -313,63 +317,56 @@
 </li>
 </ul>
 </div>
-
 <div class="license">
-<h2 data-toc-skip>License</h2>
+<h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.r-project.org/Licenses/Artistic-2.0">Artistic-2.0</a></li>
 </ul>
 </div>
-
 <div class="community">
-<h2 data-toc-skip>Community</h2>
+<h2>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-
 <div class="citation">
-<h2 data-toc-skip>Citation</h2>
+<h2>Citation</h2>
 <ul class="list-unstyled">
 <li><a href="authors.html">Citing recount</a></li>
 </ul>
 </div>
-
 <div class="developers">
-<h2 data-toc-skip>Developers</h2>
+<h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Leonardo Collado-Torres <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2140-308X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Jeffrey T. Leek <br><small class="roles"> Author, thesis advisor </small> <a href="https://orcid.org/0000-0002-2873-2671" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">More on authors...</a></li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
+  <div class="dev-status">
+<h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
-<li><a href="https://bioconductor.org/checkResults/release/bioc-LATEST/recount" class="external-link"><img src="http://www.bioconductor.org/shields/build/release/bioc/recount.svg" alt="BioC status"></a></li>
-<li><a href="https://bioconductor.org/checkResults/devel/bioc-LATEST/recount" class="external-link"><img src="http://www.bioconductor.org/shields/build/devel/bioc/recount.svg" alt="BioC dev status"></a></li>
-<li><a href="https://codecov.io/gh/leekgroup/recount?branch=master" class="external-link"><img src="https://codecov.io/gh/leekgroup/recount/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/leekgroup/recount/actions" class="external-link"><img src="https://github.com/leekgroup/recount/workflows/R-CMD-check-bioc/badge.svg" alt="R build status"></a></li>
-<li><a href="https://support.bioconductor.org/t/recount/" class="external-link"><img src="http://www.bioconductor.org/shields/posts/recount.svg" alt="Support site activity, last 6 months: tagged questions/avg. answers per question/avg. comments per question/accepted answers, or 0 if no tagged posts."></a></li>
-<li><a href="https://github.com/leekgroup/recount/issues" class="external-link"><img src="https://img.shields.io/github/issues/leekgroup/recount" alt="GitHub issues"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#stable"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="https://bioconductor.org/checkResults/release/bioc-LATEST/recount"><img src="http://www.bioconductor.org/shields/build/release/bioc/recount.svg" alt="BioC status"></a></li>
+<li><a href="https://bioconductor.org/checkResults/devel/bioc-LATEST/recount"><img src="http://www.bioconductor.org/shields/build/devel/bioc/recount.svg" alt="BioC dev status"></a></li>
+<li><a href="https://codecov.io/gh/leekgroup/recount?branch=master"><img src="https://codecov.io/gh/leekgroup/recount/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/leekgroup/recount/actions"><img src="https://github.com/leekgroup/recount/workflows/R-CMD-check-bioc/badge.svg" alt="R build status"></a></li>
+<li><a href="https://support.bioconductor.org/t/recount/"><img src="http://www.bioconductor.org/shields/posts/recount.svg" alt="Support site activity, last 6 months: tagged questions/avg. answers per question/avg. comments per question/accepted answers, or 0 if no tagged posts."></a></li>
+<li><a href="https://github.com/leekgroup/recount/issues"><img src="https://img.shields.io/github/issues/leekgroup/recount" alt="GitHub issues"></a></li>
 </ul>
 </div>
-
-  </div>
+</div>
 </div>
 
 
       <footer><div class="copyright">
-  <p></p>
-<p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
+  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -377,8 +374,6 @@
 
   
 
-
-  
 
   </body>
 </html>
