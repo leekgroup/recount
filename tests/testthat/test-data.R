@@ -36,7 +36,7 @@ test_that("Download URLs", {
     )
     expect_equal(
         download_study("DRP000366", type = "rse-fc", download = FALSE),
-        "http://idies.jhu.edu/recount/data/fc_rc/rse_fc_DRP000366.Rdata"
+        "http://sciserver.org/public-data/recount2/data/fc_rc/rse_fc_DRP000366.Rdata"
     )
 })
 
