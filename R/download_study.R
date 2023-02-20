@@ -124,6 +124,9 @@ download_study <- function(project, type = "rse-gene", outdir = project,
         stop("Invalid 'project' argument. There's no such 'project' in the recount_url data.frame.")
     }
 
+    ## Use duffel for most links
+    url_table$url <- gsub("http://idies.jhu.edu/recount/data", "http://duffel.rail.bio/recount", url_table$url)
+
     ## If all, download each type individually
     if (type == "all") {
         urls <- sapply(c(
