@@ -17,7 +17,8 @@
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Explore and download data from the recount project">
+<script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<meta property="og:title" content="Explore and download data from the recount project">
 <meta property="og:description" content="Explore and download data from the recount project available at
     https://jhubiostatistics.shinyapps.io/recount/. Using the recount package you can
     download RangedSummarizedExperiment objects at the gene, exon or exon-exon junctions level,
@@ -35,6 +36,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,23 +50,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.21.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.25.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -83,7 +80,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/leekgroup/recount/">
+  <a href="https://github.com/leekgroup/recount/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -100,200 +97,210 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="recount-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#recount-" class="anchor"></a>recount <img src="reference/figures/logo.png" align="right" width="400px">
+<div class="section level1">
+<div class="page-header"><h1 id="recount-">recount <img src="reference/figures/logo.png" align="right" width="400px"><a class="anchor" aria-label="anchor" href="#recount-"></a>
 </h1></div>
 <!-- badges: start -->
 
-<p>Explore and download data from the recount project available at the <a href="https://jhubiostatistics.shinyapps.io/recount/">recount2 website</a>. Using the <code>recount</code> package you can download <em>RangedSummarizedExperiment</em> objects at the gene, exon or exon-exon junctions level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The <em>RangedSummarizedExperiment</em> objects can be used by different packages for performing differential expression analysis. Using <a href="http://bioconductor.org/packages/derfinder">derfinder</a> you can perform annotation-agnostic differential expression analyses with the data from the recount project.</p>
-<div id="documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#documentation" class="anchor"></a>Documentation</h2>
-<p>For more information about <code>recount</code> check the vignettes <a href="http://bioconductor.org/packages/recount">through Bioconductor</a> or at the <a href="http://leekgroup.github.io/recount">documentation website</a>.</p>
+<p>Explore and download data from the recount project available at the <a href="https://jhubiostatistics.shinyapps.io/recount/" class="external-link">recount2 website</a>. Using the <code>recount</code> package you can download <em>RangedSummarizedExperiment</em> objects at the gene, exon or exon-exon junctions level, the raw counts, the phenotype metadata used, the urls to the sample coverage bigWig files or the mean coverage bigWig file for a particular study. The <em>RangedSummarizedExperiment</em> objects can be used by different packages for performing differential expression analysis. Using <a href="http://bioconductor.org/packages/derfinder" class="external-link">derfinder</a> you can perform annotation-agnostic differential expression analyses with the data from the recount project.</p>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
+<p>For more information about <code>recount</code> check the vignettes <a href="http://bioconductor.org/packages/recount" class="external-link">through Bioconductor</a> or at the <a href="http://leekgroup.github.io/recount" class="external-link">documentation website</a>.</p>
 </div>
-<div id="installation-instructions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation-instructions" class="anchor"></a>Installation instructions</h2>
-<p>Get the latest stable <code>R</code> release from <a href="http://cran.r-project.org/">CRAN</a>. Then install <code>recount</code> from <a href="http://bioconductor.org/">Bioconductor</a> using the following code:</p>
+<div class="section level2">
+<h2 id="installation-instructions">Installation instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
+</h2>
+<p>Get the latest stable <code>R</code> release from <a href="http://cran.r-project.org/" class="external-link">CRAN</a>. Then install <code>recount</code> from <a href="http://bioconductor.org/" class="external-link">Bioconductor</a> using the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-      <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span>
-  <span class="op">}</span>
-
-<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"recount"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"recount"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="citation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h2>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
 <p>Below is the citation output from using <code>citation('recount')</code> in R. Please run this yourself to check for any updates on how to cite <strong>recount</strong>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"recount"</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Collado-Torres L, Nellore A, Kammers K, Ellis SE, Taub MA, Hansen KD,</span>
-<span class="co">#&gt; Jaffe AE, Langmead B, Leek JT (2017). "Reproducible RNA-seq analysis</span>
-<span class="co">#&gt; using recount2." _Nature Biotechnology_. doi: 10.1038/nbt.3838 (URL:</span>
-<span class="co">#&gt; https://doi.org/10.1038/nbt.3838), &lt;URL:</span>
-<span class="co">#&gt; http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html&gt;.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   @Article{,</span>
-<span class="co">#&gt;     title = {Reproducible RNA-seq analysis using recount2},</span>
-<span class="co">#&gt;     author = {Leonardo Collado-Torres and Abhinav Nellore and Kai Kammers and Shannon E. Ellis and Margaret A. Taub and Kasper D. Hansen and Andrew E. Jaffe and Ben Langmead and Jeffrey T. Leek},</span>
-<span class="co">#&gt;     year = {2017},</span>
-<span class="co">#&gt;     journal = {Nature Biotechnology},</span>
-<span class="co">#&gt;     doi = {10.1038/nbt.3838},</span>
-<span class="co">#&gt;     url = {http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html},</span>
-<span class="co">#&gt;   }</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Collado-Torres L, Nellore A, Jaffe AE (2017). "recount workflow:</span>
-<span class="co">#&gt; Accessing over 70,000 human RNA-seq samples with Bioconductor [version</span>
-<span class="co">#&gt; 1; referees: 1 approved, 2 approved with reservations]."</span>
-<span class="co">#&gt; _F1000Research_. doi: 10.12688/f1000research.12223.1 (URL:</span>
-<span class="co">#&gt; https://doi.org/10.12688/f1000research.12223.1), &lt;URL:</span>
-<span class="co">#&gt; https://f1000research.com/articles/6-1558/v1&gt;.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   @Article{,</span>
-<span class="co">#&gt;     title = {recount workflow: Accessing over 70,000 human RNA-seq samples with Bioconductor [version 1; referees: 1 approved, 2 approved with reservations]},</span>
-<span class="co">#&gt;     author = {Leonardo Collado-Torres and Abhinav Nellore and Andrew E. Jaffe},</span>
-<span class="co">#&gt;     year = {2017},</span>
-<span class="co">#&gt;     journal = {F1000Research},</span>
-<span class="co">#&gt;     doi = {10.12688/f1000research.12223.1},</span>
-<span class="co">#&gt;     url = {https://f1000research.com/articles/6-1558/v1},</span>
-<span class="co">#&gt;   }</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Ellis SE, Collado-Torres L, Jaffe AE, Leek JT (2018). "Improving the</span>
-<span class="co">#&gt; value of public RNA-seq expression data by phenotype prediction."</span>
-<span class="co">#&gt; _Nucl. Acids Res._. doi: 10.1093/nar/gky102 (URL:</span>
-<span class="co">#&gt; https://doi.org/10.1093/nar/gky102), &lt;URL:</span>
-<span class="co">#&gt; https://doi.org/10.1093/nar/gky102&gt;.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   @Article{,</span>
-<span class="co">#&gt;     title = {Improving the value of public RNA-seq expression data by phenotype prediction},</span>
-<span class="co">#&gt;     author = {Shannon E. Ellis and Leonardo Collado-Torres and Andrew E. Jaffe and Jeffrey T. Leek},</span>
-<span class="co">#&gt;     year = {2018},</span>
-<span class="co">#&gt;     journal = {Nucl. Acids Res.},</span>
-<span class="co">#&gt;     doi = {10.1093/nar/gky102},</span>
-<span class="co">#&gt;     url = {https://doi.org/10.1093/nar/gky102},</span>
-<span class="co">#&gt;   }</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Collado-Torres L, Nellore A, Kammers K, Ellis SE, Taub MA, Hansen KD,</span>
-<span class="co">#&gt; Jaffe AE, Langmead B, Leek JT (2020). _Explore and download data from</span>
-<span class="co">#&gt; the recount project_. doi: 10.18129/B9.bioc.recount (URL:</span>
-<span class="co">#&gt; https://doi.org/10.18129/B9.bioc.recount),</span>
-<span class="co">#&gt; https://github.com/leekgroup/recount - R package version 1.17.1, &lt;URL:</span>
-<span class="co">#&gt; http://www.bioconductor.org/packages/recount&gt;.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   @Manual{,</span>
-<span class="co">#&gt;     title = {Explore and download data from the recount project},</span>
-<span class="co">#&gt;     author = {Leonardo Collado-Torres and Abhinav Nellore and Kai Kammers and Shannon E. Ellis and Margaret A. Taub and Kasper D. Hansen and Andrew E. Jaffe and Ben Langmead and Jeffrey T. Leek},</span>
-<span class="co">#&gt;     year = {2020},</span>
-<span class="co">#&gt;     url = {http://www.bioconductor.org/packages/recount},</span>
-<span class="co">#&gt;     note = {https://github.com/leekgroup/recount - R package version 1.17.1},</span>
-<span class="co">#&gt;     doi = {10.18129/B9.bioc.recount},</span>
-<span class="co">#&gt;   }</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Frazee AC, Langmead B, Leek JT (2011). "ReCount: A multi-experiment</span>
-<span class="co">#&gt; resource of analysis-ready RNA-seq gene count datasets." _BMC</span>
-<span class="co">#&gt; Bioinformatics_. doi: 10.1186/1471-2105-12-449 (URL:</span>
-<span class="co">#&gt; https://doi.org/10.1186/1471-2105-12-449), &lt;URL:</span>
-<span class="co">#&gt; https://doi.org/10.1186/1471-2105-12-449&gt;.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   @Article{,</span>
-<span class="co">#&gt;     title = {ReCount: A multi-experiment resource of analysis-ready RNA-seq gene count datasets},</span>
-<span class="co">#&gt;     author = {Alyssa C. Frazee and Ben Langmead and Jeffrey T. Leek},</span>
-<span class="co">#&gt;     year = {2011},</span>
-<span class="co">#&gt;     journal = {BMC Bioinformatics},</span>
-<span class="co">#&gt;     doi = {10.1186/1471-2105-12-449},</span>
-<span class="co">#&gt;     url = {https://doi.org/10.1186/1471-2105-12-449},</span>
-<span class="co">#&gt;   }</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Razmara A, Ellis SE, Sokolowski DJ, Davis S, Wilson MD, Leek JT, Jaffe</span>
-<span class="co">#&gt; AE, Collado-Torres L (2019). "recount-brain: a curated repository of</span>
-<span class="co">#&gt; human brain RNA-seq datasets metadata." _bioRxiv_. doi: 10.1101/618025</span>
-<span class="co">#&gt; (URL: https://doi.org/10.1101/618025), &lt;URL:</span>
-<span class="co">#&gt; https://doi.org/10.1101/618025&gt;.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   @Article{,</span>
-<span class="co">#&gt;     title = {recount-brain: a curated repository of human brain RNA-seq datasets metadata},</span>
-<span class="co">#&gt;     author = {Ashkaun Razmara and Shannon E. Ellis and Dustin J. Sokolowski and Sean Davis and Michael D. Wilson and Jeffrey T. Leek and Andrew E. Jaffe and Leonardo Collado-Torres},</span>
-<span class="co">#&gt;     year = {2019},</span>
-<span class="co">#&gt;     journal = {bioRxiv},</span>
-<span class="co">#&gt;     doi = {10.1101/618025},</span>
-<span class="co">#&gt;     url = {https://doi.org/10.1101/618025},</span>
-<span class="co">#&gt;   }</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Imada E, Sanchez DF, Collado-Torres L, Wilks C, Matam T, Dinalankara W,</span>
-<span class="co">#&gt; Stupnikov A, Lobo-Pereira F, Yip C, Yasuzawa K, Kondo N, Itoh M, Suzuki</span>
-<span class="co">#&gt; H, Kasukawa T, Hon CC, de Hoon MJ, Shin JW, Carninci P, Jaffe AE, Leek</span>
-<span class="co">#&gt; JT, Favorov A, Franco GR, Langmead B, Marchionni L (2020). "Recounting</span>
-<span class="co">#&gt; the FANTOM CAGE–Associated Transcriptome." _Genome Research_. doi:</span>
-<span class="co">#&gt; 10.1101/gr.254656.119 (URL: https://doi.org/10.1101/gr.254656.119),</span>
-<span class="co">#&gt; &lt;URL: https://doi.org/10.1101/gr.254656.119&gt;.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   @Article{,</span>
-<span class="co">#&gt;     title = {Recounting the FANTOM CAGE–Associated Transcriptome},</span>
-<span class="co">#&gt;     author = {Eddie-Luidy Imada and Diego Fernando Sanchez and Leonardo Collado-Torres and Christopher Wilks and Tejasvi Matam and Wikum Dinalankara and Aleksey Stupnikov and Francisco Lobo-Pereira and Chi-Wai Yip and Kayoko Yasuzawa and Naoto Kondo and Masayoshi Itoh and Harukazu Suzuki and Takeya Kasukawa and Chung Chau Hon and Michiel JL {de Hoon} and Jay W Shin and Piero Carninci and Andrew E. Jaffe and Jeffrey T. Leek and Alexander Favorov and Glória R Franco and Ben Langmead and Luigi Marchionni},</span>
-<span class="co">#&gt;     year = {2020},</span>
-<span class="co">#&gt;     journal = {Genome Research},</span>
-<span class="co">#&gt;     doi = {10.1101/gr.254656.119},</span>
-<span class="co">#&gt;     url = {https://doi.org/10.1101/gr.254656.119},</span>
-<span class="co">#&gt;   }</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"recount"</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; To cite package 'recount' in publications use:</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Collado-Torres L, Nellore A, Kammers K, Ellis SE, Taub MA, Hansen KD,</span></span>
+<span><span class="co">#&gt;   Jaffe AE, Langmead B, Leek JT (2017). "Reproducible RNA-seq analysis</span></span>
+<span><span class="co">#&gt;   using recount2." _Nature Biotechnology_. doi:10.1038/nbt.3838</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.1038/nbt.3838&gt;,</span></span>
+<span><span class="co">#&gt;   &lt;http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{,</span></span>
+<span><span class="co">#&gt;     title = {Reproducible RNA-seq analysis using recount2},</span></span>
+<span><span class="co">#&gt;     author = {Leonardo Collado-Torres and Abhinav Nellore and Kai Kammers and Shannon E. Ellis and Margaret A. Taub and Kasper D. Hansen and Andrew E. Jaffe and Ben Langmead and Jeffrey T. Leek},</span></span>
+<span><span class="co">#&gt;     year = {2017},</span></span>
+<span><span class="co">#&gt;     journal = {Nature Biotechnology},</span></span>
+<span><span class="co">#&gt;     doi = {10.1038/nbt.3838},</span></span>
+<span><span class="co">#&gt;     url = {http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html},</span></span>
+<span><span class="co">#&gt;   }</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Collado-Torres L, Nellore A, Jaffe AE (2017). "recount workflow:</span></span>
+<span><span class="co">#&gt;   Accessing over 70,000 human RNA-seq samples with Bioconductor</span></span>
+<span><span class="co">#&gt;   [version 1; referees: 1 approved, 2 approved with reservations]."</span></span>
+<span><span class="co">#&gt;   _F1000Research_. doi:10.12688/f1000research.12223.1</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.12688/f1000research.12223.1&gt;,</span></span>
+<span><span class="co">#&gt;   &lt;https://f1000research.com/articles/6-1558/v1&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{,</span></span>
+<span><span class="co">#&gt;     title = {recount workflow: Accessing over 70,000 human RNA-seq samples with Bioconductor [version 1; referees: 1 approved, 2 approved with reservations]},</span></span>
+<span><span class="co">#&gt;     author = {Leonardo Collado-Torres and Abhinav Nellore and Andrew E. Jaffe},</span></span>
+<span><span class="co">#&gt;     year = {2017},</span></span>
+<span><span class="co">#&gt;     journal = {F1000Research},</span></span>
+<span><span class="co">#&gt;     doi = {10.12688/f1000research.12223.1},</span></span>
+<span><span class="co">#&gt;     url = {https://f1000research.com/articles/6-1558/v1},</span></span>
+<span><span class="co">#&gt;   }</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Ellis SE, Collado-Torres L, Jaffe AE, Leek JT (2018). "Improving the</span></span>
+<span><span class="co">#&gt;   value of public RNA-seq expression data by phenotype prediction."</span></span>
+<span><span class="co">#&gt;   _Nucl. Acids Res._. doi:10.1093/nar/gky102</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.1093/nar/gky102&gt;,</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.1093/nar/gky102&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{,</span></span>
+<span><span class="co">#&gt;     title = {Improving the value of public RNA-seq expression data by phenotype prediction},</span></span>
+<span><span class="co">#&gt;     author = {Shannon E. Ellis and Leonardo Collado-Torres and Andrew E. Jaffe and Jeffrey T. Leek},</span></span>
+<span><span class="co">#&gt;     year = {2018},</span></span>
+<span><span class="co">#&gt;     journal = {Nucl. Acids Res.},</span></span>
+<span><span class="co">#&gt;     doi = {10.1093/nar/gky102},</span></span>
+<span><span class="co">#&gt;     url = {https://doi.org/10.1093/nar/gky102},</span></span>
+<span><span class="co">#&gt;   }</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Collado-Torres L, Nellore A, Kammers K, Ellis SE, Taub MA, Hansen KD,</span></span>
+<span><span class="co">#&gt;   Jaffe AE, Langmead B, Leek JT (2023). _Explore and download data from</span></span>
+<span><span class="co">#&gt;   the recount project_. doi:10.18129/B9.bioc.recount</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.18129/B9.bioc.recount&gt;,</span></span>
+<span><span class="co">#&gt;   https://github.com/leekgroup/recount - R package version 1.25.1,</span></span>
+<span><span class="co">#&gt;   &lt;http://www.bioconductor.org/packages/recount&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Manual{,</span></span>
+<span><span class="co">#&gt;     title = {Explore and download data from the recount project},</span></span>
+<span><span class="co">#&gt;     author = {Leonardo Collado-Torres and Abhinav Nellore and Kai Kammers and Shannon E. Ellis and Margaret A. Taub and Kasper D. Hansen and Andrew E. Jaffe and Ben Langmead and Jeffrey T. Leek},</span></span>
+<span><span class="co">#&gt;     year = {2023},</span></span>
+<span><span class="co">#&gt;     url = {http://www.bioconductor.org/packages/recount},</span></span>
+<span><span class="co">#&gt;     note = {https://github.com/leekgroup/recount - R package version 1.25.1},</span></span>
+<span><span class="co">#&gt;     doi = {10.18129/B9.bioc.recount},</span></span>
+<span><span class="co">#&gt;   }</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Frazee AC, Langmead B, Leek JT (2011). "ReCount: A multi-experiment</span></span>
+<span><span class="co">#&gt;   resource of analysis-ready RNA-seq gene count datasets." _BMC</span></span>
+<span><span class="co">#&gt;   Bioinformatics_. doi:10.1186/1471-2105-12-449</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.1186/1471-2105-12-449&gt;,</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.1186/1471-2105-12-449&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{,</span></span>
+<span><span class="co">#&gt;     title = {ReCount: A multi-experiment resource of analysis-ready RNA-seq gene count datasets},</span></span>
+<span><span class="co">#&gt;     author = {Alyssa C. Frazee and Ben Langmead and Jeffrey T. Leek},</span></span>
+<span><span class="co">#&gt;     year = {2011},</span></span>
+<span><span class="co">#&gt;     journal = {BMC Bioinformatics},</span></span>
+<span><span class="co">#&gt;     doi = {10.1186/1471-2105-12-449},</span></span>
+<span><span class="co">#&gt;     url = {https://doi.org/10.1186/1471-2105-12-449},</span></span>
+<span><span class="co">#&gt;   }</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Razmara A, Ellis SE, Sokolowski DJ, Davis S, Wilson MD, Leek JT,</span></span>
+<span><span class="co">#&gt;   Jaffe AE, Collado-Torres L (2019). "recount-brain: a curated</span></span>
+<span><span class="co">#&gt;   repository of human brain RNA-seq datasets metadata." _bioRxiv_.</span></span>
+<span><span class="co">#&gt;   doi:10.1101/618025 &lt;https://doi.org/10.1101/618025&gt;,</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.1101/618025&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{,</span></span>
+<span><span class="co">#&gt;     title = {recount-brain: a curated repository of human brain RNA-seq datasets metadata},</span></span>
+<span><span class="co">#&gt;     author = {Ashkaun Razmara and Shannon E. Ellis and Dustin J. Sokolowski and Sean Davis and Michael D. Wilson and Jeffrey T. Leek and Andrew E. Jaffe and Leonardo Collado-Torres},</span></span>
+<span><span class="co">#&gt;     year = {2019},</span></span>
+<span><span class="co">#&gt;     journal = {bioRxiv},</span></span>
+<span><span class="co">#&gt;     doi = {10.1101/618025},</span></span>
+<span><span class="co">#&gt;     url = {https://doi.org/10.1101/618025},</span></span>
+<span><span class="co">#&gt;   }</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Imada E, Sanchez DF, Collado-Torres L, Wilks C, Matam T, Dinalankara</span></span>
+<span><span class="co">#&gt;   W, Stupnikov A, Lobo-Pereira F, Yip C, Yasuzawa K, Kondo N, Itoh M,</span></span>
+<span><span class="co">#&gt;   Suzuki H, Kasukawa T, Hon CC, de Hoon MJ, Shin JW, Carninci P, Jaffe</span></span>
+<span><span class="co">#&gt;   AE, Leek JT, Favorov A, Franco GR, Langmead B, Marchionni L (2020).</span></span>
+<span><span class="co">#&gt;   "Recounting the FANTOM CAGE–Associated Transcriptome." _Genome</span></span>
+<span><span class="co">#&gt;   Research_. doi:10.1101/gr.254656.119</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.1101/gr.254656.119&gt;,</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.1101/gr.254656.119&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{,</span></span>
+<span><span class="co">#&gt;     title = {Recounting the FANTOM CAGE–Associated Transcriptome},</span></span>
+<span><span class="co">#&gt;     author = {Eddie-Luidy Imada and Diego Fernando Sanchez and Leonardo Collado-Torres and Christopher Wilks and Tejasvi Matam and Wikum Dinalankara and Aleksey Stupnikov and Francisco Lobo-Pereira and Chi-Wai Yip and Kayoko Yasuzawa and Naoto Kondo and Masayoshi Itoh and Harukazu Suzuki and Takeya Kasukawa and Chung Chau Hon and Michiel JL {de Hoon} and Jay W Shin and Piero Carninci and Andrew E. Jaffe and Jeffrey T. Leek and Alexander Favorov and Glória R Franco and Ben Langmead and Luigi Marchionni},</span></span>
+<span><span class="co">#&gt;     year = {2020},</span></span>
+<span><span class="co">#&gt;     journal = {Genome Research},</span></span>
+<span><span class="co">#&gt;     doi = {10.1101/gr.254656.119},</span></span>
+<span><span class="co">#&gt;     url = {https://doi.org/10.1101/gr.254656.119},</span></span>
+<span><span class="co">#&gt;   }</span></span></code></pre></div>
 <p>Please note that the <code>recount</code> was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.</p>
 </div>
-<div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
-<p>Please note that the recount project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<div class="section level2">
+<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h2>
+<p>Please note that the recount project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
-<div id="development-tools" class="section level2">
-<h2 class="hasAnchor">
-<a href="#development-tools" class="anchor"></a>Development tools</h2>
+<div class="section level2">
+<h2 id="development-tools">Development tools<a class="anchor" aria-label="anchor" href="#development-tools"></a>
+</h2>
 <ul>
-<li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes">remotes</a></em>, <em><a href="https://github.com/r-hub/sysreqs">sysreqs</a></em> and <em><a href="https://CRAN.R-project.org/package=rcmdcheck">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.12/BiocCheck">BiocCheck</a></em>.</li>
-<li>Code coverage assessment is possible thanks to <a href="https://codecov.io/gh">codecov</a> and <em><a href="https://CRAN.R-project.org/package=covr">covr</a></em>.</li>
-<li>The <a href="http://leekgroup.github.io/recount">documentation website</a> is automatically updated thanks to <em><a href="https://CRAN.R-project.org/package=pkgdown">pkgdown</a></em>.</li>
-<li>The code is styled automatically thanks to <em><a href="https://CRAN.R-project.org/package=styler">styler</a></em>.</li>
-<li>The documentation is formatted thanks to <em><a href="https://CRAN.R-project.org/package=devtools">devtools</a></em> and <em><a href="https://CRAN.R-project.org/package=roxygen2">roxygen2</a></em>.</li>
+<li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/" class="external-link">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis" class="external-link">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes" class="external-link">remotes</a></em>, <em><a href="https://github.com/r-hub/sysreqs" class="external-link">sysreqs</a></em> and <em><a href="https://CRAN.R-project.org/package=rcmdcheck" class="external-link">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/" class="external-link">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.16/BiocCheck" class="external-link">BiocCheck</a></em>.</li>
+<li>Code coverage assessment is possible thanks to <a href="https://codecov.io/gh" class="external-link">codecov</a> and <em><a href="https://CRAN.R-project.org/package=covr" class="external-link">covr</a></em>.</li>
+<li>The <a href="http://leekgroup.github.io/recount" class="external-link">documentation website</a> is automatically updated thanks to <em><a href="https://CRAN.R-project.org/package=pkgdown" class="external-link">pkgdown</a></em>.</li>
+<li>The code is styled automatically thanks to <em><a href="https://CRAN.R-project.org/package=styler" class="external-link">styler</a></em>.</li>
+<li>The documentation is formatted thanks to <em><a href="https://CRAN.R-project.org/package=devtools" class="external-link">devtools</a></em> and <em><a href="https://CRAN.R-project.org/package=roxygen2" class="external-link">roxygen2</a></em>.</li>
 </ul>
 <p>For more details, check the <code>dev</code> directory.</p>
-<p>This package was developed using <em><a href="https://bioconductor.org/packages/3.12/biocthis">biocthis</a></em>.</p>
+<p>This package was developed using <em><a href="https://bioconductor.org/packages/3.16/biocthis" class="external-link">biocthis</a></em>.</p>
 </div>
-<div id="teams-involved" class="section level2">
-<h2 class="hasAnchor">
-<a href="#teams-involved" class="anchor"></a>Teams involved</h2>
+<div class="section level2">
+<h2 id="teams-involved">Teams involved<a class="anchor" aria-label="anchor" href="#teams-involved"></a>
+</h2>
 <ul>
 <li>
-<a href="http://jtleek.com/">Jeff Leek’s lab at JHBSPH Biostatistics Department</a>,</li>
+<a href="http://jtleek.com/" class="external-link">Jeff Leek’s lab at JHBSPH Biostatistics Department</a>,</li>
 <li>
-<a href="http://www.langmead-lab.org/">Ben Langmead’s lab at JHU Computer Science</a>,</li>
+<a href="http://www.langmead-lab.org/" class="external-link">Ben Langmead’s lab at JHU Computer Science</a>,</li>
 <li>
-<a href="https://www.hansenlab.org/">Kasper Daniel Hansen’s lab at JHBSPH Biostatistics Department</a>,</li>
+<a href="https://www.hansenlab.org/" class="external-link">Kasper Daniel Hansen’s lab at JHBSPH Biostatistics Department</a>,</li>
 <li>
-<a href="http://lcolladotor.github.io/">Leonardo Collado-Torres</a> and <a href="http://aejaffe.com/">Andrew E. Jaffe</a> from <a href="https://www.libd.org/">LIBD</a>,</li>
+<a href="http://lcolladotor.github.io/" class="external-link">Leonardo Collado-Torres</a> and <a href="http://aejaffe.com/" class="external-link">Andrew E. Jaffe</a> from <a href="https://www.libd.org/" class="external-link">LIBD</a>,</li>
 <li>
-<a href="http://nellore.bio/">Abhinav Nellore’s lab at OHSU</a>,</li>
-<li>Data hosted by <a href="https://www.sciserver.org/">SciServer at JHU</a>.</li>
+<a href="http://nellore.bio/" class="external-link">Abhinav Nellore’s lab at OHSU</a>,</li>
+<li>Data hosted by <a href="https://www.sciserver.org/" class="external-link">SciServer at JHU</a>.</li>
 </ul>
-<table class="table"><tbody><tr class="odd">
-<td><a href="http://www.langmead-lab.org/"><img src="http://www.langmead-lab.org/wp-content/uploads/2014/01/Screen-Shot-2014-02-02-at-5.20.13-PM-1024x199.png" width="250px"></a></td>
-<td><a href="https://www.libd.org/"><img src="http://lcolladotor.github.io/img/LIBD_logo.jpg" width="250px"></a></td>
-<td><a href="http://nellore.bio/"><img src="https://seekvectorlogo.net/wp-content/uploads/2018/08/oregon-health-science-university-ohsu-vector-logo.png" width="250px"></a></td>
-<td><a href="https://www.sciserver.org/"><img src="https://skyserver.sdss.org/dr14/en/images/sciserver_logo_inverted_vertical.png" width="250px"></a></td>
-</tr></tbody></table>
+<table class="table">
+<colgroup>
+<col width="29%">
+<col width="18%">
+<col width="28%">
+<col width="24%">
+</colgroup>
+<tbody><tr class="odd">
+<td><a href="http://www.langmead-lab.org/" class="external-link"><img src="http://www.langmead-lab.org/wp-content/uploads/2014/01/Screen-Shot-2014-02-02-at-5.20.13-PM-1024x199.png" width="250px"></a></td>
+<td><a href="https://www.libd.org/" class="external-link"><img src="http://lcolladotor.github.io/img/LIBD_logo.jpg" width="250px"></a></td>
+<td><a href="http://nellore.bio/" class="external-link"><img src="https://seekvectorlogo.net/wp-content/uploads/2018/08/oregon-health-science-university-ohsu-vector-logo.png" width="250px"></a></td>
+<td><a href="https://www.sciserver.org/" class="external-link"><img src="https://skyserver.sdss.org/dr14/en/images/sciserver_logo_inverted_vertical.png" width="250px"></a></td>
+</tr></tbody>
+</table>
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-78422749-1"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -307,66 +314,75 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from BIOC at <br><a href="https://www.bioconductor.org/packages/recount">https://​www.bioconductor.org/​packages/​recount</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/leekgroup/recount/">https://​github.com/​leekgroup/​recount/​</a>
-</li>
-<li>Report a bug at <br><a href="https://support.bioconductor.org/t/recount/">https://​support.bioconductor.org/​t/​recount/​</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/Artistic-2.0">Artistic-2.0</a></li>
-</ul>
-</div>
-<div class="community">
-<h2>Community</h2>
-<ul class="list-unstyled">
-<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
-<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
-</ul>
-</div>
-<div class="citation">
-<h2>Citation</h2>
-<ul class="list-unstyled">
-<li><a href="authors.html">Citing recount</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Leonardo Collado-Torres <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2140-308X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Jeffrey T. Leek <br><small class="roles"> Author, thesis advisor </small> <a href="https://orcid.org/0000-0002-2873-2671" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="https://www.bioconductor.org/packages/recount" class="external-link">View on Bioconductor</a></li>
+<li><a href="https://github.com/leekgroup/recount/" class="external-link">Browse source code</a></li>
+<li><a href="https://support.bioconductor.org/t/recount/" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#stable"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
-<li><a href="https://bioconductor.org/checkResults/release/bioc-LATEST/recount"><img src="http://www.bioconductor.org/shields/build/release/bioc/recount.svg" alt="BioC status"></a></li>
-<li><a href="https://bioconductor.org/checkResults/devel/bioc-LATEST/recount"><img src="http://www.bioconductor.org/shields/build/devel/bioc/recount.svg" alt="BioC dev status"></a></li>
-<li><a href="https://codecov.io/gh/leekgroup/recount?branch=master"><img src="https://codecov.io/gh/leekgroup/recount/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/leekgroup/recount/actions"><img src="https://github.com/leekgroup/recount/workflows/R-CMD-check-bioc/badge.svg" alt="R build status"></a></li>
-<li><a href="https://support.bioconductor.org/t/recount/"><img src="http://www.bioconductor.org/shields/posts/recount.svg" alt="Support site activity, last 6 months: tagged questions/avg. answers per question/avg. comments per question/accepted answers, or 0 if no tagged posts."></a></li>
-<li><a href="https://github.com/leekgroup/recount/issues"><img src="https://img.shields.io/github/issues/leekgroup/recount" alt="GitHub issues"></a></li>
+<li><a href="https://www.r-project.org/Licenses/Artistic-2.0" class="external-link">Artistic-2.0</a></li>
 </ul>
 </div>
+
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+<li><a href="SUPPORT.html">Getting help</a></li>
+</ul>
 </div>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing recount</a></li>
+</ul>
+</div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Leonardo Collado-Torres <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2140-308X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Jeffrey T. Leek <br><small class="roles"> Author, thesis advisor </small> <a href="https://orcid.org/0000-0002-2873-2671" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.tidyverse.org/lifecycle/#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="https://bioconductor.org/checkResults/release/bioc-LATEST/recount" class="external-link"><img src="http://www.bioconductor.org/shields/build/release/bioc/recount.svg" alt="Bioc release status"></a></li>
+<li><a href="https://bioconductor.org/checkResults/devel/bioc-LATEST/recount" class="external-link"><img src="http://www.bioconductor.org/shields/build/devel/bioc/recount.svg" alt="Bioc devel status"></a></li>
+<li><a href="https://codecov.io/gh/leekgroup/recount?branch=master" class="external-link"><img src="https://codecov.io/gh/leekgroup/recount/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/leekgroup/recount/actions" class="external-link"><img src="https://github.com/leekgroup/recount/workflows/R-CMD-check-bioc/badge.svg" alt="R build status"></a></li>
+<li><a href="https://github.com/leekgroup/recount/issues" class="external-link"><img src="https://img.shields.io/github/issues/leekgroup/recount" alt="GitHub issues"></a></li>
+<li><a href="http://bioconductor.org/packages/stats/bioc/recount/" class="external-link"><img src="https://bioconductor.org/shields/downloads/release/recount.svg" alt="Bioc downloads rank"></a></li>
+<li><a href="https://support.bioconductor.org/tag/recount" class="external-link"><img src="https://bioconductor.org/shields/posts/recount.svg" alt="Bioc support"></a></li>
+<li><a href="https://bioconductor.org/packages/release/bioc/html/recount.html#since" class="external-link"><img src="https://bioconductor.org/shields/years-in-bioc/recount.svg" alt="Bioc history"></a></li>
+<li><a href="http://bioconductor.org/checkResults/devel/bioc-LATEST/recount/" class="external-link"><img src="https://bioconductor.org/shields/lastcommit/devel/bioc/recount.svg" alt="Bioc last commit"></a></li>
+<li><a href="https://bioconductor.org/packages/release/bioc/html/recount.html#since" class="external-link"><img src="https://bioconductor.org/shields/dependencies/release/recount.svg" alt="Bioc dependencies"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
+  <p></p>
+<p>Developed by Leonardo Collado-Torres, Jeffrey T. Leek.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -374,6 +390,8 @@
 
   
 
+
+  
 
   </body>
 </html>
