@@ -20,7 +20,7 @@ defined by findRegions."><meta property="og:image" content="/logo.png"><!-- math
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.25.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.27.0</span>
       </span>
     </div>
 
@@ -154,14 +154,14 @@ way.</p></dd>
 <span class="r-in"><span>        maxClusterGap <span class="op">=</span> <span class="fl">3000L</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-03-10 15:20:53 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-03-10 15:20:56 loadCoverage: applying the cutoff to the merged data</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-03-10 15:20:57 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-03-10 15:20:57 findRegions: identifying potential segments</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-03-10 15:20:57 findRegions: segmenting information</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-03-10 15:20:57 .getSegmentsRle: segmenting with cutoff(s) 5</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-03-10 15:20:57 findRegions: identifying candidate regions</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-03-10 15:20:58 findRegions: identifying region clusters</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:06:20 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:06:23 loadCoverage: applying the cutoff to the merged data</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:06:23 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:06:23 findRegions: identifying potential segments</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:06:23 findRegions: segmenting information</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:06:23 .getSegmentsRle: segmenting with cutoff(s) 5</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:06:23 findRegions: identifying candidate regions</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:06:24 findRegions: identifying region clusters</span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="co">## Define the regions for multiple chrs</span></span></span>
 <span class="r-in"><span><span class="va">regs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">chrs</span>, <span class="va">expressed_regions</span>, project <span class="op">=</span> <span class="st">"SRP009615"</span>, cutoff <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span></span></span>
