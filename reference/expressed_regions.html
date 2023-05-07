@@ -154,14 +154,14 @@ way.</p></dd>
 <span class="r-in"><span>        maxClusterGap <span class="op">=</span> <span class="fl">3000L</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:19:05.969959 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:19:09.459469 loadCoverage: applying the cutoff to the merged data</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:19:09.801529 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:19:09.803262 findRegions: identifying potential segments</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:19:09.805901 findRegions: segmenting information</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:19:09.806143 .getSegmentsRle: segmenting with cutoff(s) 5</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:19:09.84858 findRegions: identifying candidate regions</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:19:10.723646 findRegions: identifying region clusters</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 05:53:36.849574 loadCoverage: loading BigWig file http://duffel.rail.bio/recount/SRP009615/bw/mean_SRP009615.bw</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 05:53:40.580696 loadCoverage: applying the cutoff to the merged data</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 05:53:40.993329 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 05:53:40.995705 findRegions: identifying potential segments</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 05:53:40.999846 findRegions: segmenting information</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 05:53:41.000176 .getSegmentsRle: segmenting with cutoff(s) 5</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 05:53:41.044234 findRegions: identifying candidate regions</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 05:53:41.283391 findRegions: identifying region clusters</span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="co">## Define the regions for multiple chrs</span></span></span>
 <span class="r-in"><span><span class="va">regs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">chrs</span>, <span class="va">expressed_regions</span>, project <span class="op">=</span> <span class="st">"SRP009615"</span>, cutoff <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span></span></span>

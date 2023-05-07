@@ -125,7 +125,6 @@
 <p>Below is the citation output from using <code>citation('recount')</code> in R. Please run this yourself to check for any updates on how to cite <strong>recount</strong>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"recount"</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; To cite package 'recount' in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   Collado-Torres L, Nellore A, Kammers K, Ellis SE, Taub MA, Hansen KD,</span></span>
@@ -184,7 +183,7 @@
 <span><span class="co">#&gt;   Jaffe AE, Langmead B, Leek JT (2023). _Explore and download data from</span></span>
 <span><span class="co">#&gt;   the recount project_. doi:10.18129/B9.bioc.recount</span></span>
 <span><span class="co">#&gt;   &lt;https://doi.org/10.18129/B9.bioc.recount&gt;,</span></span>
-<span><span class="co">#&gt;   https://github.com/leekgroup/recount - R package version 1.25.1,</span></span>
+<span><span class="co">#&gt;   https://github.com/leekgroup/recount - R package version 1.27.0,</span></span>
 <span><span class="co">#&gt;   &lt;http://www.bioconductor.org/packages/recount&gt;.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
@@ -194,7 +193,7 @@
 <span><span class="co">#&gt;     author = {Leonardo Collado-Torres and Abhinav Nellore and Kai Kammers and Shannon E. Ellis and Margaret A. Taub and Kasper D. Hansen and Andrew E. Jaffe and Ben Langmead and Jeffrey T. Leek},</span></span>
 <span><span class="co">#&gt;     year = {2023},</span></span>
 <span><span class="co">#&gt;     url = {http://www.bioconductor.org/packages/recount},</span></span>
-<span><span class="co">#&gt;     note = {https://github.com/leekgroup/recount - R package version 1.25.1},</span></span>
+<span><span class="co">#&gt;     note = {https://github.com/leekgroup/recount - R package version 1.27.0},</span></span>
 <span><span class="co">#&gt;     doi = {10.18129/B9.bioc.recount},</span></span>
 <span><span class="co">#&gt;   }</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -262,14 +261,14 @@
 <h2 id="development-tools">Development tools<a class="anchor" aria-label="anchor" href="#development-tools"></a>
 </h2>
 <ul>
-<li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/" class="external-link">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis" class="external-link">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes" class="external-link">remotes</a></em>, <em><a href="https://github.com/r-hub/sysreqs" class="external-link">sysreqs</a></em> and <em><a href="https://CRAN.R-project.org/package=rcmdcheck" class="external-link">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/" class="external-link">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.16/BiocCheck" class="external-link">BiocCheck</a></em>.</li>
+<li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/" class="external-link">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis" class="external-link">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes" class="external-link">remotes</a></em>, <em><a href="https://github.com/r-hub/sysreqs" class="external-link">sysreqs</a></em> and <em><a href="https://CRAN.R-project.org/package=rcmdcheck" class="external-link">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/" class="external-link">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.17/BiocCheck" class="external-link">BiocCheck</a></em>.</li>
 <li>Code coverage assessment is possible thanks to <a href="https://codecov.io/gh" class="external-link">codecov</a> and <em><a href="https://CRAN.R-project.org/package=covr" class="external-link">covr</a></em>.</li>
 <li>The <a href="http://leekgroup.github.io/recount" class="external-link">documentation website</a> is automatically updated thanks to <em><a href="https://CRAN.R-project.org/package=pkgdown" class="external-link">pkgdown</a></em>.</li>
 <li>The code is styled automatically thanks to <em><a href="https://CRAN.R-project.org/package=styler" class="external-link">styler</a></em>.</li>
 <li>The documentation is formatted thanks to <em><a href="https://CRAN.R-project.org/package=devtools" class="external-link">devtools</a></em> and <em><a href="https://CRAN.R-project.org/package=roxygen2" class="external-link">roxygen2</a></em>.</li>
 </ul>
 <p>For more details, check the <code>dev</code> directory.</p>
-<p>This package was developed using <em><a href="https://bioconductor.org/packages/3.16/biocthis" class="external-link">biocthis</a></em>.</p>
+<p>This package was developed using <em><a href="https://bioconductor.org/packages/3.17/biocthis" class="external-link">biocthis</a></em>.</p>
 </div>
 <div class="section level2">
 <h2 id="teams-involved">Teams involved<a class="anchor" aria-label="anchor" href="#teams-involved"></a>
@@ -357,17 +356,18 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
 <li><a href="https://bioconductor.org/checkResults/release/bioc-LATEST/recount" class="external-link"><img src="http://www.bioconductor.org/shields/build/release/bioc/recount.svg" alt="Bioc release status"></a></li>
 <li><a href="https://bioconductor.org/checkResults/devel/bioc-LATEST/recount" class="external-link"><img src="http://www.bioconductor.org/shields/build/devel/bioc/recount.svg" alt="Bioc devel status"></a></li>
-<li><a href="https://codecov.io/gh/leekgroup/recount?branch=master" class="external-link"><img src="https://codecov.io/gh/leekgroup/recount/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/leekgroup/recount/actions" class="external-link"><img src="https://github.com/leekgroup/recount/workflows/R-CMD-check-bioc/badge.svg" alt="R build status"></a></li>
-<li><a href="https://github.com/leekgroup/recount/issues" class="external-link"><img src="https://img.shields.io/github/issues/leekgroup/recount" alt="GitHub issues"></a></li>
 <li><a href="http://bioconductor.org/packages/stats/bioc/recount/" class="external-link"><img src="https://bioconductor.org/shields/downloads/release/recount.svg" alt="Bioc downloads rank"></a></li>
 <li><a href="https://support.bioconductor.org/tag/recount" class="external-link"><img src="https://bioconductor.org/shields/posts/recount.svg" alt="Bioc support"></a></li>
 <li><a href="https://bioconductor.org/packages/release/bioc/html/recount.html#since" class="external-link"><img src="https://bioconductor.org/shields/years-in-bioc/recount.svg" alt="Bioc history"></a></li>
 <li><a href="http://bioconductor.org/checkResults/devel/bioc-LATEST/recount/" class="external-link"><img src="https://bioconductor.org/shields/lastcommit/devel/bioc/recount.svg" alt="Bioc last commit"></a></li>
 <li><a href="https://bioconductor.org/packages/release/bioc/html/recount.html#since" class="external-link"><img src="https://bioconductor.org/shields/dependencies/release/recount.svg" alt="Bioc dependencies"></a></li>
+<li><a href="https://codecov.io/gh/leekgroup/recount?branch=devel" class="external-link"><img src="https://codecov.io/gh/leekgroup/recount/branch/devel/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/leekgroup/recount/actions" class="external-link"><img src="https://github.com/leekgroup/recount/workflows/R-CMD-check-bioc/badge.svg" alt="R build status"></a></li>
+<li><a href="https://github.com/leekgroup/recount/issues" class="external-link"><img src="https://img.shields.io/github/issues/leekgroup/recount" alt="GitHub issues"></a></li>
+<li><a href="https://github.com/leekgroup/recount/pulls" class="external-link"><img src="https://img.shields.io/github/issues-pr/leekgroup/recount" alt="GitHub pulls"></a></li>
 </ul>
 </div>
 
