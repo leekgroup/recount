@@ -44,7 +44,6 @@ Bioconductor support forum details how to obtain the latest gene symbol
 mappings: \url{https://support.bioconductor.org/p/126148/#126173}.
 }
 \examples{
-
 \dontrun{
 ## Reproduce gene level information
 genes <- reproduce_ranges()

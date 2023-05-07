@@ -26,8 +26,9 @@
 #' download_retry(
 #'     recount_url$url[which(recount_url$file_name == "files_info.tsv")[1]]
 #' )
-download_retry <- function(url, destfile = basename(url), mode = "wb",
-    N.TRIES = 3L, ...) {
+download_retry <- function(
+        url, destfile = basename(url), mode = "wb",
+        N.TRIES = 3L, ...) {
     ## Based on http://bioconductor.org/developers/how-to/web-query/
     ## and downloader::download()
 

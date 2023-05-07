@@ -61,8 +61,9 @@
 #' ## Obtain all the recount_brain_v2 metadata if you want to
 #' ## explore the metadata manually
 #' recount_brain_v2 <- add_metadata(source = "recount_brain_v2")
-add_metadata <- function(rse, source = "recount_brain_v2", is_tcga = FALSE,
-    verbose = TRUE) {
+add_metadata <- function(
+        rse, source = "recount_brain_v2", is_tcga = FALSE,
+        verbose = TRUE) {
     stopifnot(length(source) == 1)
 
     ## For a NOTE in R CMD check

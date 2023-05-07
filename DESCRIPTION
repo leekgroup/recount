@@ -76,5 +76,5 @@ URL: https://github.com/leekgroup/recount
 BugReports: https://support.bioconductor.org/t/recount/
 biocViews: Coverage, DifferentialExpression, GeneExpression, RNASeq, Sequencing,
     Software, DataImport, ImmunoOncology
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)

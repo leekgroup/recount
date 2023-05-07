@@ -6,17 +6,11 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![Bioc release
 status](http://www.bioconductor.org/shields/build/release/bioc/recount.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/recount)
 [![Bioc devel
 status](http://www.bioconductor.org/shields/build/devel/bioc/recount.svg)](https://bioconductor.org/checkResults/devel/bioc-LATEST/recount)
-[![Codecov test
-coverage](https://codecov.io/gh/leekgroup/recount/branch/master/graph/badge.svg)](https://codecov.io/gh/leekgroup/recount?branch=master)
-[![R build
-status](https://github.com/leekgroup/recount/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/leekgroup/recount/actions)
-[![GitHub
-issues](https://img.shields.io/github/issues/leekgroup/recount)](https://github.com/leekgroup/recount/issues)
 [![Bioc downloads
 rank](https://bioconductor.org/shields/downloads/release/recount.svg)](http://bioconductor.org/packages/stats/bioc/recount/)
 [![Bioc
@@ -27,6 +21,14 @@ history](https://bioconductor.org/shields/years-in-bioc/recount.svg)](https://bi
 commit](https://bioconductor.org/shields/lastcommit/devel/bioc/recount.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/recount/)
 [![Bioc
 dependencies](https://bioconductor.org/shields/dependencies/release/recount.svg)](https://bioconductor.org/packages/release/bioc/html/recount.html#since)
+[![Codecov test
+coverage](https://codecov.io/gh/leekgroup/recount/branch/devel/graph/badge.svg)](https://codecov.io/gh/leekgroup/recount?branch=devel)
+[![R build
+status](https://github.com/leekgroup/recount/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/leekgroup/recount/actions)
+[![GitHub
+issues](https://img.shields.io/github/issues/leekgroup/recount)](https://github.com/leekgroup/recount/issues)
+[![GitHub
+pulls](https://img.shields.io/github/issues-pr/leekgroup/recount)](https://github.com/leekgroup/recount/pulls)
 <!-- badges: end -->
 
 Explore and download data from the recount project available at the
@@ -69,7 +71,6 @@ Please run this yourself to check for any updates on how to cite
 
 ``` r
 print(citation("recount"), bibtex = TRUE)
-#> 
 #> To cite package 'recount' in publications use:
 #> 
 #>   Collado-Torres L, Nellore A, Kammers K, Ellis SE, Taub MA, Hansen KD,
@@ -128,7 +129,7 @@ print(citation("recount"), bibtex = TRUE)
 #>   Jaffe AE, Langmead B, Leek JT (2023). _Explore and download data from
 #>   the recount project_. doi:10.18129/B9.bioc.recount
 #>   <https://doi.org/10.18129/B9.bioc.recount>,
-#>   https://github.com/leekgroup/recount - R package version 1.25.1,
+#>   https://github.com/leekgroup/recount - R package version 1.27.0,
 #>   <http://www.bioconductor.org/packages/recount>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -138,7 +139,7 @@ print(citation("recount"), bibtex = TRUE)
 #>     author = {Leonardo Collado-Torres and Abhinav Nellore and Kai Kammers and Shannon E. Ellis and Margaret A. Taub and Kasper D. Hansen and Andrew E. Jaffe and Ben Langmead and Jeffrey T. Leek},
 #>     year = {2023},
 #>     url = {http://www.bioconductor.org/packages/recount},
-#>     note = {https://github.com/leekgroup/recount - R package version 1.25.1},
+#>     note = {https://github.com/leekgroup/recount - R package version 1.27.0},
 #>     doi = {10.18129/B9.bioc.recount},
 #>   }
 #> 
@@ -218,7 +219,7 @@ By contributing to this project, you agree to abide by its terms.
   *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)* customized
   to use [Bioconductor’s docker
   containers](https://www.bioconductor.org/help/docker/) and
-  *[BiocCheck](https://bioconductor.org/packages/3.16/BiocCheck)*.
+  *[BiocCheck](https://bioconductor.org/packages/3.17/BiocCheck)*.
 - Code coverage assessment is possible thanks to
   [codecov](https://codecov.io/gh) and
   *[covr](https://CRAN.R-project.org/package=covr)*.
@@ -234,7 +235,7 @@ By contributing to this project, you agree to abide by its terms.
 For more details, check the `dev` directory.
 
 This package was developed using
-*[biocthis](https://bioconductor.org/packages/3.16/biocthis)*.
+*[biocthis](https://bioconductor.org/packages/3.17/biocthis)*.
 
 ## Teams involved
 

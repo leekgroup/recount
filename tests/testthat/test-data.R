@@ -155,7 +155,6 @@ if (.Platform$OS.type != "windows") {
                 )
             )
         })
-
     }
 }
 
@@ -212,7 +211,6 @@ if (!is.null(snap)) {
         expect_equal(snap_gtex$type == "GTEx:I", TRUE)
         expect_equal(snap_tcga$type == "TCGA:I", TRUE)
     })
-
 } else {
     warning("Snaptron_query() is not working! See https://github.com/ChristopherWilks/snaptron/issues/17 for more details.")
 }

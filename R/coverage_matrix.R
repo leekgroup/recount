@@ -68,9 +68,10 @@
 #'     ## One row per region
 #'     identical(length(regions), nrow(rse))
 #' }
-coverage_matrix <- function(project, chr, regions, chunksize = 1000,
-    bpparam = NULL, outdir = NULL, chrlen = NULL, verbose = TRUE,
-    verboseLoad = verbose, scale = TRUE, round = FALSE, ...) {
+coverage_matrix <- function(
+        project, chr, regions, chunksize = 1000,
+        bpparam = NULL, outdir = NULL, chrlen = NULL, verbose = TRUE,
+        verboseLoad = verbose, scale = TRUE, round = FALSE, ...) {
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(is.character(chr) & length(chr) == 1)

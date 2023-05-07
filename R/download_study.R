@@ -99,8 +99,9 @@
 #' expect_equivalent(rse_gene, rse_gene_SRP009615)
 #' }
 #'
-download_study <- function(project, type = "rse-gene", outdir = project,
-    download = TRUE, version = 2, ...) {
+download_study <- function(
+        project, type = "rse-gene", outdir = project,
+        download = TRUE, version = 2, ...) {
     ## Check inputs
     stopifnot(is.character(project) & length(project) == 1)
     stopifnot(version %in% c(1, 2))

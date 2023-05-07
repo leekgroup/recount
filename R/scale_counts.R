@@ -67,9 +67,9 @@
 #' identical(rse_gene, rse_gene_SRP009615)
 #' }
 #'
-scale_counts <- function(rse, by = "auc", targetSize = 4e7, L = 100,
-    factor_only = FALSE, round = TRUE) {
-
+scale_counts <- function(
+        rse, by = "auc", targetSize = 4e7, L = 100,
+        factor_only = FALSE, round = TRUE) {
     ## Check inputs
     stopifnot(is(rse, "RangedSummarizedExperiment"))
     stopifnot(length(targetSize) == 1)

@@ -65,21 +65,22 @@
 #'
 #' ## Download all the latest predictions
 #' PredictedPhenotypes <- add_predictions()
-add_predictions <- function(rse, is_tcga = FALSE, version = "latest",
-    verbose = TRUE) {
-
+add_predictions <- function(
+        rse, is_tcga = FALSE, version = "latest",
+        verbose = TRUE) {
     ## For a NOTE in R CMD check
     PredictedPhenotypes <- NULL
     if (version == "latest") {
-        version <- tryCatch(suppressWarnings(readLines(
-            "https://raw.githubusercontent.com/leekgroup/recount-website/master/predictions/latestVersion.txt"
-        ))[1],
-        error = function(e) {
-            print(e)
-            v <- "0.0.05"
-            message(paste(Sys.time(), "Failed to check the latest version, using version", v))
-            return(v)
-        }
+        version <- tryCatch(
+            suppressWarnings(readLines(
+                "https://raw.githubusercontent.com/leekgroup/recount-website/master/predictions/latestVersion.txt"
+            ))[1],
+            error = function(e) {
+                print(e)
+                v <- "0.0.05"
+                message(paste(Sys.time(), "Failed to check the latest version, using version", v))
+                return(v)
+            }
         )
     }
 

@@ -25,8 +25,9 @@
 #'
 #' @examples
 #' geo_info("GSM836270")
-geo_info <- function(geoid, verbose = FALSE, sleep = 1 / 2, getGPL = FALSE,
-    destdir = tempdir(), ...) {
+geo_info <- function(
+        geoid, verbose = FALSE, sleep = 1 / 2, getGPL = FALSE,
+        destdir = tempdir(), ...) {
     if (is.na(geoid)) {
         return(NULL)
     }
