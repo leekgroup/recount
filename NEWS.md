@@ -1,3 +1,11 @@
+# recount 1.29.1
+
+BUG FIXES
+
+* Merged a pull request by @hpages which addresses some changes
+to GenomicFeatures. See https://github.com/leekgroup/recount/pull/24
+for details.
+
 # recount 1.19.2
 
 BUG FIXES
