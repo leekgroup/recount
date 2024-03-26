@@ -45,6 +45,7 @@ Suggests:
     sessioninfo,
     EnsDb.Hsapiens.v79,
     GenomicFeatures,
+    txdbmaker,
     knitr (>= 1.6),
     org.Hs.eg.db,
     RefManageR,

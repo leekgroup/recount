@@ -64,6 +64,7 @@ reproduce_ranges <- function(level = "gene", db = "Gencode.v25") {
     ## Load required packages
     .load_check(c("GenomicFeatures", "org.Hs.eg.db"))
     if (db == "Gencode.v25") {
+        .load_check("txdbmaker")
         temp_gencode <- file.path(
             tempdir(),
             "gencode.v25.annotation.gff3.gz"
@@ -75,7 +76,7 @@ reproduce_ranges <- function(level = "gene", db = "Gencode.v25") {
             ),
             destfile = temp_gencode
         )
-        txdb <- GenomicFeatures::makeTxDbFromGFF(temp_gencode,
+        txdb <- txdbmaker::makeTxDbFromGFF(temp_gencode,
             format = "gff3", organism = "Homo sapiens"
         )
     } else if (db == "EnsDb.Hsapiens.v79") {
