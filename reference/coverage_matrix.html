@@ -19,7 +19,7 @@ reads for a given SRA study."><meta property="og:image" content="/logo.png"><!--
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">recount</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.31.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.31.2</span>
       </span>
     </div>
 
@@ -196,39 +196,35 @@ Note that you will need to run <a href="scale_counts.html">scale_counts</a> afte
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="va">.Platform</span><span class="op">$</span><span class="va">OS.type</span> <span class="op">!=</span> <span class="st">"windows"</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>    <span class="co">## Workaround for https://github.com/lawremi/rtracklayer/issues/83</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="download_study.html">download_study</a></span><span class="op">(</span><span class="st">"SRP002001"</span>, type <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="download_study.html">download_study</a></span><span class="op">(</span><span class="st">"SRP002001"</span>, type <span class="op">=</span> <span class="st">"samples"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">## Workaround for https://github.com/lawremi/rtracklayer/issues/83</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="download_study.html">download_study</a></span><span class="op">(</span><span class="st">"SRP002001"</span>, type <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:31.654615 downloading file mean_SRP002001.bw to SRP002001/bw</span>
+<span class="r-in"><span><span class="fu"><a href="download_study.html">download_study</a></span><span class="op">(</span><span class="st">"SRP002001"</span>, type <span class="op">=</span> <span class="st">"samples"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:32.952879 downloading file SRR036661.bw to SRP002001/bw</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>    <span class="co">## Reading BigWig files is not supported by rtracklayer on Windows</span></span></span>
-<span class="r-in"><span>    <span class="co">## Define expressed regions for study DRP002835, chrY</span></span></span>
-<span class="r-in"><span>    <span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="expressed_regions.html">expressed_regions</a></span><span class="op">(</span><span class="st">"SRP002001"</span>, <span class="st">"chrY"</span>,</span></span>
-<span class="r-in"><span>        cutoff <span class="op">=</span> <span class="fl">5L</span>,</span></span>
-<span class="r-in"><span>        maxClusterGap <span class="op">=</span> <span class="fl">3000L</span>,</span></span>
-<span class="r-in"><span>        outdir <span class="op">=</span> <span class="st">"SRP002001"</span></span></span>
-<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">## Define expressed regions for study DRP002835, chrY</span></span></span>
+<span class="r-in"><span><span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="expressed_regions.html">expressed_regions</a></span><span class="op">(</span><span class="st">"SRP002001"</span>, <span class="st">"chrY"</span>,</span></span>
+<span class="r-in"><span>    cutoff <span class="op">=</span> <span class="fl">5L</span>,</span></span>
+<span class="r-in"><span>    maxClusterGap <span class="op">=</span> <span class="fl">3000L</span>,</span></span>
+<span class="r-in"><span>    outdir <span class="op">=</span> <span class="st">"SRP002001"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:33.694229 loadCoverage: loading BigWig file SRP002001/bw/mean_SRP002001.bw</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:33.864089 loadCoverage: applying the cutoff to the merged data</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:33.880646 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:33.883904 findRegions: identifying potential segments</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:33.888542 findRegions: segmenting information</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:33.888855 .getSegmentsRle: segmenting with cutoff(s) 5</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:33.911308 findRegions: identifying candidate regions</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:34.80975 findRegions: identifying region clusters</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>    <span class="co">## Now calculate the coverage matrix for this study</span></span></span>
-<span class="r-in"><span>    <span class="va">rse</span> <span class="op">&lt;-</span> <span class="fu">coverage_matrix</span><span class="op">(</span><span class="st">"SRP002001"</span>, <span class="st">"chrY"</span>, <span class="va">regions</span>, outdir <span class="op">=</span> <span class="st">"SRP002001"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">## Now calculate the coverage matrix for this study</span></span></span>
+<span class="r-in"><span><span class="va">rse</span> <span class="op">&lt;-</span> <span class="fu">coverage_matrix</span><span class="op">(</span><span class="st">"SRP002001"</span>, <span class="st">"chrY"</span>, <span class="va">regions</span>, outdir <span class="op">=</span> <span class="st">"SRP002001"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:35.09345 downloading file SRP002001.tsv to SRP002001</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:35.687427 railMatrix: processing regions 1 to 744</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 17:45:35.697446 railMatrix: processing file SRP002001/bw/SRR036661.bw</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>    <span class="co">## One row per region</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">regions</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">rse</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:12.583543 downloading file mean_SRP002001.bw to SRP002001/bw</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>URL 'http://duffel.rail.bio/recount/SRP002001/bw/mean_SRP002001.bw': status was 'Couldn't connect to server'</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:19.88847 downloading file SRR036661.bw to SRP002001/bw</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:21.123333 loadCoverage: loading BigWig file SRP002001/bw/mean_SRP002001.bw</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:21.29393 loadCoverage: applying the cutoff to the merged data</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:21.310689 filterData: originally there were 57227415 rows, now there are 57227415 rows. Meaning that 0 percent was filtered.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:21.31401 findRegions: identifying potential segments</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:21.318892 findRegions: segmenting information</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:21.31926 .getSegmentsRle: segmenting with cutoff(s) 5</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:21.342341 findRegions: identifying candidate regions</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:22.26878 findRegions: identifying region clusters</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:22.566331 downloading file SRP002001.tsv to SRP002001</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:23.177217 railMatrix: processing regions 1 to 744</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-05-21 02:37:23.187425 railMatrix: processing file SRP002001/bw/SRR036661.bw</span>
+<span class="r-in"><span><span class="co">## One row per region</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">regions</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">rse</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 </code></pre></div>
     </div>
